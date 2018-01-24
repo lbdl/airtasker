@@ -1,0 +1,599 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2BBF412020170D36003A636C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF411F20170D36003A636C /* AppDelegate.swift */; };
+		2BBF412220170D36003A636C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF412120170D36003A636C /* ViewController.swift */; };
+		2BBF412520170D36003A636C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BBF412320170D36003A636C /* Main.storyboard */; };
+		2BBF412720170D36003A636C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BBF412620170D36003A636C /* Assets.xcassets */; };
+		2BBF412A20170D36003A636C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BBF412820170D36003A636C /* LaunchScreen.storyboard */; };
+		2BBF413520170D37003A636C /* AirTaskerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF413420170D37003A636C /* AirTaskerTests.swift */; };
+		2BBF414020170D37003A636C /* AirTaskerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF413F20170D37003A636C /* AirTaskerUITests.swift */; };
+		2BF1161D20172B2000D8A02B /* Mapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1161C20172B2000D8A02B /* Mapped.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2BBF413120170D37003A636C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2BBF411420170D36003A636C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2BBF411B20170D36003A636C;
+			remoteInfo = AirTasker;
+		};
+		2BBF413C20170D37003A636C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2BBF411420170D36003A636C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2BBF411B20170D36003A636C;
+			remoteInfo = AirTasker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2BBF411C20170D36003A636C /* AirTasker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirTasker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BBF411F20170D36003A636C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2BBF412120170D36003A636C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2BBF412420170D36003A636C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2BBF412620170D36003A636C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2BBF412920170D36003A636C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2BBF412B20170D36003A636C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2BBF413020170D37003A636C /* AirTaskerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirTaskerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BBF413420170D37003A636C /* AirTaskerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirTaskerTests.swift; sourceTree = "<group>"; };
+		2BBF413620170D37003A636C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2BBF413B20170D37003A636C /* AirTaskerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirTaskerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BBF413F20170D37003A636C /* AirTaskerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirTaskerUITests.swift; sourceTree = "<group>"; };
+		2BBF414120170D37003A636C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2BF1161C20172B2000D8A02B /* Mapped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mapped.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2BBF411920170D36003A636C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BBF412D20170D36003A636C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BBF413820170D37003A636C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2BBF411320170D36003A636C = {
+			isa = PBXGroup;
+			children = (
+				2BF11620201836B000D8A02B /* Profile */,
+				2BF1161F2018366400D8A02B /* Task */,
+				2BF1161E201835E700D8A02B /* Location */,
+				2BF1161920171E2000D8A02B /* Parser */,
+				2BBF411E20170D36003A636C /* AirTasker */,
+				2BBF413320170D37003A636C /* AirTaskerTests */,
+				2BBF413E20170D37003A636C /* AirTaskerUITests */,
+				2BBF411D20170D36003A636C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2BBF411D20170D36003A636C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2BBF411C20170D36003A636C /* AirTasker.app */,
+				2BBF413020170D37003A636C /* AirTaskerTests.xctest */,
+				2BBF413B20170D37003A636C /* AirTaskerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2BBF411E20170D36003A636C /* AirTasker */ = {
+			isa = PBXGroup;
+			children = (
+				2BBF411F20170D36003A636C /* AppDelegate.swift */,
+				2BBF412120170D36003A636C /* ViewController.swift */,
+				2BBF412320170D36003A636C /* Main.storyboard */,
+				2BBF412620170D36003A636C /* Assets.xcassets */,
+				2BBF412820170D36003A636C /* LaunchScreen.storyboard */,
+				2BBF412B20170D36003A636C /* Info.plist */,
+			);
+			path = AirTasker;
+			sourceTree = "<group>";
+		};
+		2BBF413320170D37003A636C /* AirTaskerTests */ = {
+			isa = PBXGroup;
+			children = (
+				2BBF413420170D37003A636C /* AirTaskerTests.swift */,
+				2BBF413620170D37003A636C /* Info.plist */,
+			);
+			path = AirTaskerTests;
+			sourceTree = "<group>";
+		};
+		2BBF413E20170D37003A636C /* AirTaskerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2BBF413F20170D37003A636C /* AirTaskerUITests.swift */,
+				2BBF414120170D37003A636C /* Info.plist */,
+			);
+			path = AirTaskerUITests;
+			sourceTree = "<group>";
+		};
+		2BF1161920171E2000D8A02B /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				2BF1161C20172B2000D8A02B /* Mapped.swift */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
+		2BF1161E201835E700D8A02B /* Location */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		2BF1161F2018366400D8A02B /* Task */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Task;
+			sourceTree = "<group>";
+		};
+		2BF11620201836B000D8A02B /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2BBF411B20170D36003A636C /* AirTasker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2BBF414420170D37003A636C /* Build configuration list for PBXNativeTarget "AirTasker" */;
+			buildPhases = (
+				2BBF411820170D36003A636C /* Sources */,
+				2BBF411920170D36003A636C /* Frameworks */,
+				2BBF411A20170D36003A636C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AirTasker;
+			productName = AirTasker;
+			productReference = 2BBF411C20170D36003A636C /* AirTasker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2BBF412F20170D36003A636C /* AirTaskerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2BBF414720170D37003A636C /* Build configuration list for PBXNativeTarget "AirTaskerTests" */;
+			buildPhases = (
+				2BBF412C20170D36003A636C /* Sources */,
+				2BBF412D20170D36003A636C /* Frameworks */,
+				2BBF412E20170D36003A636C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2BBF413220170D37003A636C /* PBXTargetDependency */,
+			);
+			name = AirTaskerTests;
+			productName = AirTaskerTests;
+			productReference = 2BBF413020170D37003A636C /* AirTaskerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2BBF413A20170D37003A636C /* AirTaskerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2BBF414A20170D37003A636C /* Build configuration list for PBXNativeTarget "AirTaskerUITests" */;
+			buildPhases = (
+				2BBF413720170D37003A636C /* Sources */,
+				2BBF413820170D37003A636C /* Frameworks */,
+				2BBF413920170D37003A636C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2BBF413D20170D37003A636C /* PBXTargetDependency */,
+			);
+			name = AirTaskerUITests;
+			productName = AirTaskerUITests;
+			productReference = 2BBF413B20170D37003A636C /* AirTaskerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2BBF411420170D36003A636C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "BITE-Software";
+				TargetAttributes = {
+					2BBF411B20170D36003A636C = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					2BBF412F20170D36003A636C = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 2BBF411B20170D36003A636C;
+					};
+					2BBF413A20170D37003A636C = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 2BBF411B20170D36003A636C;
+					};
+				};
+			};
+			buildConfigurationList = 2BBF411720170D36003A636C /* Build configuration list for PBXProject "AirTasker" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2BBF411320170D36003A636C;
+			productRefGroup = 2BBF411D20170D36003A636C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2BBF411B20170D36003A636C /* AirTasker */,
+				2BBF412F20170D36003A636C /* AirTaskerTests */,
+				2BBF413A20170D37003A636C /* AirTaskerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2BBF411A20170D36003A636C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BBF412A20170D36003A636C /* LaunchScreen.storyboard in Resources */,
+				2BBF412720170D36003A636C /* Assets.xcassets in Resources */,
+				2BBF412520170D36003A636C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BBF412E20170D36003A636C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BBF413920170D37003A636C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2BBF411820170D36003A636C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BBF412220170D36003A636C /* ViewController.swift in Sources */,
+				2BBF412020170D36003A636C /* AppDelegate.swift in Sources */,
+				2BF1161D20172B2000D8A02B /* Mapped.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BBF412C20170D36003A636C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BBF413520170D37003A636C /* AirTaskerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BBF413720170D37003A636C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BBF414020170D37003A636C /* AirTaskerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2BBF413220170D37003A636C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2BBF411B20170D36003A636C /* AirTasker */;
+			targetProxy = 2BBF413120170D37003A636C /* PBXContainerItemProxy */;
+		};
+		2BBF413D20170D37003A636C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2BBF411B20170D36003A636C /* AirTasker */;
+			targetProxy = 2BBF413C20170D37003A636C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2BBF412320170D36003A636C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2BBF412420170D36003A636C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2BBF412820170D36003A636C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2BBF412920170D36003A636C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2BBF414220170D37003A636C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2BBF414320170D37003A636C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2BBF414520170D37003A636C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QBJML82M5H;
+				INFOPLIST_FILE = AirTasker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bite-software.AirTasker";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2BBF414620170D37003A636C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QBJML82M5H;
+				INFOPLIST_FILE = AirTasker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bite-software.AirTasker";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2BBF414820170D37003A636C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QBJML82M5H;
+				INFOPLIST_FILE = AirTaskerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bite-software.AirTaskerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AirTasker.app/AirTasker";
+			};
+			name = Debug;
+		};
+		2BBF414920170D37003A636C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QBJML82M5H;
+				INFOPLIST_FILE = AirTaskerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bite-software.AirTaskerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AirTasker.app/AirTasker";
+			};
+			name = Release;
+		};
+		2BBF414B20170D37003A636C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QBJML82M5H;
+				INFOPLIST_FILE = AirTaskerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bite-software.AirTaskerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AirTasker;
+			};
+			name = Debug;
+		};
+		2BBF414C20170D37003A636C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QBJML82M5H;
+				INFOPLIST_FILE = AirTaskerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bite-software.AirTaskerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AirTasker;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2BBF411720170D36003A636C /* Build configuration list for PBXProject "AirTasker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BBF414220170D37003A636C /* Debug */,
+				2BBF414320170D37003A636C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2BBF414420170D37003A636C /* Build configuration list for PBXNativeTarget "AirTasker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BBF414520170D37003A636C /* Debug */,
+				2BBF414620170D37003A636C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2BBF414720170D37003A636C /* Build configuration list for PBXNativeTarget "AirTaskerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BBF414820170D37003A636C /* Debug */,
+				2BBF414920170D37003A636C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2BBF414A20170D37003A636C /* Build configuration list for PBXNativeTarget "AirTaskerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BBF414B20170D37003A636C /* Debug */,
+				2BBF414C20170D37003A636C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2BBF411420170D36003A636C /* Project object */;
+}
