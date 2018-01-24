@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17C205" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Event" representedClassName="Event" syncable="YES" codeGenerationType="class"/>
+    <entity name="Activity" representedClassName="Activity" syncable="YES" codeGenerationType="class">
+        <attribute name="event" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="message" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="profile_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="task_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
     <entity name="Location" representedClassName="Location" syncable="YES" codeGenerationType="class"/>
     <entity name="Profile" representedClassName="Profile" syncable="YES" codeGenerationType="class"/>
     <entity name="Task" representedClassName="Task" syncable="YES" codeGenerationType="class"/>
@@ -10,6 +16,6 @@
         <element name="Profile" positionX="-54" positionY="-9" width="128" height="45"/>
         <element name="Task" positionX="-36" positionY="9" width="128" height="45"/>
         <element name="Worker" positionX="-18" positionY="27" width="128" height="45"/>
-        <element name="Event" positionX="0" positionY="45" width="128" height="45"/>
+        <element name="Activity" positionX="0" positionY="45" width="128" height="120"/>
     </elements>
 </model>
