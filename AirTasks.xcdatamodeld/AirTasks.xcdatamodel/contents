@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17C205" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+    <entity name="Event" representedClassName="Event" syncable="YES" codeGenerationType="class"/>
+    <entity name="Location" representedClassName="Location" syncable="YES" codeGenerationType="class"/>
+    <entity name="Profile" representedClassName="Profile" syncable="YES" codeGenerationType="class"/>
+    <entity name="Task" representedClassName="Task" syncable="YES" codeGenerationType="class"/>
+    <entity name="Worker" representedClassName="Worker" syncable="YES" codeGenerationType="class"/>
+    <elements>
+        <element name="Location" positionX="-63" positionY="-18" width="128" height="43"/>
+        <element name="Profile" positionX="-54" positionY="-9" width="128" height="45"/>
+        <element name="Task" positionX="-36" positionY="9" width="128" height="45"/>
+        <element name="Worker" positionX="-18" positionY="27" width="128" height="45"/>
+        <element name="Event" positionX="0" positionY="45" width="128" height="45"/>
+    </elements>
 </model>
