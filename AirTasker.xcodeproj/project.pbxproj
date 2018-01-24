@@ -15,6 +15,7 @@
 		2BBF413520170D37003A636C /* AirTaskerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF413420170D37003A636C /* AirTaskerTests.swift */; };
 		2BBF414020170D37003A636C /* AirTaskerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF413F20170D37003A636C /* AirTaskerUITests.swift */; };
 		2BF1161D20172B2000D8A02B /* Mapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1161C20172B2000D8A02B /* Mapped.swift */; };
+		2BF116232018440A00D8A02B /* AirTasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116212018440A00D8A02B /* AirTasks.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		2BBF413F20170D37003A636C /* AirTaskerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirTaskerUITests.swift; sourceTree = "<group>"; };
 		2BBF414120170D37003A636C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BF1161C20172B2000D8A02B /* Mapped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mapped.swift; sourceTree = "<group>"; };
+		2BF116222018440A00D8A02B /* AirTasks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AirTasks.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		2BBF411320170D36003A636C = {
 			isa = PBXGroup;
 			children = (
+				2BF116212018440A00D8A02B /* AirTasks.xcdatamodeld */,
 				2BF11620201836B000D8A02B /* Profile */,
 				2BF1161F2018366400D8A02B /* Task */,
 				2BF1161E201835E700D8A02B /* Location */,
@@ -297,6 +300,7 @@
 				2BBF412220170D36003A636C /* ViewController.swift in Sources */,
 				2BBF412020170D36003A636C /* AppDelegate.swift in Sources */,
 				2BF1161D20172B2000D8A02B /* Mapped.swift in Sources */,
+				2BF116232018440A00D8A02B /* AirTasks.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -594,6 +598,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2BF116212018440A00D8A02B /* AirTasks.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2BF116222018440A00D8A02B /* AirTasks.xcdatamodel */,
+			);
+			currentVersion = 2BF116222018440A00D8A02B /* AirTasks.xcdatamodel */;
+			path = AirTasks.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2BBF411420170D36003A636C /* Project object */;
 }
