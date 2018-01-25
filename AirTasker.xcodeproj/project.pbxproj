@@ -23,6 +23,13 @@
 		2BF1163020199FA300D8A02B /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1162E20199FA300D8A02B /* Location+CoreDataProperties.swift */; };
 		2BF116332019A02400D8A02B /* Localle+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116312019A02400D8A02B /* Localle+CoreDataClass.swift */; };
 		2BF116342019A02400D8A02B /* Localle+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116322019A02400D8A02B /* Localle+CoreDataProperties.swift */; };
+		2BF116392019BC7D00D8A02B /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116382019BC7D00D8A02B /* PersistenceManager.swift */; };
+		2BF1163C2019C0EA00D8A02B /* Profile+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1163A2019C0EA00D8A02B /* Profile+CoreDataClass.swift */; };
+		2BF1163D2019C0EA00D8A02B /* Profile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1163B2019C0EA00D8A02B /* Profile+CoreDataProperties.swift */; };
+		2BF116402019C10200D8A02B /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1163E2019C10200D8A02B /* Task+CoreDataClass.swift */; };
+		2BF116412019C10200D8A02B /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1163F2019C10200D8A02B /* Task+CoreDataProperties.swift */; };
+		2BF116442019C11D00D8A02B /* Worker+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116422019C11D00D8A02B /* Worker+CoreDataClass.swift */; };
+		2BF116452019C11D00D8A02B /* Worker+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116432019C11D00D8A02B /* Worker+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +72,13 @@
 		2BF1162E20199FA300D8A02B /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2BF116312019A02400D8A02B /* Localle+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Localle+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2BF116322019A02400D8A02B /* Localle+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Localle+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2BF116382019BC7D00D8A02B /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		2BF1163A2019C0EA00D8A02B /* Profile+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profile+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2BF1163B2019C0EA00D8A02B /* Profile+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profile+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2BF1163E2019C10200D8A02B /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2BF1163F2019C10200D8A02B /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2BF116422019C11D00D8A02B /* Worker+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Worker+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2BF116432019C11D00D8A02B /* Worker+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Worker+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +109,7 @@
 		2BBF411320170D36003A636C = {
 			isa = PBXGroup;
 			children = (
+				2BF116352019BAAB00D8A02B /* Persistance */,
 				2BF1162820198E6D00D8A02B /* Worker */,
 				2BF1162720198E5800D8A02B /* Localle */,
 				2BF1162620198E4200D8A02B /* Activity */,
@@ -174,6 +189,8 @@
 		2BF1161F2018366400D8A02B /* Task */ = {
 			isa = PBXGroup;
 			children = (
+				2BF1163E2019C10200D8A02B /* Task+CoreDataClass.swift */,
+				2BF1163F2019C10200D8A02B /* Task+CoreDataProperties.swift */,
 			);
 			path = Task;
 			sourceTree = "<group>";
@@ -181,6 +198,8 @@
 		2BF11620201836B000D8A02B /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				2BF1163A2019C0EA00D8A02B /* Profile+CoreDataClass.swift */,
+				2BF1163B2019C0EA00D8A02B /* Profile+CoreDataProperties.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -204,8 +223,18 @@
 		2BF1162820198E6D00D8A02B /* Worker */ = {
 			isa = PBXGroup;
 			children = (
+				2BF116422019C11D00D8A02B /* Worker+CoreDataClass.swift */,
+				2BF116432019C11D00D8A02B /* Worker+CoreDataProperties.swift */,
 			);
 			path = Worker;
+			sourceTree = "<group>";
+		};
+		2BF116352019BAAB00D8A02B /* Persistance */ = {
+			isa = PBXGroup;
+			children = (
+				2BF116382019BC7D00D8A02B /* PersistenceManager.swift */,
+			);
+			path = Persistance;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,15 +372,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BBF412220170D36003A636C /* ViewController.swift in Sources */,
+				2BF116402019C10200D8A02B /* Task+CoreDataClass.swift in Sources */,
+				2BF1163C2019C0EA00D8A02B /* Profile+CoreDataClass.swift in Sources */,
 				2BF1162A2019923700D8A02B /* LocationMapper.swift in Sources */,
 				2BF116252019805500D8A02B /* JSONMapper.swift in Sources */,
+				2BF116392019BC7D00D8A02B /* PersistenceManager.swift in Sources */,
+				2BF116412019C10200D8A02B /* Task+CoreDataProperties.swift in Sources */,
 				2BF1162C20199EF400D8A02B /* CoreDataMapper.swift in Sources */,
 				2BF116342019A02400D8A02B /* Localle+CoreDataProperties.swift in Sources */,
+				2BF116452019C11D00D8A02B /* Worker+CoreDataProperties.swift in Sources */,
 				2BF1162F20199FA300D8A02B /* Location+CoreDataClass.swift in Sources */,
 				2BF1163020199FA300D8A02B /* Location+CoreDataProperties.swift in Sources */,
 				2BBF412020170D36003A636C /* AppDelegate.swift in Sources */,
+				2BF116442019C11D00D8A02B /* Worker+CoreDataClass.swift in Sources */,
 				2BF1161D20172B2000D8A02B /* Mapped.swift in Sources */,
 				2BF116332019A02400D8A02B /* Localle+CoreDataClass.swift in Sources */,
+				2BF1163D2019C0EA00D8A02B /* Profile+CoreDataProperties.swift in Sources */,
 				2BF116232018440A00D8A02B /* AirTasks.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
