@@ -10,5 +10,5 @@ import Foundation
 
 enum Mapped<A> {
     case Error(NSError)
-    case Right(A)
+    case Value(A)
 }
