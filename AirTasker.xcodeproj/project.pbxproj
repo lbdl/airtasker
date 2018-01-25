@@ -18,7 +18,6 @@
 		2BF116232018440A00D8A02B /* AirTasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116212018440A00D8A02B /* AirTasks.xcdatamodeld */; };
 		2BF116252019805500D8A02B /* JSONMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116242019805500D8A02B /* JSONMapper.swift */; };
 		2BF1162A2019923700D8A02B /* LocationMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116292019923700D8A02B /* LocationMapper.swift */; };
-		2BF1162C20199EF400D8A02B /* CoreDataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1162B20199EF400D8A02B /* CoreDataMapper.swift */; };
 		2BF1162F20199FA300D8A02B /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1162D20199FA300D8A02B /* Location+CoreDataClass.swift */; };
 		2BF1163020199FA300D8A02B /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1162E20199FA300D8A02B /* Location+CoreDataProperties.swift */; };
 		2BF116332019A02400D8A02B /* Localle+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116312019A02400D8A02B /* Localle+CoreDataClass.swift */; };
@@ -30,6 +29,12 @@
 		2BF116412019C10200D8A02B /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1163F2019C10200D8A02B /* Task+CoreDataProperties.swift */; };
 		2BF116442019C11D00D8A02B /* Worker+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116422019C11D00D8A02B /* Worker+CoreDataClass.swift */; };
 		2BF116452019C11D00D8A02B /* Worker+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116432019C11D00D8A02B /* Worker+CoreDataProperties.swift */; };
+		2BF116482019C1F100D8A02B /* Activity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116462019C1F100D8A02B /* Activity+CoreDataClass.swift */; };
+		2BF116492019C1F100D8A02B /* Activity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116472019C1F100D8A02B /* Activity+CoreDataProperties.swift */; };
+		2BF1164E2019E24400D8A02B /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF1164C2019E24400D8A02B /* Quick.framework */; };
+		2BF1164F2019E24400D8A02B /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF1164D2019E24400D8A02B /* Nimble.framework */; };
+		2BF116512019E2CF00D8A02B /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BF1164D2019E24400D8A02B /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2BF116522019E2CF00D8A02B /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BF1164C2019E24400D8A02B /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +54,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		2BF116502019E2B000D8A02B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2BF116512019E2CF00D8A02B /* Nimble.framework in CopyFiles */,
+				2BF116522019E2CF00D8A02B /* Quick.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		2BBF411C20170D36003A636C /* AirTasker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirTasker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BBF411F20170D36003A636C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -67,7 +86,6 @@
 		2BF116222018440A00D8A02B /* AirTasks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AirTasks.xcdatamodel; sourceTree = "<group>"; };
 		2BF116242019805500D8A02B /* JSONMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONMapper.swift; sourceTree = "<group>"; };
 		2BF116292019923700D8A02B /* LocationMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMapper.swift; sourceTree = "<group>"; };
-		2BF1162B20199EF400D8A02B /* CoreDataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataMapper.swift; sourceTree = "<group>"; };
 		2BF1162D20199FA300D8A02B /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2BF1162E20199FA300D8A02B /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2BF116312019A02400D8A02B /* Localle+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Localle+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -79,6 +97,10 @@
 		2BF1163F2019C10200D8A02B /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2BF116422019C11D00D8A02B /* Worker+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Worker+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2BF116432019C11D00D8A02B /* Worker+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Worker+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2BF116462019C1F100D8A02B /* Activity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2BF116472019C1F100D8A02B /* Activity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2BF1164C2019E24400D8A02B /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
+		2BF1164D2019E24400D8A02B /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +115,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BF1164E2019E24400D8A02B /* Quick.framework in Frameworks */,
+				2BF1164F2019E24400D8A02B /* Nimble.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,11 +133,11 @@
 		2BBF411320170D36003A636C = {
 			isa = PBXGroup;
 			children = (
+				2BF1164A2019C21600D8A02B /* DB */,
 				2BF116352019BAAB00D8A02B /* Persistance */,
 				2BF1162820198E6D00D8A02B /* Worker */,
 				2BF1162720198E5800D8A02B /* Localle */,
 				2BF1162620198E4200D8A02B /* Activity */,
-				2BF116212018440A00D8A02B /* AirTasks.xcdatamodeld */,
 				2BF11620201836B000D8A02B /* Profile */,
 				2BF1161F2018366400D8A02B /* Task */,
 				2BF1161E201835E700D8A02B /* Location */,
@@ -122,6 +146,7 @@
 				2BBF413320170D37003A636C /* AirTaskerTests */,
 				2BBF413E20170D37003A636C /* AirTaskerUITests */,
 				2BBF411D20170D36003A636C /* Products */,
+				2BF1164B2019E24400D8A02B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -171,7 +196,6 @@
 			children = (
 				2BF1161C20172B2000D8A02B /* Mapped.swift */,
 				2BF116242019805500D8A02B /* JSONMapper.swift */,
-				2BF1162B20199EF400D8A02B /* CoreDataMapper.swift */,
 			);
 			path = Parser;
 			sourceTree = "<group>";
@@ -207,6 +231,8 @@
 		2BF1162620198E4200D8A02B /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				2BF116462019C1F100D8A02B /* Activity+CoreDataClass.swift */,
+				2BF116472019C1F100D8A02B /* Activity+CoreDataProperties.swift */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -237,6 +263,23 @@
 			path = Persistance;
 			sourceTree = "<group>";
 		};
+		2BF1164A2019C21600D8A02B /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				2BF116212018440A00D8A02B /* AirTasks.xcdatamodeld */,
+			);
+			path = DB;
+			sourceTree = "<group>";
+		};
+		2BF1164B2019E24400D8A02B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2BF1164D2019E24400D8A02B /* Nimble.framework */,
+				2BF1164C2019E24400D8A02B /* Quick.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -264,6 +307,7 @@
 				2BBF412C20170D36003A636C /* Sources */,
 				2BBF412D20170D36003A636C /* Frameworks */,
 				2BBF412E20170D36003A636C /* Resources */,
+				2BF116502019E2B000D8A02B /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -378,17 +422,18 @@
 				2BF116252019805500D8A02B /* JSONMapper.swift in Sources */,
 				2BF116392019BC7D00D8A02B /* PersistenceManager.swift in Sources */,
 				2BF116412019C10200D8A02B /* Task+CoreDataProperties.swift in Sources */,
-				2BF1162C20199EF400D8A02B /* CoreDataMapper.swift in Sources */,
 				2BF116342019A02400D8A02B /* Localle+CoreDataProperties.swift in Sources */,
 				2BF116452019C11D00D8A02B /* Worker+CoreDataProperties.swift in Sources */,
 				2BF1162F20199FA300D8A02B /* Location+CoreDataClass.swift in Sources */,
 				2BF1163020199FA300D8A02B /* Location+CoreDataProperties.swift in Sources */,
+				2BF116492019C1F100D8A02B /* Activity+CoreDataProperties.swift in Sources */,
 				2BBF412020170D36003A636C /* AppDelegate.swift in Sources */,
 				2BF116442019C11D00D8A02B /* Worker+CoreDataClass.swift in Sources */,
 				2BF1161D20172B2000D8A02B /* Mapped.swift in Sources */,
 				2BF116332019A02400D8A02B /* Localle+CoreDataClass.swift in Sources */,
 				2BF1163D2019C0EA00D8A02B /* Profile+CoreDataProperties.swift in Sources */,
 				2BF116232018440A00D8A02B /* AirTasks.xcdatamodeld in Sources */,
+				2BF116482019C1F100D8A02B /* Activity+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,6 +632,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QBJML82M5H;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = AirTaskerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bite-software.AirTaskerTests";
@@ -604,6 +653,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QBJML82M5H;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = AirTaskerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bite-software.AirTaskerTests";

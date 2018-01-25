@@ -10,14 +10,22 @@ import Foundation
 
 struct LocationMapper: JSONMapper {
     
+    init(storeManager: PersistenceController) {
+        persistanceManager = storeManager
+    }
+    
     typealias value = Mapped<LocationRaw>
     typealias raw = Data
     
-    var rawValue: raw
-    var mappedValue: value
+    var rawValue: raw?
+    var mappedValue: value?
+    var persistanceManager: PersistenceController
     
-    func map(rawValue: Data) -> Mapped<LocationRaw> {
-        return mappedValue
+    func map(rawValue: Data) {
+        //return mappedValue!
+    }
+    
+    func store(object: value) {
     }
 }
 
