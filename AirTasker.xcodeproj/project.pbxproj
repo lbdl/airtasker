@@ -83,6 +83,9 @@
 		2BBF411320170D36003A636C = {
 			isa = PBXGroup;
 			children = (
+				2BF1162820198E6D00D8A02B /* Worker */,
+				2BF1162720198E5800D8A02B /* Localle */,
+				2BF1162620198E4200D8A02B /* Activity */,
 				2BF116212018440A00D8A02B /* AirTasks.xcdatamodeld */,
 				2BF11620201836B000D8A02B /* Profile */,
 				2BF1161F2018366400D8A02B /* Task */,
@@ -164,6 +167,27 @@
 			children = (
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		2BF1162620198E4200D8A02B /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
+		2BF1162720198E5800D8A02B /* Localle */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Localle;
+			sourceTree = "<group>";
+		};
+		2BF1162820198E6D00D8A02B /* Worker */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Worker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

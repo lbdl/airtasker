@@ -8,10 +8,10 @@
 
 import Foundation
 
-protocol JSONMapping {
-    associatedtype value
+protocol JSONMapper {
+    associatedtype value 
     associatedtype raw
-    var rawValue: raw { get set }
+    var rawValue: raw {set}
     var mappedValue: value {get}
     func map(rawValue: raw) -> value
 }
