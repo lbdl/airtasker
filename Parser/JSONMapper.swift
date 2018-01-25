@@ -11,7 +11,9 @@ import Foundation
 protocol JSONMapper {
     associatedtype value 
     associatedtype raw
-    var rawValue: raw {set}
+    
+    var rawValue: raw {set get}
     var mappedValue: value {get}
+    
     func map(rawValue: raw) -> value
 }
