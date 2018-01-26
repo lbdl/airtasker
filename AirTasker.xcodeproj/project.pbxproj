@@ -182,6 +182,7 @@
 		2BBF413320170D37003A636C /* AirTaskerTests */ = {
 			isa = PBXGroup;
 			children = (
+				2BF11670201B203000D8A02B /* TestSuiteHelpers.swift */,
 				2BF1166A201B151B00D8A02B /* TestAssets */,
 				2BF1165B2019ECD400D8A02B /* Location */,
 				2BBF413620170D37003A636C /* Info.plist */,
@@ -299,7 +300,6 @@
 			children = (
 				2BF1166C201B153E00D8A02B /* location5.json */,
 				2BF1166B201B153E00D8A02B /* locations.json */,
-				2BF11670201B203000D8A02B /* TestSuiteHelpers.swift */,
 			);
 			path = TestAssets;
 			sourceTree = "<group>";

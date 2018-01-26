@@ -19,7 +19,7 @@ class LocationTests: QuickSpec {
 
         beforeSuite {
             rawData = TestSuiteHelpers.readLocalData()
-            sut = LocationMapper(storeManager: TestSuiteHelpers.buildDummyDataStack() as! PersistenceController)
+            sut = LocationMapper(storeManager: TestSuiteHelpers.buildMockPersistenceController())
         }
         
         context("GIVEN location JSON") {

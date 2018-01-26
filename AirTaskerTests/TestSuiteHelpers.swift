@@ -8,8 +8,17 @@
 
 import UIKit
 import CoreData
+@testable import AirTasker
+
+class MockPersistanceController: PersistenceController {
+    lazy var persistentContainer: NSPersistentContainer = TestSuiteHelpers.buildDummyDataStack()
+    func saveContext() {
+        //foo
+    }
+}
 
 class TestSuiteHelpers: NSObject {
+    
     
     static func readLocalData() -> Data? {
         let testBundle = Bundle(for: self)
@@ -42,5 +51,9 @@ class TestSuiteHelpers: NSObject {
             }
         }
         return container
+    }
+    
+    static func buildMockPersistenceController() -> MockPersistanceController {
+        return MockPersistanceController()
     }
 }
