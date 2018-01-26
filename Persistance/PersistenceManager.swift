@@ -17,7 +17,17 @@ protocol PersistenceController {
 class PersistenceManager: NSObject, PersistenceController {
     
     static let sharedInstance = PersistenceManager()
-    private override init() {}
+    private override init() {
+    }
+    
+    var container: NSPersistentContainer?
+    
+    //allow instore db to be used for testing
+    convenience init(store: NSPersistentContainer) {
+        self.init()
+        container = store
+    }
+    
     
     lazy var persistentContainer: NSPersistentContainer = {
         /*
@@ -49,6 +59,11 @@ class PersistenceManager: NSObject, PersistenceController {
     // MARK: - Core Data Saving support
     
     func saveContext () {
+        
+        if container == nil {
+            container = persistentContainer
+        }
+        
         let context = persistentContainer.viewContext
         if context.hasChanges {
             do {
