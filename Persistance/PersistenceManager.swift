@@ -16,6 +16,8 @@ protocol PersistenceController {
 
 class PersistenceManager: NSObject, PersistenceController {
     
+    static let sharedInstance = PersistenceManager()
+    private override init() {}
     
     lazy var persistentContainer: NSPersistentContainer = {
         /*
