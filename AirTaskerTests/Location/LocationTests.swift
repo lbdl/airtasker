@@ -12,16 +12,28 @@ import Nimble
 class LocationTests: QuickSpec {
     override func spec() {
         
-        var rawData: Data
+        var rawData: Data?
+
+        func readLocalData() -> Data? {
+            let testBundle = Bundle(for: type(of: self))
+            let url = testBundle.url(forResource: "locations", withExtension: "json")
+            guard let data = NSData(contentsOf: url!) as Data? else {return nil}
+            return data
+        }
         
         beforeSuite {
-            <#code#>
+            rawData = readLocalData()
         }
-        describe("Location JSON parsing to intermediate object") {
-            it("is coming") {
-                expect(1).notTo(equal(2))
+        
+        context("GIVEN location JSON") {
+            describe("WHEN we parse") {
+                it("Creates an object") {
+                    expect(rawData).notTo(beNil())
+                }
             }
         }
+        
+        
     }
     public func testDummy() {}
 }
