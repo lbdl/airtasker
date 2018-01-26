@@ -12,8 +12,6 @@
 		2BBF412520170D36003A636C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BBF412320170D36003A636C /* Main.storyboard */; };
 		2BBF412720170D36003A636C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BBF412620170D36003A636C /* Assets.xcassets */; };
 		2BBF412A20170D36003A636C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BBF412820170D36003A636C /* LaunchScreen.storyboard */; };
-		2BBF413520170D37003A636C /* AirTaskerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF413420170D37003A636C /* AirTaskerTests.swift */; };
-		2BBF414020170D37003A636C /* AirTaskerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF413F20170D37003A636C /* AirTaskerUITests.swift */; };
 		2BF1161D20172B2000D8A02B /* Mapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1161C20172B2000D8A02B /* Mapped.swift */; };
 		2BF116232018440A00D8A02B /* AirTasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116212018440A00D8A02B /* AirTasks.xcdatamodeld */; };
 		2BF116252019805500D8A02B /* JSONMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116242019805500D8A02B /* JSONMapper.swift */; };
@@ -31,10 +29,11 @@
 		2BF116452019C11D00D8A02B /* Worker+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116432019C11D00D8A02B /* Worker+CoreDataProperties.swift */; };
 		2BF116482019C1F100D8A02B /* Activity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116462019C1F100D8A02B /* Activity+CoreDataClass.swift */; };
 		2BF116492019C1F100D8A02B /* Activity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116472019C1F100D8A02B /* Activity+CoreDataProperties.swift */; };
-		2BF1164E2019E24400D8A02B /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF1164C2019E24400D8A02B /* Quick.framework */; };
-		2BF1164F2019E24400D8A02B /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF1164D2019E24400D8A02B /* Nimble.framework */; };
-		2BF116512019E2CF00D8A02B /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BF1164D2019E24400D8A02B /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		2BF116522019E2CF00D8A02B /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BF1164C2019E24400D8A02B /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2BF116612019F0E300D8A02B /* LocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116602019F0E300D8A02B /* LocationTests.swift */; };
+		2BF11665201B0F5B00D8A02B /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF11664201B0F5B00D8A02B /* Nimble.framework */; };
+		2BF11667201B0F6600D8A02B /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF11666201B0F6600D8A02B /* Quick.framework */; };
+		2BF11668201B0F7E00D8A02B /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BF11666201B0F6600D8A02B /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2BF11669201B0F8500D8A02B /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BF11664201B0F5B00D8A02B /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,8 +60,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2BF116512019E2CF00D8A02B /* Nimble.framework in CopyFiles */,
-				2BF116522019E2CF00D8A02B /* Quick.framework in CopyFiles */,
+				2BF11669201B0F8500D8A02B /* Nimble.framework in CopyFiles */,
+				2BF11668201B0F7E00D8A02B /* Quick.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,10 +76,8 @@
 		2BBF412920170D36003A636C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2BBF412B20170D36003A636C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BBF413020170D37003A636C /* AirTaskerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirTaskerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2BBF413420170D37003A636C /* AirTaskerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirTaskerTests.swift; sourceTree = "<group>"; };
 		2BBF413620170D37003A636C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BBF413B20170D37003A636C /* AirTaskerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirTaskerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2BBF413F20170D37003A636C /* AirTaskerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirTaskerUITests.swift; sourceTree = "<group>"; };
 		2BBF414120170D37003A636C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BF1161C20172B2000D8A02B /* Mapped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mapped.swift; sourceTree = "<group>"; };
 		2BF116222018440A00D8A02B /* AirTasks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AirTasks.xcdatamodel; sourceTree = "<group>"; };
@@ -99,8 +96,9 @@
 		2BF116432019C11D00D8A02B /* Worker+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Worker+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2BF116462019C1F100D8A02B /* Activity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2BF116472019C1F100D8A02B /* Activity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activity+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		2BF1164C2019E24400D8A02B /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
-		2BF1164D2019E24400D8A02B /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		2BF116602019F0E300D8A02B /* LocationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTests.swift; sourceTree = "<group>"; };
+		2BF11664201B0F5B00D8A02B /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		2BF11666201B0F6600D8A02B /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,8 +113,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2BF1164E2019E24400D8A02B /* Quick.framework in Frameworks */,
-				2BF1164F2019E24400D8A02B /* Nimble.framework in Frameworks */,
+				2BF11667201B0F6600D8A02B /* Quick.framework in Frameworks */,
+				2BF11665201B0F5B00D8A02B /* Nimble.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,7 +174,7 @@
 		2BBF413320170D37003A636C /* AirTaskerTests */ = {
 			isa = PBXGroup;
 			children = (
-				2BBF413420170D37003A636C /* AirTaskerTests.swift */,
+				2BF1165B2019ECD400D8A02B /* Location */,
 				2BBF413620170D37003A636C /* Info.plist */,
 			);
 			path = AirTaskerTests;
@@ -185,7 +183,6 @@
 		2BBF413E20170D37003A636C /* AirTaskerUITests */ = {
 			isa = PBXGroup;
 			children = (
-				2BBF413F20170D37003A636C /* AirTaskerUITests.swift */,
 				2BBF414120170D37003A636C /* Info.plist */,
 			);
 			path = AirTaskerUITests;
@@ -274,10 +271,18 @@
 		2BF1164B2019E24400D8A02B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2BF1164D2019E24400D8A02B /* Nimble.framework */,
-				2BF1164C2019E24400D8A02B /* Quick.framework */,
+				2BF11666201B0F6600D8A02B /* Quick.framework */,
+				2BF11664201B0F5B00D8A02B /* Nimble.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2BF1165B2019ECD400D8A02B /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				2BF116602019F0E300D8A02B /* LocationTests.swift */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -353,6 +358,7 @@
 					};
 					2BBF412F20170D36003A636C = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2BBF411B20170D36003A636C;
 					};
@@ -441,7 +447,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2BBF413520170D37003A636C /* AirTaskerTests.swift in Sources */,
+				2BF116612019F0E300D8A02B /* LocationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,7 +455,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2BBF414020170D37003A636C /* AirTaskerUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,10 +541,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos11.2;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -587,9 +592,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos11.2;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -630,6 +635,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QBJML82M5H;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -640,6 +646,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bite-software.AirTaskerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AirTasker.app/AirTasker";
@@ -651,6 +658,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QBJML82M5H;
 				FRAMEWORK_SEARCH_PATHS = (
