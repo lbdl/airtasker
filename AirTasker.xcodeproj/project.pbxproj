@@ -34,6 +34,8 @@
 		2BF11667201B0F6600D8A02B /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF11666201B0F6600D8A02B /* Quick.framework */; };
 		2BF11668201B0F7E00D8A02B /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BF11666201B0F6600D8A02B /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2BF11669201B0F8500D8A02B /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BF11664201B0F5B00D8A02B /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2BF1166D201B153F00D8A02B /* locations.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BF1166B201B153E00D8A02B /* locations.json */; };
+		2BF1166E201B153F00D8A02B /* location5.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BF1166C201B153E00D8A02B /* location5.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +101,8 @@
 		2BF116602019F0E300D8A02B /* LocationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTests.swift; sourceTree = "<group>"; };
 		2BF11664201B0F5B00D8A02B /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		2BF11666201B0F6600D8A02B /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
+		2BF1166B201B153E00D8A02B /* locations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = locations.json; sourceTree = "<group>"; };
+		2BF1166C201B153E00D8A02B /* location5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = location5.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +178,7 @@
 		2BBF413320170D37003A636C /* AirTaskerTests */ = {
 			isa = PBXGroup;
 			children = (
+				2BF1166A201B151B00D8A02B /* TestAssets */,
 				2BF1165B2019ECD400D8A02B /* Location */,
 				2BBF413620170D37003A636C /* Info.plist */,
 			);
@@ -283,6 +288,15 @@
 				2BF116602019F0E300D8A02B /* LocationTests.swift */,
 			);
 			path = Location;
+			sourceTree = "<group>";
+		};
+		2BF1166A201B151B00D8A02B /* TestAssets */ = {
+			isa = PBXGroup;
+			children = (
+				2BF1166C201B153E00D8A02B /* location5.json */,
+				2BF1166B201B153E00D8A02B /* locations.json */,
+			);
+			path = TestAssets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -404,6 +418,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BF1166E201B153F00D8A02B /* location5.json in Resources */,
+				2BF1166D201B153F00D8A02B /* locations.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

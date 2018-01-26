@@ -11,7 +11,13 @@ import Nimble
 
 class LocationTests: QuickSpec {
     override func spec() {
-        describe("winter") {
+        
+        var rawData: Data
+        
+        beforeSuite {
+            <#code#>
+        }
+        describe("Location JSON parsing to intermediate object") {
             it("is coming") {
                 expect(1).notTo(equal(2))
             }
