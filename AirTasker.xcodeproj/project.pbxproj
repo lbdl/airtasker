@@ -36,6 +36,7 @@
 		2BF11669201B0F8500D8A02B /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BF11664201B0F5B00D8A02B /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2BF1166D201B153F00D8A02B /* locations.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BF1166B201B153E00D8A02B /* locations.json */; };
 		2BF1166E201B153F00D8A02B /* location5.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BF1166C201B153E00D8A02B /* location5.json */; };
+		2BF11671201B203000D8A02B /* TestSuiteHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF11670201B203000D8A02B /* TestSuiteHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		2BF11666201B0F6600D8A02B /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		2BF1166B201B153E00D8A02B /* locations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = locations.json; sourceTree = "<group>"; };
 		2BF1166C201B153E00D8A02B /* location5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = location5.json; sourceTree = "<group>"; };
+		2BF11670201B203000D8A02B /* TestSuiteHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSuiteHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,6 +297,7 @@
 			children = (
 				2BF1166C201B153E00D8A02B /* location5.json */,
 				2BF1166B201B153E00D8A02B /* locations.json */,
+				2BF11670201B203000D8A02B /* TestSuiteHelpers.swift */,
 			);
 			path = TestAssets;
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BF11671201B203000D8A02B /* TestSuiteHelpers.swift in Sources */,
 				2BF116612019F0E300D8A02B /* LocationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

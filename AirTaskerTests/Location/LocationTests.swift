@@ -9,24 +9,26 @@
 import Quick
 import Nimble
 
+@testable import AirTasker
+
 class LocationTests: QuickSpec {
     override func spec() {
         
         var rawData: Data?
+        var sut: LocationMapper?
 
-        func readLocalData() -> Data? {
-            let testBundle = Bundle(for: type(of: self))
-            let url = testBundle.url(forResource: "locations", withExtension: "json")
-            guard let data = NSData(contentsOf: url!) as Data? else {return nil}
-            return data
-        }
-        
         beforeSuite {
-            rawData = readLocalData()
+            rawData = TestSuiteHelpers.readLocalData()
         }
         
         context("GIVEN location JSON") {
+            beforeEach {
+            }
+            
             describe("WHEN we parse") {
+                
+                var locationObject: LocationRaw?
+                
                 it("Creates an object") {
                     expect(rawData).notTo(beNil())
                 }
