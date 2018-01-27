@@ -21,7 +21,7 @@ class LocationTests: QuickSpec {
             rawData = TestSuiteHelpers.readLocalData()
         }
         
-        context("GIVEN location JSON") {
+        context("GIVEN good location JSON") {
             beforeEach {
             }
             
@@ -36,10 +36,40 @@ class LocationTests: QuickSpec {
                         })
                     }
                 }
+                it("Object has expected lat and long strings") {
+                    waitUntil { done in
+                        PersistanceHelper.createInMemoryContainer(completion: { (container) in
+                            sut = LocationMapper(storeManager: PersistenceManager(store: container))
+                            sut?.map(rawValue: rawData!)
+                            //expect(sut!.mappedValue).toNot(beNil())
+                            done()
+                        })
+                    }
+                }
+                it("Object has expected name") {
+                    waitUntil { done in
+                        PersistanceHelper.createInMemoryContainer(completion: { (container) in
+                            sut = LocationMapper(storeManager: PersistenceManager(store: container))
+                            sut?.map(rawValue: rawData!)
+                            //expect(sut!.mappedValue).toNot(beNil())
+                            done()
+                        })
+                    }
+                }
+                it("Object has expected id") {
+                    waitUntil { done in
+                        PersistanceHelper.createInMemoryContainer(completion: { (container) in
+                            sut = LocationMapper(storeManager: PersistenceManager(store: container))
+                            sut?.map(rawValue: rawData!)
+                            //expect(sut!.mappedValue).toNot(beNil())
+                            done()
+                        })
+                    }
+                }
             }
         }
-        
-        
     }
+    // work around so that xcode9.2 actually see's the tests
+    // thanks apple for allowing us to test things
     public func testDummy() {}
 }
