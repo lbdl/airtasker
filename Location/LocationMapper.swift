@@ -10,19 +10,33 @@ import Foundation
 
 class LocationMapper: JSONMapper {
     
-    init(storeManager: PersistenceController) {
-        persistanceManager = storeManager
-    }
-    
     typealias value = Mapped<LocationRaw>
     typealias raw = Data
     
-    var rawValue: raw?
+    init(storeManager: PersistenceController) {
+        persistanceManager = storeManager
+        decoder = JSONDecoder()
+    }
+    
+    let decoder: JSONDecoder
+    
     var mappedValue: value?
     var persistanceManager: PersistenceController
+    var rawValue: raw? {
+        didSet {
+            map(rawValue: rawValue!)
+        }
+    }
     
     func map(rawValue: Data) {
-        mappedValue = .Value(LocationRaw(id: 1, lat: "foo", long: "bar", name: "snafu"))
+        //handle arrays
+        do {
+            let tmp = try decoder.decode(LocationRaw.self, from: rawValue)
+            mappedValue = .Value(tmp)
+        } catch let error {
+            let tmp = error
+            mappedValue = .MappingError(tmp)
+        }
     }
     
     func store(object: value) {
