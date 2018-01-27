@@ -19,7 +19,6 @@ class LocationTests: QuickSpec {
 
         beforeSuite {
             rawData = TestSuiteHelpers.readLocalData()
-            sut = LocationMapper(storeManager: TestSuiteHelpers.buildMockPersistenceController())
         }
         
         context("GIVEN location JSON") {
@@ -27,11 +26,15 @@ class LocationTests: QuickSpec {
             }
             
             describe("WHEN we parse") {
-                
-                var locationObject: LocationRaw?
-                
                 it("Creates an object") {
-                    expect(rawData).notTo(beNil())
+                    waitUntil { done in
+                        PersistanceHelper.createInMemoryContainer(completion: { (container) in
+                            sut = LocationMapper(storeManager: PersistenceManager(store: container))
+                            sut?.map(rawValue: rawData!)
+                            expect(sut!.mappedValue).toNot(beNil())
+                            done()
+                        })
+                    }
                 }
             }
         }

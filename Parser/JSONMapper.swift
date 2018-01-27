@@ -17,5 +17,5 @@ protocol JSONMapper {
     var mappedValue: value? {get}
     
     func map(rawValue: raw)
-    func store(object: value)
+    //func store(object: value)
 }

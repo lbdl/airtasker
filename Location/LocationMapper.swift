@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct LocationMapper: JSONMapper {
+class LocationMapper: JSONMapper {
     
     init(storeManager: PersistenceController) {
         persistanceManager = storeManager
@@ -22,7 +22,7 @@ struct LocationMapper: JSONMapper {
     var persistanceManager: PersistenceController
     
     func map(rawValue: Data) {
-        //return mappedValue!
+        mappedValue = .Value(LocationRaw(id: 1, lat: "foo", long: "bar", name: "snafu"))
     }
     
     func store(object: value) {

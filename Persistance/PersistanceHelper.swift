@@ -23,9 +23,9 @@ class PersistanceHelper: NSObject {
         }
     }
     
-    // for Unit tests
+    // for testing without persisting data
     static func createInMemoryContainer (completion: @escaping(NSPersistentContainer) -> ()) {
-        let container = NSPersistentContainer(name: "PersistentTodoList")
+        let container = NSPersistentContainer(name: "AirTasks")
         let description = NSPersistentStoreDescription()
         description.type = NSInMemoryStoreType
         description.shouldAddStoreAsynchronously = false
