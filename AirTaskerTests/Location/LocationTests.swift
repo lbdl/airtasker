@@ -30,8 +30,19 @@ class LocationTests: QuickSpec {
                     waitUntil { done in
                         PersistanceHelper.createInMemoryContainer(completion: { (container) in
                             sut = LocationMapper(storeManager: PersistenceManager(store: container))
+//                            sut?.map(rawValue: rawData!)
+//                            expect(sut!.mappedValue).toNot(beNil())
+                            done()
+                        })
+                    }
+                }
+                it("Object is a list type") {
+                    waitUntil { done in
+                        PersistanceHelper.createInMemoryContainer(completion: { (container) in
+                            sut = LocationMapper(storeManager: PersistenceManager(store: container))
                             sut?.map(rawValue: rawData!)
-                            expect(sut!.mappedValue).toNot(beNil())
+                            let tmp = sut!.mappedValue
+                            expect(tmp).toNot(beNil())
                             done()
                         })
                     }
@@ -40,8 +51,8 @@ class LocationTests: QuickSpec {
                     waitUntil { done in
                         PersistanceHelper.createInMemoryContainer(completion: { (container) in
                             sut = LocationMapper(storeManager: PersistenceManager(store: container))
-                            sut?.map(rawValue: rawData!)
-                            //expect(sut!.mappedValue).toNot(beNil())
+//                            sut?.map(rawValue: rawData!)
+//                            expect(sut!.mappedValue).toNot(beNil())
                             done()
                         })
                     }
@@ -50,7 +61,7 @@ class LocationTests: QuickSpec {
                     waitUntil { done in
                         PersistanceHelper.createInMemoryContainer(completion: { (container) in
                             sut = LocationMapper(storeManager: PersistenceManager(store: container))
-                            sut?.map(rawValue: rawData!)
+//                            sut?.map(rawValue: rawData!)
                             //expect(sut!.mappedValue).toNot(beNil())
                             done()
                         })
@@ -60,7 +71,7 @@ class LocationTests: QuickSpec {
                     waitUntil { done in
                         PersistanceHelper.createInMemoryContainer(completion: { (container) in
                             sut = LocationMapper(storeManager: PersistenceManager(store: container))
-                            sut?.map(rawValue: rawData!)
+//                            sut?.map(rawValue: rawData!)
                             //expect(sut!.mappedValue).toNot(beNil())
                             done()
                         })

@@ -9,8 +9,7 @@
 import Foundation
 
 class LocationMapper: JSONMapper {
-    
-    typealias value = Mapped<LocationRaw>
+    typealias value = Mapped<[LocationRaw]>
     typealias raw = Data
     
     init(storeManager: PersistenceController) {
@@ -29,11 +28,11 @@ class LocationMapper: JSONMapper {
     }
     
     func map(rawValue: Data) {
-        //handle arrays
         do {
-            let tmp = try decoder.decode(LocationRaw.self, from: rawValue)
+            let tmp = try decoder.decode([LocationRaw].self, from: rawValue)
             mappedValue = .Value(tmp)
         } catch let error {
+            //add error message handling
             let tmp = error
             mappedValue = .MappingError(tmp)
         }
@@ -44,6 +43,7 @@ class LocationMapper: JSONMapper {
 }
 
 struct LocationRaw: Decodable {
+    //need to add coding keys for our custom names
     var id: Int64
     var lat: String
     var long: String
