@@ -69,11 +69,14 @@ class LocationTests: QuickSpec {
                     }
                 }
             
-                it("Object is a list type") {
+                it("Value has 5 items") {
                     waitUntil { done in
                         PersistanceHelper.createInMemoryContainer(completion: { (container) in
                             sut = LocationMapper(storeManager: PersistenceManager(store: container))
                             sut?.map(rawValue: rawData!)
+                            expect(sut?.mappedValue).to(self.beLocation { locations in
+                                expect(locations.count).to(equal(5))
+                            })
                             done()
                         })
                     }
