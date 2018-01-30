@@ -41,8 +41,15 @@ class LocationMapper: JSONMapper {
     }
 }
 
-struct LocationRaw: Decodable {
-    //need to add coding keys for our custom names
+struct LocationRaw: Codable {
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name = "display_name"
+        case lat = "latitude"
+        case long = "longitude"
+    }
+    
     var id: Int64
     var lat: String
     var long: String

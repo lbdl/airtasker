@@ -51,13 +51,6 @@
 			remoteGlobalIDString = 2BBF411B20170D36003A636C;
 			remoteInfo = AirTasker;
 		};
-		2BBF413C20170D37003A636C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2BBF411420170D36003A636C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2BBF411B20170D36003A636C;
-			remoteInfo = AirTasker;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -84,8 +77,6 @@
 		2BBF412B20170D36003A636C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BBF413020170D37003A636C /* AirTaskerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirTaskerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BBF413620170D37003A636C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2BBF413B20170D37003A636C /* AirTaskerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirTaskerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2BBF414120170D37003A636C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BF1161C20172B2000D8A02B /* Mapped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mapped.swift; sourceTree = "<group>"; };
 		2BF116222018440A00D8A02B /* AirTasks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AirTasks.xcdatamodel; sourceTree = "<group>"; };
 		2BF116242019805500D8A02B /* JSONMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONMapper.swift; sourceTree = "<group>"; };
@@ -130,13 +121,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2BBF413820170D37003A636C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -154,7 +138,6 @@
 				2BF1161920171E2000D8A02B /* Parser */,
 				2BBF411E20170D36003A636C /* AirTasker */,
 				2BBF413320170D37003A636C /* AirTaskerTests */,
-				2BBF413E20170D37003A636C /* AirTaskerUITests */,
 				2BBF411D20170D36003A636C /* Products */,
 				2BF1164B2019E24400D8A02B /* Frameworks */,
 			);
@@ -165,7 +148,6 @@
 			children = (
 				2BBF411C20170D36003A636C /* AirTasker.app */,
 				2BBF413020170D37003A636C /* AirTaskerTests.xctest */,
-				2BBF413B20170D37003A636C /* AirTaskerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -192,14 +174,6 @@
 				2BBF413620170D37003A636C /* Info.plist */,
 			);
 			path = AirTaskerTests;
-			sourceTree = "<group>";
-		};
-		2BBF413E20170D37003A636C /* AirTaskerUITests */ = {
-			isa = PBXGroup;
-			children = (
-				2BBF414120170D37003A636C /* Info.plist */,
-			);
-			path = AirTaskerUITests;
 			sourceTree = "<group>";
 		};
 		2BF1161920171E2000D8A02B /* Parser */ = {
@@ -349,24 +323,6 @@
 			productReference = 2BBF413020170D37003A636C /* AirTaskerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		2BBF413A20170D37003A636C /* AirTaskerUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2BBF414A20170D37003A636C /* Build configuration list for PBXNativeTarget "AirTaskerUITests" */;
-			buildPhases = (
-				2BBF413720170D37003A636C /* Sources */,
-				2BBF413820170D37003A636C /* Frameworks */,
-				2BBF413920170D37003A636C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2BBF413D20170D37003A636C /* PBXTargetDependency */,
-			);
-			name = AirTaskerUITests;
-			productName = AirTaskerUITests;
-			productReference = 2BBF413B20170D37003A636C /* AirTaskerUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -387,11 +343,6 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2BBF411B20170D36003A636C;
 					};
-					2BBF413A20170D37003A636C = {
-						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 2BBF411B20170D36003A636C;
-					};
 				};
 			};
 			buildConfigurationList = 2BBF411720170D36003A636C /* Build configuration list for PBXProject "AirTasker" */;
@@ -409,7 +360,6 @@
 			targets = (
 				2BBF411B20170D36003A636C /* AirTasker */,
 				2BBF412F20170D36003A636C /* AirTaskerTests */,
-				2BBF413A20170D37003A636C /* AirTaskerUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -432,13 +382,6 @@
 				2BF11673201B38E300D8A02B /* AirTasks.xcdatamodeld in Resources */,
 				2BF1166E201B153F00D8A02B /* location5.json in Resources */,
 				2BF1166D201B153F00D8A02B /* locations.json in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2BBF413920170D37003A636C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,13 +426,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2BBF413720170D37003A636C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -497,11 +433,6 @@
 			isa = PBXTargetDependency;
 			target = 2BBF411B20170D36003A636C /* AirTasker */;
 			targetProxy = 2BBF413120170D37003A636C /* PBXContainerItemProxy */;
-		};
-		2BBF413D20170D37003A636C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2BBF411B20170D36003A636C /* AirTasker */;
-			targetProxy = 2BBF413C20170D37003A636C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -707,38 +638,6 @@
 			};
 			name = Release;
 		};
-		2BBF414B20170D37003A636C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QBJML82M5H;
-				INFOPLIST_FILE = AirTaskerUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bite-software.AirTaskerUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = AirTasker;
-			};
-			name = Debug;
-		};
-		2BBF414C20170D37003A636C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QBJML82M5H;
-				INFOPLIST_FILE = AirTaskerUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bite-software.AirTaskerUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = AirTasker;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -765,15 +664,6 @@
 			buildConfigurations = (
 				2BBF414820170D37003A636C /* Debug */,
 				2BBF414920170D37003A636C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2BBF414A20170D37003A636C /* Build configuration list for PBXNativeTarget "AirTaskerUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2BBF414B20170D37003A636C /* Debug */,
-				2BBF414C20170D37003A636C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

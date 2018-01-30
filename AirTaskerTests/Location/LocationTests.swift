@@ -11,18 +11,27 @@ import Nimble
 
 @testable import AirTasker
 
-extension Mat
-
 
 class LocationTests: QuickSpec {
     
     
     //MARK: - Custom Matchers for associated values
     private func beDecodingError(test: @escaping (Error) -> Void = { _ in }) -> Predicate<Mapped<[LocationRaw]>> {
-        return Predicate.define("decode successfully") { expression, message in
+        return Predicate.define("be decoding error") { expression, message in
             if let actual = try expression.evaluate(),
                 case let .MappingError(Error) = actual {
                 test(Error)
+                return PredicateResult(status: .matches, message: message)
+            }
+            return PredicateResult(status: .fail, message: message)
+        }
+    }
+    
+    private func beLocation(test: @escaping ([LocationRaw]) -> Void = { _ in }) -> Predicate<Mapped<[LocationRaw]>> {
+        return Predicate.define("be location") { expression, message in
+            if let actual = try expression.evaluate(),
+                case let .Value(locations) = actual {
+                test(locations)
                 return PredicateResult(status: .matches, message: message)
             }
             return PredicateResult(status: .fail, message: message)
@@ -37,6 +46,12 @@ class LocationTests: QuickSpec {
         beforeSuite {
             rawData = TestSuiteHelpers.readLocalData()
         }
+        afterSuite {
+            rawData = nil
+        }
+        afterEach {
+            sut = nil
+        }
         
         context("GIVEN good location JSON") {
             beforeEach {
@@ -48,22 +63,12 @@ class LocationTests: QuickSpec {
                         PersistanceHelper.createInMemoryContainer(completion: { (container) in
                             sut = LocationMapper(storeManager: PersistenceManager(store: container))
                             sut?.map(rawValue: rawData!)
-                            expect(sut?.mappedValue).toNot(self.beDecodingError())
+                            expect(sut?.mappedValue).to(self.beLocation())
                             done()
                         })
                     }
                 }
-                it("Creates errors") {
-                    waitUntil { done in
-                        PersistanceHelper.createInMemoryContainer(completion: { (container) in
-                            sut = LocationMapper(storeManager: PersistenceManager(store: container))
-                            sut?.map(rawValue: rawData!)
-                            //expect(sut?.mappedValue).toNot(self.beDecodingError())
-                            //expect(sut?.mappedValue).to(self.beDecodingError())
-                            done()
-                        })
-                    }
-                }
+            
                 it("Object is a list type") {
                     waitUntil { done in
                         PersistanceHelper.createInMemoryContainer(completion: { (container) in
@@ -104,6 +109,16 @@ class LocationTests: QuickSpec {
                     }
                 }
             }
+        }
+        
+        context("GIVEN bad location JSON") {
+            
+            beforeEach {
+            }
+            
+            describe("WHEN we parse") {
+            }
+            
         }
     }
     // work around so that xcode9.2 actually see's the tests
