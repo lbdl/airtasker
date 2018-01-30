@@ -38,13 +38,14 @@ class LocationTests: QuickSpec {
         }
     }
     
+    //MARK: - Specs
     override func spec() {
         
         var rawData: Data?
         var sut: LocationMapper?
 
         beforeSuite {
-            rawData = TestSuiteHelpers.readLocalData()
+            rawData = TestSuiteHelpers.readLocalData(badData: false)
         }
         afterSuite {
             rawData = nil
@@ -58,17 +59,18 @@ class LocationTests: QuickSpec {
             }
             
             describe("WHEN we parse") {
-                it("Creates an object") {
+                it("Creates a collection of Locations") {
                     waitUntil { done in
                         PersistanceHelper.createInMemoryContainer(completion: { (container) in
                             sut = LocationMapper(storeManager: PersistenceManager(store: container))
                             sut?.map(rawValue: rawData!)
-                            expect(sut?.mappedValue).to(self.beLocation())
+                            expect(sut?.mappedValue).to(self.beLocation { locations in
+                                expect(locations).to(beAKindOf(Array<LocationRaw>.self))
+                            })
                             done()
                         })
                     }
                 }
-            
                 it("Value has 5 items") {
                     waitUntil { done in
                         PersistanceHelper.createInMemoryContainer(completion: { (container) in
@@ -88,9 +90,7 @@ class LocationTests: QuickSpec {
                             sut?.map(rawValue: rawData!)
                             expect(sut?.mappedValue).to(self.beLocation { locations in
                                 expect(locations[0].lat).to(equal(-33.95082))
-                                expect(locations[0].long).to(equal(151.1388
-                                ))
-
+                                expect(locations[0].long).to(equal(151.1388))
                             })
                             done()
                         })
@@ -100,8 +100,10 @@ class LocationTests: QuickSpec {
                     waitUntil { done in
                         PersistanceHelper.createInMemoryContainer(completion: { (container) in
                             sut = LocationMapper(storeManager: PersistenceManager(store: container))
-//                            sut?.map(rawValue: rawData!)
-                            //expect(sut!.mappedValue).toNot(beNil())
+                            sut?.map(rawValue: rawData!)
+                            expect(sut?.mappedValue).to(self.beLocation { locations in
+                                expect(locations[0].name).to(equal("Rockdale NSW 2216, Australia"))
+                            })
                             done()
                         })
                     }
@@ -110,8 +112,10 @@ class LocationTests: QuickSpec {
                     waitUntil { done in
                         PersistanceHelper.createInMemoryContainer(completion: { (container) in
                             sut = LocationMapper(storeManager: PersistenceManager(store: container))
-//                            sut?.map(rawValue: rawData!)
-                            //expect(sut!.mappedValue).toNot(beNil())
+                            sut?.map(rawValue: rawData!)
+                            expect(sut?.mappedValue).to(self.beLocation { locations in
+                                expect(locations[0].id).to(equal(5))
+                            })
                             done()
                         })
                     }
@@ -121,10 +125,23 @@ class LocationTests: QuickSpec {
         
         context("GIVEN bad location JSON") {
             
+            var badData: Data?
+            
             beforeEach {
+                badData = TestSuiteHelpers.readLocalData(badData: true)
             }
             
             describe("WHEN we parse") {
+                it("Returns an error") {
+                    waitUntil { done in
+                        PersistanceHelper.createInMemoryContainer(completion: { (container) in
+                            sut = LocationMapper(storeManager: PersistenceManager(store: container))
+                            sut?.map(rawValue: badData!)
+                            expect(sut?.mappedValue).to(self.beDecodingError())
+                            done()
+                        })
+                    }
+                }
             }
             
         }

@@ -14,9 +14,14 @@ import CoreData
 
 class TestSuiteHelpers: NSObject {
     
-    static func readLocalData() -> Data? {
+    static func readLocalData(badData bad: Bool) -> Data? {
         let testBundle = Bundle(for: self)
-        let url = testBundle.url(forResource: "locations", withExtension: "json")
+        var url: URL?
+        if bad {
+            url = testBundle.url(forResource: "badLocations", withExtension: "json")
+        }else {
+            url = testBundle.url(forResource: "locations", withExtension: "json")
+        }
         guard let data = NSData(contentsOf: url!) as Data? else {return nil}
         return data
     }

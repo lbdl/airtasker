@@ -41,6 +41,7 @@
 		2BF11673201B38E300D8A02B /* AirTasks.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 2BF116212018440A00D8A02B /* AirTasks.xcdatamodeld */; };
 		2BF11675201C504A00D8A02B /* PersistanceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF11674201C504A00D8A02B /* PersistanceHelper.swift */; };
 		2BF11677201C5C8500D8A02B /* Stored.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF11676201C5C8500D8A02B /* Stored.swift */; };
+		2BF11679202060D000D8A02B /* badLocations.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BF11678202060CF00D8A02B /* badLocations.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,7 @@
 		2BF11670201B203000D8A02B /* TestSuiteHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSuiteHelpers.swift; sourceTree = "<group>"; };
 		2BF11674201C504A00D8A02B /* PersistanceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceHelper.swift; sourceTree = "<group>"; };
 		2BF11676201C5C8500D8A02B /* Stored.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stored.swift; sourceTree = "<group>"; };
+		2BF11678202060CF00D8A02B /* badLocations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = badLocations.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +280,7 @@
 		2BF1166A201B151B00D8A02B /* TestAssets */ = {
 			isa = PBXGroup;
 			children = (
+				2BF11678202060CF00D8A02B /* badLocations.json */,
 				2BF1166C201B153E00D8A02B /* location5.json */,
 				2BF1166B201B153E00D8A02B /* locations.json */,
 			);
@@ -379,6 +382,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BF11679202060D000D8A02B /* badLocations.json in Resources */,
 				2BF11673201B38E300D8A02B /* AirTasks.xcdatamodeld in Resources */,
 				2BF1166E201B153F00D8A02B /* location5.json in Resources */,
 				2BF1166D201B153F00D8A02B /* locations.json in Resources */,
