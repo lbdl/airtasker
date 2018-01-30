@@ -50,8 +50,22 @@ struct LocationRaw: Codable {
         case long = "longitude"
     }
     
-    var id: Int64
-    var lat: Double
-    var long: Double
-    var name: String
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        guard let tmpLat = try Double(container.decode(String.self, forKey: .lat)) else {
+            throw DecodingError.dataCorrupted(.init(codingPath: [CodingKeys.lat], debugDescription: "Expecting string representation of Double"))
+        }
+        guard let tmpLong = try Double(container.decode(String.self, forKey: .long)) else {
+            throw DecodingError.dataCorrupted(.init(codingPath: [CodingKeys.long], debugDescription: "Expecting string representation of Double"))
+        }
+        id = try container.decode(Int64.self, forKey: .id)
+        name = try container.decode(String.self, forKey: .name)
+        lat = tmpLat
+        long = tmpLong
+    }
+    
+    let id: Int64
+    let lat: Double
+    let long: Double
+    let name: String
 }

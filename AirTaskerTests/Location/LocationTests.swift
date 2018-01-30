@@ -88,7 +88,8 @@ class LocationTests: QuickSpec {
                             sut?.map(rawValue: rawData!)
                             expect(sut?.mappedValue).to(self.beLocation { locations in
                                 expect(locations[0].lat).to(equal(-33.95082))
-                                expect(locations[0].long).to(equal(151.1388))
+                                expect(locations[0].long).to(equal(151.1388
+                                ))
 
                             })
                             done()
