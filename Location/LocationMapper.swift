@@ -51,7 +51,7 @@ struct LocationRaw: Codable {
     }
     
     var id: Int64
-    var lat: String
-    var long: String
+    var lat: Double
+    var long: Double
     var name: String
 }
