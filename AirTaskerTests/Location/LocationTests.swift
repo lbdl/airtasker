@@ -11,7 +11,24 @@ import Nimble
 
 @testable import AirTasker
 
+extension Mat
+
+
 class LocationTests: QuickSpec {
+    
+    
+    //MARK: - Custom Matchers for associated values
+    private func beDecodingError(test: @escaping (Error) -> Void = { _ in }) -> Predicate<Mapped<[LocationRaw]>> {
+        return Predicate.define("decode successfully") { expression, message in
+            if let actual = try expression.evaluate(),
+                case let .MappingError(Error) = actual {
+                test(Error)
+                return PredicateResult(status: .matches, message: message)
+            }
+            return PredicateResult(status: .fail, message: message)
+        }
+    }
+    
     override func spec() {
         
         var rawData: Data?
@@ -30,8 +47,19 @@ class LocationTests: QuickSpec {
                     waitUntil { done in
                         PersistanceHelper.createInMemoryContainer(completion: { (container) in
                             sut = LocationMapper(storeManager: PersistenceManager(store: container))
-//                            sut?.map(rawValue: rawData!)
-//                            expect(sut!.mappedValue).toNot(beNil())
+                            sut?.map(rawValue: rawData!)
+                            expect(sut?.mappedValue).toNot(self.beDecodingError())
+                            done()
+                        })
+                    }
+                }
+                it("Creates errors") {
+                    waitUntil { done in
+                        PersistanceHelper.createInMemoryContainer(completion: { (container) in
+                            sut = LocationMapper(storeManager: PersistenceManager(store: container))
+                            sut?.map(rawValue: rawData!)
+                            //expect(sut?.mappedValue).toNot(self.beDecodingError())
+                            //expect(sut?.mappedValue).to(self.beDecodingError())
                             done()
                         })
                     }
@@ -41,8 +69,6 @@ class LocationTests: QuickSpec {
                         PersistanceHelper.createInMemoryContainer(completion: { (container) in
                             sut = LocationMapper(storeManager: PersistenceManager(store: container))
                             sut?.map(rawValue: rawData!)
-                            let tmp = sut!.mappedValue
-                            expect(tmp).toNot(beNil())
                             done()
                         })
                     }

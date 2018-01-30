@@ -32,8 +32,7 @@ class LocationMapper: JSONMapper {
             let tmp = try decoder.decode([LocationRaw].self, from: rawValue)
             mappedValue = .Value(tmp)
         } catch let error {
-            //add error message handling
-            let tmp = error
+            let tmp = error as! DecodingError
             mappedValue = .MappingError(tmp)
         }
     }

@@ -20,5 +20,5 @@ class TestSuiteHelpers: NSObject {
         guard let data = NSData(contentsOf: url!) as Data? else {return nil}
         return data
     }
-        
+    
 }
