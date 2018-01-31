@@ -1,5 +1,5 @@
 //
-//  Stored.swift
+//  Managed.swift
 //  AirTasker
 //
 //  Created by Timothy Storey on 27/01/2018.
@@ -9,13 +9,16 @@
 import Foundation
 import CoreData
 
-protocol Stored: class, NSFetchRequestResult {
+protocol Managed: class, NSFetchRequestResult {
     static var entityName: String { get }
     static var defaultSortDescriptors: [NSSortDescriptor] { get }
 }
 
+extension Managed where Self: NSManagedObject {
+    static var entityName: String { return entity().name!  }
+}
 
-extension Stored {
+extension Managed {
     static var defaultSortDescriptors: [NSSortDescriptor] {
         return []
     }
@@ -28,6 +31,4 @@ extension Stored {
 }
 
 
-extension Stored where Self: NSManagedObject {
-    static var entityName: String { return entity().name!  }
-}
+

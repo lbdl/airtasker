@@ -40,8 +40,9 @@
 		2BF11672201B35E100D8A02B /* AirTasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116212018440A00D8A02B /* AirTasks.xcdatamodeld */; };
 		2BF11673201B38E300D8A02B /* AirTasks.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 2BF116212018440A00D8A02B /* AirTasks.xcdatamodeld */; };
 		2BF11675201C504A00D8A02B /* PersistanceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF11674201C504A00D8A02B /* PersistanceHelper.swift */; };
-		2BF11677201C5C8500D8A02B /* Stored.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF11676201C5C8500D8A02B /* Stored.swift */; };
+		2BF11677201C5C8500D8A02B /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF11676201C5C8500D8A02B /* Managed.swift */; };
 		2BF11679202060D000D8A02B /* badLocations.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BF11678202060CF00D8A02B /* badLocations.json */; };
+		2BF1167B202163E000D8A02B /* LocationPersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1167A202163E000D8A02B /* LocationPersistenceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,8 +103,9 @@
 		2BF1166C201B153E00D8A02B /* location5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = location5.json; sourceTree = "<group>"; };
 		2BF11670201B203000D8A02B /* TestSuiteHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSuiteHelpers.swift; sourceTree = "<group>"; };
 		2BF11674201C504A00D8A02B /* PersistanceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceHelper.swift; sourceTree = "<group>"; };
-		2BF11676201C5C8500D8A02B /* Stored.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stored.swift; sourceTree = "<group>"; };
+		2BF11676201C5C8500D8A02B /* Managed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
 		2BF11678202060CF00D8A02B /* badLocations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = badLocations.json; sourceTree = "<group>"; };
+		2BF1167A202163E000D8A02B /* LocationPersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPersistenceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,7 +249,7 @@
 			children = (
 				2BF116382019BC7D00D8A02B /* PersistenceManager.swift */,
 				2BF11674201C504A00D8A02B /* PersistanceHelper.swift */,
-				2BF11676201C5C8500D8A02B /* Stored.swift */,
+				2BF11676201C5C8500D8A02B /* Managed.swift */,
 			);
 			path = Persistance;
 			sourceTree = "<group>";
@@ -273,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				2BF116602019F0E300D8A02B /* LocationTests.swift */,
+				2BF1167A202163E000D8A02B /* LocationPersistenceTests.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -402,7 +405,7 @@
 				2BF1162A2019923700D8A02B /* LocationMapper.swift in Sources */,
 				2BF116252019805500D8A02B /* JSONMapper.swift in Sources */,
 				2BF116392019BC7D00D8A02B /* PersistenceManager.swift in Sources */,
-				2BF11677201C5C8500D8A02B /* Stored.swift in Sources */,
+				2BF11677201C5C8500D8A02B /* Managed.swift in Sources */,
 				2BF116412019C10200D8A02B /* Task+CoreDataProperties.swift in Sources */,
 				2BF116342019A02400D8A02B /* Localle+CoreDataProperties.swift in Sources */,
 				2BF116452019C11D00D8A02B /* Worker+CoreDataProperties.swift in Sources */,
@@ -426,6 +429,7 @@
 			files = (
 				2BF11671201B203000D8A02B /* TestSuiteHelpers.swift in Sources */,
 				2BF116612019F0E300D8A02B /* LocationTests.swift in Sources */,
+				2BF1167B202163E000D8A02B /* LocationPersistenceTests.swift in Sources */,
 				2BF11672201B35E100D8A02B /* AirTasks.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
