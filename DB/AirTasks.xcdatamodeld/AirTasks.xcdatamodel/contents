@@ -32,7 +32,7 @@
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="events" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Activity" inverseName="task" inverseEntity="Activity" syncable="YES"/>
+        <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Activity" inverseName="task" inverseEntity="Activity" syncable="YES"/>
         <relationship name="profile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Profile" inverseName="tasks" inverseEntity="Profile" syncable="YES"/>
         <relationship name="worker" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Worker" inverseName="task" inverseEntity="Worker" syncable="YES"/>
     </entity>
@@ -41,11 +41,11 @@
         <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="worker" inverseEntity="Task" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Location" positionX="-216" positionY="-351" width="128" height="118"/>
+        <element name="Activity" positionX="54" positionY="-114" width="128" height="103"/>
+        <element name="Localle" positionX="-155" positionY="-66" width="128" height="88"/>
+        <element name="Location" positionX="-416" positionY="-243" width="128" height="118"/>
         <element name="Profile" positionX="-405" positionY="-54" width="128" height="148"/>
         <element name="Task" positionX="-153" positionY="99" width="128" height="148"/>
         <element name="Worker" positionX="135" positionY="108" width="128" height="73"/>
-        <element name="Activity" positionX="54" positionY="-114" width="128" height="103"/>
-        <element name="Localle" positionX="-155" positionY="-66" width="128" height="88"/>
     </elements>
 </model>

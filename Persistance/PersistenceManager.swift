@@ -43,5 +43,4 @@ class PersistenceManager: NSObject, PersistenceController {
         }
         return obj
     }
-    
 }
