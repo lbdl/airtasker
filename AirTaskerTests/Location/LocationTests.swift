@@ -55,8 +55,6 @@ class LocationTests: QuickSpec {
         }
         
         context("GIVEN good location JSON") {
-            beforeEach {
-            }
             
             describe("WHEN we parse") {
                 it("Creates a collection of Locations") {

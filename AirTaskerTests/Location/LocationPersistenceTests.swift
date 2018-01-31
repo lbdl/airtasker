@@ -9,8 +9,21 @@
 import Quick
 import Nimble
 
+@testable import AirTasker
+
 class LocationPersistenceTests: QuickSpec {
     override func spec() {
+        var rawData: Data?
+        var sut: LocationMapper?
         
+        beforeSuite {
+            rawData = TestSuiteHelpers.readLocalData(badData: false)
+        }
+        afterSuite {
+            rawData = nil
+        }
+        afterEach {
+            sut = nil
+        }
     }
 }

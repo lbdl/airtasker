@@ -12,7 +12,9 @@ import CoreData
 protocol PersistenceController {
     var context: NSManagedObjectContext {get}
     func saveContext()
+    func insertObject<A>(Object: A) -> A where A: Managed
 }
+
 
 class PersistenceManager: NSObject, PersistenceController {
     
@@ -25,7 +27,6 @@ class PersistenceManager: NSObject, PersistenceController {
     }
     
     func saveContext () {
-        let context = container.viewContext
         if context.hasChanges {
             do {
                 try context.save()
@@ -35,4 +36,12 @@ class PersistenceManager: NSObject, PersistenceController {
             }
         }
     }
+    
+    func insertObject<A>(Object: A) -> A where A : Managed {
+        guard let obj = NSEntityDescription.insertNewObject(forEntityName: A.entityName, into: context) as? A else {
+            fatalError("Could not insert \(Object)")
+        }
+        return obj
+    }
+    
 }

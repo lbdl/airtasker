@@ -27,7 +27,7 @@ class LocationMapper: JSONMapper {
         }
     }
     
-    func map(rawValue: Data) {
+    internal func map(rawValue: Data) {
         do {
             let tmp = try decoder.decode([LocationRaw].self, from: rawValue)
             mappedValue = .Value(tmp)
