@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B0435DA2021A0E20029653E /* PersistenceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0435D92021A0E20029653E /* PersistenceManagerTests.swift */; };
 		2BBF412020170D36003A636C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF411F20170D36003A636C /* AppDelegate.swift */; };
 		2BBF412220170D36003A636C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF412120170D36003A636C /* ViewController.swift */; };
 		2BBF412520170D36003A636C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BBF412320170D36003A636C /* Main.storyboard */; };
@@ -39,7 +40,7 @@
 		2BF11671201B203000D8A02B /* TestSuiteHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF11670201B203000D8A02B /* TestSuiteHelpers.swift */; };
 		2BF11672201B35E100D8A02B /* AirTasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116212018440A00D8A02B /* AirTasks.xcdatamodeld */; };
 		2BF11673201B38E300D8A02B /* AirTasks.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 2BF116212018440A00D8A02B /* AirTasks.xcdatamodeld */; };
-		2BF11675201C504A00D8A02B /* PersistanceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF11674201C504A00D8A02B /* PersistanceHelper.swift */; };
+		2BF11675201C504A00D8A02B /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF11674201C504A00D8A02B /* PersistenceHelper.swift */; };
 		2BF11677201C5C8500D8A02B /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF11676201C5C8500D8A02B /* Managed.swift */; };
 		2BF11679202060D000D8A02B /* badLocations.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BF11678202060CF00D8A02B /* badLocations.json */; };
 		2BF1167B202163E000D8A02B /* LocationPersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1167A202163E000D8A02B /* LocationPersistenceTests.swift */; };
@@ -70,6 +71,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2B0435D92021A0E20029653E /* PersistenceManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManagerTests.swift; sourceTree = "<group>"; };
 		2BBF411C20170D36003A636C /* AirTasker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirTasker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BBF411F20170D36003A636C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BBF412120170D36003A636C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -102,7 +104,7 @@
 		2BF1166B201B153E00D8A02B /* locations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = locations.json; sourceTree = "<group>"; };
 		2BF1166C201B153E00D8A02B /* location5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = location5.json; sourceTree = "<group>"; };
 		2BF11670201B203000D8A02B /* TestSuiteHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSuiteHelpers.swift; sourceTree = "<group>"; };
-		2BF11674201C504A00D8A02B /* PersistanceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceHelper.swift; sourceTree = "<group>"; };
+		2BF11674201C504A00D8A02B /* PersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
 		2BF11676201C5C8500D8A02B /* Managed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
 		2BF11678202060CF00D8A02B /* badLocations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = badLocations.json; sourceTree = "<group>"; };
 		2BF1167A202163E000D8A02B /* LocationPersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPersistenceTests.swift; sourceTree = "<group>"; };
@@ -128,6 +130,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B0435D820219FE50029653E /* PesistenceManager */ = {
+			isa = PBXGroup;
+			children = (
+				2B0435D92021A0E20029653E /* PersistenceManagerTests.swift */,
+			);
+			path = PesistenceManager;
+			sourceTree = "<group>";
+		};
 		2BBF411320170D36003A636C = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +182,7 @@
 		2BBF413320170D37003A636C /* AirTaskerTests */ = {
 			isa = PBXGroup;
 			children = (
+				2B0435D820219FE50029653E /* PesistenceManager */,
 				2BF11670201B203000D8A02B /* TestSuiteHelpers.swift */,
 				2BF1166A201B151B00D8A02B /* TestAssets */,
 				2BF1165B2019ECD400D8A02B /* Location */,
@@ -248,7 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				2BF116382019BC7D00D8A02B /* PersistenceManager.swift */,
-				2BF11674201C504A00D8A02B /* PersistanceHelper.swift */,
+				2BF11674201C504A00D8A02B /* PersistenceHelper.swift */,
 				2BF11676201C5C8500D8A02B /* Managed.swift */,
 			);
 			path = Persistance;
@@ -419,7 +430,7 @@
 				2BF1163D2019C0EA00D8A02B /* Profile+CoreDataProperties.swift in Sources */,
 				2BF116232018440A00D8A02B /* AirTasks.xcdatamodeld in Sources */,
 				2BF116482019C1F100D8A02B /* Activity+CoreDataClass.swift in Sources */,
-				2BF11675201C504A00D8A02B /* PersistanceHelper.swift in Sources */,
+				2BF11675201C504A00D8A02B /* PersistenceHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,6 +440,7 @@
 			files = (
 				2BF11671201B203000D8A02B /* TestSuiteHelpers.swift in Sources */,
 				2BF116612019F0E300D8A02B /* LocationTests.swift in Sources */,
+				2B0435DA2021A0E20029653E /* PersistenceManagerTests.swift in Sources */,
 				2BF1167B202163E000D8A02B /* LocationPersistenceTests.swift in Sources */,
 				2BF11672201B35E100D8A02B /* AirTasks.xcdatamodeld in Sources */,
 			);

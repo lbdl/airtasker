@@ -1,5 +1,5 @@
 //
-//  PersistanceHelper.swift
+//  PersistenceHelper.swift
 //  AirTasker
 //
 //  Created by Timothy Storey on 27/01/2018.
@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class PersistanceHelper: NSObject {
+class PersistenceHelper: NSObject {
     
     static func createProductionContainer (completion: @escaping(NSPersistentContainer) -> ()) {
         let container = NSPersistentContainer(name: "AirTasks")
@@ -25,7 +25,8 @@ class PersistanceHelper: NSObject {
     
     // for testing without persisting data
     static func createInMemoryContainer (completion: @escaping(NSPersistentContainer) -> ()) {
-        let container = NSPersistentContainer(name: "AirTasks")
+        let managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle(for: type(of: self) as! AnyClass)] )!
+        let container = NSPersistentContainer(name: "AirTasks", managedObjectModel: managedObjectModel)
         let description = NSPersistentStoreDescription()
         description.type = NSInMemoryStoreType
         description.shouldAddStoreAsynchronously = false
