@@ -11,7 +11,7 @@
         <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="localle" inverseEntity="Location" syncable="YES"/>
         <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Profile" inverseName="localle" inverseEntity="Profile" syncable="YES"/>
     </entity>
-    <entity name="Location" representedClassName="Location" syncable="YES">
+    <entity name="Location" representedClassName=".Location" syncable="YES">
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="lat" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="long" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
@@ -43,7 +43,7 @@
     <elements>
         <element name="Activity" positionX="54" positionY="-114" width="128" height="103"/>
         <element name="Localle" positionX="-155" positionY="-66" width="128" height="88"/>
-        <element name="Location" positionX="-416" positionY="-243" width="128" height="118"/>
+        <element name="Location" positionX="-416" positionY="-243" width="128" height="120"/>
         <element name="Profile" positionX="-405" positionY="-54" width="128" height="148"/>
         <element name="Task" positionX="-153" positionY="99" width="128" height="148"/>
         <element name="Worker" positionX="135" positionY="108" width="128" height="73"/>

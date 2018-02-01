@@ -25,4 +25,28 @@ class TestSuiteHelpers: NSObject {
         guard let data = NSData(contentsOf: url!) as Data? else {return nil}
         return data
     }
+    
+    // for testing without persisting data
+    static func createInMemoryContainer (completion: @escaping(NSPersistentContainer) -> ()) {
+        let bundle: Bundle = Bundle(for: TestSuiteHelpers.self)
+        let managedObjectModel = NSManagedObjectModel.mergedModel(from: [bundle])
+        let container = NSPersistentContainer(name: "AirTasks")
+        let description = NSPersistentStoreDescription()
+        description.type = NSInMemoryStoreType
+        description.shouldAddStoreAsynchronously = false
+        description.configuration = "Default"
+        container.persistentStoreDescriptions = [description]
+        container.loadPersistentStores { (description, error) in
+            // Check if the data store is in memory
+            precondition( description.type == NSInMemoryStoreType )
+            
+            // Check if creating container wrong
+            guard error == nil else {
+                fatalError("Failed to load in memory store \(error!)")
+            }
+        }
+        DispatchQueue.main.async {
+            completion(container)
+        }
+    }
 }

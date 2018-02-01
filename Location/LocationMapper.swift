@@ -64,6 +64,13 @@ struct LocationRaw: Codable {
         long = tmpLong
     }
     
+    init() {
+        id = 0
+        lat = 10
+        long = -10
+        name = ""
+    }
+    
     let id: Int64
     let lat: Double
     let long: Double

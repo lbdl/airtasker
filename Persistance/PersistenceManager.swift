@@ -12,7 +12,7 @@ import CoreData
 protocol PersistenceController {
     var context: NSManagedObjectContext {get}
     func updateContext(block: @escaping () -> ())
-    func insertObject<A>(Object: A) -> A where A: Managed
+    func insertObject<A>() -> A where A: Managed
 }
 
 
@@ -41,9 +41,9 @@ class PersistenceManager: NSObject, PersistenceController {
         }
     }
     
-    public func insertObject<A>(Object: A) -> A where A : Managed {
+    public func insertObject<A>() -> A where A : Managed {
         guard let obj = NSEntityDescription.insertNewObject(forEntityName: A.entityName, into: context) as? A else {
-            fatalError("Could not insert \(Object)")
+            fatalError("Could not insert object")
         }
         return obj
     }
