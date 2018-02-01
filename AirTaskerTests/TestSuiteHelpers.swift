@@ -28,8 +28,6 @@ class TestSuiteHelpers: NSObject {
     
     // for testing without persisting data
     static func createInMemoryContainer (completion: @escaping(NSPersistentContainer) -> ()) {
-        let bundle: Bundle = Bundle(for: TestSuiteHelpers.self)
-        let managedObjectModel = NSManagedObjectModel.mergedModel(from: [bundle])
         let container = NSPersistentContainer(name: "AirTasks")
         let description = NSPersistentStoreDescription()
         description.type = NSInMemoryStoreType

@@ -32,7 +32,7 @@ class PersistenceManagerTests: QuickSpec {
                     waitUntil { done in
                         TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
                             sut = PersistenceManager(store: container)
-                            let testLoc = Location.insert(into: sut, raw: LocationRaw())
+                            let testLoc: Location = sut.insertObject()
                             expect(testLoc).toNot(beNil())
                             done()
                         })
@@ -42,7 +42,5 @@ class PersistenceManagerTests: QuickSpec {
         }
     }
     
-    // work around so that xcode9.2 actually see's the tests
-    // thanks apple for allowing us to test things
-    public func testDummy() {}
+
 }

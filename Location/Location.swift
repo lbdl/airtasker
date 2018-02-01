@@ -30,7 +30,5 @@ final class Location: NSManagedObject {
 extension Location: Managed {
     static var defaulSortDescriptors: [NSSortDescriptor] {
         return [NSSortDescriptor(key: #keyPath(id), ascending: true)]
-    }
-    
-    static var entityName = "Location"
+    }    
 }

@@ -25,5 +25,15 @@ class LocationPersistenceTests: QuickSpec {
         afterEach {
             sut = nil
         }
+        
+        context("GIVEN a manager AND good JSON") {
+            describe("Locations are persisted to storage") {
+                
+            }
+        }
     }
+    
+    // work around so that xcode9.2 actually see's the tests
+    // thanks apple for allowing us to test things
+    public func testDummy() {}
 }
