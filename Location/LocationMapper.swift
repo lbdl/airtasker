@@ -31,13 +31,13 @@ class LocationMapper: JSONMapper {
         do {
             let tmp = try decoder.decode([LocationRaw].self, from: rawValue)
             mappedValue = .Value(tmp)
+            _ = tmp.map({ location in
+                _ = Location.insert(into: persistanceManager, raw: location)
+            })
         } catch let error {
             let tmp = error as! DecodingError
             mappedValue = .MappingError(tmp)
         }
-    }
-    
-    func store(object: value) {
     }
 }
 

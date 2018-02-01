@@ -16,7 +16,7 @@ final class Location: NSManagedObject {
     @NSManaged fileprivate(set) var long: Double
     @NSManaged fileprivate(set) var name: String
     
-    static func insert(into manager: PersistenceManager, raw: LocationRaw) -> Location {
+    static func insert(into manager: PersistenceController, raw: LocationRaw) -> Location {
         let location: Location = manager.insertObject()
         location.id = raw.id
         location.lat = raw.lat

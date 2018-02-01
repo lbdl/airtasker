@@ -8,6 +8,7 @@
 
 import Quick
 import Nimble
+import CoreData
 
 @testable import AirTasker
 
@@ -15,20 +16,34 @@ class LocationPersistenceTests: QuickSpec {
     override func spec() {
         var rawData: Data?
         var sut: LocationMapper?
+        var manager: PersistenceManager?
+        var persistentContainer: NSPersistentContainer?
         
-        beforeSuite {
-            rawData = TestSuiteHelpers.readLocalData(badData: false)
-        }
-        afterSuite {
-            rawData = nil
-        }
-        afterEach {
-            sut = nil
+        func  flushDB() {
+            let fetchRequest = NSFetchRequest<Location>(entityName: "Location")
+            let objs = try! persistentContainer!.viewContext.fetch(fetchRequest)
+            for case let obj as NSManagedObject in objs {
+                persistentContainer!.viewContext.delete(obj)
+            }
+            try! persistentContainer!.viewContext.save()
         }
         
         context("GIVEN a manager AND good JSON") {
             describe("Locations are persisted to storage") {
-                
+                rawData = TestSuiteHelpers.readLocalData(badData: false)
+                waitUntil { done in
+                    TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
+                        persistentContainer = container
+                        manager = PersistenceManager(store: persistentContainer!)
+                        sut = LocationMapper(storeManager: manager!)
+                        sut?.map(rawValue: rawData!)
+                        let request = NSFetchRequest<Location>(entityName: Location.entityName)
+                        let results = try! persistentContainer?.viewContext.fetch(request)
+                        expect(results).toNot(beNil())
+                        flushDB()
+                        done()
+                    })
+                }
             }
         }
     }
