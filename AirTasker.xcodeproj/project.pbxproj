@@ -39,6 +39,7 @@
 		2BF11679202060D000D8A02B /* badLocations.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BF11678202060CF00D8A02B /* badLocations.json */; };
 		2BF1167B202163E000D8A02B /* LocationPersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1167A202163E000D8A02B /* LocationPersistenceTests.swift */; };
 		2BF1F8972022FF08005ECE8F /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF11674201C504A00D8A02B /* PersistenceHelper.swift */; };
+		2BF1F899202326B1005ECE8F /* ProfileMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1F898202326B1005ECE8F /* ProfileMapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		2BF11676201C5C8500D8A02B /* Managed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
 		2BF11678202060CF00D8A02B /* badLocations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = badLocations.json; sourceTree = "<group>"; };
 		2BF1167A202163E000D8A02B /* LocationPersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPersistenceTests.swift; sourceTree = "<group>"; };
+		2BF1F898202326B1005ECE8F /* ProfileMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				2BF1163A2019C0EA00D8A02B /* Profile.swift */,
+				2BF1F898202326B1005ECE8F /* ProfileMapper.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BBF412220170D36003A636C /* ViewController.swift in Sources */,
+				2BF1F899202326B1005ECE8F /* ProfileMapper.swift in Sources */,
 				2BF116402019C10200D8A02B /* Task.swift in Sources */,
 				2BF1163C2019C0EA00D8A02B /* Profile.swift in Sources */,
 				2BF1162A2019923700D8A02B /* LocationMapper.swift in Sources */,

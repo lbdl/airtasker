@@ -15,6 +15,13 @@ protocol JSONMapper {
     var persistanceManager: PersistenceController {get set}
     var rawValue: raw? {set get}
     var mappedValue: value? {get}
+    var decoder: JSONDecoder {get set}
+    
+    // we could make this throw rather than
+    // return a Mapped.MappingError(error)
     func map(rawValue: raw)
-    //func store(object: value)
+    
+    init(storeManager: PersistenceController)
 }
+
+

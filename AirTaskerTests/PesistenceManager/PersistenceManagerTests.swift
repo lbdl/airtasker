@@ -8,6 +8,7 @@
 
 import Quick
 import Nimble
+import CoreData
 
 @testable import AirTasker
 
@@ -15,13 +16,30 @@ class PersistenceManagerTests: QuickSpec {
     
     
     override func spec() {
+        
+        var sut: PersistenceManager!
+        var persistentContainer: NSPersistentContainer?
+        
+        func  flushDB() {
+            let fetchRequest = NSFetchRequest<Location>(entityName: "Location")
+            let objs = try! persistentContainer!.viewContext.fetch(fetchRequest)
+            for case let obj as NSManagedObject in objs {
+                persistentContainer!.viewContext.delete(obj)
+            }
+            try! persistentContainer!.viewContext.save()
+        }
+        
+        afterEach {
+            flushDB()
+        }
+        
         context("GIVEN a persistence manager instance") {
             describe("WHEN we add objects") {
-                var sut: PersistenceManager!
                 it("creates them via the object") {
                     waitUntil { done in
                         TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
-                            sut = PersistenceManager(store: container)
+                            persistentContainer = container
+                            sut = PersistenceManager(store: persistentContainer!)
                             let testLoc = Location.insert(into: sut, raw: LocationRaw())
                             expect(testLoc).toNot(beNil())
                             done()
@@ -31,7 +49,8 @@ class PersistenceManagerTests: QuickSpec {
                 it("creates them via the manager") {
                     waitUntil { done in
                         TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
-                            sut = PersistenceManager(store: container)
+                            persistentContainer = container
+                            sut = PersistenceManager(store: persistentContainer!)
                             let testLoc: Location = sut.insertObject()
                             expect(testLoc).toNot(beNil())
                             done()
@@ -41,6 +60,8 @@ class PersistenceManagerTests: QuickSpec {
             }
         }
     }
-    
+    // work around so that xcode9.2 actually see's the tests
+    // thanks apple for allowing us to test things
+    public func testDummy() {}
 
 }

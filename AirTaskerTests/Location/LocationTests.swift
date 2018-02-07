@@ -8,6 +8,7 @@
 
 import Quick
 import Nimble
+import CoreData
 
 @testable import AirTasker
 
@@ -43,7 +44,18 @@ class LocationTests: QuickSpec {
         
         var rawData: Data?
         var sut: LocationMapper?
-
+        var manager: PersistenceManager?
+        var persistentContainer: NSPersistentContainer?
+        
+        func  flushDB() {
+            let fetchRequest = NSFetchRequest<Location>(entityName: "Location")
+            let objs = try! persistentContainer!.viewContext.fetch(fetchRequest)
+            for case let obj as NSManagedObject in objs {
+                persistentContainer!.viewContext.delete(obj)
+            }
+            try! persistentContainer!.viewContext.save()
+        }
+    
         beforeSuite {
             rawData = TestSuiteHelpers.readLocalData(badData: false)
         }
@@ -51,7 +63,7 @@ class LocationTests: QuickSpec {
             rawData = nil
         }
         afterEach {
-            sut = nil
+            flushDB()
         }
         
         context("GIVEN good location JSON") {
@@ -60,7 +72,9 @@ class LocationTests: QuickSpec {
                 it("Creates a collection of Locations") {
                     waitUntil { done in
                         TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
-                            sut = LocationMapper(storeManager: PersistenceManager(store: container))
+                            persistentContainer = container
+                            manager = PersistenceManager(store: persistentContainer!)
+                            sut = LocationMapper(storeManager: manager!)
                             sut?.map(rawValue: rawData!)
                             expect(sut?.mappedValue).to(self.beLocation { locations in
                                 expect(locations).to(beAKindOf(Array<LocationRaw>.self))
@@ -72,7 +86,9 @@ class LocationTests: QuickSpec {
                 it("Value has 5 items") {
                     waitUntil { done in
                         TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
-                            sut = LocationMapper(storeManager: PersistenceManager(store: container))
+                            persistentContainer = container
+                            manager = PersistenceManager(store: persistentContainer!)
+                            sut = LocationMapper(storeManager: manager!)
                             sut?.map(rawValue: rawData!)
                             expect(sut?.mappedValue).to(self.beLocation { locations in
                                 expect(locations.count).to(equal(5))
@@ -84,7 +100,9 @@ class LocationTests: QuickSpec {
                 it("Object has expected lat and long strings") {
                     waitUntil { done in
                         TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
-                            sut = LocationMapper(storeManager: PersistenceManager(store: container))
+                            persistentContainer = container
+                            manager = PersistenceManager(store: persistentContainer!)
+                            sut = LocationMapper(storeManager: manager!)
                             sut?.map(rawValue: rawData!)
                             expect(sut?.mappedValue).to(self.beLocation { locations in
                                 expect(locations[0].lat).to(equal(-33.95082))
@@ -97,7 +115,9 @@ class LocationTests: QuickSpec {
                 it("Object has expected name") {
                     waitUntil { done in
                         TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
-                            sut = LocationMapper(storeManager: PersistenceManager(store: container))
+                            persistentContainer = container
+                            manager = PersistenceManager(store: persistentContainer!)
+                            sut = LocationMapper(storeManager: manager!)
                             sut?.map(rawValue: rawData!)
                             expect(sut?.mappedValue).to(self.beLocation { locations in
                                 expect(locations[0].name).to(equal("Rockdale NSW 2216, Australia"))
@@ -109,7 +129,9 @@ class LocationTests: QuickSpec {
                 it("Object has expected id") {
                     waitUntil { done in
                         TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
-                            sut = LocationMapper(storeManager: PersistenceManager(store: container))
+                            persistentContainer = container
+                            manager = PersistenceManager(store: persistentContainer!)
+                            sut = LocationMapper(storeManager: manager!)
                             sut?.map(rawValue: rawData!)
                             expect(sut?.mappedValue).to(self.beLocation { locations in
                                 expect(locations[0].id).to(equal(5))
@@ -129,11 +151,17 @@ class LocationTests: QuickSpec {
                 badData = TestSuiteHelpers.readLocalData(badData: true)
             }
             
+            afterEach {
+                flushDB()
+            }
+            
             describe("WHEN we parse") {
                 it("Returns an error") {
                     waitUntil { done in
                         TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
-                            sut = LocationMapper(storeManager: PersistenceManager(store: container))
+                            persistentContainer = container
+                            manager = PersistenceManager(store: persistentContainer!)
+                            sut = LocationMapper(storeManager: manager!)
                             sut?.map(rawValue: badData!)
                             expect(sut?.mappedValue).to(self.beDecodingError())
                             done()

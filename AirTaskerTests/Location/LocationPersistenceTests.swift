@@ -28,21 +28,62 @@ class LocationPersistenceTests: QuickSpec {
             try! persistentContainer!.viewContext.save()
         }
         
+        beforeSuite {
+            rawData = TestSuiteHelpers.readLocalData(badData: false)
+        }
+        
+        afterSuite {
+            flushDB()
+        }
+        
         context("GIVEN a manager AND good JSON") {
             describe("Locations are persisted to storage") {
-                rawData = TestSuiteHelpers.readLocalData(badData: false)
-                waitUntil { done in
-                    TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
-                        persistentContainer = container
-                        manager = PersistenceManager(store: persistentContainer!)
-                        sut = LocationMapper(storeManager: manager!)
-                        sut?.map(rawValue: rawData!)
-                        let request = NSFetchRequest<Location>(entityName: Location.entityName)
-                        let results = try! persistentContainer?.viewContext.fetch(request)
-                        expect(results).toNot(beNil())
-                        flushDB()
-                        done()
-                    })
+                it ("persists locations") {
+                    waitUntil { done in
+                        TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
+                            persistentContainer = container
+                            manager = PersistenceManager(store: persistentContainer!)
+                            sut = LocationMapper(storeManager: manager!)
+                            sut?.map(rawValue: rawData!)
+                            let request = NSFetchRequest<Location>(entityName: Location.entityName)
+                            let results = try! persistentContainer?.viewContext.fetch(request)
+                            expect(results).toNot(beNil())
+                            done()
+                        })
+                    }
+                }
+                it ("persists 5 locations only") {
+                    waitUntil { done in
+                        TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
+                            persistentContainer = container
+                            manager = PersistenceManager(store: persistentContainer!)
+                            sut = LocationMapper(storeManager: manager!)
+                            sut?.map(rawValue: rawData!)
+                            let request = NSFetchRequest<Location>(entityName: Location.entityName)
+                            let results = try! persistentContainer?.viewContext.fetch(request)
+                            expect(results?.count).to(equal(5))
+                            done()
+                        })
+                    }
+                }
+                it ("persists a location for id: 3 with correct details") {
+                    waitUntil { done in
+                        TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
+                            persistentContainer = container
+                            manager = PersistenceManager(store: persistentContainer!)
+                            sut = LocationMapper(storeManager: manager!)
+                            sut?.map(rawValue: rawData!)
+                            let request = NSFetchRequest<Location>(entityName: Location.entityName)
+                            request.predicate = NSPredicate(format: "id == %d", 3)
+                            let results = try! persistentContainer?.viewContext.fetch(request)
+                            let actual = results?.first
+                            expect(actual?.id).to(equal(3))
+                            expect(actual?.name).to(equal("Chatswood NSW 2067, Australia"))
+                            expect(actual?.lat).to(equal(-33.79608))
+                            expect(actual?.long).to(equal(151.1831))
+                            done()
+                        })
+                    }
                 }
             }
         }

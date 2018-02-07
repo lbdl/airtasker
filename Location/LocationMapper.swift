@@ -9,18 +9,20 @@
 import Foundation
 
 class LocationMapper: JSONMapper {
+    
+    internal var decoder: JSONDecoder
+    internal var mappedValue: value?
+    internal var persistanceManager: PersistenceController
+    
     typealias value = Mapped<[LocationRaw]>
     typealias raw = Data
     
-    init(storeManager: PersistenceController) {
+    required init(storeManager: PersistenceController) {
         persistanceManager = storeManager
         decoder = JSONDecoder()
     }
     
-    let decoder: JSONDecoder
     
-    var mappedValue: value?
-    var persistanceManager: PersistenceController
     var rawValue: raw? {
         didSet {
             map(rawValue: rawValue!)

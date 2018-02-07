@@ -19,5 +19,15 @@ public class Profile: NSManagedObject {
     @NSManaged fileprivate(set) var rating: Int16
     @NSManaged fileprivate(set) var tasks: NSSet?
     @NSManaged fileprivate(set) var localle: Localle?
+    
+//    static func insert(into manager: PersistenceController, raw: ProfileRaw) -> Profile {
+//        let profile: Profile = manager.insertObject()
+//        return profile
+//    }
+//    
+//    extension Profile: Managed {
+//        static var defaulSortDescriptors: [NSSortDescriptor] {
+//            return [NSSortDescriptor(key: #keyPath(rating), ascending: true)]
+//        }
 
 }
