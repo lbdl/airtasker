@@ -14,13 +14,28 @@ import CoreData
 
 class TestSuiteHelpers: NSObject {
     
-    static func readLocalData(badData bad: Bool) -> Data? {
+    enum TestType {
+        case locations
+        case profile
+        case badLocation
+        case badProfile
+    }
+    
+    static func readLocalData(testCase: TestType) -> Data? {
         let testBundle = Bundle(for: self)
         var url: URL?
-        if bad {
+        
+        switch testCase {
+        case .badLocation:
             url = testBundle.url(forResource: "badLocations", withExtension: "json")
-        }else {
+        case .badProfile:
+            url = testBundle.url(forResource: "badLocations", withExtension: "json")
+        case .locations:
             url = testBundle.url(forResource: "locations", withExtension: "json")
+        case .profile:
+            url = testBundle.url(forResource: "profiles", withExtension: "json")
+        default:
+            break
         }
         guard let data = NSData(contentsOf: url!) as Data? else {return nil}
         return data

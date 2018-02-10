@@ -29,7 +29,7 @@ class LocationPersistenceTests: QuickSpec {
         }
         
         beforeSuite {
-            rawData = TestSuiteHelpers.readLocalData(badData: false)
+            rawData = TestSuiteHelpers.readLocalData(testCase: .locations)
         }
         
         afterSuite {

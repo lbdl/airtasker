@@ -57,7 +57,7 @@ class LocationTests: QuickSpec {
         }
     
         beforeSuite {
-            rawData = TestSuiteHelpers.readLocalData(badData: false)
+            rawData = TestSuiteHelpers.readLocalData(testCase: .locations)
         }
         afterSuite {
             rawData = nil
@@ -66,7 +66,7 @@ class LocationTests: QuickSpec {
             flushDB()
         }
         
-        context("GIVEN good location JSON") {
+        context("GIVEN location JSON") {
             
             describe("WHEN we parse") {
                 it("Creates a collection of Locations") {
@@ -148,7 +148,7 @@ class LocationTests: QuickSpec {
             var badData: Data?
             
             beforeEach {
-                badData = TestSuiteHelpers.readLocalData(badData: true)
+                badData = TestSuiteHelpers.readLocalData(testCase: .badLocation)
             }
             
             afterEach {
