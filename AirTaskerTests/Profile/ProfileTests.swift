@@ -53,7 +53,7 @@ class ProfileTests: QuickSpec {
         
         context("GIVEN good profile JSON") {
             describe("WHEN we parse"){
-                it("Creates a collection of Profiles") {
+                it("IT Creates a collection of Profiles") {
                     waitUntil { done in
                         TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
                             self.persistentContainer = container
@@ -62,6 +62,39 @@ class ProfileTests: QuickSpec {
                             self.sut?.map(rawValue: self.rawData!)
                             expect(self.sut?.mappedValue).to(beProfile { profiles in
                                 expect(profiles).to(beAKindOf(Array<ProfileRaw>.self))
+                            })
+                            done()
+                        })
+                    }
+                }
+                it("IT creates a collection with 5 values") {
+                    waitUntil { done in
+                        TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
+                            self.persistentContainer = container
+                            self.manager = PersistenceManager(store: self.persistentContainer!)
+                            self.sut = ProfileMapper(storeManager: self.manager!)
+                            self.sut?.map(rawValue: self.rawData!)
+                            expect(self.sut?.mappedValue).to(beProfile { profiles in
+                                expect(profiles.count).to(equal(5))
+                            })
+                            done()
+                        })
+                    }
+                }
+                it("IT creates objects with correct properties") {
+                    waitUntil { done in
+                        TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
+                            self.persistentContainer = container
+                            self.manager = PersistenceManager(store: self.persistentContainer!)
+                            self.sut = ProfileMapper(storeManager: self.manager!)
+                            self.sut?.map(rawValue: self.rawData!)
+                            expect(self.sut?.mappedValue).to(beProfile { profiles in
+                                let actual = profiles.first
+                                expect(actual?.avatarURL).to(equal("/img/1.jpg"))
+                                expect(actual?.firstName).to(equal("Rachel"))
+                                expect(actual?.id).to(equal(1))
+                                expect(actual?.locationID).to(equal(5))
+                                expect(actual?.rating).to(equal(4))
                             })
                             done()
                         })
