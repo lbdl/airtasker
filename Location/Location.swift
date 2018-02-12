@@ -29,7 +29,7 @@ final class Location: NSManagedObject {
 }
 
 extension Location: Managed {
-    static var defaulSortDescriptors: [NSSortDescriptor] {
+    static var defaultSortDescriptors: [NSSortDescriptor] {
         return [NSSortDescriptor(key: #keyPath(id), ascending: true)]
     }
     

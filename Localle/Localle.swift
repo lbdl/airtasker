@@ -16,9 +16,15 @@ final class Localle: NSManagedObject {
     static func fetchLocalle(forID localleID: Int64, fromManager manager: PersistenceManager) -> Localle {
         let predicate = NSPredicate(format: "%K == %d", #keyPath(id), localleID)
         let localle = fetchOrCreate(fromManager: manager, matching: predicate) {
-            
+            $0.id = localleID
         }
         return localle
     }
 
+}
+
+extension Localle: Managed {
+    static var defaultSortDescriptors: [NSSortDescriptor] {
+        return [NSSortDescriptor(key: #keyPath(id), ascending: true)]
+    }
 }

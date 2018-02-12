@@ -24,10 +24,13 @@ public class Profile: NSManagedObject {
 //        let profile: Profile = manager.insertObject()
 //        return profile
 //    }
-//    
-//    extension Profile: Managed {
-//        static var defaulSortDescriptors: [NSSortDescriptor] {
-//            return [NSSortDescriptor(key: #keyPath(rating), ascending: true)]
-//        }
-
+//
 }
+
+extension Profile: Managed {
+    static var defaulSortDescriptors: [NSSortDescriptor] {
+        return [NSSortDescriptor(key: #keyPath(rating), ascending: true)]
+    }
+}
+
+
