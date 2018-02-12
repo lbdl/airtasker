@@ -14,10 +14,6 @@ protocol Managed: class, NSFetchRequestResult {
     static var defaultSortDescriptors: [NSSortDescriptor] { get }
 }
 
-extension Managed where Self: NSManagedObject {
-    static var entityName: String { return entity().name!  }
-}
-
 extension Managed {
     static var defaultSortDescriptors: [NSSortDescriptor] {
         return []
@@ -29,6 +25,48 @@ extension Managed {
         return request
     }
 }
+
+extension Managed where Self: NSManagedObject {
+    static var entityName: String { return entity().name! }
+    
+    static func fetchOrCreate(fromManager manager: PersistenceManager, matching predicate: NSPredicate, configure: (Self) -> ()) -> Self {
+        guard let obj = findOrFetch(fromManager: manager, matching: predicate) else {
+            let newObj: Self = manager.insertObject()
+            configure(newObj)
+            return newObj
+        }
+        return obj
+    }
+    
+    static func findOrFetch(fromManager manager: PersistenceManager, matching predicate: NSPredicate) -> Self? {
+        guard let obj = volatileObject(fromManager: manager, matching: predicate) else {
+            return fetch(fromManager: manager) { req in
+                req.predicate = predicate
+                req.returnsObjectsAsFaults = false
+                req.fetchLimit = 1
+                }.first
+        }
+        return obj
+    }
+    
+    static func volatileObject(fromManager manager: PersistenceManager, matching predicate: NSPredicate) -> Self? {
+        for obj in manager.context.registeredObjects where !obj.isFault {
+            guard let res = obj as? Self, predicate.evaluate(with: res) else {continue}
+            return res
+        }
+        return nil
+    }
+    
+    static func fetch(fromManager manager: PersistenceManager, configBlock: (NSFetchRequest<Self>) -> () = {_ in}) -> [Self] {
+        let req = NSFetchRequest<Self>(entityName: Self.entityName)
+        configBlock(req)
+        return try! manager.context.fetch(req)
+    }
+
+}
+
+
+
 
 
 

@@ -12,11 +12,23 @@ import CoreData
 
 @testable import AirTasker
 
+//MARK: - Custom Matchers for associated values in Mapped<A> objects
 private func beProfile(test: @escaping ([ProfileRaw]) -> Void = { _ in }) -> Predicate<Mapped<[ProfileRaw]>> {
     return Predicate.define("be profile") { expression, message in
         if let actual = try expression.evaluate(),
             case let .Value(locations) = actual {
             test(locations)
+            return PredicateResult(status: .matches, message: message)
+        }
+        return PredicateResult(status: .fail, message: message)
+    }
+}
+
+private func beDecodingError(test: @escaping (Error) -> Void = { _ in }) -> Predicate<Mapped<[ProfileRaw]>> {
+    return Predicate.define("be decoding error") { expression, message in
+        if let actual = try expression.evaluate(),
+            case let .MappingError(Error) = actual {
+            test(Error)
             return PredicateResult(status: .matches, message: message)
         }
         return PredicateResult(status: .fail, message: message)
@@ -41,7 +53,7 @@ class ProfileTests: QuickSpec {
     
     override func spec() {
         
-        beforeSuite {
+        beforeEach {
             self.rawData = TestSuiteHelpers.readLocalData(testCase: .profile)
         }
         afterSuite {
@@ -96,6 +108,33 @@ class ProfileTests: QuickSpec {
                                 expect(actual?.locationID).to(equal(5))
                                 expect(actual?.rating).to(equal(4))
                             })
+                            done()
+                        })
+                    }
+                }
+            }
+        }
+        
+        context("GIVEN bad profile JSON") {
+            beforeEach {
+                self.rawData = TestSuiteHelpers.readLocalData(testCase: .badProfile)
+            }
+            afterSuite {
+                self.rawData = nil
+            }
+            afterEach {
+                self.flushDB()
+            }
+            
+            describe("WHEN we parse") {
+                it("Returns an error") {
+                    waitUntil { done in
+                        TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
+                            self.persistentContainer = container
+                            self.manager = PersistenceManager(store: self.persistentContainer!)
+                            self.sut = ProfileMapper(storeManager: self.manager!)
+                            self.sut?.map(rawValue: self.rawData!)
+                            expect(self.sut?.mappedValue).to(beDecodingError())
                             done()
                         })
                     }

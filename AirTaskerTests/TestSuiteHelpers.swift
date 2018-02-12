@@ -29,7 +29,7 @@ class TestSuiteHelpers: NSObject {
         case .badLocation:
             url = testBundle.url(forResource: "badLocations", withExtension: "json")
         case .badProfile:
-            url = testBundle.url(forResource: "badLocations", withExtension: "json")
+            url = testBundle.url(forResource: "badProfiles", withExtension: "json")
         case .locations:
             url = testBundle.url(forResource: "locations", withExtension: "json")
         case .profile:
