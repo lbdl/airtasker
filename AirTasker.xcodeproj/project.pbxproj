@@ -13,6 +13,7 @@
 		2B0193D72031DBBC00960FCC /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF11676201C5C8500D8A02B /* Managed.swift */; };
 		2B0435DA2021A0E20029653E /* PersistenceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0435D92021A0E20029653E /* PersistenceManagerTests.swift */; };
 		2B27C0F62031E0050054A5D0 /* Localle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B27C0F52031E0050054A5D0 /* Localle.swift */; };
+		2B27C0F9203289670054A5D0 /* ProfilePersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B27C0F8203289670054A5D0 /* ProfilePersistenceTests.swift */; };
 		2BBF412020170D36003A636C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF411F20170D36003A636C /* AppDelegate.swift */; };
 		2BBF412220170D36003A636C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF412120170D36003A636C /* ViewController.swift */; };
 		2BBF412520170D36003A636C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BBF412320170D36003A636C /* Main.storyboard */; };
@@ -75,6 +76,7 @@
 		2B0193D52030A5D800960FCC /* badProfiles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = badProfiles.json; sourceTree = "<group>"; };
 		2B0435D92021A0E20029653E /* PersistenceManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManagerTests.swift; sourceTree = "<group>"; };
 		2B27C0F52031E0050054A5D0 /* Localle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localle.swift; sourceTree = "<group>"; };
+		2B27C0F8203289670054A5D0 /* ProfilePersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePersistenceTests.swift; sourceTree = "<group>"; };
 		2BBF411C20170D36003A636C /* AirTasker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirTasker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BBF411F20170D36003A636C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BBF412120170D36003A636C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				2B0193D3202D746700960FCC /* ProfileTests.swift */,
+				2B27C0F8203289670054A5D0 /* ProfilePersistenceTests.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				2BF11671201B203000D8A02B /* TestSuiteHelpers.swift in Sources */,
 				2BF116612019F0E300D8A02B /* LocationTests.swift in Sources */,
 				2B0435DA2021A0E20029653E /* PersistenceManagerTests.swift in Sources */,
+				2B27C0F9203289670054A5D0 /* ProfilePersistenceTests.swift in Sources */,
 				2B0193D4202D746700960FCC /* ProfileTests.swift in Sources */,
 				2BF1167B202163E000D8A02B /* LocationPersistenceTests.swift in Sources */,
 				2BF11672201B35E100D8A02B /* AirTasks.xcdatamodeld in Sources */,

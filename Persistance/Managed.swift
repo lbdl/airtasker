@@ -29,7 +29,7 @@ extension Managed {
 extension Managed where Self: NSManagedObject {
     static var entityName: String { return entity().name! }
     
-    static func fetchOrCreate(fromManager manager: PersistenceManager, matching predicate: NSPredicate, configure: (Self) -> ()) -> Self {
+    static func fetchOrCreate(fromManager manager: PersistenceController, matching predicate: NSPredicate, configure: (Self) -> ()) -> Self {
         guard let obj = findOrFetch(fromManager: manager, matching: predicate) else {
             let newObj: Self = manager.insertObject()
             configure(newObj)
@@ -38,7 +38,7 @@ extension Managed where Self: NSManagedObject {
         return obj
     }
     
-    static func findOrFetch(fromManager manager: PersistenceManager, matching predicate: NSPredicate) -> Self? {
+    static func findOrFetch(fromManager manager: PersistenceController, matching predicate: NSPredicate) -> Self? {
         guard let obj = volatileObject(fromManager: manager, matching: predicate) else {
             return fetch(fromManager: manager) { req in
                 req.predicate = predicate
@@ -49,7 +49,7 @@ extension Managed where Self: NSManagedObject {
         return obj
     }
     
-    static func volatileObject(fromManager manager: PersistenceManager, matching predicate: NSPredicate) -> Self? {
+    static func volatileObject(fromManager manager: PersistenceController, matching predicate: NSPredicate) -> Self? {
         for obj in manager.context.registeredObjects where !obj.isFault {
             guard let res = obj as? Self, predicate.evaluate(with: res) else {continue}
             return res
@@ -57,7 +57,7 @@ extension Managed where Self: NSManagedObject {
         return nil
     }
     
-    static func fetch(fromManager manager: PersistenceManager, configBlock: (NSFetchRequest<Self>) -> () = {_ in}) -> [Self] {
+    static func fetch(fromManager manager: PersistenceController, configBlock: (NSFetchRequest<Self>) -> () = {_ in}) -> [Self] {
         let req = NSFetchRequest<Self>(entityName: Self.entityName)
         configBlock(req)
         return try! manager.context.fetch(req)

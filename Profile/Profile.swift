@@ -13,24 +13,38 @@ import CoreData
 public class Profile: NSManagedObject {
     
     @NSManaged fileprivate(set) var id: Int64
-    @NSManaged fileprivate(set) var avatar_url: String?
+    @NSManaged fileprivate(set) var avatar_url: String
     @NSManaged fileprivate(set) var name: String
     @NSManaged fileprivate(set) var desc: String?
-    @NSManaged fileprivate(set) var rating: Int16
+    @NSManaged fileprivate(set) var rating: Double
     @NSManaged fileprivate(set) var tasks: NSSet?
-    @NSManaged fileprivate(set) var localle: Localle?
+    @NSManaged fileprivate(set) var localle: Localle
     
-//    static func insert(into manager: PersistenceController, raw: ProfileRaw) -> Profile {
-//        let profile: Profile = manager.insertObject()
-//        return profile
-//    }
-//
+    static func insert(into manager: PersistenceController, raw: ProfileRaw) -> Profile {
+        let profile: Profile = manager.insertObject()
+        profile.id = raw.id
+        profile.avatar_url = raw.avatarURL
+        profile.name = raw.firstName
+        profile.desc = raw.desc
+        profile.rating = raw.rating
+        profile.localle = Localle.fetchLocalle(forID: raw.locationID, fromManager: manager)
+        return profile
+    }
+
 }
 
 extension Profile: Managed {
     static var defaulSortDescriptors: [NSSortDescriptor] {
         return [NSSortDescriptor(key: #keyPath(rating), ascending: true)]
     }
+    
+    // overidden to stop odd test failures using in memory store DB
+    // which doesn't seem to tidy itself up properly
+    // nor always load the models. This only happens
+    // when running the entoire test suite, individual sets of
+    // tests run fine. Sigh...
+    static var entityName = "Profile"
+    
 }
 
 

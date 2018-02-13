@@ -33,9 +33,9 @@ class ProfileMapper: JSONDecoder {
         do {
             let tmp = try decoder.decode([ProfileRaw].self, from: rawValue)
             mappedValue = .Value(tmp)
-//            _ = tmp.map({ location in
-//                _ = Location.insert(into: persistanceManager, raw: location)
-//            })
+            _ = tmp.map({ profile in
+                _ = Profile.insert(into: persistanceManager, raw: profile)
+            })
         } catch let error {
             let tmp = error as! DecodingError
             mappedValue = .MappingError(tmp)
@@ -50,7 +50,7 @@ struct ProfileRaw: Codable {
         case id
         case firstName = "first_name"
         case avatarURL = "avatar_mini_url"
-        case description
+        case desc = "description"
         case rating
         case locationID = "location_id"
     }
@@ -58,7 +58,7 @@ struct ProfileRaw: Codable {
     let id: Int64
     let rating: Double
     let firstName: String
-    let description: String
+    let desc: String
     let locationID: Int64
     let avatarURL: String
     
@@ -67,7 +67,7 @@ struct ProfileRaw: Codable {
         id = try container.decode(Int64.self, forKey: .id)
         rating = try container.decode(Double.self, forKey: .rating)
         firstName = try container.decode(String.self, forKey: .firstName)
-        description = try container.decode(String.self, forKey: .description)
+        desc = try container.decode(String.self, forKey: .desc)
         locationID = try container.decode(Int64.self, forKey: .locationID)
         avatarURL = try container.decode(String.self, forKey: .avatarURL)
     }

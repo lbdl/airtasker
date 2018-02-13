@@ -23,6 +23,15 @@ final class Location: NSManagedObject {
         location.lat = raw.lat
         location.long = raw.long
         location.name = raw.name
+        location.localle = Localle.fetchLocalle(forID: raw.id, fromManager: manager)
+        return location
+    }
+    
+    static func fetchLocation(forID locationID: Int64, fromManager manager: PersistenceController) -> Location {
+        let predicate = NSPredicate(format: "%K == %d", #keyPath(id), locationID)
+        let location = fetchOrCreate(fromManager: manager, matching: predicate) {
+            $0.id = locationID
+        }
         return location
     }
 
@@ -33,10 +42,10 @@ extension Location: Managed {
         return [NSSortDescriptor(key: #keyPath(id), ascending: true)]
     }
     
-    // overidden to stop odd test failures in inmemory store
-    // which doesnt seem to tidy itself up properly
+    // overidden to stop odd test failures using in memory store DB
+    // which doesn't seem to tidy itself up properly
     // nor always load the models. This only happens
-    // when running the entoire test suite, indivdual sets of
+    // when running the entoire test suite, individual sets of
     // tests run fine. Sigh...
     static var entityName = "Location"
 }

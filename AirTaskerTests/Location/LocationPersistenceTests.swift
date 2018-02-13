@@ -85,6 +85,22 @@ class LocationPersistenceTests: QuickSpec {
                         })
                     }
                 }
+                it ("creates a localle object in the DB and the corresponding relationship") {
+                    waitUntil { done in
+                        TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
+                            persistentContainer = container
+                            manager = PersistenceManager(store: persistentContainer!)
+                            sut = LocationMapper(storeManager: manager!)
+                            sut?.map(rawValue: rawData!)
+                            let request = NSFetchRequest<Location>(entityName: Location.entityName)
+                            request.predicate = NSPredicate(format: "id == %d", 3)
+                            let results = try! persistentContainer?.viewContext.fetch(request)
+                            let actual = results?.first
+                            expect(actual?.localle).to(beAKindOf(Localle.self))
+                            done()
+                        })
+                    }
+                }
             }
         }
     }
