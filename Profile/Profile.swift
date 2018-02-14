@@ -30,6 +30,14 @@ public class Profile: NSManagedObject {
         profile.localle = Localle.fetchLocalle(forID: raw.locationID, fromManager: manager)
         return profile
     }
+    
+    static func fetchProfile(forID profileID: Int64, fromManager manager: PersistenceController) -> Profile {
+        let predicate = NSPredicate(format: "%K == %d", #keyPath(id), profileID)
+        let profile = fetchOrCreate(fromManager: manager, matching: predicate) {
+            $0.id = profileID
+        }
+        return profile
+    }
 
 }
 

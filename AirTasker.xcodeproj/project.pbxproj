@@ -14,6 +14,7 @@
 		2B0435DA2021A0E20029653E /* PersistenceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0435D92021A0E20029653E /* PersistenceManagerTests.swift */; };
 		2B27C0F62031E0050054A5D0 /* Localle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B27C0F52031E0050054A5D0 /* Localle.swift */; };
 		2B27C0F9203289670054A5D0 /* ProfilePersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B27C0F8203289670054A5D0 /* ProfilePersistenceTests.swift */; };
+		2BB38F53203456BF0061530E /* tasks.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BB38F52203456BF0061530E /* tasks.json */; };
 		2BBF412020170D36003A636C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF411F20170D36003A636C /* AppDelegate.swift */; };
 		2BBF412220170D36003A636C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF412120170D36003A636C /* ViewController.swift */; };
 		2BBF412520170D36003A636C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BBF412320170D36003A636C /* Main.storyboard */; };
@@ -27,8 +28,7 @@
 		2BF116392019BC7D00D8A02B /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116382019BC7D00D8A02B /* PersistenceManager.swift */; };
 		2BF1163C2019C0EA00D8A02B /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1163A2019C0EA00D8A02B /* Profile.swift */; };
 		2BF116402019C10200D8A02B /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1163E2019C10200D8A02B /* Task.swift */; };
-		2BF116442019C11D00D8A02B /* Worker+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116422019C11D00D8A02B /* Worker+CoreDataClass.swift */; };
-		2BF116452019C11D00D8A02B /* Worker+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116432019C11D00D8A02B /* Worker+CoreDataProperties.swift */; };
+		2BF116452019C11D00D8A02B /* Worker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116432019C11D00D8A02B /* Worker.swift */; };
 		2BF116482019C1F100D8A02B /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116462019C1F100D8A02B /* Activity.swift */; };
 		2BF116612019F0E300D8A02B /* LocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116602019F0E300D8A02B /* LocationTests.swift */; };
 		2BF11665201B0F5B00D8A02B /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF11664201B0F5B00D8A02B /* Nimble.framework */; };
@@ -44,6 +44,8 @@
 		2BF1167B202163E000D8A02B /* LocationPersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1167A202163E000D8A02B /* LocationPersistenceTests.swift */; };
 		2BF1F8972022FF08005ECE8F /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF11674201C504A00D8A02B /* PersistenceHelper.swift */; };
 		2BF1F899202326B1005ECE8F /* ProfileMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1F898202326B1005ECE8F /* ProfileMapper.swift */; };
+		2BF9D0542033D95700B761A7 /* TaskMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF9D0532033D95700B761A7 /* TaskMapper.swift */; };
+		2BF9D0572034547E00B761A7 /* TaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF9D0562034547E00B761A7 /* TaskTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,7 @@
 		2B0435D92021A0E20029653E /* PersistenceManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManagerTests.swift; sourceTree = "<group>"; };
 		2B27C0F52031E0050054A5D0 /* Localle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localle.swift; sourceTree = "<group>"; };
 		2B27C0F8203289670054A5D0 /* ProfilePersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePersistenceTests.swift; sourceTree = "<group>"; };
+		2BB38F52203456BF0061530E /* tasks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tasks.json; sourceTree = "<group>"; };
 		2BBF411C20170D36003A636C /* AirTasker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirTasker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BBF411F20170D36003A636C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BBF412120170D36003A636C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -94,8 +97,7 @@
 		2BF116382019BC7D00D8A02B /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		2BF1163A2019C0EA00D8A02B /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		2BF1163E2019C10200D8A02B /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
-		2BF116422019C11D00D8A02B /* Worker+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Worker+CoreDataClass.swift"; sourceTree = "<group>"; };
-		2BF116432019C11D00D8A02B /* Worker+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Worker+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2BF116432019C11D00D8A02B /* Worker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Worker.swift; sourceTree = "<group>"; };
 		2BF116462019C1F100D8A02B /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		2BF116602019F0E300D8A02B /* LocationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTests.swift; sourceTree = "<group>"; };
 		2BF11664201B0F5B00D8A02B /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
@@ -108,6 +110,8 @@
 		2BF11678202060CF00D8A02B /* badLocations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = badLocations.json; sourceTree = "<group>"; };
 		2BF1167A202163E000D8A02B /* LocationPersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPersistenceTests.swift; sourceTree = "<group>"; };
 		2BF1F898202326B1005ECE8F /* ProfileMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMapper.swift; sourceTree = "<group>"; };
+		2BF9D0532033D95700B761A7 /* TaskMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskMapper.swift; sourceTree = "<group>"; };
+		2BF9D0562034547E00B761A7 /* TaskTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +195,7 @@
 		2BBF413320170D37003A636C /* AirTaskerTests */ = {
 			isa = PBXGroup;
 			children = (
+				2BF9D0552034546400B761A7 /* Task */,
 				2B0193D2202D744700960FCC /* Profile */,
 				2B0435D820219FE50029653E /* PesistenceManager */,
 				2BF11670201B203000D8A02B /* TestSuiteHelpers.swift */,
@@ -223,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				2BF1163E2019C10200D8A02B /* Task.swift */,
+				2BF9D0532033D95700B761A7 /* TaskMapper.swift */,
 			);
 			path = Task;
 			sourceTree = "<group>";
@@ -255,8 +261,7 @@
 		2BF1162820198E6D00D8A02B /* Worker */ = {
 			isa = PBXGroup;
 			children = (
-				2BF116422019C11D00D8A02B /* Worker+CoreDataClass.swift */,
-				2BF116432019C11D00D8A02B /* Worker+CoreDataProperties.swift */,
+				2BF116432019C11D00D8A02B /* Worker.swift */,
 			);
 			path = Worker;
 			sourceTree = "<group>";
@@ -300,6 +305,7 @@
 		2BF1166A201B151B00D8A02B /* TestAssets */ = {
 			isa = PBXGroup;
 			children = (
+				2BB38F52203456BF0061530E /* tasks.json */,
 				2B0193D52030A5D800960FCC /* badProfiles.json */,
 				2B0193D0202D740A00960FCC /* profiles.json */,
 				2BF11678202060CF00D8A02B /* badLocations.json */,
@@ -307,6 +313,14 @@
 				2BF1166B201B153E00D8A02B /* locations.json */,
 			);
 			path = TestAssets;
+			sourceTree = "<group>";
+		};
+		2BF9D0552034546400B761A7 /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				2BF9D0562034547E00B761A7 /* TaskTests.swift */,
+			);
+			path = Task;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -407,6 +421,7 @@
 				2B0193D1202D740A00960FCC /* profiles.json in Resources */,
 				2BF11679202060D000D8A02B /* badLocations.json in Resources */,
 				2BF11673201B38E300D8A02B /* AirTasks.xcdatamodeld in Resources */,
+				2BB38F53203456BF0061530E /* tasks.json in Resources */,
 				2B0193D62030A5D900960FCC /* badProfiles.json in Resources */,
 				2BF1166E201B153F00D8A02B /* location5.json in Resources */,
 				2BF1166D201B153F00D8A02B /* locations.json in Resources */,
@@ -430,10 +445,10 @@
 				2B0193D72031DBBC00960FCC /* Managed.swift in Sources */,
 				2BF116392019BC7D00D8A02B /* PersistenceManager.swift in Sources */,
 				2BF1F8972022FF08005ECE8F /* PersistenceHelper.swift in Sources */,
-				2BF116452019C11D00D8A02B /* Worker+CoreDataProperties.swift in Sources */,
+				2BF116452019C11D00D8A02B /* Worker.swift in Sources */,
+				2BF9D0542033D95700B761A7 /* TaskMapper.swift in Sources */,
 				2BF1162F20199FA300D8A02B /* Location.swift in Sources */,
 				2BBF412020170D36003A636C /* AppDelegate.swift in Sources */,
-				2BF116442019C11D00D8A02B /* Worker+CoreDataClass.swift in Sources */,
 				2BF1161D20172B2000D8A02B /* Mapped.swift in Sources */,
 				2BF116232018440A00D8A02B /* AirTasks.xcdatamodeld in Sources */,
 				2BF116482019C1F100D8A02B /* Activity.swift in Sources */,
@@ -444,6 +459,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BF9D0572034547E00B761A7 /* TaskTests.swift in Sources */,
 				2BF11671201B203000D8A02B /* TestSuiteHelpers.swift in Sources */,
 				2BF116612019F0E300D8A02B /* LocationTests.swift in Sources */,
 				2B0435DA2021A0E20029653E /* PersistenceManagerTests.swift in Sources */,

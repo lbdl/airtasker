@@ -18,4 +18,27 @@ public class Task: NSManagedObject {
     @NSManaged fileprivate(set) var profile: Profile?
     @NSManaged fileprivate(set) var worker: Worker?
     @NSManaged fileprivate(set) var events: Activity?
+    
+    static func insert(into manager: PersistenceController, raw: TaskRaw) -> Task {
+        let task: Task = manager.insertObject()
+        task.id = raw.id
+        task.name = raw.name
+        task.desc = raw.desc
+        task.state = raw.eventState
+        task.profile = Profile.fetchProfile(forID: raw.profileID, fromManager: manager)
+        return task
+    }
+}
+
+extension Task: Managed {
+    static var defaultSortDescriptors: [NSSortDescriptor] {
+        return [NSSortDescriptor(key: #keyPath(id), ascending: true)]
+    }
+    
+    // overidden to stop odd test failures using in memory store DB
+    // which doesn't seem to tidy itself up properly
+    // nor always load the models. This only happens
+    // when running the entoire test suite, individual sets of
+    // tests run fine. Sigh...
+    static var entityName = "Task"
 }
