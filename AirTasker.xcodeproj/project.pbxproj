@@ -15,6 +15,8 @@
 		2B27C0F62031E0050054A5D0 /* Localle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B27C0F52031E0050054A5D0 /* Localle.swift */; };
 		2B27C0F9203289670054A5D0 /* ProfilePersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B27C0F8203289670054A5D0 /* ProfilePersistenceTests.swift */; };
 		2BB38F53203456BF0061530E /* tasks.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BB38F52203456BF0061530E /* tasks.json */; };
+		2BB38F5520345FBE0061530E /* ActivityMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB38F5420345FBE0061530E /* ActivityMapper.swift */; };
+		2BBDA54F203499670093ACE6 /* LocalleMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBDA54E203499670093ACE6 /* LocalleMapper.swift */; };
 		2BBF412020170D36003A636C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF411F20170D36003A636C /* AppDelegate.swift */; };
 		2BBF412220170D36003A636C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF412120170D36003A636C /* ViewController.swift */; };
 		2BBF412520170D36003A636C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BBF412320170D36003A636C /* Main.storyboard */; };
@@ -80,6 +82,8 @@
 		2B27C0F52031E0050054A5D0 /* Localle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localle.swift; sourceTree = "<group>"; };
 		2B27C0F8203289670054A5D0 /* ProfilePersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePersistenceTests.swift; sourceTree = "<group>"; };
 		2BB38F52203456BF0061530E /* tasks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tasks.json; sourceTree = "<group>"; };
+		2BB38F5420345FBE0061530E /* ActivityMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityMapper.swift; sourceTree = "<group>"; };
+		2BBDA54E203499670093ACE6 /* LocalleMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalleMapper.swift; sourceTree = "<group>"; };
 		2BBF411C20170D36003A636C /* AirTasker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirTasker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BBF411F20170D36003A636C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BBF412120170D36003A636C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -246,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				2BF116462019C1F100D8A02B /* Activity.swift */,
+				2BB38F5420345FBE0061530E /* ActivityMapper.swift */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -254,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				2B27C0F52031E0050054A5D0 /* Localle.swift */,
+				2BBDA54E203499670093ACE6 /* LocalleMapper.swift */,
 			);
 			path = Localle;
 			sourceTree = "<group>";
@@ -435,6 +441,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BBDA54F203499670093ACE6 /* LocalleMapper.swift in Sources */,
 				2BBF412220170D36003A636C /* ViewController.swift in Sources */,
 				2BF1F899202326B1005ECE8F /* ProfileMapper.swift in Sources */,
 				2BF116402019C10200D8A02B /* Task.swift in Sources */,
@@ -450,6 +457,7 @@
 				2BF1162F20199FA300D8A02B /* Location.swift in Sources */,
 				2BBF412020170D36003A636C /* AppDelegate.swift in Sources */,
 				2BF1161D20172B2000D8A02B /* Mapped.swift in Sources */,
+				2BB38F5520345FBE0061530E /* ActivityMapper.swift in Sources */,
 				2BF116232018440A00D8A02B /* AirTasks.xcdatamodeld in Sources */,
 				2BF116482019C1F100D8A02B /* Activity.swift in Sources */,
 			);

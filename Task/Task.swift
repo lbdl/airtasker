@@ -28,6 +28,14 @@ public class Task: NSManagedObject {
         task.profile = Profile.fetchProfile(forID: raw.profileID, fromManager: manager)
         return task
     }
+    
+    static func fetchTask(forID taskID: Int64, fromManager manager: PersistenceController) -> Task {
+        let predicate = NSPredicate(format: "%K == %d", #keyPath(id), taskID)
+        let task = fetchOrCreate(fromManager: manager, matching: predicate) {
+            $0.id = taskID
+        }
+        return task
+    }
 }
 
 extension Task: Managed {

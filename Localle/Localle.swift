@@ -21,7 +21,11 @@ final class Localle: NSManagedObject {
         }
         return localle
     }
-
+    
+    static func insert(into manager: PersistenceController, raw: LocalleRaw) -> Localle {
+        let localle: Localle = manager.insertObject()
+        return localle
+    }
 }
 
 extension Localle: Managed {

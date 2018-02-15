@@ -44,7 +44,7 @@ class ProfileMapper: JSONDecoder {
     
 }
 
-struct ProfileRaw: Codable {
+struct ProfileRaw: Decodable {
     
     enum CodingKeys: String, CodingKey {
         case id

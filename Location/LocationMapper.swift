@@ -41,9 +41,13 @@ class LocationMapper: JSONMapper {
             mappedValue = .MappingError(tmp)
         }
     }
+    
+    internal func persist(rawJson: Mapped<[LocationRaw]>) {
+        //
+    }
 }
 
-struct LocationRaw: Codable {
+struct LocationRaw: Decodable {
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -65,7 +69,8 @@ struct LocationRaw: Codable {
         lat = tmpLat
         long = tmpLong
     }
-    
+   
+    // conveniance init for the persistance manager tests
     init() {
         id = 0
         lat = 10

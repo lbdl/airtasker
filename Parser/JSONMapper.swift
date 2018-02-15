@@ -13,16 +13,26 @@ protocol JSONMapper {
     associatedtype raw
     
     var persistanceManager: PersistenceController {get set}
-    var rawValue: raw? {set get}
+    //var rawValue: raw? {set get}
     var mappedValue: value? {get}
     var decoder: JSONDecoder {get set}
     
-    // we could make this throw rather than
-    // return a Mapped.MappingError(error)
+    ///
+    /// The actual mapping/parsing function responsible
+    /// for initially parsing raw data to JSON and then
+    /// persisting the data received.
     func map(rawValue: raw)
+    
+    func persist(rawJson: value)
     
     init(storeManager: PersistenceController)
 }
+
+//extension JSONMapper {
+//    func map(rawValue: raw, rawJson: Any? = nil) {
+//        map(rawValue: rawValue, rawJson: rawJson)
+//    }
+//}
 
 
 
