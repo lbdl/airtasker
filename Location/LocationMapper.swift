@@ -33,17 +33,21 @@ class LocationMapper: JSONMapper {
         do {
             let tmp = try decoder.decode([LocationRaw].self, from: rawValue)
             mappedValue = .Value(tmp)
-            _ = tmp.map({ location in
-                _ = Location.insert(into: persistanceManager, raw: location)
-            })
+//            _ = tmp.map({ location in
+//                _ = Location.insert(into: persistanceManager, raw: location)
+//            })
         } catch let error {
             let tmp = error as! DecodingError
             mappedValue = .MappingError(tmp)
         }
     }
     
-    internal func persist(rawJson: Mapped<[LocationRaw]>) {
-        //
+    internal func persist(rawJson: value) {
+        if let obj = rawJson.associatedValue() as? [LocationRaw] {
+            _ = obj.map({ [weak self] location in
+                Location.insert(into: (self?.persistanceManager)!, raw: location)
+            })
+        }
     }
 }
 

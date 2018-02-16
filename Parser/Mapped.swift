@@ -11,4 +11,13 @@ import Foundation
 enum Mapped<A> {
     case MappingError(Error)
     case Value(A)
+    
+    func associatedValue() -> Any {
+        switch self {
+        case .MappingError(let value):
+            return value
+        case .Value(let value):
+            return value
+        }
+    }
 }
