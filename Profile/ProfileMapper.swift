@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ProfileMapper: JSONDecoder {
+class ProfileMapper: JSONMapper {
     
     internal var decoder: JSONDecoder
     internal var mappedValue: value?
@@ -33,12 +33,17 @@ class ProfileMapper: JSONDecoder {
         do {
             let tmp = try decoder.decode([ProfileRaw].self, from: rawValue)
             mappedValue = .Value(tmp)
-            _ = tmp.map({ profile in
-                _ = Profile.insert(into: persistanceManager, raw: profile)
-            })
         } catch let error {
             let tmp = error as! DecodingError
             mappedValue = .MappingError(tmp)
+        }
+    }
+    
+    internal func persist(rawJson: value) {
+        if let obj = rawJson.associatedValue() as? [ProfileRaw] {
+            _ = obj.map({ [weak self] profile in
+                _ = Profile.insert(into: (self?.persistanceManager)!, raw: profile)
+            })
         }
     }
     
