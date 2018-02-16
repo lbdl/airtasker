@@ -46,15 +46,6 @@ class LocationTests: QuickSpec {
         var sut: LocationMapper?
         var manager: PersistenceManager?
         var persistentContainer: NSPersistentContainer?
-        
-        func  flushDB() {
-            let fetchRequest = NSFetchRequest<Location>(entityName: "Location")
-            let objs = try! persistentContainer!.viewContext.fetch(fetchRequest)
-            for case let obj as NSManagedObject in objs {
-                persistentContainer!.viewContext.delete(obj)
-            }
-            try! persistentContainer!.viewContext.save()
-        }
     
         beforeSuite {
             rawData = TestSuiteHelpers.readLocalData(testCase: .locations)
@@ -63,7 +54,6 @@ class LocationTests: QuickSpec {
             rawData = nil
         }
         afterEach {
-            flushDB()
         }
         
         context("GIVEN location JSON") {
@@ -152,7 +142,6 @@ class LocationTests: QuickSpec {
             }
             
             afterEach {
-                flushDB()
             }
             
             describe("WHEN we parse") {

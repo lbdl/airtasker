@@ -42,14 +42,6 @@ class ProfileTests: QuickSpec {
     var manager: PersistenceManager?
     var persistentContainer: NSPersistentContainer?
     
-    func  flushDB() {
-        let fetchRequest = NSFetchRequest<Profile>(entityName: "Profile")
-        let objs = try! persistentContainer!.viewContext.fetch(fetchRequest)
-        for case let obj as NSManagedObject in objs {
-            persistentContainer!.viewContext.delete(obj)
-        }
-    }
-    
     override func spec() {
         
         beforeEach {
@@ -59,7 +51,6 @@ class ProfileTests: QuickSpec {
             self.rawData = nil
         }
         afterEach {
-            self.flushDB()
         }
         
         context("GIVEN good profile JSON") {
@@ -122,7 +113,6 @@ class ProfileTests: QuickSpec {
                 self.rawData = nil
             }
             afterEach {
-                self.flushDB()
             }
             
             describe("WHEN we parse") {

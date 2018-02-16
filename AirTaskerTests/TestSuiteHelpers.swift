@@ -19,10 +19,12 @@ class TestSuiteHelpers: NSObject {
         case profile
         case task
         case activity
+        case localle
         case badLocation
         case badProfile
         case badTask
         case badActivity
+        case badLocalle
     }
     
     static func readLocalData(testCase: TestType) -> Data? {
@@ -40,7 +42,8 @@ class TestSuiteHelpers: NSObject {
             url = testBundle.url(forResource: "profiles", withExtension: "json")
         case .task:
             url = testBundle.url(forResource: "tasks", withExtension: "json")
-
+        case .localle:
+            url = testBundle.url(forResource: "localle5", withExtension: "json")
         default:
             break
         }
