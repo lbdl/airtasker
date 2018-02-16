@@ -33,17 +33,18 @@ class ActivityMapper: JSONMapper {
         do {
             let tmp = try decoder.decode([ActivityRaw].self, from: rawValue)
             mappedValue = .Value(tmp)
-            _ = tmp.map({ activity in
-                _ = Activity.insert(into: persistanceManager, raw: activity)
-            })
         } catch let error {
             let tmp = error as! DecodingError
             mappedValue = .MappingError(tmp)
         }
     }
     
-    internal func persist(rawJson: Mapped<[ActivityRaw]>) {
-        //
+    internal func persist(rawJson: value) {
+        if let obj = rawJson.associatedValue() as? [ActivityRaw] {
+            _ = obj.map({ [weak self] activity in
+                _ = Activity.insert(into: (self?.persistanceManager)!, raw: activity)
+            })
+        }
     }
 
 }

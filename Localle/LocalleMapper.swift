@@ -33,8 +33,6 @@ class LocalleMapper: JSONMapper {
         do {
             let tmp = try decoder.decode(LocalleRaw.self, from: rawValue)
             mappedValue = .Value(tmp)
-            _ = Localle.insert(into: persistanceManager, raw: tmp)
-            
         } catch let error {
             let tmp = error as! DecodingError
             mappedValue = .MappingError(tmp)
@@ -42,7 +40,9 @@ class LocalleMapper: JSONMapper {
     }
     
     internal func persist(rawJson: Mapped<LocalleRaw>) {
-        //
+        if let obj = rawJson.associatedValue() as? LocalleRaw {
+            _ = Localle.insert(into: persistanceManager, raw: obj)
+        }
     }
 }
 

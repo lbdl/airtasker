@@ -17,6 +17,8 @@
 		2BB38F53203456BF0061530E /* tasks.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BB38F52203456BF0061530E /* tasks.json */; };
 		2BB38F5520345FBE0061530E /* ActivityMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB38F5420345FBE0061530E /* ActivityMapper.swift */; };
 		2BBDA54F203499670093ACE6 /* LocalleMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBDA54E203499670093ACE6 /* LocalleMapper.swift */; };
+		2BBDA5512036BDBE0093ACE6 /* LocalleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBDA5502036BDBE0093ACE6 /* LocalleTests.swift */; };
+		2BBDA5542036BE680093ACE6 /* localle5.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BBDA5532036BE680093ACE6 /* localle5.json */; };
 		2BBF412020170D36003A636C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF411F20170D36003A636C /* AppDelegate.swift */; };
 		2BBF412220170D36003A636C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF412120170D36003A636C /* ViewController.swift */; };
 		2BBF412520170D36003A636C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BBF412320170D36003A636C /* Main.storyboard */; };
@@ -84,6 +86,8 @@
 		2BB38F52203456BF0061530E /* tasks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tasks.json; sourceTree = "<group>"; };
 		2BB38F5420345FBE0061530E /* ActivityMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityMapper.swift; sourceTree = "<group>"; };
 		2BBDA54E203499670093ACE6 /* LocalleMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalleMapper.swift; sourceTree = "<group>"; };
+		2BBDA5502036BDBE0093ACE6 /* LocalleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalleTests.swift; sourceTree = "<group>"; };
+		2BBDA5532036BE680093ACE6 /* localle5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = localle5.json; sourceTree = "<group>"; };
 		2BBF411C20170D36003A636C /* AirTasker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirTasker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BBF411F20170D36003A636C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BBF412120170D36003A636C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +159,14 @@
 			path = PesistenceManager;
 			sourceTree = "<group>";
 		};
+		2BBDA5522036BDC60093ACE6 /* Localle */ = {
+			isa = PBXGroup;
+			children = (
+				2BBDA5502036BDBE0093ACE6 /* LocalleTests.swift */,
+			);
+			path = Localle;
+			sourceTree = "<group>";
+		};
 		2BBF411320170D36003A636C = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +218,7 @@
 				2BF1166A201B151B00D8A02B /* TestAssets */,
 				2BF1165B2019ECD400D8A02B /* Location */,
 				2BBF413620170D37003A636C /* Info.plist */,
+				2BBDA5522036BDC60093ACE6 /* Localle */,
 			);
 			path = AirTaskerTests;
 			sourceTree = "<group>";
@@ -311,6 +324,7 @@
 		2BF1166A201B151B00D8A02B /* TestAssets */ = {
 			isa = PBXGroup;
 			children = (
+				2BBDA5532036BE680093ACE6 /* localle5.json */,
 				2BB38F52203456BF0061530E /* tasks.json */,
 				2B0193D52030A5D800960FCC /* badProfiles.json */,
 				2B0193D0202D740A00960FCC /* profiles.json */,
@@ -430,6 +444,7 @@
 				2BB38F53203456BF0061530E /* tasks.json in Resources */,
 				2B0193D62030A5D900960FCC /* badProfiles.json in Resources */,
 				2BF1166E201B153F00D8A02B /* location5.json in Resources */,
+				2BBDA5542036BE680093ACE6 /* localle5.json in Resources */,
 				2BF1166D201B153F00D8A02B /* locations.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -474,6 +489,7 @@
 				2B27C0F9203289670054A5D0 /* ProfilePersistenceTests.swift in Sources */,
 				2B0193D4202D746700960FCC /* ProfileTests.swift in Sources */,
 				2BF1167B202163E000D8A02B /* LocationPersistenceTests.swift in Sources */,
+				2BBDA5512036BDBE0093ACE6 /* LocalleTests.swift in Sources */,
 				2BF11672201B35E100D8A02B /* AirTasks.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
