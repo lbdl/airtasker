@@ -1,5 +1,5 @@
 //
-//  LocationTests.swift
+//  LocationParsingTests.swift
 //  AirTasker
 //
 //  Created by Timothy Storey on 25/01/2018.
@@ -13,7 +13,7 @@ import CoreData
 @testable import AirTasker
 
 
-class LocationTests: QuickSpec {
+class LocationParsingTests: QuickSpec {
     
     
     //MARK: - Custom Matchers for associated values

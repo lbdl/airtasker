@@ -1,5 +1,5 @@
 //
-//  LocalleTests.swift
+//  LocalleParsingTests.swift
 //  AirTasker
 //
 //  Created by Timothy Storey on 16/02/2018.
@@ -35,7 +35,7 @@ private func beDecodingError(test: @escaping (Error) -> Void = { _ in }) -> Pred
     }
 }
 
-class LocalleTests: QuickSpec {
+class LocalleParsingTests: QuickSpec {
     
     var rawData: Data?
     var sut: LocalleMapper?

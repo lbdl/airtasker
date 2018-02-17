@@ -1,11 +1,12 @@
 //
-//  ProfileTests.swift
-//  AirTasker
+//  TaskParsingTests.swift
+//  AirTaskerTests
 //
-//  Created by Timothy Storey on 09/02/2018.
-//Copyright © 2018 BITE-Software. All rights reserved.
+//  Created by Timothy Storey on 14/02/2018.
+//  Copyright © 2018 BITE-Software. All rights reserved.
 //
 
+import Foundation
 import Quick
 import Nimble
 import CoreData
@@ -13,18 +14,18 @@ import CoreData
 @testable import AirTasker
 
 //MARK: - Custom Matchers for associated values in Mapped<A> objects
-private func beProfile(test: @escaping ([ProfileRaw]) -> Void = { _ in }) -> Predicate<Mapped<[ProfileRaw]>> {
-    return Predicate.define("be profile") { expression, message in
+private func beTask(test: @escaping ([TaskRaw]) -> Void = { _ in }) -> Predicate<Mapped<[TaskRaw]>> {
+    return Predicate.define("be task") { expression, message in
         if let actual = try expression.evaluate(),
-            case let .Value(profiles) = actual {
-            test(profiles)
+            case let .Value(tasks) = actual {
+            test(tasks)
             return PredicateResult(status: .matches, message: message)
         }
         return PredicateResult(status: .fail, message: message)
     }
 }
 
-private func beDecodingError(test: @escaping (Error) -> Void = { _ in }) -> Predicate<Mapped<[ProfileRaw]>> {
+private func beDecodingError(test: @escaping (Error) -> Void = { _ in }) -> Predicate<Mapped<[TaskRaw]>> {
     return Predicate.define("be decoding error") { expression, message in
         if let actual = try expression.evaluate(),
             case let .MappingError(Error) = actual {
@@ -35,17 +36,17 @@ private func beDecodingError(test: @escaping (Error) -> Void = { _ in }) -> Pred
     }
 }
 
-class ProfileTests: QuickSpec {
+class TaskParsingTests: QuickSpec {
     
     var rawData: Data?
-    var sut: ProfileMapper?
+    var sut: TaskMapper?
     var manager: PersistenceManager?
     var persistentContainer: NSPersistentContainer?
     
     override func spec() {
         
         beforeEach {
-            self.rawData = TestSuiteHelpers.readLocalData(testCase: .profile)
+            self.rawData = TestSuiteHelpers.readLocalData(testCase: .task)
         }
         afterSuite {
             self.rawData = nil
@@ -53,17 +54,17 @@ class ProfileTests: QuickSpec {
         afterEach {
         }
         
-        context("GIVEN good profile JSON") {
+        context("GIVEN good task JSON") {
             describe("WHEN we parse"){
-                it("IT Creates a collection of Profiles") {
+                it("IT Creates a collection of Tasks") {
                     waitUntil { done in
                         TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
                             self.persistentContainer = container
                             self.manager = PersistenceManager(store: self.persistentContainer!)
-                            self.sut = ProfileMapper(storeManager: self.manager!)
+                            self.sut = TaskMapper(storeManager: self.manager!)
                             self.sut?.map(rawValue: self.rawData!)
-                            expect(self.sut?.mappedValue).to(beProfile { profiles in
-                                expect(profiles).to(beAKindOf(Array<ProfileRaw>.self))
+                            expect(self.sut?.mappedValue).to(beTask { tasks in
+                                expect(tasks).to(beAKindOf(Array<TaskRaw>.self))
                             })
                             done()
                         })
@@ -74,10 +75,10 @@ class ProfileTests: QuickSpec {
                         TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
                             self.persistentContainer = container
                             self.manager = PersistenceManager(store: self.persistentContainer!)
-                            self.sut = ProfileMapper(storeManager: self.manager!)
+                            self.sut = TaskMapper(storeManager: self.manager!)
                             self.sut?.map(rawValue: self.rawData!)
-                            expect(self.sut?.mappedValue).to(beProfile { profiles in
-                                expect(profiles.count).to(equal(5))
+                            expect(self.sut?.mappedValue).to(beTask { tasks in
+                                expect(tasks.count).to(equal(2))
                             })
                             done()
                         })
@@ -88,15 +89,15 @@ class ProfileTests: QuickSpec {
                         TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
                             self.persistentContainer = container
                             self.manager = PersistenceManager(store: self.persistentContainer!)
-                            self.sut = ProfileMapper(storeManager: self.manager!)
+                            self.sut = TaskMapper(storeManager: self.manager!)
                             self.sut?.map(rawValue: self.rawData!)
-                            expect(self.sut?.mappedValue).to(beProfile { profiles in
-                                let actual = profiles.first
-                                expect(actual?.avatarURL).to(equal("/img/1.jpg"))
-                                expect(actual?.firstName).to(equal("Rachel"))
-                                expect(actual?.id).to(equal(1))
-                                expect(actual?.locationID).to(equal(5))
-                                expect(actual?.rating).to(equal(4))
+                            expect(self.sut?.mappedValue).to(beTask { tasks in
+                                let actual = tasks.first
+                                expect(actual?.desc).to(equal("1. Visit a shop anonymously as an \"undercover customer.\" \n2. Make two short enquiries in the same shop. \n3. Fill in a questionnaire. \n4. Report by phone."))
+                                expect(actual?.name).to(equal("Mystery Shopper Rockdale NSW"))
+                                expect(actual?.id).to(equal(4))
+                                expect(actual?.profileID).to(equal(5))
+                                expect(actual?.workerID).to(beNil())
                             })
                             done()
                         })
@@ -105,23 +106,23 @@ class ProfileTests: QuickSpec {
             }
         }
         
-        context("GIVEN bad profile JSON") {
+        context("GIVEN bad task JSON") {
             beforeEach {
-                self.rawData = TestSuiteHelpers.readLocalData(testCase: .badProfile)
+                self.rawData = TestSuiteHelpers.readLocalData(testCase: .badTask)
             }
             afterSuite {
                 self.rawData = nil
             }
             afterEach {
             }
-            
+
             describe("WHEN we parse") {
                 it("Returns an error") {
                     waitUntil { done in
                         TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
                             self.persistentContainer = container
                             self.manager = PersistenceManager(store: self.persistentContainer!)
-                            self.sut = ProfileMapper(storeManager: self.manager!)
+                            self.sut = TaskMapper(storeManager: self.manager!)
                             self.sut?.map(rawValue: self.rawData!)
                             expect(self.sut?.mappedValue).to(beDecodingError())
                             done()

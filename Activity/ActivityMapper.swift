@@ -53,7 +53,7 @@ struct ActivityRaw: Decodable {
     
     enum CodingKeys: String, CodingKey {
         case id = "task_id"
-        case internalMessage
+        case internalMessage = "message"
         case event
         case created = "created_at"
         case profileID = "profile_id"

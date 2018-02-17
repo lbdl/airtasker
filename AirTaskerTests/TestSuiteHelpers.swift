@@ -46,6 +46,10 @@ class TestSuiteHelpers: NSObject {
             url = testBundle.url(forResource: "localle5", withExtension: "json")
         case .badTask:
             url = testBundle.url(forResource: "badTasks", withExtension: "json")
+        case .activity:
+            url = testBundle.url(forResource: "activities", withExtension: "json")
+        case .badActivity:
+            url = testBundle.url(forResource: "badActivities", withExtension: "json")
         default:
             break
         }
@@ -64,8 +68,6 @@ class TestSuiteHelpers: NSObject {
         container.loadPersistentStores { (description, error) in
             // Check if the data store is in memory
             precondition( description.type == NSInMemoryStoreType )
-            
-            // Check if creating container wrong
             guard error == nil else {
                 fatalError("Failed to load in memory store \(error!)")
             }
