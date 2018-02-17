@@ -33,9 +33,6 @@ class TaskMapper: JSONMapper {
         do {
             let tmp = try decoder.decode([TaskRaw].self, from: rawValue)
             mappedValue = .Value(tmp)
-//            _ = tmp.map({ task in
-//                _ = Task.insert(into: persistanceManager, raw: task)
-//            })
         } catch let error {
             let tmp = error as! DecodingError
             mappedValue = .MappingError(tmp)

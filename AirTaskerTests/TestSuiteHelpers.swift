@@ -44,6 +44,8 @@ class TestSuiteHelpers: NSObject {
             url = testBundle.url(forResource: "tasks", withExtension: "json")
         case .localle:
             url = testBundle.url(forResource: "localle5", withExtension: "json")
+        case .badTask:
+            url = testBundle.url(forResource: "badTasks", withExtension: "json")
         default:
             break
         }

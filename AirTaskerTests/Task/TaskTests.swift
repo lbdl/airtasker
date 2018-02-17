@@ -43,14 +43,6 @@ class TaskTests: QuickSpec {
     var manager: PersistenceManager?
     var persistentContainer: NSPersistentContainer?
     
-    func  flushDB() {
-        let fetchRequest = NSFetchRequest<Task>(entityName: "Task")
-        let objs = try! persistentContainer!.viewContext.fetch(fetchRequest)
-        for case let obj as NSManagedObject in objs {
-            persistentContainer!.viewContext.delete(obj)
-        }
-    }
-    
     override func spec() {
         
         beforeEach {
@@ -60,7 +52,6 @@ class TaskTests: QuickSpec {
             self.rawData = nil
         }
         afterEach {
-            self.flushDB()
         }
         
         context("GIVEN good task JSON") {
@@ -115,32 +106,31 @@ class TaskTests: QuickSpec {
             }
         }
         
-//        context("GIVEN bad profile JSON") {
-//            beforeEach {
-//                self.rawData = TestSuiteHelpers.readLocalData(testCase: .badProfile)
-//            }
-//            afterSuite {
-//                self.rawData = nil
-//            }
-//            afterEach {
-//                self.flushDB()
-//            }
-//
-//            describe("WHEN we parse") {
-//                it("Returns an error") {
-//                    waitUntil { done in
-//                        TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
-//                            self.persistentContainer = container
-//                            self.manager = PersistenceManager(store: self.persistentContainer!)
-//                            self.sut = ProfileMapper(storeManager: self.manager!)
-//                            self.sut?.map(rawValue: self.rawData!)
-//                            expect(self.sut?.mappedValue).to(beDecodingError())
-//                            done()
-//                        })
-//                    }
-//                }
-//            }
-//        }
+        context("GIVEN bad task JSON") {
+            beforeEach {
+                self.rawData = TestSuiteHelpers.readLocalData(testCase: .badTask)
+            }
+            afterSuite {
+                self.rawData = nil
+            }
+            afterEach {
+            }
+
+            describe("WHEN we parse") {
+                it("Returns an error") {
+                    waitUntil { done in
+                        TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
+                            self.persistentContainer = container
+                            self.manager = PersistenceManager(store: self.persistentContainer!)
+                            self.sut = TaskMapper(storeManager: self.manager!)
+                            self.sut?.map(rawValue: self.rawData!)
+                            expect(self.sut?.mappedValue).to(beDecodingError())
+                            done()
+                        })
+                    }
+                }
+            }
+        }
     }
     // work around so that xcode9.2 actually see's the tests
     // thanks apple for allowing us to test things
