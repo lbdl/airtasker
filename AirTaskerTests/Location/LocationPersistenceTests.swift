@@ -30,9 +30,14 @@ class LocationPersistenceTests: QuickSpec {
         
         beforeSuite {
             rawData = TestSuiteHelpers.readLocalData(testCase: .locations)
+            TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
+                persistentContainer = container
+                manager = PersistenceManager(store: persistentContainer!)
+                sut = LocationMapper(storeManager: manager!)
+            })
         }
         
-        afterSuite {
+        afterEach {
             flushDB()
         }
         
@@ -40,68 +45,48 @@ class LocationPersistenceTests: QuickSpec {
             describe("Locations are persisted to storage") {
                 it ("persists locations") {
                     waitUntil { done in
-                        TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
-                            persistentContainer = container
-                            manager = PersistenceManager(store: persistentContainer!)
-                            sut = LocationMapper(storeManager: manager!)
-                            sut?.map(rawValue: rawData!)
-                            let request = NSFetchRequest<Location>(entityName: Location.entityName)
-                            let results = try! persistentContainer?.viewContext.fetch(request)
-                            expect(results).toNot(beNil())
-                            done()
-                        })
+                        sut?.map(rawValue: rawData!)
+                        let request = NSFetchRequest<Location>(entityName: Location.entityName)
+                        let results = try! persistentContainer?.viewContext.fetch(request)
+                        expect(results).toNot(beNil())
+                        done()
                     }
                 }
                 it ("persists 5 locations only") {
                     waitUntil { done in
-                        TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
-                            persistentContainer = container
-                            manager = PersistenceManager(store: persistentContainer!)
-                            sut = LocationMapper(storeManager: manager!)
-                            sut?.map(rawValue: rawData!)
-                            sut?.persist(rawJson: (sut?.mappedValue)!)
-                            let request = NSFetchRequest<Location>(entityName: Location.entityName)
-                            let results = try! persistentContainer?.viewContext.fetch(request)
-                            expect(results?.count).to(equal(5))
-                            done()
-                        })
+                        sut?.map(rawValue: rawData!)
+                        sut?.persist(rawJson: (sut?.mappedValue)!)
+                        let request = NSFetchRequest<Location>(entityName: Location.entityName)
+                        let results = try! persistentContainer?.viewContext.fetch(request)
+                        expect(results?.count).to(equal(5))
+                        done()
                     }
                 }
                 it ("persists a location for id: 3 with correct details") {
                     waitUntil { done in
-                        TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
-                            persistentContainer = container
-                            manager = PersistenceManager(store: persistentContainer!)
-                            sut = LocationMapper(storeManager: manager!)
-                            sut?.map(rawValue: rawData!)
-                            sut?.persist(rawJson: (sut?.mappedValue)!)
-                            let request = NSFetchRequest<Location>(entityName: Location.entityName)
-                            request.predicate = NSPredicate(format: "id == %d", 3)
-                            let results = try! persistentContainer?.viewContext.fetch(request)
-                            let actual = results?.first
-                            expect(actual?.id).to(equal(3))
-                            expect(actual?.name).to(equal("Chatswood NSW 2067, Australia"))
-                            expect(actual?.lat).to(equal(-33.79608))
-                            expect(actual?.long).to(equal(151.1831))
-                            done()
-                        })
+                        sut?.map(rawValue: rawData!)
+                        sut?.persist(rawJson: (sut?.mappedValue)!)
+                        let request = NSFetchRequest<Location>(entityName: Location.entityName)
+                        request.predicate = NSPredicate(format: "id == %d", 3)
+                        let results = try! persistentContainer?.viewContext.fetch(request)
+                        let actual = results?.first
+                        expect(actual?.id).to(equal(3))
+                        expect(actual?.name).to(equal("Chatswood NSW 2067, Australia"))
+                        expect(actual?.lat).to(equal(-33.79608))
+                        expect(actual?.long).to(equal(151.1831))
+                        done()
                     }
                 }
                 it ("creates a localle object in the DB and the corresponding relationship") {
                     waitUntil { done in
-                        TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
-                            persistentContainer = container
-                            manager = PersistenceManager(store: persistentContainer!)
-                            sut = LocationMapper(storeManager: manager!)
-                            sut?.map(rawValue: rawData!)
-                            sut?.persist(rawJson: (sut?.mappedValue)!)
-                            let request = NSFetchRequest<Location>(entityName: Location.entityName)
-                            request.predicate = NSPredicate(format: "id == %d", 3)
-                            let results = try! persistentContainer?.viewContext.fetch(request)
-                            let actual = results?.first
-                            expect(actual?.localle).to(beAKindOf(Localle.self))
-                            done()
-                        })
+                        sut?.map(rawValue: rawData!)
+                        sut?.persist(rawJson: (sut?.mappedValue)!)
+                        let request = NSFetchRequest<Location>(entityName: Location.entityName)
+                        request.predicate = NSPredicate(format: "id == %d", 3)
+                        let results = try! persistentContainer?.viewContext.fetch(request)
+                        let actual = results?.first
+                        expect(actual?.localle).to(beAKindOf(Localle.self))
+                        done()
                     }
                 }
             }

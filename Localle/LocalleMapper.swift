@@ -50,7 +50,7 @@ struct LocalleRaw: Decodable {
     
     enum RootKeys: String, CodingKey {
         case id
-        case displayName = "displayName"
+        case displayName = "display_name"
         case workerCount = "worker_count"
         case workerIDs = "worker_ids"
         case activities = "recent_activities"

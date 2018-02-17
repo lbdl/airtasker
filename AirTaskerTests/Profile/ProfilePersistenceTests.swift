@@ -30,11 +30,15 @@ class ProfilePersistenceTests: QuickSpec {
             for case let obj as NSManagedObject in localles {
                 persistentContainer!.viewContext.delete(obj)
             }
-            
         }
         
         beforeSuite {
             rawData = TestSuiteHelpers.readLocalData(testCase: .profile)
+            TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
+                persistentContainer = container
+                manager = PersistenceManager(store: persistentContainer!)
+                sut = ProfileMapper(storeManager: manager!)
+            })
         }
         
         afterEach {
@@ -45,54 +49,39 @@ class ProfilePersistenceTests: QuickSpec {
             describe("Profiles are persisted to storage") {
                 it ("persists locations") {
                     waitUntil { done in
-                        TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
-                            persistentContainer = container
-                            manager = PersistenceManager(store: persistentContainer!)
-                            sut = ProfileMapper(storeManager: manager!)
-                            sut?.map(rawValue: rawData!)
-                            sut?.persist(rawJson: (sut?.mappedValue)!)
-                            let request = NSFetchRequest<Profile>(entityName: Profile.entityName)
-                            let results = try! persistentContainer?.viewContext.fetch(request)
-                            expect(results?.count).toNot(equal(0))
-                            done()
-                        })
+                        sut?.map(rawValue: rawData!)
+                        sut?.persist(rawJson: (sut?.mappedValue)!)
+                        let request = NSFetchRequest<Profile>(entityName: Profile.entityName)
+                        let results = try! persistentContainer?.viewContext.fetch(request)
+                        expect(results?.count).toNot(equal(0))
+                        done()
                     }
                 }
                 it ("persists 5 profiles only") {
                     waitUntil { done in
-                        TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
-                            persistentContainer = container
-                            manager = PersistenceManager(store: persistentContainer!)
-                            sut = ProfileMapper(storeManager: manager!)
-                            sut?.map(rawValue: rawData!)
-                            sut?.persist(rawJson: (sut?.mappedValue)!)
-                            let request = NSFetchRequest<Profile>(entityName: Profile.entityName)
-                            let results = try! persistentContainer?.viewContext.fetch(request)
-                            expect(results?.count).to(equal(5))
-                            done()
-                        })
+                        sut?.map(rawValue: rawData!)
+                        sut?.persist(rawJson: (sut?.mappedValue)!)
+                        let request = NSFetchRequest<Profile>(entityName: Profile.entityName)
+                        let results = try! persistentContainer?.viewContext.fetch(request)
+                        expect(results?.count).to(equal(5))
+                        done()
                     }
                 }
                 it ("persists a profile for id: 3 with correct details") {
                     waitUntil { done in
-                        TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
-                            persistentContainer = container
-                            manager = PersistenceManager(store: persistentContainer!)
-                            sut = ProfileMapper(storeManager: manager!)
-                            sut?.map(rawValue: rawData!)
-                            sut?.persist(rawJson: (sut?.mappedValue)!)
-                            let request = NSFetchRequest<Profile>(entityName: Profile.entityName)
-                            request.predicate = NSPredicate(format: "id == %d", 3)
-                            let results = try! persistentContainer?.viewContext.fetch(request)
-                            let actual = results?.first
-                            expect(actual?.id).to(equal(3))
-                            expect(actual?.name).to(equal("Phoebe"))
-                            expect(actual?.desc).to(equal("smelly cat, smelly cat what are they feeding you"))
-                            expect(actual?.rating).to(equal(3))
-                            expect(actual?.avatar_url).to(equal("/img/3.jpg"))
-                            expect(actual?.localle.id).to(equal(5))
-                            done()
-                        })
+                        sut?.map(rawValue: rawData!)
+                        sut?.persist(rawJson: (sut?.mappedValue)!)
+                        let request = NSFetchRequest<Profile>(entityName: Profile.entityName)
+                        request.predicate = NSPredicate(format: "id == %d", 3)
+                        let results = try! persistentContainer?.viewContext.fetch(request)
+                        let actual = results?.first
+                        expect(actual?.id).to(equal(3))
+                        expect(actual?.name).to(equal("Phoebe"))
+                        expect(actual?.desc).to(equal("smelly cat, smelly cat what are they feeding you"))
+                        expect(actual?.rating).to(equal(3))
+                        expect(actual?.avatar_url).to(equal("/img/3.jpg"))
+                        expect(actual?.localle.id).to(equal(5))
+                        done()
                     }
                 }
             }

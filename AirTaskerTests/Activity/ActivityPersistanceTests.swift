@@ -35,6 +35,11 @@ class ActivityPersistanceTests: QuickSpec {
         
         beforeSuite {
             rawData = TestSuiteHelpers.readLocalData(testCase: .activity)!
+            TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
+                persistentContainer = container
+                manager = PersistenceManager(store: persistentContainer!)
+                sut = ActivityMapper(storeManager: manager!)
+            })
         }
         
         afterEach {
@@ -45,55 +50,44 @@ class ActivityPersistanceTests: QuickSpec {
             describe("WHEN we parse and persist the data") {
                 it ("persists activity objects") {
                     waitUntil { done in
-                        TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
-                            persistentContainer = container
-                            manager = PersistenceManager(store: persistentContainer!)
-                            sut = ActivityMapper(storeManager: manager!)
-                            sut?.map(rawValue: rawData!)
-                            sut?.persist(rawJson: (sut?.mappedValue)!)
-                            let request = NSFetchRequest<Activity>(entityName: Activity.entityName)
-                            let results = try! persistentContainer?.viewContext.fetch(request)
-                            expect(results?.count).toNot(equal(0))
-                            done()
-                        })
+                        sut?.map(rawValue: rawData!)
+                        sut?.persist(rawJson: (sut?.mappedValue)!)
+                        let request = NSFetchRequest<Activity>(entityName: Activity.entityName)
+                        let results = try! persistentContainer?.viewContext.fetch(request)
+                        expect(results?.count).toNot(equal(0))
+                        done()
                     }
                 }
                 it ("persists 3 activities only") {
                     waitUntil { done in
-                        TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
-                            persistentContainer = container
-                            manager = PersistenceManager(store: persistentContainer!)
-                            sut = ActivityMapper(storeManager: manager!)
-                            sut?.map(rawValue: rawData!)
-                            sut?.persist(rawJson: (sut?.mappedValue)!)
-                            let request = NSFetchRequest<Activity>(entityName: Activity.entityName)
-                            let results = try! persistentContainer?.viewContext.fetch(request)
-                            expect(results?.count).to(equal(3))
-                            done()
-                        })
+                        sut?.map(rawValue: rawData!)
+                        sut?.persist(rawJson: (sut?.mappedValue)!)
+                        let request = NSFetchRequest<Activity>(entityName: Activity.entityName)
+                        let results = try! persistentContainer?.viewContext.fetch(request)
+                        expect(results?.count).to(equal(3))
+                        done()
                     }
                 }
                 it ("persists an activity for id: 4 with correct details") {
                     waitUntil { done in
-                        TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
-                            persistentContainer = container
-                            manager = PersistenceManager(store: persistentContainer!)
-                            sut = ActivityMapper(storeManager: manager!)
-                            sut?.map(rawValue: rawData!)
-                            sut?.persist(rawJson: (sut?.mappedValue)!)
-                            let request = NSFetchRequest<Activity>(entityName: Activity.entityName)
-                            request.predicate = NSPredicate(format: "id == %d", 4)
-                            let results = try! persistentContainer?.viewContext.fetch(request)
-                            let actual = results?.first
-                            expect(actual?.id).to(equal(4))
-                            expect(actual?.event).to(equal("post"))
-                            expect(actual?.internalMessage).to(equal("{profileName} posted {taskName}"))
-                            expect(actual?.task?.id).to(equal(4))
-                            done()
-                        })
+                        sut?.map(rawValue: rawData!)
+                        sut?.persist(rawJson: (sut?.mappedValue)!)
+                        let request = NSFetchRequest<Activity>(entityName: Activity.entityName)
+                        request.predicate = NSPredicate(format: "id == %d", 4)
+                        let results = try! persistentContainer?.viewContext.fetch(request)
+                        let actual = results?.first
+                        expect(actual?.id).to(equal(4))
+                        expect(actual?.event).to(equal("post"))
+                        expect(actual?.internalMessage).to(equal("{profileName} posted {taskName}"))
+                        expect(actual?.task?.id).to(equal(4))
+                        done()
                     }
                 }
             }
+        }
+        
+        context("GIVEN valid JSON and a populated DB") {
+            
         }
 
     }
