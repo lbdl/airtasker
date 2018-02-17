@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D47" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Activity" representedClassName="Activity" syncable="YES">
+    <entity name="Activity" representedClassName=".Activity" syncable="YES">
         <attribute name="event" attributeType="String" syncable="YES"/>
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="message" attributeType="String" syncable="YES"/>
+        <attribute name="internalMessage" attributeType="String" syncable="YES"/>
         <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="events" inverseEntity="Task" syncable="YES"/>
     </entity>
     <entity name="Localle" representedClassName=".Localle" syncable="YES">
@@ -41,7 +41,7 @@
         <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="worker" inverseEntity="Task" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Activity" positionX="54" positionY="-114" width="128" height="103"/>
+        <element name="Activity" positionX="54" positionY="-114" width="128" height="105"/>
         <element name="Localle" positionX="-155" positionY="-66" width="128" height="88"/>
         <element name="Location" positionX="-416" positionY="-243" width="128" height="120"/>
         <element name="Profile" positionX="-405" positionY="-54" width="128" height="148"/>

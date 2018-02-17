@@ -8,9 +8,96 @@
 
 import Quick
 import Nimble
+import CoreData
+
+@testable import AirTasker
 
 class ActivityPersistanceTests: QuickSpec {
     override func spec() {
+        
+        var rawData: Data?
+        var sut: ActivityMapper?
+        var manager: PersistenceManager?
+        var persistentContainer: NSPersistentContainer?
+        
+        func  flushDB() {
+            let activityRequest = NSFetchRequest<Activity>(entityName: Activity.entityName)
+            let profileRequest = NSFetchRequest<Profile>(entityName: Profile.entityName)
+            let tasks = try! persistentContainer!.viewContext.fetch(activityRequest)
+            let profiles = try! persistentContainer!.viewContext.fetch(profileRequest)
+            for case let obj as NSManagedObject in tasks {
+                persistentContainer!.viewContext.delete(obj)
+            }
+            for case let obj as NSManagedObject in profiles {
+                persistentContainer!.viewContext.delete(obj)
+            }
+        }
+        
+        beforeSuite {
+            rawData = TestSuiteHelpers.readLocalData(testCase: .activity)!
+        }
+        
+        afterEach {
+            flushDB()
+        }
+        
+        context("GIVEN good Activity JSON") {
+            describe("WHEN we parse and persist the data") {
+                it ("persists activity objects") {
+                    waitUntil { done in
+                        TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
+                            persistentContainer = container
+                            manager = PersistenceManager(store: persistentContainer!)
+                            sut = ActivityMapper(storeManager: manager!)
+                            sut?.map(rawValue: rawData!)
+                            sut?.persist(rawJson: (sut?.mappedValue)!)
+                            let request = NSFetchRequest<Activity>(entityName: Activity.entityName)
+                            let results = try! persistentContainer?.viewContext.fetch(request)
+                            expect(results?.count).toNot(equal(0))
+                            done()
+                        })
+                    }
+                }
+                it ("persists 3 activities only") {
+                    waitUntil { done in
+                        TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
+                            persistentContainer = container
+                            manager = PersistenceManager(store: persistentContainer!)
+                            sut = ActivityMapper(storeManager: manager!)
+                            sut?.map(rawValue: rawData!)
+                            sut?.persist(rawJson: (sut?.mappedValue)!)
+                            let request = NSFetchRequest<Activity>(entityName: Activity.entityName)
+                            let results = try! persistentContainer?.viewContext.fetch(request)
+                            expect(results?.count).to(equal(3))
+                            done()
+                        })
+                    }
+                }
+                it ("persists an activity for id: 4 with correct details") {
+                    waitUntil { done in
+                        TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
+                            persistentContainer = container
+                            manager = PersistenceManager(store: persistentContainer!)
+                            sut = ActivityMapper(storeManager: manager!)
+                            sut?.map(rawValue: rawData!)
+                            sut?.persist(rawJson: (sut?.mappedValue)!)
+                            let request = NSFetchRequest<Activity>(entityName: Activity.entityName)
+                            request.predicate = NSPredicate(format: "id == %d", 4)
+                            let results = try! persistentContainer?.viewContext.fetch(request)
+                            let actual = results?.first
+                            expect(actual?.id).to(equal(4))
+                            expect(actual?.event).to(equal("post"))
+                            expect(actual?.internalMessage).to(equal("{profileName} posted {taskName}"))
+                            expect(actual?.task?.id).to(equal(4))
+                            done()
+                        })
+                    }
+                }
+            }
+        }
 
     }
+    // work around so that xcode9.2 actually see's the tests
+    // thanks apple for allowing us to test things
+    public func testDummy() {}
 }
