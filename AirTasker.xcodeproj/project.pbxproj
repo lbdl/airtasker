@@ -14,6 +14,7 @@
 		2B0435DA2021A0E20029653E /* PersistenceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0435D92021A0E20029653E /* PersistenceManagerTests.swift */; };
 		2B27C0F62031E0050054A5D0 /* Localle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B27C0F52031E0050054A5D0 /* Localle.swift */; };
 		2B27C0F9203289670054A5D0 /* ProfilePersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B27C0F8203289670054A5D0 /* ProfilePersistenceTests.swift */; };
+		2BA95626203AD7FD006AD39E /* LocallePersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA95625203AD7FD006AD39E /* LocallePersistenceTests.swift */; };
 		2BB38F53203456BF0061530E /* tasks.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BB38F52203456BF0061530E /* tasks.json */; };
 		2BB38F5520345FBE0061530E /* ActivityMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB38F5420345FBE0061530E /* ActivityMapper.swift */; };
 		2BBDA54F203499670093ACE6 /* LocalleMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBDA54E203499670093ACE6 /* LocalleMapper.swift */; };
@@ -89,6 +90,7 @@
 		2B0435D92021A0E20029653E /* PersistenceManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManagerTests.swift; sourceTree = "<group>"; };
 		2B27C0F52031E0050054A5D0 /* Localle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localle.swift; sourceTree = "<group>"; };
 		2B27C0F8203289670054A5D0 /* ProfilePersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePersistenceTests.swift; sourceTree = "<group>"; };
+		2BA95625203AD7FD006AD39E /* LocallePersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocallePersistenceTests.swift; sourceTree = "<group>"; };
 		2BB38F52203456BF0061530E /* tasks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tasks.json; sourceTree = "<group>"; };
 		2BB38F5420345FBE0061530E /* ActivityMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityMapper.swift; sourceTree = "<group>"; };
 		2BBDA54E203499670093ACE6 /* LocalleMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalleMapper.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				2BBDA5502036BDBE0093ACE6 /* LocalleParsingTests.swift */,
+				2BA95625203AD7FD006AD39E /* LocallePersistenceTests.swift */,
 			);
 			path = Localle;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				2B0435DA2021A0E20029653E /* PersistenceManagerTests.swift in Sources */,
 				2BBDA55B2036F8B40093ACE6 /* ActivityParsingTests.swift in Sources */,
 				2B27C0F9203289670054A5D0 /* ProfilePersistenceTests.swift in Sources */,
+				2BA95626203AD7FD006AD39E /* LocallePersistenceTests.swift in Sources */,
 				2BBDA55D2036F8C90093ACE6 /* ActivityPersistanceTests.swift in Sources */,
 				2B0193D4202D746700960FCC /* ProfileParsingTests.swift in Sources */,
 				2BF1167B202163E000D8A02B /* LocationPersistenceTests.swift in Sources */,
