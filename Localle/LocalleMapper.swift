@@ -77,7 +77,7 @@ struct LocalleRaw: Decodable {
         workerIDs = try! container.decode([Int64].self, forKey: .workerIDs)
         activities = nil
         profiles = nil
-        tasks = nil
+        tasks = try! container.decode([TaskRaw].self, forKey: .tasks)
         location = nil
     }
 }

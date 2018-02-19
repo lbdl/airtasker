@@ -77,6 +77,8 @@ class LocalleParsingTests: QuickSpec {
                         sut?.map(rawValue: rawData!)
                         expect(sut?.mappedValue).to(beLocalle { localle in
                             expect(localle.id).to(equal(3))
+                            expect(localle.displayName).to(equal("Chatswood NSW 2067, Australia"))
+                            expect(localle.tasks?.first).to(beAKindOf(TaskRaw.self))
                         })
                         done()
                     }
