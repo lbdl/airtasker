@@ -14,6 +14,10 @@ import CoreData
 
 class LocallePersistenceTests: QuickSpec {
     override func spec() {
+        
+        var locationData: Data?
+        var locationMapper: LocationMapper?
+        
         var rawData: Data?
         var sut: LocalleMapper?
         var manager: PersistenceManager?
@@ -53,17 +57,68 @@ class LocallePersistenceTests: QuickSpec {
             
         }
         
-        beforeSuite {
-            rawData = TestSuiteHelpers.readLocalData(testCase: .locations)
+        beforeEach {
+            rawData = TestSuiteHelpers.readLocalData(testCase: .localle)
+            locationData = TestSuiteHelpers.readLocalData(testCase: .locations)
             TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
                 persistentContainer = container
                 manager = PersistenceManager(store: persistentContainer!)
                 sut = LocalleMapper(storeManager: manager!)
+                locationMapper = LocationMapper(storeManager: manager!)
+                locationMapper?.map(rawValue: locationData!)
+                locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
             })
         }
         
         afterEach {
             flushDB()
+        }
+        
+        context("GIVEN a manager AND good JSON") {
+            describe("Localle") {
+                it ("is persisted") {
+                    waitUntil { done in
+                        sut?.map(rawValue: rawData!)
+                        sut?.persist(rawJson: (sut?.mappedValue)!)
+                        let request = NSFetchRequest<Localle>(entityName: Localle.entityName)
+                        let results = try! persistentContainer?.viewContext.fetch(request)
+                        let actual = results?.first
+                        expect(actual).to(beAKindOf(Localle.self))
+                        done()
+                    }
+                }
+                it("has the correct location") {
+                    waitUntil { done in
+                        sut?.map(rawValue: rawData!)
+                        sut?.persist(rawJson: (sut?.mappedValue)!)
+                        let request = NSFetchRequest<Localle>(entityName: Localle.entityName)
+                        request.predicate = NSPredicate(format: "id == %d", 3)
+                        let results = try! persistentContainer?.viewContext.fetch(request)
+                        let actual = results?.first
+                        expect(actual?.id).to(equal(actual?.location.id))
+                        expect(actual?.location.name).to(equal("Chatswood NSW 2067, Australia"))
+                        expect(actual?.location.localle).to(equal(actual))
+                        expect(actual?.location.lat).to(equal(-33.79608))
+                        expect(actual?.location.long).to(equal(151.1831))
+                        done()
+                    }
+                }
+                it("has a collection of profile objects"){
+                    waitUntil { done in
+                        sut?.map(rawValue: rawData!)
+                        sut?.persist(rawJson: (sut?.mappedValue)!)
+                        let request = NSFetchRequest<Localle>(entityName: Localle.entityName)
+                        request.predicate = NSPredicate(format: "id == %d", 3)
+                        let results = try! persistentContainer?.viewContext.fetch(request)
+                        let actual = results?.first
+                        expect(actual?.users).to(beAKindOf(Set<Profile>.self))
+                        expect(actual?.users.count).to(beGreaterThan(0))
+                        done()
+                    }
+                }
+            }
+            
+           
         }
     }
     // work around so that xcode9.2 actually see's the tests

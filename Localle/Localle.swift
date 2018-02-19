@@ -25,8 +25,19 @@ final class Localle: NSManagedObject {
     
     static func insert(into manager: PersistenceController, raw: LocalleRaw) -> Localle {
         let localle: Localle = manager.insertObject()
+        localle.id = raw.id
+        localle.location = Location.fetchLocation(forID: raw.id, fromManager: manager)
+        _ = raw.profiles.map({ profileRaw in
+            let user = Profile.fetchProfile(forID: profileRaw.id, fromManager: manager)
+            localle.users.insert(user)
+        })
+        
         return localle
     }
+    
+    
+    
+    
 }
 
 extension Localle: Managed {
@@ -34,9 +45,9 @@ extension Localle: Managed {
         return [NSSortDescriptor(key: #keyPath(id), ascending: true)]
     }
     
-    // overidden to stop odd test failures using in memory store DB
+    // Overidden to stop odd test failures using in memory store DB
     // which doesn't seem to tidy itself up properly
-    // nor always load the models. this only happens
+    // nor always load the models. This only happens
     // when running the entire test suite, individual sets of
     // tests run fine. I'm sure somewhere there's a fix. perhaps.
     // sigh...

@@ -53,6 +53,7 @@ class LocationPersistenceTests: QuickSpec {
                 it ("persists locations") {
                     waitUntil { done in
                         sut?.map(rawValue: rawData!)
+                        sut?.persist(rawJson: (sut?.mappedValue)!)
                         let request = NSFetchRequest<Location>(entityName: Location.entityName)
                         let results = try! persistentContainer?.viewContext.fetch(request)
                         expect(results).toNot(beNil())
