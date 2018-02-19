@@ -24,7 +24,7 @@
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" defaultValueString="&quot;&quot;" syncable="YES"/>
         <attribute name="rating" attributeType="Double" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="localle" maxCount="1" deletionRule="Nullify" destinationEntity="Localle" inverseName="users" inverseEntity="Localle" syncable="YES"/>
+        <relationship name="localle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Localle" inverseName="users" inverseEntity="Localle" syncable="YES"/>
         <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="profile" inverseEntity="Task" syncable="YES"/>
     </entity>
     <entity name="Task" representedClassName=".Task" syncable="YES">
@@ -33,7 +33,7 @@
         <attribute name="name" attributeType="String" defaultValueString="&quot;&quot;" syncable="YES"/>
         <attribute name="state" attributeType="String" defaultValueString="&quot;&quot;" syncable="YES"/>
         <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Activity" inverseName="task" inverseEntity="Activity" syncable="YES"/>
-        <relationship name="profile" maxCount="1" deletionRule="Nullify" destinationEntity="Profile" inverseName="tasks" inverseEntity="Profile" syncable="YES"/>
+        <relationship name="profile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Profile" inverseName="tasks" inverseEntity="Profile" syncable="YES"/>
         <relationship name="worker" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Worker" inverseName="task" inverseEntity="Worker" syncable="YES"/>
     </entity>
     <entity name="Worker" representedClassName="Worker" syncable="YES">

@@ -59,31 +59,31 @@ class ActivityPersistanceTests: QuickSpec {
                         done()
                     }
                 }
-//                it ("persists 3 activities only") {
-//                    waitUntil { done in
-//                        sut?.map(rawValue: rawData!)
-//                        sut?.persist(rawJson: (sut?.mappedValue)!)
-//                        let request = NSFetchRequest<Activity>(entityName: Activity.entityName)
-//                        let results = try! persistentContainer?.viewContext.fetch(request)
-//                        expect(results?.count).to(equal(3))
-//                        done()
-//                    }
-//                }
-//                it ("persists an activity for id: 4 with correct details") {
-//                    waitUntil { done in
-//                        sut?.map(rawValue: rawData!)
-//                        sut?.persist(rawJson: (sut?.mappedValue)!)
-//                        let request = NSFetchRequest<Activity>(entityName: Activity.entityName)
-//                        request.predicate = NSPredicate(format: "id == %d", 4)
-//                        let results = try! persistentContainer?.viewContext.fetch(request)
-//                        let actual = results?.first
-//                        expect(actual?.id).to(equal(4))
-//                        expect(actual?.event).to(equal("post"))
-//                        expect(actual?.internalMessage).to(equal("{profileName} posted {taskName}"))
-//                        expect(actual?.task?.id).to(equal(4))
-//                        done()
-//                    }
-//                }
+                it ("persists 3 activities only") {
+                    waitUntil { done in
+                        sut?.map(rawValue: rawData!)
+                        sut?.persist(rawJson: (sut?.mappedValue)!)
+                        let request = NSFetchRequest<Activity>(entityName: Activity.entityName)
+                        let results = try! persistentContainer?.viewContext.fetch(request)
+                        expect(results?.count).to(equal(3))
+                        done()
+                    }
+                }
+                it ("persists an activity for id: 4 with correct details") {
+                    waitUntil { done in
+                        sut?.map(rawValue: rawData!)
+                        sut?.persist(rawJson: (sut?.mappedValue)!)
+                        let request = NSFetchRequest<Activity>(entityName: Activity.entityName)
+                        request.predicate = NSPredicate(format: "id == %d", 4)
+                        let results = try! persistentContainer?.viewContext.fetch(request)
+                        let actual = results?.first
+                        expect(actual?.id).to(equal(4))
+                        expect(actual?.event).to(equal("post"))
+                        expect(actual?.internalMessage).to(equal("{profileName} posted {taskName}"))
+                        expect(actual?.task?.id).to(equal(4))
+                        done()
+                    }
+                }
             }
         }
         

@@ -32,6 +32,7 @@ public class Task: NSManagedObject {
     static func fetchTask(forID taskID: Int64, fromManager manager: PersistenceController) -> Task {
         let predicate = NSPredicate(format: "%K == %d", #keyPath(id), taskID)
         let task = fetchOrCreate(fromManager: manager, matching: predicate) {
+            // freshly baked object so we need to set the essential
             $0.id = taskID
         }
         return task
