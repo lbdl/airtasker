@@ -20,12 +20,19 @@ class LocationPersistenceTests: QuickSpec {
         var persistentContainer: NSPersistentContainer?
         
         func  flushDB() {
-            let fetchRequest = NSFetchRequest<Location>(entityName: "Location")
+            let fetchRequest = NSFetchRequest<Location>(entityName: Location.entityName)
+            let localleReq = NSFetchRequest<Localle>(entityName: Localle.entityName)
             let objs = try! persistentContainer!.viewContext.fetch(fetchRequest)
             for case let obj as NSManagedObject in objs {
                 persistentContainer!.viewContext.delete(obj)
+                try! persistentContainer!.viewContext.save()
             }
-            try! persistentContainer!.viewContext.save()
+            let localles = try! persistentContainer!.viewContext.fetch(localleReq)
+            for case let obj as NSManagedObject in localles {
+                persistentContainer!.viewContext.delete(obj)
+                try! persistentContainer!.viewContext.save()
+            }
+            
         }
         
         beforeSuite {

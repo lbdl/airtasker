@@ -21,15 +21,23 @@ class TaskPersistenceTests: QuickSpec {
         var persistentContainer: NSPersistentContainer?
         
         func  flushDB() {
-            let taskRequest = NSFetchRequest<Task>(entityName: "Task")
-            let profileRequest = NSFetchRequest<Profile>(entityName: "Profile")
+            let taskRequest = NSFetchRequest<Task>(entityName: Task.entityName)
+            let profileRequest = NSFetchRequest<Profile>(entityName: Profile.entityName)
+            let localleRequest = NSFetchRequest<Localle>(entityName: Localle.entityName)
             let tasks = try! persistentContainer!.viewContext.fetch(taskRequest)
             let profiles = try! persistentContainer!.viewContext.fetch(profileRequest)
+            let localles = try! persistentContainer!.viewContext.fetch(localleRequest)
             for case let obj as NSManagedObject in tasks {
                 persistentContainer!.viewContext.delete(obj)
+                try! persistentContainer!.viewContext.save()
             }
             for case let obj as NSManagedObject in profiles {
                 persistentContainer!.viewContext.delete(obj)
+                try! persistentContainer!.viewContext.save()
+            }
+            for case let obj as NSManagedObject in localles {
+                persistentContainer!.viewContext.delete(obj)
+                try! persistentContainer!.viewContext.save()
             }
         }
         
@@ -54,7 +62,7 @@ class TaskPersistenceTests: QuickSpec {
                         sut?.persist(rawJson: (sut?.mappedValue)!)
                         let request = NSFetchRequest<Task>(entityName: Task.entityName)
                         let results = try! persistentContainer?.viewContext.fetch(request)
-                        expect(results?.count).toNot(equal(0))
+                        expect(results?.count).toNot(equal(0))      
                         done()
                     }
                 }

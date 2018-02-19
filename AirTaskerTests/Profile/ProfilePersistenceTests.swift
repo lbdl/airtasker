@@ -26,9 +26,11 @@ class ProfilePersistenceTests: QuickSpec {
             let localles = try! persistentContainer!.viewContext.fetch(localleRequest)
             for case let obj as NSManagedObject in profiles {
                 persistentContainer!.viewContext.delete(obj)
+                try! persistentContainer!.viewContext.save()
             }
             for case let obj as NSManagedObject in localles {
                 persistentContainer!.viewContext.delete(obj)
+                try! persistentContainer!.viewContext.save()
             }
         }
         

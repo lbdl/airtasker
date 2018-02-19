@@ -41,8 +41,10 @@ class LocationMapper: JSONMapper {
     
     internal func persist(rawJson: value) {
         if let obj = rawJson.associatedValue() as? [LocationRaw] {
-            _ = obj.map({ [weak self] location in
-                Location.insert(into: (self?.persistanceManager)!, raw: location)
+            persistanceManager.updateContext(block: {
+                _ = obj.map({ [weak self] location in
+                    Location.insert(into: (self?.persistanceManager)!, raw: location)
+                })
             })
         }
     }

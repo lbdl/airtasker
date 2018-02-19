@@ -41,9 +41,14 @@ class ActivityMapper: JSONMapper {
     
     internal func persist(rawJson: value) {
         if let obj = rawJson.associatedValue() as? [ActivityRaw] {
-            _ = obj.map({ [weak self] activity in
-                _ = Activity.insert(into: (self?.persistanceManager)!, raw: activity)
+            persistanceManager.updateContext(block: {
+                _ = obj.map({ [weak self] activity in
+                    _ = Activity.insert(into: (self?.persistanceManager)!, raw: activity)
+                })
             })
+//            _ = obj.map({ [weak self] activity in
+//                _ = Activity.insert(into: (self?.persistanceManager)!, raw: activity)
+//            })
         }
     }
 

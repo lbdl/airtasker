@@ -15,7 +15,7 @@ public class Profile: NSManagedObject {
     @NSManaged fileprivate(set) var id: Int64
     @NSManaged fileprivate(set) var avatar_url: String
     @NSManaged fileprivate(set) var name: String
-    @NSManaged fileprivate(set) var desc: String?
+    @NSManaged fileprivate(set) var desc: String
     @NSManaged fileprivate(set) var rating: Double
     @NSManaged fileprivate(set) var tasks: NSSet?
     @NSManaged fileprivate(set) var localle: Localle
@@ -34,7 +34,11 @@ public class Profile: NSManagedObject {
     static func fetchProfile(forID profileID: Int64, fromManager manager: PersistenceController) -> Profile {
         let predicate = NSPredicate(format: "%K == %d", #keyPath(id), profileID)
         let profile = fetchOrCreate(fromManager: manager, matching: predicate) {
+            // freshly minted profile object so configure essentials
+            // core data wont create the Localle object for the localle relationship
+            // so we need to add it ourselves
             $0.id = profileID
+            $0.localle = Localle.fetchLocalle(forID: 0, fromManager: manager)
         }
         return profile
     }

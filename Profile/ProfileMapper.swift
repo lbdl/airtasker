@@ -41,8 +41,10 @@ class ProfileMapper: JSONMapper {
     
     internal func persist(rawJson: value) {
         if let obj = rawJson.associatedValue() as? [ProfileRaw] {
-            _ = obj.map({ [weak self] profile in
-                _ = Profile.insert(into: (self?.persistanceManager)!, raw: profile)
+            persistanceManager.updateContext(block: {
+                _ = obj.map({ [weak self] profile in
+                    _ = Profile.insert(into: (self?.persistanceManager)!, raw: profile)
+                })
             })
         }
     }

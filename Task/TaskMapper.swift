@@ -41,8 +41,10 @@ class TaskMapper: JSONMapper {
     
     internal func persist(rawJson: value) {
         if let tmp = rawJson.associatedValue() as? [TaskRaw] {
-            _ = tmp.map({ task in
-                _ = Task.insert(into: persistanceManager, raw: task)
+            persistanceManager.updateContext(block: {
+                _ = tmp.map({ [weak self]task in
+                    _ = Task.insert(into: (self?.persistanceManager)!, raw: task)
+                })
             })
         }
     }

@@ -35,7 +35,8 @@ class PersistenceManager: NSObject, PersistenceController {
         do {
             try context.save()
             return true
-        } catch {
+        } catch let error as NSError{
+            print(error)
             context.rollback()
             return false
         }
