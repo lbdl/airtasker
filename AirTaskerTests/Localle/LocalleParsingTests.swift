@@ -37,19 +37,24 @@ private func beDecodingError(test: @escaping (Error) -> Void = { _ in }) -> Pred
 
 class LocalleParsingTests: QuickSpec {
     
-    var rawData: Data?
-    var sut: LocalleMapper?
-    var manager: PersistenceManager?
-    var persistentContainer: NSPersistentContainer?
-    
     override func spec() {
+        
+        var rawData: Data?
+        var sut: LocalleMapper?
+        var manager: PersistenceManager?
+        var persistentContainer: NSPersistentContainer?
 
         beforeEach {
-            self.rawData = TestSuiteHelpers.readLocalData(testCase: .localle)
+            rawData = TestSuiteHelpers.readLocalData(testCase: .localle)
+            TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
+                persistentContainer = container
+                manager = PersistenceManager(store: persistentContainer!)
+                sut = LocalleMapper(storeManager: manager!)
+            })
         }
         
         afterSuite {
-            self.rawData = nil
+            rawData = nil
         }
         
         afterEach {
@@ -59,51 +64,23 @@ class LocalleParsingTests: QuickSpec {
             describe("WHEN we parse"){
                 it("IT Creates a LocalleRaw object") {
                     waitUntil { done in
-                        TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
-                            self.persistentContainer = container
-                            self.manager = PersistenceManager(store: self.persistentContainer!)
-                            self.sut = LocalleMapper(storeManager: self.manager!)
-                            self.sut?.map(rawValue: self.rawData!)
-                            expect(self.sut?.mappedValue).to(beLocalle { localle in
-                                expect(localle).to(beAKindOf(LocalleRaw.self))
-                            })
-                            done()
+                        
+                        sut?.map(rawValue: rawData!)
+                        expect(sut?.mappedValue).to(beLocalle { localle in
+                            expect(localle).to(beAKindOf(LocalleRaw.self))
                         })
+                        done()
                     }
                 }
-//                it("IT creates a collection with 5 values") {
-//                    waitUntil { done in
-//                        TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
-//                            self.persistentContainer = container
-//                            self.manager = PersistenceManager(store: self.persistentContainer!)
-//                            self.sut = ProfileMapper(storeManager: self.manager!)
-//                            self.sut?.map(rawValue: self.rawData!)
-//                            expect(self.sut?.mappedValue).to(beProfile { profiles in
-//                                expect(profiles.count).to(equal(5))
-//                            })
-//                            done()
-//                        })
-//                    }
-//                }
-//                it("IT creates objects with correct properties") {
-//                    waitUntil { done in
-//                        TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
-//                            self.persistentContainer = container
-//                            self.manager = PersistenceManager(store: self.persistentContainer!)
-//                            self.sut = ProfileMapper(storeManager: self.manager!)
-//                            self.sut?.map(rawValue: self.rawData!)
-//                            expect(self.sut?.mappedValue).to(beProfile { profiles in
-//                                let actual = profiles.first
-//                                expect(actual?.avatarURL).to(equal("/img/1.jpg"))
-//                                expect(actual?.firstName).to(equal("Rachel"))
-//                                expect(actual?.id).to(equal(1))
-//                                expect(actual?.locationID).to(equal(5))
-//                                expect(actual?.rating).to(equal(4))
-//                            })
-//                            done()
-//                        })
-//                    }
-//                }
+                it("IT has the expected attributes") {
+                    waitUntil { done in
+                        sut?.map(rawValue: rawData!)
+                        expect(sut?.mappedValue).to(beLocalle { localle in
+                            expect(localle.id).to(equal(3))
+                        })
+                        done()
+                    }
+                }
             }
         }
     }
