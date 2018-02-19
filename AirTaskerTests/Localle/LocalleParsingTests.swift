@@ -78,7 +78,22 @@ class LocalleParsingTests: QuickSpec {
                         expect(sut?.mappedValue).to(beLocalle { localle in
                             expect(localle.id).to(equal(3))
                             expect(localle.displayName).to(equal("Chatswood NSW 2067, Australia"))
-                            expect(localle.tasks?.first).to(beAKindOf(TaskRaw.self))
+                            expect(localle.tasks.first).to(beAKindOf(TaskRaw.self))
+                            expect(localle.activities.first).to(beAKindOf(ActivityRaw.self))
+                            expect(localle.profiles.first).to(beAKindOf(ProfileRaw.self))
+                        })
+                        done()
+                    }
+                }
+                it("IT maps its nested structs correctly") {
+                    waitUntil { done in
+                        sut?.map(rawValue: rawData!)
+                        expect(sut?.mappedValue).to(beLocalle { localle in
+                            expect(localle.id).to(equal(3))
+                            expect(localle.displayName).to(equal("Chatswood NSW 2067, Australia"))
+                            expect(localle.tasks.first?.id).to(equal(2))
+                            expect(localle.activities.first?.event).to(equal("comment"))
+                            expect(localle.profiles.last?.desc).to(equal("smelly cat, smelly cat what are they feeding you"))
                         })
                         done()
                     }

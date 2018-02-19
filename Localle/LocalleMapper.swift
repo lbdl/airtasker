@@ -55,19 +55,18 @@ struct LocalleRaw: Decodable {
         case displayName = "display_name"
         case workerCount = "worker_count"
         case workerIDs = "worker_ids"
-        case activities = "recent_activities"
+        case activities = "recent_activity"
         case profiles
         case tasks
     }
     
     let id: Int64
-    let location: LocationRaw?
     let displayName: String
     let workerCount: Int64
     let workerIDs: [Int64]
-    let activities: [ActivityRaw]?
-    let profiles: [ProfileRaw]?
-    let tasks: [TaskRaw]?
+    let activities: [ActivityRaw]
+    let profiles: [ProfileRaw]
+    let tasks: [TaskRaw]
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: RootKeys.self)
@@ -75,9 +74,8 @@ struct LocalleRaw: Decodable {
         displayName = try! container.decode(String.self, forKey: .displayName)
         workerCount = try! container.decode(Int64.self, forKey: .workerCount)
         workerIDs = try! container.decode([Int64].self, forKey: .workerIDs)
-        activities = nil
-        profiles = nil
+        activities = try! container.decode([ActivityRaw].self, forKey: .activities)
+        profiles = try! container.decode([ProfileRaw].self, forKey: .profiles)
         tasks = try! container.decode([TaskRaw].self, forKey: .tasks)
-        location = nil
     }
 }
