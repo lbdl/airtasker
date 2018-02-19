@@ -107,4 +107,7 @@ class LocalleParsingTests: QuickSpec {
             }
         }
     }
+    // work around so that xcode9.2 actually see's the tests
+    // thanks apple for allowing us to test things
+    public func testDummy() {}
 }

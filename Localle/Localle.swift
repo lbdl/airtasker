@@ -16,6 +16,7 @@ final class Localle: NSManagedObject {
     static func fetchLocalle(forID localleID: Int64, fromManager manager: PersistenceController) -> Localle {
         let predicate = NSPredicate(format: "%K == %d", #keyPath(id), localleID)
         let localle = fetchOrCreate(fromManager: manager, matching: predicate) {
+            //TODO: set up all the properties from the object structs
             $0.id = localleID
             $0.location = Location.fetchLocation(forID: localleID, fromManager: manager)
         }
