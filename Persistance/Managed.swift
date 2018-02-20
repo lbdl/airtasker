@@ -34,7 +34,6 @@ extension Managed where Self: NSManagedObject {
             let newObj: Self = manager.insertObject()
             configure(newObj)
             return newObj
-//            return nil
         }
         return obj
     }

@@ -15,6 +15,7 @@ public class Activity: NSManagedObject {
     @NSManaged fileprivate(set) var id: Int64
     @NSManaged fileprivate(set) var internalMessage: String?
     @NSManaged fileprivate(set) var event: String?
+    @NSManaged var profile: Profile?
     @NSManaged fileprivate(set) var task: Task?
     
     static func insert(into manager: PersistenceController, raw: ActivityRaw) -> Activity {
@@ -22,7 +23,18 @@ public class Activity: NSManagedObject {
         activity.id = raw.id
         activity.internalMessage = raw.internalMessage
         activity.event = raw.event
-        activity.task = Task.fetchTask(forID: raw.id, fromManager: manager)  
+        //activity.task = Task.fetchTask(forID: raw.id, fromManager: manager)
+        return activity
+    }
+    
+    static func fetchActivity(forID activityID: Int64, fromManager manager: PersistenceController, withJSON raw: ActivityRaw) -> Activity {
+        let predicate = NSPredicate(format: "%K == %d", #keyPath(id), activityID)
+        let activity = fetchOrCreate(fromManager: manager, matching: predicate) {
+            //fresh object configure fields from json
+            $0.id = raw.id
+            $0.internalMessage = raw.internalMessage
+            $0.event = raw.event
+        }
         return activity
     }
 }

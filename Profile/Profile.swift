@@ -17,7 +17,7 @@ public class Profile: NSManagedObject {
     @NSManaged fileprivate(set) var name: String
     @NSManaged fileprivate(set) var desc: String
     @NSManaged fileprivate(set) var rating: Double
-    @NSManaged fileprivate(set) var tasks: NSSet?
+    @NSManaged fileprivate(set) var activities: [Activity]?
     @NSManaged var localle: Localle?
     
     static func insert(into manager: PersistenceController, raw: ProfileRaw) -> Profile {

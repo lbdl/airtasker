@@ -41,6 +41,8 @@ class LocallePersistenceTests: QuickSpec {
             let fetchRequest = NSFetchRequest<Location>(entityName: Location.entityName)
             let localleReq = NSFetchRequest<Localle>(entityName: Localle.entityName)
             let profileReq = NSFetchRequest<Profile>(entityName: Profile.entityName)
+            let activitiesReq = NSFetchRequest<Activity>(entityName: Activity.entityName)
+            
             let objs = try! persistentContainer!.viewContext.fetch(fetchRequest)
             for case let obj as NSManagedObject in objs {
                 persistentContainer!.viewContext.delete(obj)
@@ -53,6 +55,11 @@ class LocallePersistenceTests: QuickSpec {
             }
             let profiles = try! persistentContainer!.viewContext.fetch(profileReq)
             for case let obj as NSManagedObject in profiles {
+                persistentContainer!.viewContext.delete(obj)
+                try! persistentContainer!.viewContext.save()
+            }
+            let activities = try! persistentContainer!.viewContext.fetch(activitiesReq)
+            for case let obj as NSManagedObject in activities {
                 persistentContainer!.viewContext.delete(obj)
                 try! persistentContainer!.viewContext.save()
             }
@@ -106,7 +113,7 @@ class LocallePersistenceTests: QuickSpec {
                         done()
                     }
                 }
-                it("the profile with id: 4 has a set of tasks associated with it") {
+                it("the profile with id: 4 has a single activity associated with it") {
                     waitUntil { done in
                         locationMapper?.map(rawValue: locationData!)
                         locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
@@ -118,8 +125,8 @@ class LocallePersistenceTests: QuickSpec {
                         let localle = localles?.first
                         let users = localle?.users
                         let joey = users?.first(where: {$0.id == 4})
-                        expect(joey).toNot(beNil())
-                        expect(joey?.name).to(equal("Joey"))
+                        let activities = joey?.activities
+                        expect(activities?.count).to(equal(1))
                         done()
                     }
                 }

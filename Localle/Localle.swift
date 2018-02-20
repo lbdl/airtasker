@@ -28,13 +28,25 @@ final class Localle: NSManagedObject {
         localle.displayName = raw.displayName
         localle.location = Location.fetchLocation(forID: raw.id, fromManager: manager)
         let usersArray: [Profile] = raw.profiles.map({ profileRaw in
-            let user = Profile.fetchProfile(forID: profileRaw.id, fromManager: manager, withJSON: profileRaw)
+            let user = Profile.insert(into: manager, raw: profileRaw)
             user.localle = localle
             return user
         })
         let usersSet = Set(usersArray)
         localle.users = usersSet
+        _ = makeActivities(raw: raw.activities, manager: manager)
+        
         return localle
+    }
+    
+    fileprivate static func makeActivities(raw: [ActivityRaw], manager: PersistenceController) -> [Activity]{
+        let objArray: [Activity] = raw.map({ activityRaw in
+            let activity = Activity.insert(into: manager, raw: activityRaw)
+            let predicate = NSPredicate(format: "%K == %d", #keyPath(id), activityRaw.profileID)
+            activity.profile = Profile.findOrFetch(fromManager: manager, matching: predicate)
+            return activity
+        })
+        return objArray
     }
     
     

@@ -17,7 +17,7 @@ public class Task: NSManagedObject {
     @NSManaged fileprivate(set) var state: String
     @NSManaged fileprivate(set) var profile: Profile?
     @NSManaged fileprivate(set) var worker: Worker?
-    @NSManaged fileprivate(set) var events: Activity?
+    @NSManaged fileprivate(set) var activities: Set<Activity>?
     
     static func insert(into manager: PersistenceController, raw: TaskRaw) -> Task {
         let task: Task = manager.insertObject()
@@ -29,11 +29,11 @@ public class Task: NSManagedObject {
         return task
     }
     
-    static func fetchTask(forID taskID: Int64, fromManager manager: PersistenceController) -> Task {
+    static func fetchTask(forID taskID: Int64, fromManager manager: PersistenceController, withJSON raw: TaskRaw) -> Task {
         let predicate = NSPredicate(format: "%K == %d", #keyPath(id), taskID)
         let task = fetchOrCreate(fromManager: manager, matching: predicate) {
-            // freshly baked object so we need to set the essential
-            $0.id = taskID
+            // freshly baked object so we need to set the attributes
+            $0.id = 0
         }
         return task
     }
