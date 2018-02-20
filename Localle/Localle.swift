@@ -12,13 +12,12 @@ final class Localle: NSManagedObject {
     @NSManaged fileprivate(set) var id: Int64
     @NSManaged fileprivate(set) var users: Set<Profile>
     @NSManaged fileprivate(set) var location: Location
+    @NSManaged fileprivate(set) var displayName: String?
     
     static func fetchLocalle(forID localleID: Int64, fromManager manager: PersistenceController) -> Localle {
         let predicate = NSPredicate(format: "%K == %d", #keyPath(id), localleID)
         let localle = fetchOrCreate(fromManager: manager, matching: predicate) {
-            //TODO: set up all the properties from the object structs
             $0.id = localleID
-            $0.location = Location.fetchLocation(forID: localleID, fromManager: manager)
         }
         return localle
     }
@@ -26,12 +25,15 @@ final class Localle: NSManagedObject {
     static func insert(into manager: PersistenceController, raw: LocalleRaw) -> Localle {
         let localle: Localle = manager.insertObject()
         localle.id = raw.id
+        localle.displayName = raw.displayName
         localle.location = Location.fetchLocation(forID: raw.id, fromManager: manager)
-        _ = raw.profiles.map({ profileRaw in
-            let user = Profile.fetchProfile(forID: profileRaw.id, fromManager: manager)
-            localle.users.insert(user)
+        let usersArray: [Profile] = raw.profiles.map({ profileRaw in
+            let user = Profile.fetchProfile(forID: profileRaw.id, fromManager: manager, withJSON: profileRaw)
+            user.localle = localle
+            return user
         })
-        
+        let usersSet = Set(usersArray)
+        localle.users = usersSet
         return localle
     }
     

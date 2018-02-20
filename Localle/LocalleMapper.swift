@@ -43,9 +43,7 @@ class LocalleMapper: JSONMapper {
         if let obj = rawJson.associatedValue() as? LocalleRaw {
             persistanceManager.updateContext(block: {
                 _ = Localle.insert(into: self.persistanceManager, raw: obj)
-                _ = obj.profiles.map({ profileRaw in
-                    _ = Profile.insert(into: self.persistanceManager, raw: profileRaw)
-                })
+
                 _ = obj.tasks.map({ taskRaw in
                     _ = Task.insert(into: self.persistanceManager, raw: taskRaw)
                 })

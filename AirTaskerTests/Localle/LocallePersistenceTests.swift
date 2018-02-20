@@ -14,33 +14,40 @@ import CoreData
 
 class LocallePersistenceTests: QuickSpec {
     override func spec() {
-        
         var locationData: Data?
+        var localleData: Data?
+        var localleMapper: LocalleMapper?
         var locationMapper: LocationMapper?
-        
-        var rawData: Data?
-        var sut: LocalleMapper?
         var manager: PersistenceManager?
         var persistentContainer: NSPersistentContainer?
         
-        func  flushDB() {
-            let locationReq = NSFetchRequest<Localle>(entityName: Localle.entityName)
-            let profileReq = NSFetchRequest<Profile>(entityName: Profile.entityName)
-            let activitiesReq = NSFetchRequest<Activity>(entityName: Activity.entityName)
-            let tasksReq = NSFetchRequest<Task>(entityName: Task.entityName)
+        beforeEach {
+            locationData = TestSuiteHelpers.readLocalData(testCase: .locations)!
+            localleData = TestSuiteHelpers.readLocalData(testCase: .localle)!
+            
+            TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
+                persistentContainer = container
+                manager = PersistenceManager(store: persistentContainer!)
+                locationMapper = LocationMapper(storeManager: manager!)
+                localleMapper = LocalleMapper(storeManager: manager!)
+            })
+        }
+        
+        afterEach {
+            flushDB()
+        }
+        
+        func flushDB() {
+            let fetchRequest = NSFetchRequest<Location>(entityName: Location.entityName)
             let localleReq = NSFetchRequest<Localle>(entityName: Localle.entityName)
+            let profileReq = NSFetchRequest<Profile>(entityName: Profile.entityName)
+            let objs = try! persistentContainer!.viewContext.fetch(fetchRequest)
+            for case let obj as NSManagedObject in objs {
+                persistentContainer!.viewContext.delete(obj)
+                try! persistentContainer!.viewContext.save()
+            }
             let localles = try! persistentContainer!.viewContext.fetch(localleReq)
             for case let obj as NSManagedObject in localles {
-                persistentContainer!.viewContext.delete(obj)
-                try! persistentContainer!.viewContext.save()
-            }
-            let activities = try! persistentContainer!.viewContext.fetch(activitiesReq)
-            for case let obj as NSManagedObject in activities {
-                persistentContainer!.viewContext.delete(obj)
-                try! persistentContainer!.viewContext.save()
-            }
-            let tasks = try! persistentContainer!.viewContext.fetch(tasksReq)
-            for case let obj as NSManagedObject in tasks {
                 persistentContainer!.viewContext.delete(obj)
                 try! persistentContainer!.viewContext.save()
             }
@@ -49,76 +56,74 @@ class LocallePersistenceTests: QuickSpec {
                 persistentContainer!.viewContext.delete(obj)
                 try! persistentContainer!.viewContext.save()
             }
-            let locations = try! persistentContainer!.viewContext.fetch(locationReq)
-            for case let obj as NSManagedObject in locations {
-                persistentContainer!.viewContext.delete(obj)
-                try! persistentContainer!.viewContext.save()
-            }
-            
         }
         
-        beforeEach {
-            rawData = TestSuiteHelpers.readLocalData(testCase: .localle)
-            locationData = TestSuiteHelpers.readLocalData(testCase: .locations)
-            TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
-                persistentContainer = container
-                manager = PersistenceManager(store: persistentContainer!)
-                sut = LocalleMapper(storeManager: manager!)
-                locationMapper = LocationMapper(storeManager: manager!)
-                locationMapper?.map(rawValue: locationData!)
-                locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
-            })
-        }
-        
-        afterEach {
-            flushDB()
-        }
-        
-        context("GIVEN a manager AND good JSON") {
-            describe("Localle") {
-                it ("is persisted") {
+        context("GIVEN a manager and json") {
+            describe("WHEN we persist the localle object") {
+                it("creates a localle object in the store") {
                     waitUntil { done in
-                        sut?.map(rawValue: rawData!)
-                        sut?.persist(rawJson: (sut?.mappedValue)!)
-                        let request = NSFetchRequest<Localle>(entityName: Localle.entityName)
-                        let results = try! persistentContainer?.viewContext.fetch(request)
-                        let actual = results?.first
+                        locationMapper?.map(rawValue: locationData!)
+                        locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
+                        localleMapper?.map(rawValue: localleData!)
+                        localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
+                        let localleRequest = NSFetchRequest<Localle>(entityName: Localle.entityName)
+                        localleRequest.predicate = NSPredicate(format: "displayName == %@", "Chatswood NSW 2067, Australia")
+                        let localles = try! persistentContainer?.viewContext.fetch(localleRequest)
+                        let actual = localles?.first
                         expect(actual).to(beAKindOf(Localle.self))
                         done()
                     }
                 }
-                it("has the correct location") {
+                it("the localle has a set of profiles") {
                     waitUntil { done in
-                        sut?.map(rawValue: rawData!)
-                        sut?.persist(rawJson: (sut?.mappedValue)!)
-                        let request = NSFetchRequest<Localle>(entityName: Localle.entityName)
-                        request.predicate = NSPredicate(format: "id == %d", 3)
-                        let results = try! persistentContainer?.viewContext.fetch(request)
-                        let actual = results?.first
-                        expect(actual?.id).to(equal(actual?.location.id))
-                        expect(actual?.location.name).to(equal("Chatswood NSW 2067, Australia"))
-                        expect(actual?.location.localle).to(equal(actual))
-                        expect(actual?.location.lat).to(equal(-33.79608))
-                        expect(actual?.location.long).to(equal(151.1831))
+                        locationMapper?.map(rawValue: locationData!)
+                        locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
+                        localleMapper?.map(rawValue: localleData!)
+                        localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
+                        let localleRequest = NSFetchRequest<Localle>(entityName: Localle.entityName)
+                        localleRequest.predicate = NSPredicate(format: "displayName == %@", "Chatswood NSW 2067, Australia")
+                        let localles = try! persistentContainer?.viewContext.fetch(localleRequest)
+                        let actual = localles?.first
+                        expect(actual?.users).to(beAKindOf(Set<Profile>.self))
+                        expect(actual?.users.count).to(equal(2))
                         done()
                     }
                 }
-                it("has a collection of profile objects"){
+                it("the profile with id: 4 has name: Joey") {
                     waitUntil { done in
-                        sut?.map(rawValue: rawData!)
-                        sut?.persist(rawJson: (sut?.mappedValue)!)
-                        let request = NSFetchRequest<Localle>(entityName: Localle.entityName)
-                        request.predicate = NSPredicate(format: "id == %d", 3)
-                        let results = try! persistentContainer?.viewContext.fetch(request)
-                        let actual = results?.first
-                        expect(actual?.users).to(beAKindOf(Set<Profile>.self))
-                        expect(actual?.users.count).to(beGreaterThan(0))
+                        locationMapper?.map(rawValue: locationData!)
+                        locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
+                        localleMapper?.map(rawValue: localleData!)
+                        localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
+                        let localleRequest = NSFetchRequest<Localle>(entityName: Localle.entityName)
+                        localleRequest.predicate = NSPredicate(format: "displayName == %@", "Chatswood NSW 2067, Australia")
+                        let localles = try! persistentContainer?.viewContext.fetch(localleRequest)
+                        let localle = localles?.first
+                        let users = localle?.users
+                        let joey = users?.first(where: {$0.id == 4})
+                        expect(joey).toNot(beNil())
+                        expect(joey?.name).to(equal("Joey"))
+                        done()
+                    }
+                }
+                it("the profile with id: 4 has a set of tasks associated with it") {
+                    waitUntil { done in
+                        locationMapper?.map(rawValue: locationData!)
+                        locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
+                        localleMapper?.map(rawValue: localleData!)
+                        localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
+                        let localleRequest = NSFetchRequest<Localle>(entityName: Localle.entityName)
+                        localleRequest.predicate = NSPredicate(format: "displayName == %@", "Chatswood NSW 2067, Australia")
+                        let localles = try! persistentContainer?.viewContext.fetch(localleRequest)
+                        let localle = localles?.first
+                        let users = localle?.users
+                        let joey = users?.first(where: {$0.id == 4})
+                        expect(joey).toNot(beNil())
+                        expect(joey?.name).to(equal("Joey"))
                         done()
                     }
                 }
             }
-            
-           
         }
     }
     // work around so that xcode9.2 actually see's the tests

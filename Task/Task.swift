@@ -25,7 +25,7 @@ public class Task: NSManagedObject {
         task.name = raw.name
         task.desc = raw.desc
         task.state = raw.eventState
-        task.profile = Profile.fetchProfile(forID: raw.profileID, fromManager: manager)
+        //task.profile = Profile.fetchProfile(forID: raw.profileID, fromManager: manager)
         return task
     }
     

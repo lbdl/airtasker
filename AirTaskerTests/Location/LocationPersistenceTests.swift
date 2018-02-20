@@ -32,7 +32,6 @@ class LocationPersistenceTests: QuickSpec {
                 persistentContainer!.viewContext.delete(obj)
                 try! persistentContainer!.viewContext.save()
             }
-            
         }
         
         beforeSuite {

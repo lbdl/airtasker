@@ -18,7 +18,7 @@ public class Profile: NSManagedObject {
     @NSManaged fileprivate(set) var desc: String
     @NSManaged fileprivate(set) var rating: Double
     @NSManaged fileprivate(set) var tasks: NSSet?
-    @NSManaged fileprivate(set) var localle: Localle?
+    @NSManaged var localle: Localle?
     
     static func insert(into manager: PersistenceController, raw: ProfileRaw) -> Profile {
         let profile: Profile = manager.insertObject()
@@ -27,15 +27,19 @@ public class Profile: NSManagedObject {
         profile.name = raw.firstName
         profile.desc = raw.desc
         profile.rating = raw.rating
-        profile.localle = Localle.fetchLocalle(forID: raw.locationID, fromManager: manager)
+        //profile.localle = Localle.fetchLocalle(forID: raw.locationID, fromManager: manager)
         return profile
     }
     
-    static func fetchProfile(forID profileID: Int64, fromManager manager: PersistenceController) -> Profile {
+    static func fetchProfile(forID profileID: Int64, fromManager manager: PersistenceController, withJSON raw: ProfileRaw) -> Profile {
         let predicate = NSPredicate(format: "%K == %d", #keyPath(id), profileID)
         let profile = fetchOrCreate(fromManager: manager, matching: predicate) {
             // freshly minted profile object so configure essentials
-            $0.id = profileID
+            $0.id = raw.id
+            $0.avatar_url = raw.avatarURL
+            $0.name = raw.firstName
+            $0.desc = raw.desc
+            $0.rating = raw.rating
         }
         return profile
     }
