@@ -4,7 +4,8 @@
         <attribute name="event" optional="YES" attributeType="String" defaultValueString="&quot;&quot;" syncable="YES"/>
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="internalMessage" attributeType="String" defaultValueString="&quot;&quot;" syncable="YES"/>
-        <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="events" inverseEntity="Task" syncable="YES"/>
+        <relationship name="profile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Profile" inverseName="activities" inverseEntity="Profile" syncable="YES"/>
+        <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="activities" inverseEntity="Task" syncable="YES"/>
     </entity>
     <entity name="Localle" representedClassName=".Localle" syncable="YES">
         <attribute name="displayName" optional="YES" attributeType="String" defaultValueString="&quot;&quot;" syncable="YES"/>
@@ -25,16 +26,15 @@
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" defaultValueString="&quot;&quot;" syncable="YES"/>
         <attribute name="rating" attributeType="Double" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="activities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Activity" inverseName="profile" inverseEntity="Activity" syncable="YES"/>
         <relationship name="localle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Localle" inverseName="users" inverseEntity="Localle" syncable="YES"/>
-        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="profile" inverseEntity="Task" syncable="YES"/>
     </entity>
     <entity name="Task" representedClassName=".Task" syncable="YES">
         <attribute name="desc" attributeType="String" defaultValueString="&quot;&quot;" syncable="YES"/>
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" defaultValueString="&quot;&quot;" syncable="YES"/>
         <attribute name="state" attributeType="String" defaultValueString="&quot;&quot;" syncable="YES"/>
-        <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Activity" inverseName="task" inverseEntity="Activity" syncable="YES"/>
-        <relationship name="profile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Profile" inverseName="tasks" inverseEntity="Profile" syncable="YES"/>
+        <relationship name="activities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Activity" inverseName="task" inverseEntity="Activity" syncable="YES"/>
         <relationship name="worker" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Worker" inverseName="task" inverseEntity="Worker" syncable="YES"/>
     </entity>
     <entity name="Worker" representedClassName="Worker" syncable="YES">
@@ -42,11 +42,11 @@
         <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="worker" inverseEntity="Task" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Activity" positionX="54" positionY="-114" width="128" height="105"/>
-        <element name="Localle" positionX="-155" positionY="-66" width="128" height="105"/>
-        <element name="Location" positionX="-416" positionY="-243" width="128" height="120"/>
-        <element name="Profile" positionX="-405" positionY="-54" width="128" height="150"/>
-        <element name="Task" positionX="-153" positionY="99" width="128" height="150"/>
-        <element name="Worker" positionX="135" positionY="108" width="128" height="75"/>
+        <element name="Localle" positionX="-20" positionY="-180" width="128" height="105"/>
+        <element name="Location" positionX="-459" positionY="-210" width="128" height="120"/>
+        <element name="Profile" positionX="-263" positionY="-27" width="128" height="148"/>
+        <element name="Task" positionX="-108" positionY="180" width="128" height="133"/>
+        <element name="Worker" positionX="169" positionY="197" width="128" height="73"/>
+        <element name="Activity" positionX="-522" positionY="228" width="128" height="118"/>
     </elements>
 </model>
