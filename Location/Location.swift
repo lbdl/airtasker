@@ -23,7 +23,7 @@ final class Location: NSManagedObject {
         location.lat = raw.lat
         location.long = raw.long
         location.name = raw.name
-        location.localle = Localle.fetchLocalle(forID: raw.id, fromManager: manager)
+        //location.localle = Localle.fetchLocalle(forID: raw.id, fromManager: manager, raw: <#LocalleRaw#>)
         return location
     }
     

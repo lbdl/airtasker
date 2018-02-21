@@ -29,6 +29,8 @@ extension Managed {
 extension Managed where Self: NSManagedObject {
     static var entityName: String { return entity().name! }
     
+    /// Allows for the creation of objects and configuration via the passed in configuration block
+    /// if the object is not already in the store
     static func fetchOrCreate(fromManager manager: PersistenceController, matching predicate: NSPredicate, configure: (Self) -> ()) -> Self {
         guard let obj = findOrFetch(fromManager: manager, matching: predicate) else {
             let newObj: Self = manager.insertObject()

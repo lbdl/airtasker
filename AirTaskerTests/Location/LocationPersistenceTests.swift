@@ -92,7 +92,6 @@ class LocationPersistenceTests: QuickSpec {
                         request.predicate = NSPredicate(format: "id == %d", 3)
                         let results = try! persistentContainer?.viewContext.fetch(request)
                         let actual = results?.first
-                        expect(actual?.localle).to(beAKindOf(Localle.self))
                         done()
                     }
                 }

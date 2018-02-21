@@ -16,7 +16,7 @@ public class Activity: NSManagedObject {
     @NSManaged fileprivate(set) var internalMessage: String?
     @NSManaged fileprivate(set) var event: String?
     @NSManaged var profile: Profile?
-    @NSManaged fileprivate(set) var task: Task?
+    @NSManaged var task: Task?
     
     static func insert(into manager: PersistenceController, raw: ActivityRaw) -> Activity {
         let activity: Activity = manager.insertObject()

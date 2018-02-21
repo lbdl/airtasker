@@ -20,10 +20,15 @@ class LocallePersistenceTests: QuickSpec {
         var locationMapper: LocationMapper?
         var manager: PersistenceManager?
         var persistentContainer: NSPersistentContainer?
+        var fetchPredicate: NSPredicate?
+        var localleRequest: NSFetchRequest<Localle>?
         
         beforeEach {
             locationData = TestSuiteHelpers.readLocalData(testCase: .locations)!
             localleData = TestSuiteHelpers.readLocalData(testCase: .localle)!
+            fetchPredicate = NSPredicate(format: "displayName == %@ && id == %d", "Chatswood NSW 2067, Australia", 3)
+            localleRequest = NSFetchRequest<Localle>(entityName: Localle.entityName)
+            localleRequest?.predicate = fetchPredicate!
             
             TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
                 persistentContainer = container
@@ -73,9 +78,7 @@ class LocallePersistenceTests: QuickSpec {
                         locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
                         localleMapper?.map(rawValue: localleData!)
                         localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
-                        let localleRequest = NSFetchRequest<Localle>(entityName: Localle.entityName)
-                        localleRequest.predicate = NSPredicate(format: "displayName == %@", "Chatswood NSW 2067, Australia")
-                        let localles = try! persistentContainer?.viewContext.fetch(localleRequest)
+                        let localles = try! persistentContainer?.viewContext.fetch(localleRequest!)
                         let actual = localles?.first
                         expect(actual).to(beAKindOf(Localle.self))
                         done()
@@ -87,9 +90,7 @@ class LocallePersistenceTests: QuickSpec {
                         locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
                         localleMapper?.map(rawValue: localleData!)
                         localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
-                        let localleRequest = NSFetchRequest<Localle>(entityName: Localle.entityName)
-                        localleRequest.predicate = NSPredicate(format: "displayName == %@", "Chatswood NSW 2067, Australia")
-                        let localles = try! persistentContainer?.viewContext.fetch(localleRequest)
+                        let localles = try! persistentContainer?.viewContext.fetch(localleRequest!)
                         let actual = localles?.first
                         expect(actual?.users).to(beAKindOf(Set<Profile>.self))
                         expect(actual?.users.count).to(equal(2))
@@ -102,9 +103,7 @@ class LocallePersistenceTests: QuickSpec {
                         locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
                         localleMapper?.map(rawValue: localleData!)
                         localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
-                        let localleRequest = NSFetchRequest<Localle>(entityName: Localle.entityName)
-                        localleRequest.predicate = NSPredicate(format: "displayName == %@", "Chatswood NSW 2067, Australia")
-                        let localles = try! persistentContainer?.viewContext.fetch(localleRequest)
+                        let localles = try! persistentContainer?.viewContext.fetch(localleRequest!)
                         let localle = localles?.first
                         let users = localle?.users
                         let joey = users?.first(where: {$0.id == 4})
@@ -119,14 +118,87 @@ class LocallePersistenceTests: QuickSpec {
                         locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
                         localleMapper?.map(rawValue: localleData!)
                         localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
-                        let localleRequest = NSFetchRequest<Localle>(entityName: Localle.entityName)
-                        localleRequest.predicate = NSPredicate(format: "displayName == %@", "Chatswood NSW 2067, Australia")
-                        let localles = try! persistentContainer?.viewContext.fetch(localleRequest)
+                        let localles = try! persistentContainer?.viewContext.fetch(localleRequest!)
                         let localle = localles?.first
                         let users = localle?.users
                         let joey = users?.first(where: {$0.id == 4})
                         let activities = joey?.activities
                         expect(activities?.count).to(equal(1))
+                        done()
+                    }
+                }
+                it("the profile with id: 3 has 4 activities associated with it") {
+                    waitUntil { done in
+                        locationMapper?.map(rawValue: locationData!)
+                        locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
+                        localleMapper?.map(rawValue: localleData!)
+                        localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
+                        let localles = try! persistentContainer?.viewContext.fetch(localleRequest!)
+                        let localle = localles?.first
+                        let users = localle?.users
+                        let actual = users?.first(where: {$0.id == 3})
+                        let activities = actual?.activities
+                        expect(activities?.count).to(equal(4))
+                        done()
+                    }
+                }
+                it("the profile with id: 4 activtity has an associated task") {
+                    waitUntil { done in
+                        locationMapper?.map(rawValue: locationData!)
+                        locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
+                        localleMapper?.map(rawValue: localleData!)
+                        localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
+                        let localles = try! persistentContainer?.viewContext.fetch(localleRequest!)
+                        let localle = localles?.first
+                        let users = localle?.users
+                        let actual = users?.first(where: {$0.id == 4})
+                        let activities = actual?.activities
+                        let activity = activities?.first(where: {$0.id == 2})
+                        expect(activity?.task!).to(beAKindOf(Task.self))
+                        done()
+                    }
+                }
+                it("the activity associatied with profile id:4 has an associated task with correct properties") {
+                    waitUntil { done in
+                        locationMapper?.map(rawValue: locationData!)
+                        locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
+                        localleMapper?.map(rawValue: localleData!)
+                        localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
+                        let localles = try! persistentContainer?.viewContext.fetch(localleRequest!)
+                        let localle = localles?.first
+                        let users = localle?.users
+                        let actual = users?.first(where: {$0.id == 4})
+                        let activities = actual?.activities
+                        let activity = activities?.first(where: {$0.id == 2})
+                        let task = activity?.task
+                        expect(task?.desc).to(equal("A good clean including: \nBathrooms - clean toilets, bath, shower screens and vanities, wash tiled walls and mop floors. Clean window frames. x3"))
+                        expect(task?.name).to(equal("Clean a 4 bedroom large house"))
+                        expect(task?.activities?.count).to(equal(2))
+                        expect(task?.state).to(equal("assigned"))
+                        expect(task?.worker?.id).to(equal(1))
+                        expect(task?.worker?.profile).to(beNil())
+                        done()
+                    }
+                }
+                it("activity id: 3 associatied with profile id:3 has an associated task with associated worker with associated profile") {
+                    waitUntil { done in
+                        locationMapper?.map(rawValue: locationData!)
+                        locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
+                        localleMapper?.map(rawValue: localleData!)
+                        localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
+                        let localles = try! persistentContainer?.viewContext.fetch(localleRequest!)
+                        let localle = localles?.first
+                        let users = localle?.users
+                        let actual = users?.first(where: {$0.id == 3})
+                        let activities = actual?.activities
+                        let activity = activities?.first(where: {$0.id == 3})
+                        let task = activity?.task
+                        expect(task?.desc).to(equal("Hi, I have two baskets of ironing and folding and putting away that I would love some extra help with if someone has time. Need this to be done at my house."))
+                        expect(task?.name).to(equal("2 x Baskets of Ironing"))
+                        expect(task?.activities?.count).to(equal(3))
+                        expect(task?.state).to(equal("assigned"))
+                        expect(task?.worker?.id).to(equal(3))
+                        expect(task?.worker?.profile?.name).to(equal("Phoebe"))
                         done()
                     }
                 }

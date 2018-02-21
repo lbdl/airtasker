@@ -80,7 +80,6 @@ class ActivityPersistanceTests: QuickSpec {
                         expect(actual?.id).to(equal(4))
                         expect(actual?.event).to(equal("post"))
                         expect(actual?.internalMessage).to(equal("{profileName} posted {taskName}"))
-                        expect(actual?.task?.id).to(equal(4))
                         done()
                     }
                 }

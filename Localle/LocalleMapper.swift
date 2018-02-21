@@ -43,6 +43,7 @@ class LocalleMapper: JSONMapper {
         if let obj = rawJson.associatedValue() as? LocalleRaw {
             persistanceManager.updateContext(block: {
                 _ = Localle.insert(into: self.persistanceManager, raw: obj)
+                //_ = Localle.fetchLocalle(forID: obj.id, fromManager: self.persistanceManager, raw: obj)
             })
         }
     }

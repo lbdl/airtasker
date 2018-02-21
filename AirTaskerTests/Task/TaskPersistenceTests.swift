@@ -89,7 +89,6 @@ class TaskPersistenceTests: QuickSpec {
                         expect(actual?.desc).to(equal("Looking for someone to hang a mirror on brick wall above a fire place."))
                         expect(actual?.state).to(equal("posted"))
                         expect(actual?.worker).to(beNil())
-                        expect(actual?.profile?.id).to(equal(2))
                         done()
                     }
                 }
