@@ -180,7 +180,7 @@ class LocallePersistenceTests: QuickSpec {
                         done()
                     }
                 }
-                it("activity id: 3 associatied with profile id:3 has an associated task with associated worker with associated profile") {
+                it("activity id: 3 associatied with profile id:3 has an associated with worker associated profile") {
                     waitUntil { done in
                         locationMapper?.map(rawValue: locationData!)
                         locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
@@ -200,6 +200,64 @@ class LocallePersistenceTests: QuickSpec {
                         expect(task?.worker?.id).to(equal(3))
                         expect(task?.worker?.profile?.name).to(equal("Phoebe"))
                         done()
+                    }
+                }
+                describe("WHEN we parse another localle") {
+                    it("persists 2 localles") {
+                        waitUntil {done in
+                            locationMapper?.map(rawValue: locationData!)
+                            localleMapper?.map(rawValue: localleData!)
+                            locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
+                            localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
+                            
+                            // map a second localle
+                            localleData = TestSuiteHelpers.readLocalData(testCase: .localle2)
+                            localleMapper?.map(rawValue: localleData!)
+                            localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
+                            let locallesReq = NSFetchRequest<Localle>(entityName: Localle.entityName)
+                            let localles = try! persistentContainer?.viewContext.fetch(locallesReq)
+                            expect(localles?.count).to(equal(2))
+                            done()
+                        }
+                    }
+                    it("localle:5 contains profile:5 with location:2") {
+                        waitUntil {done in
+                            locationMapper?.map(rawValue: locationData!)
+                            localleMapper?.map(rawValue: localleData!)
+                            locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
+                            localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
+                            
+                            // map a second localle
+                            localleData = TestSuiteHelpers.readLocalData(testCase: .localle2)
+                            localleMapper?.map(rawValue: localleData!)
+                            localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
+                            let locallesReq = NSFetchRequest<Localle>(entityName: Localle.entityName)
+                            locallesReq.predicate = NSPredicate(format: "id == %d", 5)
+                            let localles = try! persistentContainer?.viewContext.fetch(locallesReq)
+                            let localle = localles?.first
+                            let actual = localle?.users.first(where: {$0.id == 5})
+                            expect(actual?.location.name).to(equal("Parramatta NSW, Australia"))
+                            expect(actual?.location.id).to(equal(2))
+                            done()
+                        }
+                    }
+                    it("persists a total of 8 activities") {
+                        waitUntil {done in
+                            //persist first localle
+                            locationMapper?.map(rawValue: locationData!)
+                            localleMapper?.map(rawValue: localleData!)
+                            locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
+                            localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
+                            
+                            // persist a second localle
+                            localleData = TestSuiteHelpers.readLocalData(testCase: .localle2)
+                            localleMapper?.map(rawValue: localleData!)
+                            localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
+                            let activitiesReq = NSFetchRequest<Activity>(entityName: Activity.entityName)
+                            let activities = try! persistentContainer?.viewContext.fetch(activitiesReq)
+                            expect(activities?.count).to(equal(8))
+                            done()
+                        }
                     }
                 }
             }

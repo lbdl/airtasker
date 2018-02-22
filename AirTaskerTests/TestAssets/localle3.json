@@ -1,0 +1,82 @@
+{
+	"display_name"  : "Chatswood NSW 2067, Australia",
+    "id"  : 3,
+    "latitude"  : "-33.79608",
+    "longitude"  : "151.1831",
+	"worker_count" : 0,
+	"worker_ids" : [],
+	"recent_activity" : [
+		{
+			"task_id" : 2,
+			"profile_id" : 4,
+			"message" : "{profileName} commented on {taskName}",
+			"created_at" : "",
+			"event" : "comment"
+		},
+		{
+			"task_id" : 3,
+			"profile_id" : 3,
+			"message" : "{profileName} was assigned {taskName}",
+			"created_at" : "",
+			"event" : "assigned"
+		},
+		{
+			"task_id" : 2,
+			"profile_id" : 3,
+			"message" : "{profileName} made an offer on {taskName}",
+			"created_at" : "",
+			"event" : "offer"
+
+		},
+		{
+			"task_id" : 3,
+			"profile_id" : 3,
+			"message" : "{profileName} commented on {taskName}",
+			"created_at" : "",
+			"event" : "comment"
+		},
+		{
+			"task_id" : 3,
+			"profile_id" : 3,
+			"message" : "{profileName} made an offer on {taskName}",
+			"created_at" : "",
+			"event" : "offer"
+		}	
+	],
+	"profiles" : [
+		{
+		    "id": 4,
+		    "avatar_mini_url": "/img/4.jpg",
+		    "first_name": "Joey",
+		    "description" :"how you doin?",
+		    "rating": 3.5,
+		    "location_id":5 
+		},
+		{
+		    "id": 3,
+		    "avatar_mini_url": "/img/3.jpg",
+		    "first_name": "Phoebe",
+		    "description" : "smelly cat, smelly cat what are they feeding you",
+		    "rating": 3,
+		    "location_id":5 
+		}
+	],
+	"tasks" : [
+		{
+		    "id": 2,
+		    "name": "Clean a 4 bedroom large house",
+		    "description": "A good clean including: \nBathrooms - clean toilets, bath, shower screens and vanities, wash tiled walls and mop floors. Clean window frames. x3",
+		    "state": "assigned",
+		    "poster_id": 10,
+		    "worker_id": 1
+		},
+		{
+		    "id": 3,
+		    "name": "2 x Baskets of Ironing",
+		    "description": "Hi, I have two baskets of ironing and folding and putting away that I would love some extra help with if someone has time. Need this to be done at my house.",
+		    "state": "assigned",
+		    "poster_id": 10,
+		    "worker_id": 3
+		}
+	]
+}

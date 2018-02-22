@@ -20,6 +20,7 @@ class TestSuiteHelpers: NSObject {
         case task
         case activity
         case localle
+        case localle2
         case badLocation
         case badProfile
         case badTask
@@ -43,6 +44,8 @@ class TestSuiteHelpers: NSObject {
         case .task:
             url = testBundle.url(forResource: "tasks", withExtension: "json")
         case .localle:
+            url = testBundle.url(forResource: "localle3", withExtension: "json")
+        case .localle2:
             url = testBundle.url(forResource: "localle5", withExtension: "json")
         case .badTask:
             url = testBundle.url(forResource: "badTasks", withExtension: "json")

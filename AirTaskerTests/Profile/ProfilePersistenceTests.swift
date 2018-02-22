@@ -82,6 +82,7 @@ class ProfilePersistenceTests: QuickSpec {
                         expect(actual?.desc).to(equal("smelly cat, smelly cat what are they feeding you"))
                         expect(actual?.rating).to(equal(3))
                         expect(actual?.avatar_url).to(equal("/img/3.jpg"))
+                        expect(actual?.location.id).to(equal(5))
                         done()
                     }
                 }

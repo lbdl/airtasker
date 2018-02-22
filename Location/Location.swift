@@ -16,6 +16,7 @@ final class Location: NSManagedObject {
     @NSManaged fileprivate(set) var long: Double
     @NSManaged fileprivate(set) var name: String
     @NSManaged fileprivate(set) var localle: Localle
+    @NSManaged fileprivate(set) var profiles: Set<Profile>?
     
     static func insert(into manager: PersistenceController, raw: LocationRaw) -> Location {
         let location: Location = manager.insertObject()
@@ -23,7 +24,6 @@ final class Location: NSManagedObject {
         location.lat = raw.lat
         location.long = raw.long
         location.name = raw.name
-        //location.localle = Localle.fetchLocalle(forID: raw.id, fromManager: manager, raw: <#LocalleRaw#>)
         return location
     }
     

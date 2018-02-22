@@ -1,55 +1,48 @@
 {
-	"display_name"  : "Chatswood NSW 2067, Australia",
-    "id"  : 3,
-    "latitude"  : "-33.79608",
-    "longitude"  : "151.1831",
-	"worker_count" : 0,
-	"worker_ids" : [],
+	"display_name" : "Rockdale NSW 2216, Australia",
+    "id"  : 5,
+    "latitude"  : "-33.95082",
+    "longitude"  : "151.1388",
+	"worker_count" : 4,
+	"worker_ids" : [1,2,3,4],
 	"recent_activity" : [
 		{
-			"task_id" : 2,
-			"profile_id" : 4,
-			"message" : "{profileName} commented on {taskName}",
+			"task_id" : 5,
+			"profile_id" : 1,
+			"message" : "{profileName} asked a question about {taskName}",
 			"created_at" : "",
 			"event" : "comment"
 		},
 		{
-			"task_id" : 3,
-			"profile_id" : 3,
-			"message" : "{profileName} was assigned {taskName}",
+			"task_id" : 4,
+			"profile_id" : 5,
+			"message" : "{profileName} posted {taskName}",
 			"created_at" : "",
-			"event" : "assigned"
+			"event" : "post"
 		},
 		{
-			"task_id" : 2,
-			"profile_id" : 3,
-			"message" : "{profileName} made an offer on {taskName}",
+			"task_id" : 5,
+			"profile_id" : 2,
+			"message" : "{profileName} posted {taskName}",
 			"created_at" : "",
-			"event" : "offer"
-
-		},
-		{
-			"task_id" : 3,
-			"profile_id" : 3,
-			"message" : "{profileName} commented on {taskName}",
-			"created_at" : "",
-			"event" : "comment"
-		},
-		{
-			"task_id" : 3,
-			"profile_id" : 3,
-			"message" : "{profileName} made an offer on {taskName}",
-			"created_at" : "",
-			"event" : "offer"
-		}	
+			"event" : "post"
+		}
 	],
 	"profiles" : [
 		{
-		    "id": 4,
-		    "avatar_mini_url": "/img/4.jpg",
-		    "first_name": "Joey",
-		    "description" :"how you doin?",
-		    "rating": 3.5,
+		    "id": 1,
+		    "avatar_mini_url": "/img/1.jpg",
+		    "first_name": "Rachel",
+		    "description":"gal pal rachel green",
+		    "rating": 4,
+		    "location_id":5 
+		},
+		{
+		    "id": 2,
+		    "avatar_mini_url": "/img/2.jpg",
+		    "first_name": "Monica",
+		    "description" : "monica fellula gellar",
+		    "rating": 4.5,
 		    "location_id":5 
 		},
 		{
@@ -59,24 +52,40 @@
 		    "description" : "smelly cat, smelly cat what are they feeding you",
 		    "rating": 3,
 		    "location_id":5 
+		},
+		{
+		    "id": 4,
+		    "avatar_mini_url": "/img/4.jpg",
+		    "first_name": "Joey",
+		    "description" :"how you doin?",
+		    "rating": 3.5,
+		    "location_id":5 
+		},
+		{
+		    "id": 5,
+		    "avatar_mini_url": "/img/5.jpg",
+		    "first_name": "Chandler",
+		    "description" : "i'm not great at advice, can I interest you in a sarcastic comment?",
+		    "rating": 4.5,
+		    "location_id":2 
 		}
 	],
 	"tasks" : [
 		{
-		    "id": 2,
-		    "name": "Clean a 4 bedroom large house",
-		    "description": "A good clean including: \nBathrooms - clean toilets, bath, shower screens and vanities, wash tiled walls and mop floors. Clean window frames. x3",
-		    "state": "assigned",
-		    "poster_id": 10,
-		    "worker_id": 1
+		    "id": 4,
+		    "name": "Mystery Shopper Rockdale NSW",
+		    "description": "1. Visit a shop anonymously as an \"undercover customer.\" \n2. Make two short enquiries in the same shop. \n3. Fill in a questionnaire. \n4. Report by phone.",
+		    "state": "posted",
+		    "poster_id": 5,
+		    "worker_id": null
 		},
 		{
-		    "id": 3,
-		    "name": "2 x Baskets of Ironing",
-		    "description": "Hi, I have two baskets of ironing and folding and putting away that I would love some extra help with if someone has time. Need this to be done at my house.",
-		    "state": "assigned",
-		    "poster_id": 10,
-		    "worker_id": 3
+		    "id": 5,
+		    "name": "Hang mirror",
+		    "description": "Looking for someone to hang a mirror on brick wall above a fire place.",
+		    "state": "posted",
+		    "poster_id": 2,
+		    "worker_id": null
 		}
 	]
 }
