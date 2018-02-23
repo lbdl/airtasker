@@ -19,7 +19,7 @@ class LocallePersistenceTests: QuickSpec {
         var localleMapper: LocalleMapper?
         var locationMapper: LocationMapper?
         var manager: PersistenceManager?
-        var persistentContainer: NSPersistentContainer?
+        var persistentContainer: ManagedContextProtocol?
         var fetchPredicate: NSPredicate?
         var localleRequest: NSFetchRequest<Localle>?
         
@@ -48,25 +48,25 @@ class LocallePersistenceTests: QuickSpec {
             let profileReq = NSFetchRequest<Profile>(entityName: Profile.entityName)
             let activitiesReq = NSFetchRequest<Activity>(entityName: Activity.entityName)
             
-            let objs = try! persistentContainer!.viewContext.fetch(fetchRequest)
+            let objs = try! persistentContainer!.fetch(fetchRequest)
             for case let obj as NSManagedObject in objs {
-                persistentContainer!.viewContext.delete(obj)
-                try! persistentContainer!.viewContext.save()
+                persistentContainer!.delete(obj)
+                try! persistentContainer!.save()
             }
-            let localles = try! persistentContainer!.viewContext.fetch(localleReq)
+            let localles = try! persistentContainer!.fetch(localleReq)
             for case let obj as NSManagedObject in localles {
-                persistentContainer!.viewContext.delete(obj)
-                try! persistentContainer!.viewContext.save()
+                persistentContainer!.delete(obj)
+                try! persistentContainer!.save()
             }
-            let profiles = try! persistentContainer!.viewContext.fetch(profileReq)
+            let profiles = try! persistentContainer!.fetch(profileReq)
             for case let obj as NSManagedObject in profiles {
-                persistentContainer!.viewContext.delete(obj)
-                try! persistentContainer!.viewContext.save()
+                persistentContainer!.delete(obj)
+                try! persistentContainer!.save()
             }
-            let activities = try! persistentContainer!.viewContext.fetch(activitiesReq)
+            let activities = try! persistentContainer!.fetch(activitiesReq)
             for case let obj as NSManagedObject in activities {
-                persistentContainer!.viewContext.delete(obj)
-                try! persistentContainer!.viewContext.save()
+                persistentContainer!.delete(obj)
+                try! persistentContainer!.save()
             }
         }
         
@@ -78,7 +78,7 @@ class LocallePersistenceTests: QuickSpec {
                         locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
                         localleMapper?.map(rawValue: localleData!)
                         localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
-                        let localles = try! persistentContainer?.viewContext.fetch(localleRequest!)
+                        let localles = try! persistentContainer?.fetch(localleRequest!)
                         let actual = localles?.first
                         expect(actual).to(beAKindOf(Localle.self))
                         done()
@@ -90,7 +90,7 @@ class LocallePersistenceTests: QuickSpec {
                         locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
                         localleMapper?.map(rawValue: localleData!)
                         localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
-                        let localles = try! persistentContainer?.viewContext.fetch(localleRequest!)
+                        let localles = try! persistentContainer?.fetch(localleRequest!)
                         let actual = localles?.first
                         expect(actual?.users).to(beAKindOf(Set<Profile>.self))
                         expect(actual?.users.count).to(equal(2))
@@ -103,7 +103,7 @@ class LocallePersistenceTests: QuickSpec {
                         locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
                         localleMapper?.map(rawValue: localleData!)
                         localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
-                        let localles = try! persistentContainer?.viewContext.fetch(localleRequest!)
+                        let localles = try! persistentContainer?.fetch(localleRequest!)
                         let localle = localles?.first
                         let users = localle?.users
                         let joey = users?.first(where: {$0.id == 4})
@@ -118,7 +118,7 @@ class LocallePersistenceTests: QuickSpec {
                         locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
                         localleMapper?.map(rawValue: localleData!)
                         localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
-                        let localles = try! persistentContainer?.viewContext.fetch(localleRequest!)
+                        let localles = try! persistentContainer?.fetch(localleRequest!)
                         let localle = localles?.first
                         let users = localle?.users
                         let joey = users?.first(where: {$0.id == 4})
@@ -133,7 +133,7 @@ class LocallePersistenceTests: QuickSpec {
                         locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
                         localleMapper?.map(rawValue: localleData!)
                         localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
-                        let localles = try! persistentContainer?.viewContext.fetch(localleRequest!)
+                        let localles = try! persistentContainer?.fetch(localleRequest!)
                         let localle = localles?.first
                         let users = localle?.users
                         let actual = users?.first(where: {$0.id == 3})
@@ -148,7 +148,7 @@ class LocallePersistenceTests: QuickSpec {
                         locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
                         localleMapper?.map(rawValue: localleData!)
                         localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
-                        let localles = try! persistentContainer?.viewContext.fetch(localleRequest!)
+                        let localles = try! persistentContainer?.fetch(localleRequest!)
                         let localle = localles?.first
                         let users = localle?.users
                         let actual = users?.first(where: {$0.id == 4})
@@ -164,7 +164,7 @@ class LocallePersistenceTests: QuickSpec {
                         locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
                         localleMapper?.map(rawValue: localleData!)
                         localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
-                        let localles = try! persistentContainer?.viewContext.fetch(localleRequest!)
+                        let localles = try! persistentContainer?.fetch(localleRequest!)
                         let localle = localles?.first
                         let users = localle?.users
                         let actual = users?.first(where: {$0.id == 4})
@@ -186,7 +186,7 @@ class LocallePersistenceTests: QuickSpec {
                         locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
                         localleMapper?.map(rawValue: localleData!)
                         localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
-                        let localles = try! persistentContainer?.viewContext.fetch(localleRequest!)
+                        let localles = try! persistentContainer?.fetch(localleRequest!)
                         let localle = localles?.first
                         let users = localle?.users
                         let actual = users?.first(where: {$0.id == 3})
@@ -215,7 +215,7 @@ class LocallePersistenceTests: QuickSpec {
                             localleMapper?.map(rawValue: localleData!)
                             localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
                             let locallesReq = NSFetchRequest<Localle>(entityName: Localle.entityName)
-                            let localles = try! persistentContainer?.viewContext.fetch(locallesReq)
+                            let localles = try! persistentContainer?.fetch(locallesReq)
                             expect(localles?.count).to(equal(2))
                             done()
                         }
@@ -233,7 +233,7 @@ class LocallePersistenceTests: QuickSpec {
                             localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
                             let locallesReq = NSFetchRequest<Localle>(entityName: Localle.entityName)
                             locallesReq.predicate = NSPredicate(format: "id == %d", 5)
-                            let localles = try! persistentContainer?.viewContext.fetch(locallesReq)
+                            let localles = try! persistentContainer?.fetch(locallesReq)
                             let localle = localles?.first
                             let actual = localle?.users.first(where: {$0.id == 5})
                             expect(actual?.location.name).to(equal("Parramatta NSW, Australia"))
@@ -254,7 +254,7 @@ class LocallePersistenceTests: QuickSpec {
                             localleMapper?.map(rawValue: localleData!)
                             localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
                             let activitiesReq = NSFetchRequest<Activity>(entityName: Activity.entityName)
-                            let activities = try! persistentContainer?.viewContext.fetch(activitiesReq)
+                            let activities = try! persistentContainer?.fetch(activitiesReq)
                             expect(activities?.count).to(equal(8))
                             done()
                         }

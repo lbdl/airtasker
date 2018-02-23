@@ -41,7 +41,7 @@ class TaskParsingTests: QuickSpec {
     var rawData: Data?
     var sut: TaskMapper?
     var manager: PersistenceManager?
-    var persistentContainer: NSPersistentContainer?
+    var persistentContainer: NSManagedObjectContext?
     
     override func spec() {
         

@@ -21,7 +21,7 @@ public class Profile: NSManagedObject {
     @NSManaged var localle: Localle?
     @NSManaged var location: Location
     
-    static func insert(into manager: PersistenceController, raw: ProfileRaw) -> Profile {
+    static func insert(into manager: PersistenceControllerProtocol, raw: ProfileRaw) -> Profile {
         let profile: Profile = fetchProfile(forID: raw.id, fromManager: manager, withJSON: raw)
         profile.avatar_url = raw.avatarURL
         profile.name = raw.firstName
@@ -30,7 +30,7 @@ public class Profile: NSManagedObject {
         return profile
     }
     
-    fileprivate static func fetchProfile(forID profileID: Int64, fromManager manager: PersistenceController, withJSON raw: ProfileRaw) -> Profile {
+    fileprivate static func fetchProfile(forID profileID: Int64, fromManager manager: PersistenceControllerProtocol, withJSON raw: ProfileRaw) -> Profile {
         let predicate = NSPredicate(format: "%K == %d", #keyPath(id), profileID)
         let profile = fetchOrCreate(fromManager: manager, matching: predicate) {
             // freshly minted profile object so configure essentials

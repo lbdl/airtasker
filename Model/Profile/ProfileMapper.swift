@@ -12,12 +12,12 @@ class ProfileMapper: JSONMapper {
     
     internal var decoder: JSONDecoder
     internal var mappedValue: value?
-    internal var persistanceManager: PersistenceController
+    internal var persistanceManager: PersistenceControllerProtocol
     
     typealias value = Mapped<[ProfileRaw]>
     typealias raw = Data
     
-    required init(storeManager: PersistenceController) {
+    required init(storeManager: PersistenceControllerProtocol) {
         persistanceManager = storeManager
         decoder = JSONDecoder()
     }

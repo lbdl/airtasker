@@ -15,14 +15,14 @@ public class Worker: NSManagedObject {
     @NSManaged var tasks: Set<Task>?
     @NSManaged var profile: Profile?
     
-    static func insert(into manager: PersistenceController, workerId: Int64) -> Worker {
+    static func insert(into manager: PersistenceControllerProtocol, workerId: Int64) -> Worker {
         let worker: Worker = fetchWorker(forID: workerId, fromManager: manager)
         let predicate = NSPredicate(format: "%K == %d", #keyPath(id), workerId)
         worker.profile = Profile.findOrFetch(fromManager: manager, matching: predicate)
         return worker
     }
     
-    fileprivate static func fetchWorker(forID profileID: Int64, fromManager manager: PersistenceController) -> Worker {
+    fileprivate static func fetchWorker(forID profileID: Int64, fromManager manager: PersistenceControllerProtocol) -> Worker {
         let predicate = NSPredicate(format: "%K == %d", #keyPath(id), profileID)
         let worker = fetchOrCreate(fromManager: manager, matching: predicate) {
             // freshly baked object so we need to set the attributes

@@ -45,7 +45,7 @@ class LocationParsingTests: QuickSpec {
         var rawData: Data?
         var sut: LocationMapper?
         var manager: PersistenceManager?
-        var persistentContainer: NSPersistentContainer?
+        var persistentContainer: ManagedContextProtocol?
     
         beforeSuite {
             rawData = TestSuiteHelpers.readLocalData(testCase: .locations)

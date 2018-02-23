@@ -42,7 +42,7 @@ class LocalleParsingTests: QuickSpec {
         var rawData: Data?
         var sut: LocalleMapper?
         var manager: PersistenceManager?
-        var persistentContainer: NSPersistentContainer?
+        var persistentContainer: ManagedContextProtocol?
 
         beforeEach {
             rawData = TestSuiteHelpers.readLocalData(testCase: .localle)

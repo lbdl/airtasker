@@ -61,7 +61,7 @@ class TestSuiteHelpers: NSObject {
     }
     
     // for testing without persisting data
-    static func createInMemoryContainer (completion: @escaping(NSPersistentContainer) -> ()) {
+    static func createInMemoryContainer (completion: @escaping(NSManagedObjectContext) -> ()) {
         let container = NSPersistentContainer(name: "AirTasks")
         let description = NSPersistentStoreDescription()
         description.type = NSInMemoryStoreType
@@ -76,7 +76,7 @@ class TestSuiteHelpers: NSObject {
             }
         }
         DispatchQueue.main.async {
-            completion(container)
+            completion(container.viewContext)
         }
     }
 }

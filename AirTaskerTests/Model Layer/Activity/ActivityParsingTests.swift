@@ -40,7 +40,7 @@ class ActivityParsingTests: QuickSpec {
         var rawData: Data?
         var sut: ActivityMapper?
         var manager: PersistenceManager?
-        var persistentContainer: NSPersistentContainer?
+        var persistentContainer: ManagedContextProtocol?
         
         beforeEach {
             rawData = TestSuiteHelpers.readLocalData(testCase: .activity)

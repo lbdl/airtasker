@@ -9,27 +9,31 @@
 import UIKit
 import CoreData
 
-protocol PersistenceController {
-    var context: NSManagedObjectContext {get}
+protocol PersistenceControllerProtocol {
+    var context: ManagedContextProtocol {get}
     func updateContext(block: @escaping () -> ())
     func insertObject<A>() -> A where A: Managed
 }
 
-protocol ManagedObjectContext {
+protocol ManagedContextProtocol {
+    var registeredObjects: Set<NSManagedObject> {get}
     func fetch<T>(_ request: NSFetchRequest<T>) throws -> [T]
     func save() throws
+    func delete(_ object: NSManagedObject)
     func rollback()
 }
 
+extension NSManagedObjectContext: ManagedContextProtocol {}
 
-class PersistenceManager: NSObject, PersistenceController {
+
+class PersistenceManager: NSObject, PersistenceControllerProtocol {
     
-    private let container: NSPersistentContainer
-    let context: NSManagedObjectContext
+    //private let container: NSPersistentContainer
+    let context: ManagedContextProtocol
     
-    required init(store: NSPersistentContainer) {
-        container = store
-        context = container.viewContext
+    required init(store: ManagedContextProtocol) {
+        //container = store
+        context = store
     }
     
     public func updateContext(block: @escaping () -> ()) {
@@ -49,7 +53,7 @@ class PersistenceManager: NSObject, PersistenceController {
     }
     
     public func insertObject<A>() -> A where A : Managed {
-        guard let obj = NSEntityDescription.insertNewObject(forEntityName: A.entityName, into: context) as? A else {
+        guard let obj = NSEntityDescription.insertNewObject(forEntityName: A.entityName, into: context as! NSManagedObjectContext) as? A else {
             fatalError("Could not insert object")
         }
         return obj

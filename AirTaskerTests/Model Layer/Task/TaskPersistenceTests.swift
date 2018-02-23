@@ -18,26 +18,26 @@ class TaskPersistenceTests: QuickSpec {
         var rawData: Data?
         var sut: TaskMapper?
         var manager: PersistenceManager?
-        var persistentContainer: NSPersistentContainer?
+        var persistentContainer: ManagedContextProtocol?
         
         func  flushDB() {
             let taskRequest = NSFetchRequest<Task>(entityName: Task.entityName)
             let profileRequest = NSFetchRequest<Profile>(entityName: Profile.entityName)
             let localleRequest = NSFetchRequest<Localle>(entityName: Localle.entityName)
-            let tasks = try! persistentContainer!.viewContext.fetch(taskRequest)
-            let profiles = try! persistentContainer!.viewContext.fetch(profileRequest)
-            let localles = try! persistentContainer!.viewContext.fetch(localleRequest)
+            let tasks = try! persistentContainer!.fetch(taskRequest)
+            let profiles = try! persistentContainer!.fetch(profileRequest)
+            let localles = try! persistentContainer!.fetch(localleRequest)
             for case let obj as NSManagedObject in tasks {
-                persistentContainer!.viewContext.delete(obj)
-                try! persistentContainer!.viewContext.save()
+                persistentContainer!.delete(obj)
+                try! persistentContainer!.save()
             }
             for case let obj as NSManagedObject in profiles {
-                persistentContainer!.viewContext.delete(obj)
-                try! persistentContainer!.viewContext.save()
+                persistentContainer!.delete(obj)
+                try! persistentContainer!.save()
             }
             for case let obj as NSManagedObject in localles {
-                persistentContainer!.viewContext.delete(obj)
-                try! persistentContainer!.viewContext.save()
+                persistentContainer!.delete(obj)
+                try! persistentContainer!.save()
             }
         }
         
@@ -61,7 +61,7 @@ class TaskPersistenceTests: QuickSpec {
                         sut?.map(rawValue: rawData!)
                         sut?.persist(rawJson: (sut?.mappedValue)!)
                         let request = NSFetchRequest<Task>(entityName: Task.entityName)
-                        let results = try! persistentContainer?.viewContext.fetch(request)
+                        let results = try! persistentContainer?.fetch(request)
                         expect(results?.count).toNot(equal(0))      
                         done()
                     }
@@ -71,7 +71,7 @@ class TaskPersistenceTests: QuickSpec {
                         sut?.map(rawValue: rawData!)
                         sut?.persist(rawJson: (sut?.mappedValue)!)
                         let request = NSFetchRequest<Task>(entityName: Task.entityName)
-                        let results = try! persistentContainer?.viewContext.fetch(request)
+                        let results = try! persistentContainer?.fetch(request)
                         expect(results?.count).to(equal(2))
                         done()
                     }
@@ -82,7 +82,7 @@ class TaskPersistenceTests: QuickSpec {
                         sut?.persist(rawJson: (sut?.mappedValue)!)
                         let request = NSFetchRequest<Task>(entityName: Task.entityName)
                         request.predicate = NSPredicate(format: "id == %d", 5)
-                        let results = try! persistentContainer?.viewContext.fetch(request)
+                        let results = try! persistentContainer?.fetch(request)
                         let actual = results?.first
                         expect(actual?.id).to(equal(5))
                         expect(actual?.name).to(equal("Hang mirror"))

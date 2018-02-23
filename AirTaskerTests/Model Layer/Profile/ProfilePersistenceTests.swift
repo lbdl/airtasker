@@ -17,20 +17,20 @@ class ProfilePersistenceTests: QuickSpec {
         var rawData: Data?
         var sut: ProfileMapper?
         var manager: PersistenceManager?
-        var persistentContainer: NSPersistentContainer?
+        var persistentContainer: ManagedContextProtocol?
         
         func  flushDB() {
             let profileRequest = NSFetchRequest<Profile>(entityName: "Profile")
             let localleRequest = NSFetchRequest<Localle>(entityName: "Localle")
-            let profiles = try! persistentContainer!.viewContext.fetch(profileRequest)
-            let localles = try! persistentContainer!.viewContext.fetch(localleRequest)
+            let profiles = try! persistentContainer!.fetch(profileRequest)
+            let localles = try! persistentContainer!.fetch(localleRequest)
             for case let obj as NSManagedObject in profiles {
-                persistentContainer!.viewContext.delete(obj)
-                try! persistentContainer!.viewContext.save()
+                persistentContainer!.delete(obj)
+                try! persistentContainer!.save()
             }
             for case let obj as NSManagedObject in localles {
-                persistentContainer!.viewContext.delete(obj)
-                try! persistentContainer!.viewContext.save()
+                persistentContainer!.delete(obj)
+                try! persistentContainer!.save()
             }
         }
         
@@ -54,7 +54,7 @@ class ProfilePersistenceTests: QuickSpec {
                         sut?.map(rawValue: rawData!)
                         sut?.persist(rawJson: (sut?.mappedValue)!)
                         let request = NSFetchRequest<Profile>(entityName: Profile.entityName)
-                        let results = try! persistentContainer?.viewContext.fetch(request)
+                        let results = try! persistentContainer?.fetch(request)
                         expect(results?.count).toNot(equal(0))
                         done()
                     }
@@ -64,7 +64,7 @@ class ProfilePersistenceTests: QuickSpec {
                         sut?.map(rawValue: rawData!)
                         sut?.persist(rawJson: (sut?.mappedValue)!)
                         let request = NSFetchRequest<Profile>(entityName: Profile.entityName)
-                        let results = try! persistentContainer?.viewContext.fetch(request)
+                        let results = try! persistentContainer?.fetch(request)
                         expect(results?.count).to(equal(5))
                         done()
                     }
@@ -75,7 +75,7 @@ class ProfilePersistenceTests: QuickSpec {
                         sut?.persist(rawJson: (sut?.mappedValue)!)
                         let request = NSFetchRequest<Profile>(entityName: Profile.entityName)
                         request.predicate = NSPredicate(format: "id == %d", 3)
-                        let results = try! persistentContainer?.viewContext.fetch(request)
+                        let results = try! persistentContainer?.fetch(request)
                         let actual = results?.first
                         expect(actual?.id).to(equal(3))
                         expect(actual?.name).to(equal("Phoebe"))

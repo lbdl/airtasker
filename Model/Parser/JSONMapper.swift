@@ -12,7 +12,7 @@ protocol JSONMapper {
     associatedtype value 
     associatedtype raw
     
-    var persistanceManager: PersistenceController {get set}
+    var persistanceManager: PersistenceControllerProtocol {get set}
     var mappedValue: value? {get}
     var decoder: JSONDecoder {get set}
     
@@ -33,7 +33,7 @@ protocol JSONMapper {
     /// - parameters:
     ///     - storeManager: responsible for wrapping a coredata context and
     ///                    handling persistance
-    init(storeManager: PersistenceController)
+    init(storeManager: PersistenceControllerProtocol)
 }
 
 

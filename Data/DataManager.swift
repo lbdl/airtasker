@@ -44,10 +44,10 @@ enum SessionType {
 ///     - configuration: a enumeration defining the tyle of session, in this case default
 class DataManager: NSObject, DataController {
 
-    let persistenceManager: PersistenceController
+    let persistenceManager: PersistenceControllerProtocol
     let dataSession: URLSessionProtocol
     
-    required init(storeManager: PersistenceController, networkManager: URLSessionProtocol, configuration: SessionType = .sharedSession) {
+    required init(storeManager: PersistenceControllerProtocol, networkManager: URLSessionProtocol, configuration: SessionType = .sharedSession) {
         persistenceManager = storeManager
         dataSession = networkManager
     }

@@ -18,7 +18,7 @@ public class Activity: NSManagedObject {
     @NSManaged var profile: Profile?
     @NSManaged var task: Task?
     
-    static func insert(into manager: PersistenceController, raw: ActivityRaw) -> Activity {
+    static func insert(into manager: PersistenceControllerProtocol, raw: ActivityRaw) -> Activity {
         let activity: Activity = manager.insertObject()
         activity.id = raw.id
         activity.internalMessage = raw.internalMessage
@@ -27,7 +27,7 @@ public class Activity: NSManagedObject {
         return activity
     }
     
-    static func fetchActivity(forID activityID: Int64, fromManager manager: PersistenceController, withJSON raw: ActivityRaw) -> Activity {
+    static func fetchActivity(forID activityID: Int64, fromManager manager: PersistenceControllerProtocol, withJSON raw: ActivityRaw) -> Activity {
         let predicate = NSPredicate(format: "%K == %d", #keyPath(id), activityID)
         let activity = fetchOrCreate(fromManager: manager, matching: predicate) {
             //fresh object configure fields from json

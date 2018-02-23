@@ -18,7 +18,7 @@ final class Location: NSManagedObject {
     @NSManaged fileprivate(set) var localle: Localle
     @NSManaged fileprivate(set) var profiles: Set<Profile>?
     
-    static func insert(into manager: PersistenceController, raw: LocationRaw) -> Location {
+    static func insert(into manager: PersistenceControllerProtocol, raw: LocationRaw) -> Location {
         let location: Location = manager.insertObject()
         location.id = raw.id
         location.lat = raw.lat
@@ -27,7 +27,7 @@ final class Location: NSManagedObject {
         return location
     }
     
-    static func fetchLocation(forID locationID: Int64, fromManager manager: PersistenceController) -> Location {
+    static func fetchLocation(forID locationID: Int64, fromManager manager: PersistenceControllerProtocol) -> Location {
         let predicate = NSPredicate(format: "%K == %d", #keyPath(id), locationID)
         let location = fetchOrCreate(fromManager: manager, matching: predicate) {
             $0.id = locationID

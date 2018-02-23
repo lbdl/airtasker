@@ -18,15 +18,15 @@ class PersistenceManagerTests: QuickSpec {
     override func spec() {
         
         var sut: PersistenceManager!
-        var persistentContainer: NSPersistentContainer?
+        var persistentContainer: ManagedContextProtocol?
         
         func  flushDB() {
             let fetchRequest = NSFetchRequest<Location>(entityName: "Location")
-            let objs = try! persistentContainer!.viewContext.fetch(fetchRequest)
+            let objs = try! persistentContainer!.fetch(fetchRequest)
             for case let obj as NSManagedObject in objs {
-                persistentContainer!.viewContext.delete(obj)
+                persistentContainer!.delete(obj)
             }
-            try! persistentContainer!.viewContext.save()
+            try! persistentContainer!.save()
         }
         
         afterEach {

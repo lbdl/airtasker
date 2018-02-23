@@ -14,7 +14,7 @@ final class Localle: NSManagedObject {
     @NSManaged fileprivate(set) var location: Location
     @NSManaged fileprivate(set) var displayName: String?
     
-    static func insert(into manager: PersistenceController, raw: LocalleRaw) -> Localle {
+    static func insert(into manager: PersistenceControllerProtocol, raw: LocalleRaw) -> Localle {
         let localle = fetchLocalle(forID: raw.id, fromManager: manager, raw: raw)
         localle.displayName = raw.displayName
         localle.location = Location.fetchLocation(forID: raw.id, fromManager: manager)
@@ -30,7 +30,7 @@ final class Localle: NSManagedObject {
         return localle
     }
     
-    fileprivate static func fetchLocalle(forID localleID: Int64, fromManager manager: PersistenceController, raw: LocalleRaw) -> Localle {
+    fileprivate static func fetchLocalle(forID localleID: Int64, fromManager manager: PersistenceControllerProtocol, raw: LocalleRaw) -> Localle {
         let predicate = NSPredicate(format: "%K == %d", #keyPath(id), localleID)
         let localle = fetchOrCreate(fromManager: manager, matching: predicate) {
             //fresh object configure fields from json
@@ -42,7 +42,7 @@ final class Localle: NSManagedObject {
         return localle
     }
     
-    fileprivate static func makeActivities(raw: [ActivityRaw], manager: PersistenceController) -> [Activity]{
+    fileprivate static func makeActivities(raw: [ActivityRaw], manager: PersistenceControllerProtocol) -> [Activity]{
         let objArray: [Activity] = raw.map({ activityRaw in
             let activity = Activity.insert(into: manager, raw: activityRaw)
             let profilePredicate = NSPredicate(format: "%K == %d", #keyPath(id), activityRaw.profileID)
@@ -54,7 +54,7 @@ final class Localle: NSManagedObject {
         return objArray
     }
     
-    fileprivate static func makeTasks(raw: [TaskRaw], manager: PersistenceController) -> [Task] {
+    fileprivate static func makeTasks(raw: [TaskRaw], manager: PersistenceControllerProtocol) -> [Task] {
         let objArray: [Task] = raw.map({ taskRaw in
             let task = Task.insert(into: manager, raw: taskRaw)
             if let workerId = taskRaw.workerID {
@@ -65,7 +65,7 @@ final class Localle: NSManagedObject {
         return objArray
     }
     
-    fileprivate static func makeUsers(raw: [ProfileRaw], manager: PersistenceController) -> [Profile] {
+    fileprivate static func makeUsers(raw: [ProfileRaw], manager: PersistenceControllerProtocol) -> [Profile] {
         let objArray: [Profile] = raw.map({ profileRaw in
             let profile = Profile.insert(into: manager, raw: profileRaw)
             //let profile = Profile.fetchProfile(forID: profileRaw.id, fromManager: manager, withJSON: profileRaw)

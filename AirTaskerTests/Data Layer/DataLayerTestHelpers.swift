@@ -16,18 +16,19 @@ class MockManagedObject: NSManagedObject {
     static var entityName = "MockManagedObject"
 }
 
-class MockPersistenceManager: PersistenceController {
-    var context: NSManagedObjectContext
-    
-    func updateContext(block: @escaping () -> ()) {
-        //
-    }
-    
-    func insertObject<A>() -> A where A : Managed {
-        return MockManagedObject() as! A
-    }
-    
-    init(managedContext: NSManagedObjectContext) {
-        context = managedContext
-    }
-}
+//class MockPersistenceManager: PersistenceControllerProtocol {
+//    var context: NSManagedObjectContext
+//    
+//    func updateContext(block: @escaping () -> ()) {
+//        //
+//    }
+//    
+//    func insertObject<A>() -> A where A : Managed {
+//        return MockManagedObject() as! A
+//    }
+//    
+//    init(managedContext: NSManagedObjectContext) {
+//        context = managedContext
+//    }
+//}
+

@@ -17,20 +17,20 @@ class LocationPersistenceTests: QuickSpec {
         var rawData: Data?
         var sut: LocationMapper?
         var manager: PersistenceManager?
-        var persistentContainer: NSPersistentContainer?
+        var persistentContainer: ManagedContextProtocol?
         
         func  flushDB() {
             let fetchRequest = NSFetchRequest<Location>(entityName: Location.entityName)
             let localleReq = NSFetchRequest<Localle>(entityName: Localle.entityName)
-            let objs = try! persistentContainer!.viewContext.fetch(fetchRequest)
+            let objs = try! persistentContainer!.fetch(fetchRequest)
             for case let obj as NSManagedObject in objs {
-                persistentContainer!.viewContext.delete(obj)
-                try! persistentContainer!.viewContext.save()
+                persistentContainer!.delete(obj)
+                try! persistentContainer!.save()
             }
-            let localles = try! persistentContainer!.viewContext.fetch(localleReq)
+            let localles = try! persistentContainer!.fetch(localleReq)
             for case let obj as NSManagedObject in localles {
-                persistentContainer!.viewContext.delete(obj)
-                try! persistentContainer!.viewContext.save()
+                persistentContainer!.delete(obj)
+                try! persistentContainer!.save()
             }
         }
         
@@ -54,7 +54,7 @@ class LocationPersistenceTests: QuickSpec {
                         sut?.map(rawValue: rawData!)
                         sut?.persist(rawJson: (sut?.mappedValue)!)
                         let request = NSFetchRequest<Location>(entityName: Location.entityName)
-                        let results = try! persistentContainer?.viewContext.fetch(request)
+                        let results = try! persistentContainer?.fetch(request)
                         expect(results).toNot(beNil())
                         done()
                     }
@@ -64,7 +64,7 @@ class LocationPersistenceTests: QuickSpec {
                         sut?.map(rawValue: rawData!)
                         sut?.persist(rawJson: (sut?.mappedValue)!)
                         let request = NSFetchRequest<Location>(entityName: Location.entityName)
-                        let results = try! persistentContainer?.viewContext.fetch(request)
+                        let results = try! persistentContainer?.fetch(request)
                         expect(results?.count).to(equal(5))
                         done()
                     }
@@ -75,7 +75,7 @@ class LocationPersistenceTests: QuickSpec {
                         sut?.persist(rawJson: (sut?.mappedValue)!)
                         let request = NSFetchRequest<Location>(entityName: Location.entityName)
                         request.predicate = NSPredicate(format: "id == %d", 3)
-                        let results = try! persistentContainer?.viewContext.fetch(request)
+                        let results = try! persistentContainer?.fetch(request)
                         let actual = results?.first
                         expect(actual?.id).to(equal(3))
                         expect(actual?.name).to(equal("Chatswood NSW 2067, Australia"))
@@ -90,7 +90,7 @@ class LocationPersistenceTests: QuickSpec {
                         sut?.persist(rawJson: (sut?.mappedValue)!)
                         let request = NSFetchRequest<Location>(entityName: Location.entityName)
                         request.predicate = NSPredicate(format: "id == %d", 3)
-                        let results = try! persistentContainer?.viewContext.fetch(request)
+                        let results = try! persistentContainer?.fetch(request)
                         let actual = results?.first
                         done()
                     }
