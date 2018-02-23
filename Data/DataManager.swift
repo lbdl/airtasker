@@ -28,6 +28,10 @@ enum SessionType {
 /// It is only implemented for default sessions athough it is intended to be extended
 /// for background tasks.
 ///
+/// This implementation also makes no considerations of authentication etc although
+/// the data manager should handle all of this as per the servers requirements internally
+/// and in an opaque manner as far as the consumers of the manager are concerned
+///
 /// A view controller should not need to know anything about it other
 /// than to call the methods it needs as defined in the DataController protocol.
 ///

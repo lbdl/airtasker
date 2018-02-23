@@ -15,6 +15,12 @@ protocol PersistenceController {
     func insertObject<A>() -> A where A: Managed
 }
 
+protocol ManagedObjectContext {
+    func fetch<T>(_ request: NSFetchRequest<T>) throws -> [T]
+    func save() throws
+    func rollback()
+}
+
 
 class PersistenceManager: NSObject, PersistenceController {
     

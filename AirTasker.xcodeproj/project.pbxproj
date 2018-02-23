@@ -17,6 +17,8 @@
 		2B27C0F9203289670054A5D0 /* ProfilePersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B27C0F8203289670054A5D0 /* ProfilePersistenceTests.swift */; };
 		2B7C837B203EF1B500FBD2D7 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C837A203EF1B500FBD2D7 /* DataManager.swift */; };
 		2B7C837D203F081600FBD2D7 /* SessionProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C837C203F081600FBD2D7 /* SessionProtocols.swift */; };
+		2B7C837F203FD16E00FBD2D7 /* DataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C837E203FD16E00FBD2D7 /* DataManagerTests.swift */; };
+		2B7C83832040383300FBD2D7 /* DataLayerTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C83822040383300FBD2D7 /* DataLayerTestHelpers.swift */; };
 		2BA95626203AD7FD006AD39E /* LocallePersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA95625203AD7FD006AD39E /* LocallePersistenceTests.swift */; };
 		2BB38F53203456BF0061530E /* tasks.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BB38F52203456BF0061530E /* tasks.json */; };
 		2BB38F5520345FBE0061530E /* ActivityMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB38F5420345FBE0061530E /* ActivityMapper.swift */; };
@@ -95,6 +97,8 @@
 		2B27C0F8203289670054A5D0 /* ProfilePersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePersistenceTests.swift; sourceTree = "<group>"; };
 		2B7C837A203EF1B500FBD2D7 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		2B7C837C203F081600FBD2D7 /* SessionProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionProtocols.swift; sourceTree = "<group>"; };
+		2B7C837E203FD16E00FBD2D7 /* DataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerTests.swift; sourceTree = "<group>"; };
+		2B7C83822040383300FBD2D7 /* DataLayerTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLayerTestHelpers.swift; sourceTree = "<group>"; };
 		2BA95625203AD7FD006AD39E /* LocallePersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocallePersistenceTests.swift; sourceTree = "<group>"; };
 		2BB38F52203456BF0061530E /* tasks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tasks.json; sourceTree = "<group>"; };
 		2BB38F5420345FBE0061530E /* ActivityMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityMapper.swift; sourceTree = "<group>"; };
@@ -195,6 +199,8 @@
 		2B7C8378203EF0C900FBD2D7 /* Data Layer */ = {
 			isa = PBXGroup;
 			children = (
+				2B7C837E203FD16E00FBD2D7 /* DataManagerTests.swift */,
+				2B7C83822040383300FBD2D7 /* DataLayerTestHelpers.swift */,
 			);
 			path = "Data Layer";
 			sourceTree = "<group>";
@@ -555,10 +561,12 @@
 				2BA95626203AD7FD006AD39E /* LocallePersistenceTests.swift in Sources */,
 				2BBDA55D2036F8C90093ACE6 /* ActivityPersistanceTests.swift in Sources */,
 				2B0193D4202D746700960FCC /* ProfileParsingTests.swift in Sources */,
+				2B7C83832040383300FBD2D7 /* DataLayerTestHelpers.swift in Sources */,
 				2BF1167B202163E000D8A02B /* LocationPersistenceTests.swift in Sources */,
 				2BBDA5512036BDBE0093ACE6 /* LocalleParsingTests.swift in Sources */,
 				2BBDA5582036F35B0093ACE6 /* TaskPersistenceTests.swift in Sources */,
 				2BF11672201B35E100D8A02B /* AirTasks.xcdatamodeld in Sources */,
+				2B7C837F203FD16E00FBD2D7 /* DataManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
