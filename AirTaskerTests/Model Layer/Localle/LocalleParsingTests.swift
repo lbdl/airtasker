@@ -48,7 +48,7 @@ class LocalleParsingTests: QuickSpec {
             rawData = TestSuiteHelpers.readLocalData(testCase: .localle)
             TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
                 persistentContainer = container
-                manager = PersistenceManager(store: persistentContainer!)
+                manager = MockPersistenceManager(managedContext: persistentContainer!)
                 sut = LocalleMapper(storeManager: manager!)
             })
         }

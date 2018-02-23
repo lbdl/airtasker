@@ -13,14 +13,14 @@ protocol URLSessionProtocol {
     func dataTask(with request: NSURLRequest, completionHandler: @escaping DataTaskResult) -> URLSessionDataTaskProtocol
 }
 
-protocol URLSessionDataTaskProtocol {
-    func resume()
-}
-
 extension URLSession: URLSessionProtocol {
     func dataTask(with request: NSURLRequest, completionHandler: @escaping DataTaskResult) -> URLSessionDataTaskProtocol {
         return dataTask(with: request, completionHandler: completionHandler) as URLSessionDataTaskProtocol
     }
+}
+
+protocol URLSessionDataTaskProtocol {
+    func resume()
 }
 
 extension URLSessionDataTask: URLSessionDataTaskProtocol {}

@@ -10,6 +10,48 @@ import UIKit
 import CoreData
 @testable import AirTasker
 
+class MockManagedObject: NSManagedObject {
+    static var entityName = "MockManagedObject"
+}
+
+class MockPersistenceManager: PersistenceControllerProtocol {
+    let context: ManagedContextProtocol
+    
+    func updateContext(block: @escaping () -> ()) {
+        print("MockPersistenceManager: called update context")
+    }
+    
+    func insertObject<A>() -> A where A : Managed {
+        return MockManagedObject() as! A
+    }
+    
+    init(managedContext: ManagedContextProtocol) {
+        context = managedContext
+    }
+}
+
+class MockURLSession: URLSessionProtocol {
+    
+    var nextDataTask = MockURLSessionDataTask()
+    var data: Data?
+    var error: Error?
+    var response: URLResponse?
+    
+    private (set) var lastURL: URL?
+    
+    func dataTask(with request: NSURLRequest, completionHandler: @escaping DataTaskResult) -> URLSessionDataTaskProtocol {
+        lastURL = request.url
+        completionHandler(data, response, error)
+        return nextDataTask
+    }
+}
+
+class MockURLSessionDataTask: URLSessionDataTaskProtocol {
+    private (set) var resumeWasCalled = false
+    func resume() {
+        resumeWasCalled = true
+    }
+}
 
 
 class TestSuiteHelpers: NSObject {
@@ -61,7 +103,7 @@ class TestSuiteHelpers: NSObject {
     }
     
     // for testing without persisting data
-    static func createInMemoryContainer (completion: @escaping(NSManagedObjectContext) -> ()) {
+    static func createInMemoryContainer (completion: @escaping(ManagedContextProtocol) -> ()) {
         let container = NSPersistentContainer(name: "AirTasks")
         let description = NSPersistentStoreDescription()
         description.type = NSInMemoryStoreType
