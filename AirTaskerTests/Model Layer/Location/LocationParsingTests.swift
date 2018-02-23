@@ -44,7 +44,7 @@ class LocationParsingTests: QuickSpec {
         
         var rawData: Data?
         var sut: LocationMapper?
-        var manager: PersistenceManager?
+        var manager: PersistenceControllerProtocol?
         var persistentContainer: ManagedContextProtocol?
     
         beforeSuite {
@@ -63,7 +63,7 @@ class LocationParsingTests: QuickSpec {
                     waitUntil { done in
                         TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
                             persistentContainer = container
-                            manager = PersistenceManager(store: persistentContainer!)
+                            manager = MockPersistenceManager(managedContext: persistentContainer!)
                             sut = LocationMapper(storeManager: manager!)
                             sut?.map(rawValue: rawData!)
                             expect(sut?.mappedValue).to(self.beLocation { locations in
@@ -77,7 +77,7 @@ class LocationParsingTests: QuickSpec {
                     waitUntil { done in
                         TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
                             persistentContainer = container
-                            manager = PersistenceManager(store: persistentContainer!)
+                            manager = MockPersistenceManager(managedContext: persistentContainer!)
                             sut = LocationMapper(storeManager: manager!)
                             sut?.map(rawValue: rawData!)
                             expect(sut?.mappedValue).to(self.beLocation { locations in
@@ -91,7 +91,7 @@ class LocationParsingTests: QuickSpec {
                     waitUntil { done in
                         TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
                             persistentContainer = container
-                            manager = PersistenceManager(store: persistentContainer!)
+                            manager = MockPersistenceManager(managedContext: persistentContainer!)
                             sut = LocationMapper(storeManager: manager!)
                             sut?.map(rawValue: rawData!)
                             expect(sut?.mappedValue).to(self.beLocation { locations in
@@ -106,7 +106,7 @@ class LocationParsingTests: QuickSpec {
                     waitUntil { done in
                         TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
                             persistentContainer = container
-                            manager = PersistenceManager(store: persistentContainer!)
+                            manager = MockPersistenceManager(managedContext: persistentContainer!)
                             sut = LocationMapper(storeManager: manager!)
                             sut?.map(rawValue: rawData!)
                             expect(sut?.mappedValue).to(self.beLocation { locations in
@@ -120,7 +120,7 @@ class LocationParsingTests: QuickSpec {
                     waitUntil { done in
                         TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
                             persistentContainer = container
-                            manager = PersistenceManager(store: persistentContainer!)
+                            manager = MockPersistenceManager(managedContext: persistentContainer!)
                             sut = LocationMapper(storeManager: manager!)
                             sut?.map(rawValue: rawData!)
                             expect(sut?.mappedValue).to(self.beLocation { locations in
@@ -149,7 +149,7 @@ class LocationParsingTests: QuickSpec {
                     waitUntil { done in
                         TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
                             persistentContainer = container
-                            manager = PersistenceManager(store: persistentContainer!)
+                            manager = MockPersistenceManager(managedContext: persistentContainer!)
                             sut = LocationMapper(storeManager: manager!)
                             sut?.map(rawValue: badData!)
                             expect(sut?.mappedValue).to(self.beDecodingError())

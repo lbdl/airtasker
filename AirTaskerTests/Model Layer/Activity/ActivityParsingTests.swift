@@ -39,7 +39,7 @@ class ActivityParsingTests: QuickSpec {
         
         var rawData: Data?
         var sut: ActivityMapper?
-        var manager: PersistenceManager?
+        var manager: PersistenceControllerProtocol?
         var persistentContainer: ManagedContextProtocol?
         
         beforeEach {
@@ -58,7 +58,7 @@ class ActivityParsingTests: QuickSpec {
                     waitUntil { done in
                         TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
                             persistentContainer = container
-                            manager = PersistenceManager(store: persistentContainer!)
+                            manager = MockPersistenceManager(managedContext: persistentContainer!)
                             sut = ActivityMapper(storeManager: manager!)
                             sut?.map(rawValue: rawData!)
                             expect(sut?.mappedValue).to(beActivity { activities in
@@ -72,7 +72,7 @@ class ActivityParsingTests: QuickSpec {
                     waitUntil { done in
                         TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
                             persistentContainer = container
-                            manager = PersistenceManager(store: persistentContainer!)
+                            manager = MockPersistenceManager(managedContext: persistentContainer!)
                             sut = ActivityMapper(storeManager: manager!)
                             sut?.map(rawValue: rawData!)
                             expect(sut?.mappedValue).to(beActivity { activities in
@@ -86,7 +86,7 @@ class ActivityParsingTests: QuickSpec {
                     waitUntil { done in
                         TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
                             persistentContainer = container
-                            manager = PersistenceManager(store: persistentContainer!)
+                            manager = MockPersistenceManager(managedContext: persistentContainer!)
                             sut = ActivityMapper(storeManager: manager!)
                             sut?.map(rawValue: rawData!)
                             expect(sut?.mappedValue).to(beActivity { activities in
@@ -119,7 +119,7 @@ class ActivityParsingTests: QuickSpec {
                     waitUntil { done in
                         TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
                             persistentContainer = container
-                            manager = PersistenceManager(store: persistentContainer!)
+                            manager = MockPersistenceManager(managedContext: persistentContainer!)
                             sut = ActivityMapper(storeManager: manager!)
                             sut?.map(rawValue: rawData!)
                             expect(sut?.mappedValue).to(beDecodingError())

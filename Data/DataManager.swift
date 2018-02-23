@@ -10,6 +10,7 @@ import UIKit
 import Foundation
 
 protocol DataController {
+    var persistenceManager: PersistenceControllerProtocol{ get }
     func fetchLocations()
     func fetchLocationData(for locationId: String)
     func fetchAvatarData(for profileId: String) -> UIImage?
@@ -41,9 +42,8 @@ enum SessionType {
 /// - parameters
 ///     - storeManager: an object conforming to the PerssistenceController protocol that handles persisting data
 ///     - networkManager: an object conforming to the URLSessionProtocol that fetches data
-///     - configuration: a enumeration defining the tyle of session, in this case default
+///     - configuration: a enumeration defining the tyle of sessiopersistenceManagern, in this case default
 class DataManager: NSObject, DataController {
-
     let persistenceManager: PersistenceControllerProtocol
     let dataSession: URLSessionProtocol
     

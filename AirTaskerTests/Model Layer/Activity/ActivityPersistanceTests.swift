@@ -17,7 +17,7 @@ class ActivityPersistanceTests: QuickSpec {
         
         var rawData: Data?
         var sut: ActivityMapper?
-        var manager: PersistenceManager?
+        var manager: PersistenceControllerProtocol?
         var persistentContainer: ManagedContextProtocol?
         
         func  flushDB() {

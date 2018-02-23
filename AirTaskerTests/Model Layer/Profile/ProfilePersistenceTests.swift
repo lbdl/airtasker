@@ -16,7 +16,7 @@ class ProfilePersistenceTests: QuickSpec {
     override func spec() {
         var rawData: Data?
         var sut: ProfileMapper?
-        var manager: PersistenceManager?
+        var manager: PersistenceControllerProtocol?
         var persistentContainer: ManagedContextProtocol?
         
         func  flushDB() {

@@ -18,7 +18,7 @@ class LocallePersistenceTests: QuickSpec {
         var localleData: Data?
         var localleMapper: LocalleMapper?
         var locationMapper: LocationMapper?
-        var manager: PersistenceManager?
+        var manager: PersistenceControllerProtocol?
         var persistentContainer: ManagedContextProtocol?
         var fetchPredicate: NSPredicate?
         var localleRequest: NSFetchRequest<Localle>?

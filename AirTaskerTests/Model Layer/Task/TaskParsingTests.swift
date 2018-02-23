@@ -40,7 +40,7 @@ class TaskParsingTests: QuickSpec {
     
     var rawData: Data?
     var sut: TaskMapper?
-    var manager: PersistenceManager?
+    var manager: PersistenceControllerProtocol?
     var persistentContainer: NSManagedObjectContext?
     
     override func spec() {
@@ -60,7 +60,7 @@ class TaskParsingTests: QuickSpec {
                     waitUntil { done in
                         TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
                             self.persistentContainer = container
-                            self.manager = PersistenceManager(store: self.persistentContainer!)
+                            self.manager = MockPersistenceManager(managedContext: self.persistentContainer!)
                             self.sut = TaskMapper(storeManager: self.manager!)
                             self.sut?.map(rawValue: self.rawData!)
                             expect(self.sut?.mappedValue).to(beTask { tasks in
@@ -74,7 +74,7 @@ class TaskParsingTests: QuickSpec {
                     waitUntil { done in
                         TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
                             self.persistentContainer = container
-                            self.manager = PersistenceManager(store: self.persistentContainer!)
+                            self.manager = MockPersistenceManager(managedContext: self.persistentContainer!)
                             self.sut = TaskMapper(storeManager: self.manager!)
                             self.sut?.map(rawValue: self.rawData!)
                             expect(self.sut?.mappedValue).to(beTask { tasks in
@@ -88,7 +88,7 @@ class TaskParsingTests: QuickSpec {
                     waitUntil { done in
                         TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
                             self.persistentContainer = container
-                            self.manager = PersistenceManager(store: self.persistentContainer!)
+                            self.manager = MockPersistenceManager(managedContext: self.persistentContainer!)
                             self.sut = TaskMapper(storeManager: self.manager!)
                             self.sut?.map(rawValue: self.rawData!)
                             expect(self.sut?.mappedValue).to(beTask { tasks in
@@ -121,7 +121,7 @@ class TaskParsingTests: QuickSpec {
                     waitUntil { done in
                         TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
                             self.persistentContainer = container
-                            self.manager = PersistenceManager(store: self.persistentContainer!)
+                            self.manager = MockPersistenceManager(managedContext: self.persistentContainer!)
                             self.sut = TaskMapper(storeManager: self.manager!)
                             self.sut?.map(rawValue: self.rawData!)
                             expect(self.sut?.mappedValue).to(beDecodingError())

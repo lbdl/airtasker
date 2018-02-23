@@ -41,7 +41,7 @@ class LocalleParsingTests: QuickSpec {
         
         var rawData: Data?
         var sut: LocalleMapper?
-        var manager: PersistenceManager?
+        var manager: PersistenceControllerProtocol?
         var persistentContainer: ManagedContextProtocol?
 
         beforeEach {

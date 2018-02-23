@@ -59,3 +59,4 @@ class PersistenceManager: NSObject, PersistenceControllerProtocol {
         return obj
     }
 }
+

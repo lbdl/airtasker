@@ -39,7 +39,7 @@ class ProfileParsingTests: QuickSpec {
     
     var rawData: Data?
     var sut: ProfileMapper?
-    var manager: PersistenceManager?
+    var manager: PersistenceControllerProtocol?
     var persistentContainer: ManagedContextProtocol?
     
     override func spec() {

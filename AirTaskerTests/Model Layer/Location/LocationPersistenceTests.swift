@@ -16,7 +16,7 @@ class LocationPersistenceTests: QuickSpec {
     override func spec() {
         var rawData: Data?
         var sut: LocationMapper?
-        var manager: PersistenceManager?
+        var manager: PersistenceControllerProtocol?
         var persistentContainer: ManagedContextProtocol?
         
         func  flushDB() {
