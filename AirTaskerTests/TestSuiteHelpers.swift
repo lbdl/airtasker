@@ -30,6 +30,30 @@ class MockPersistenceManager: PersistenceControllerProtocol {
     }
 }
 
+class MockManagedContext: ManagedContextProtocol {
+    var registeredObjects: Set<NSManagedObject>
+    
+    func fetch<T>(_ request: NSFetchRequest<T>) throws -> [T] {
+        return [MockManagedObject()] as! [T]
+    }
+    
+    func save() throws {
+        //
+    }
+    
+    func delete(_ object: NSManagedObject) {
+        //
+    }
+    
+    func rollback() {
+        //
+    }
+    
+    init() {
+        registeredObjects = Set([MockManagedObject()])
+    }
+}
+
 class MockURLSession: URLSessionProtocol {
     
     var nextDataTask = MockURLSessionDataTask()
@@ -39,7 +63,7 @@ class MockURLSession: URLSessionProtocol {
     
     private (set) var lastURL: URL?
     
-    func dataTask(with request: NSURLRequest, completionHandler: @escaping DataTaskResult) -> URLSessionDataTaskProtocol {
+    func dataTask(with request: NSURLRequest, completionHandler: @escaping DataTaskHandler) -> URLSessionDataTaskProtocol {
         lastURL = request.url
         completionHandler(data, response, error)
         return nextDataTask

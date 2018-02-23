@@ -47,9 +47,9 @@ class DataManager: NSObject, DataController {
     let persistenceManager: PersistenceControllerProtocol
     let dataSession: URLSessionProtocol
     
-    required init(storeManager: PersistenceControllerProtocol, networkManager: URLSessionProtocol, configuration: SessionType = .sharedSession) {
+    required init(storeManager: PersistenceControllerProtocol, urlSession: URLSessionProtocol, configuration: SessionType = .sharedSession) {
         persistenceManager = storeManager
-        dataSession = networkManager
+        dataSession = urlSession
     }
     
     func fetchLocations() {

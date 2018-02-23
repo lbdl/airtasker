@@ -15,15 +15,21 @@ import CoreData
 class DataManagerTests: QuickSpec {
     override func spec() {
         var sut: DataManager?
-        var manager: PersistenceControllerProtocol?
+        var mockManager: PersistenceControllerProtocol?
+        var mockSessionManager: MockURLSession?
+        var mockContext: ManagedContextProtocol?
         
         context("GIVEN a data manager") {
             
             beforeEach {
-
+                mockContext = MockManagedContext()
+                mockManager = MockPersistenceManager(managedContext: mockContext!)
+                mockSessionManager = MockURLSession()
+                sut = DataManager(storeManager: mockManager!, urlSession: mockSessionManager!)
             }
             describe("WHEN we initisalise the manager") {
                 it("creates a concrete instance") {
+                    expect(sut).toNot(beNil())
                 }
             }
             describe("WHEN we fetch location objects") {
