@@ -9,10 +9,15 @@
 import UIKit
 import Foundation
 
-protocol DataController {
-    var persistenceManager: PersistenceControllerProtocol{ get }
+protocol LocationDataPrototcol {
     func fetchLocations()
+}
+
+protocol LocallesDataProtocol {
     func fetchLocationData(for locationId: Int64)
+}
+
+protocol AvatarManager {
     func fetchAvatarData(for profileId: String) -> UIImage?
 }
 
@@ -49,7 +54,7 @@ enum HttpMethods: String {
 ///     - storeManager: an object conforming to the PerssistenceController protocol that handles persisting data
 ///     - networkManager: an object conforming to the URLSessionProtocol that fetches data
 ///     - configuration: a enumeration defining the tyle of sessiopersistenceManagern, in this case default
-class DataManager: NSObject, DataController {
+class DataManager: NSObject, LocationDataPrototcol {
     
     let persistenceManager: PersistenceControllerProtocol
     let dataSession: URLSessionProtocol
@@ -71,6 +76,10 @@ class DataManager: NSObject, DataController {
             
         }
         task.resume()
+    }
+    
+    private func parseLocation(Data rawData: Data) {
+        // pass data to persistence manager
     }
     
     /// Fetches specific localle data stored in the remote DB

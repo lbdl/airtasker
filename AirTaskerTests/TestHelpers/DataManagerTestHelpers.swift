@@ -13,14 +13,14 @@ import Foundation
 class MockURLSession: URLSessionProtocol {
     
     var nextDataTask = MockURLSessionDataTask()
-    var data: Data?
-    var error: Error?
-    var response: URLResponse?
+    var testData: Data?
+    var testError: Error?
+    var testResponse: URLResponse?
     private (set) var lastURL: URL?
     
     func dataTask(with request: NSURLRequest, completionHandler: @escaping DataTaskHandler) -> URLSessionDataTaskProtocol {
         lastURL = request.url
-        completionHandler(data, response, error)
+        completionHandler(testData, testResponse, testError)
         return nextDataTask
     }
 }

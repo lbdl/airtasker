@@ -45,15 +45,20 @@ class DataManagerTests: QuickSpec {
                 }
                 
             }
-            describe("WHEN we fetch localle objects") {
+            describe("WHEN we call get location objects") {
                 it("calls resume() on its data task") {
                     mockSession?.nextDataTask = mockTask!
                     sut?.fetchLocations()
                     expect(mockTask?.resumeWasCalled).to(beTrue())
                 }
             }
-            describe("WHEN we fetch location objects") {
-                
+            describe("WHEN we fetch a location object successfully") {
+                it("has the expeted data") {
+                    let expected = "{\"foo\": \"bar\"}".data(using: .utf8)
+                    mockSession?.testData = expected
+                    sut?.fetchLocations()
+                    
+                }
             }
         }
         

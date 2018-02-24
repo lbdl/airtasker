@@ -12,7 +12,6 @@ protocol JSONMapper {
     associatedtype value 
     associatedtype raw
     
-    var persistanceManager: PersistenceControllerProtocol {get set}
     var mappedValue: value? {get}
     var decoder: JSONDecoder {get set}
     
