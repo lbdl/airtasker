@@ -16,16 +16,18 @@ class DataManagerTests: QuickSpec {
     override func spec() {
         var sut: DataManager?
         var mockManager: PersistenceControllerProtocol?
-        var mockSessionManager: MockURLSession?
+        var mockSession: MockURLSession?
         var mockContext: ManagedContextProtocol?
+        var mockTask: MockURLSessionDataTask?
         
         context("GIVEN a data manager") {
             
             beforeEach {
                 mockContext = MockManagedContext()
                 mockManager = MockPersistenceManager(managedContext: mockContext!)
-                mockSessionManager = MockURLSession()
-                sut = DataManager(storeManager: mockManager!, urlSession: mockSessionManager!)
+                mockSession = MockURLSession()
+                mockTask = MockURLSessionDataTask()
+                sut = DataManager(storeManager: mockManager!, urlSession: mockSession!)
             }
             describe("WHEN we initisalise the manager") {
                 it("creates a concrete instance") {
@@ -33,15 +35,30 @@ class DataManagerTests: QuickSpec {
                 }
             }
             describe("WHEN we fetch location objects") {
+                it("calls the corect endpoint") {
+                    sut?.fetchLocations()
+                    let actual = mockSession?.lastURL
+                    expect(actual?.scheme).to(equal("https"))
+                    expect(actual?.host).to(equal("s3-ap-southeast-2.amazonaws.com/ios-code-test/v2"))
+                    expect(actual?.path).to(equal("/locations.json"))
+                    expect(actual?.lastPathComponent).to(equal("locations.json"))
+                }
                 
             }
             describe("WHEN we fetch localle objects") {
-                
+                it("calls resume() on its data task") {
+                    mockSession?.nextDataTask = mockTask!
+                    sut?.fetchLocations()
+                    expect(mockTask?.resumeWasCalled).to(beTrue())
+                }
             }
-            describe("WHEN we fetch avatar objects") {
+            describe("WHEN we fetch location objects") {
                 
             }
         }
         
     }
+    // work around so that xcode9.2 actually see's the tests
+    // thanks apple for allowing us to test things
+    public func testDummy() {}
 }
