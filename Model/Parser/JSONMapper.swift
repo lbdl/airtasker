@@ -8,12 +8,19 @@
 
 import Foundation
 
+protocol JSONDecodingProtocol {
+    func decode<T>(_ type: T.Type, from data: Data) throws -> T where T : Decodable
+}
+
+extension JSONDecoder: JSONDecodingProtocol {
+}
+
 protocol JSONMapper {
     associatedtype value 
     associatedtype raw
     
     var mappedValue: value? {get}
-    var decoder: JSONDecoder {get set}
+    var decoder: JSONDecodingProtocol {get set}
     
     /// Takes a Data object and then uses a JSONDecoder to
     /// de-serialise the object to a JSON object
@@ -32,7 +39,7 @@ protocol JSONMapper {
     /// - parameters:
     ///     - storeManager: responsible for wrapping a coredata context and
     ///                    handling persistance
-    init(storeManager: PersistenceControllerProtocol)
+    init(storeManager: PersistenceControllerProtocol, decoder: JSONDecodingProtocol)
 }
 
 

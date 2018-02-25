@@ -10,16 +10,16 @@ import Foundation
 
 class TaskMapper: JSONMapper {
     
-    internal var decoder: JSONDecoder
+    internal var decoder: JSONDecodingProtocol
     internal var mappedValue: value?
     internal var persistanceManager: PersistenceControllerProtocol
     
     typealias value = Mapped<[TaskRaw]>
     typealias raw = Data
     
-    required init(storeManager: PersistenceControllerProtocol) {
+    required init(storeManager: PersistenceControllerProtocol, decoder: JSONDecodingProtocol=JSONDecoder()) {
         persistanceManager = storeManager
-        decoder = JSONDecoder()
+        self.decoder = decoder
     }
     
     
@@ -43,7 +43,8 @@ class TaskMapper: JSONMapper {
         if let tmp = rawJson.associatedValue() as? [TaskRaw] {
             persistanceManager.updateContext(block: {
                 _ = tmp.map({ [weak self]task in
-                    _ = Task.insert(into: (self?.persistanceManager)!, raw: task)
+                    guard let strongSelf = self else { return }
+                    _ = Task.insert(into: strongSelf.persistanceManager, raw: task)
                 })
             })
         }

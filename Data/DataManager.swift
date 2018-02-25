@@ -11,15 +11,11 @@ import Foundation
 
 protocol LocationDataPrototcol {
     func fetchLocations()
-}
-
-protocol LocallesDataProtocol {
     func fetchLocationData(for locationId: Int64)
-}
-
-protocol AvatarManager {
     func fetchAvatarData(for profileId: String) -> UIImage?
 }
+
+
 
 // we are only going to use shared sessions
 // in this impelmetation
@@ -58,13 +54,23 @@ class DataManager: NSObject, LocationDataPrototcol {
     
     let persistenceManager: PersistenceControllerProtocol
     let dataSession: URLSessionProtocol
+    let locationsHandler: LocationMapper
+    let localleHandler: LocalleMapper
     
     private let scheme: String = "https"
     private let host: String = "s3-ap-southeast-2.amazonaws.com/ios-code-test/v2"
     
-    required init(storeManager: PersistenceControllerProtocol, urlSession: URLSessionProtocol, configuration: SessionType = .sharedSession) {
+    /*
+     *  This is a faulty implementation as I would ideally like to pass in the JSONMappers as protocols to make mocking for tests
+     *  celaner, however the protocol uses associated types and as such cannot now be passed. Ideally therefore I would
+     *  refactor the protocol to be generic rather than have associated types. My bad. We caould inject the parsers as poroerties but
+     *  I have used constructor injection, it seems a bit clunky. Anyway...
+     */
+    required init(storeManager: PersistenceControllerProtocol, urlSession: URLSessionProtocol, configuration: SessionType = .sharedSession, locationParser: LocationMapper, localleParser: LocalleMapper) {
         persistenceManager = storeManager
         dataSession = urlSession
+        locationsHandler = locationParser
+        localleHandler = localleParser
     }
     
     /// Fetches all location stored in the remote DB
@@ -72,8 +78,11 @@ class DataManager: NSObject, LocationDataPrototcol {
     func fetchLocations() {
         guard let url = makeLocationsURL() else {return}
         guard let request = makeRequest(fromUrl: url) else {return}
-        let task =  dataSession.dataTask(with: request) { (data, response, error) in
-            
+        let task =  dataSession.dataTask(with: request) { [weak self] (data, response, error) in
+            guard let strongSelf = self else { return }
+            if error == nil {
+                //strongSelf.locationsHandler.map(rawValue: data!)
+            }
         }
         task.resume()
     }

@@ -19,6 +19,8 @@ class DataManagerTests: QuickSpec {
         var mockSession: MockURLSession?
         var mockContext: ManagedContextProtocol?
         var mockTask: MockURLSessionDataTask?
+        var mockLocationParser: LocationMapper?
+        var mockLocalleParser: LocalleMapper?
         
         context("GIVEN a data manager") {
             
@@ -27,7 +29,9 @@ class DataManagerTests: QuickSpec {
                 mockManager = MockPersistenceManager(managedContext: mockContext!)
                 mockSession = MockURLSession()
                 mockTask = MockURLSessionDataTask()
-                sut = DataManager(storeManager: mockManager!, urlSession: mockSession!)
+                mockLocationParser = LocationMapper(storeManager: mockManager!)
+                mockLocalleParser = LocalleMapper(storeManager: mockManager!)
+                sut = DataManager(storeManager: mockManager!, urlSession: mockSession!, locationParser: mockLocationParser!, localleParser: mockLocalleParser!)
             }
             describe("WHEN we initisalise the manager") {
                 it("creates a concrete instance") {
@@ -57,7 +61,6 @@ class DataManagerTests: QuickSpec {
                     let expected = "{\"foo\": \"bar\"}".data(using: .utf8)
                     mockSession?.testData = expected
                     sut?.fetchLocations()
-                    
                 }
             }
         }

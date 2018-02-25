@@ -31,3 +31,73 @@ class MockURLSessionDataTask: URLSessionDataTaskProtocol {
         resumeWasCalled = true
     }
 }
+
+//class MockLocationParser: JSONMapper {
+//    func persist(rawJson: Bool) {
+//        //
+//    }
+//    
+//    
+//    typealias value = Bool
+//    typealias raw = Data
+//    
+//    var mappedValue: value?
+//    var didCallSet: Bool = false
+//    var didCallMap: Bool = false
+//    var didCallPersist: Bool = false
+//    var didCallManager: Bool = false
+//    
+//    
+//    func map(rawValue: Data) {
+//        
+//    }
+//    
+//    
+//    var decoder: JSONDecoder
+//    var manager: PersistenceControllerProtocol?
+//    
+//    required init(storeManager: PersistenceControllerProtocol) {
+//        manager = storeManager
+//        decoder = JSONDecoder()
+//    }
+//    
+//    var rawValue: raw? {
+//        didSet {
+//            map(rawValue: rawValue!)
+//        }
+//    }
+//}
+
+//class MockLocalleParser: JSONMapper {
+//    func persist(rawJson: Bool) {
+//        //
+//    }
+//
+//    typealias value = Bool
+//    typealias raw = Data
+//
+//    var mappedValue: value?
+//    var didCallSet: Bool = false
+//    var didCallMap: Bool = false
+//    var didCallPersist: Bool = false
+//    var didCallManager: Bool = false
+//
+//    func map(rawValue: Data) {
+//
+//    }
+//
+//    var decoder: JSONDecoder
+//    var manager: PersistenceControllerProtocol?
+//
+//    required init(storeManager: PersistenceControllerProtocol) {
+//        manager = storeManager
+//        decoder = JSONDecoder()
+//    }
+//
+//    var rawValue: raw? {
+//        didSet {
+//            map(rawValue: rawValue!)
+//        }
+//    }
+//}
+
