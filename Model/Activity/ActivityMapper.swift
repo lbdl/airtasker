@@ -11,10 +11,10 @@ import Foundation
 class ActivityMapper: JSONMapper {
 
     internal var decoder: JSONDecodingProtocol
-    internal var mappedValue: value?
+    internal var mappedValue: MappedValue?
     internal var persistanceManager: PersistenceControllerProtocol
 
-    typealias value = Mapped<[ActivityRaw]>
+    typealias MappedValue = Mapped<[ActivityRaw]>
     typealias raw = Data
 
     required init(storeManager: PersistenceControllerProtocol, decoder: JSONDecodingProtocol=JSONDecoder()) {
@@ -39,7 +39,7 @@ class ActivityMapper: JSONMapper {
         }
     }
     
-    internal func persist(rawJson: value) {
+    internal func persist(rawJson: MappedValue) {
         if let obj = rawJson.associatedValue() as? [ActivityRaw] {
             persistanceManager.updateContext(block: {
                 _ = obj.map({ [weak self] activity in

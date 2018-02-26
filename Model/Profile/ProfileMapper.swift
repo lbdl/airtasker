@@ -11,10 +11,10 @@ import Foundation
 class ProfileMapper: JSONMapper {
     
     internal var decoder: JSONDecodingProtocol
-    internal var mappedValue: value?
+    internal var mappedValue: MappedValue?
     internal var persistanceManager: PersistenceControllerProtocol
     
-    typealias value = Mapped<[ProfileRaw]>
+    typealias MappedValue = Mapped<[ProfileRaw]>
     typealias raw = Data
     
     required init(storeManager: PersistenceControllerProtocol, decoder: JSONDecodingProtocol=JSONDecoder()) {
@@ -39,7 +39,7 @@ class ProfileMapper: JSONMapper {
         }
     }
     
-    internal func persist(rawJson: value) {
+    internal func persist(rawJson: MappedValue) {
         if let obj = rawJson.associatedValue() as? [ProfileRaw] {
             persistanceManager.updateContext(block: {
                 _ = obj.map({ [weak self] profile in

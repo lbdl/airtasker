@@ -12,10 +12,10 @@ import CoreData
 class LocalleMapper: JSONMapper {
     
     internal var decoder: JSONDecodingProtocol
-    internal var mappedValue: value?
+    internal var mappedValue: MappedValue?
     internal var persistanceManager: PersistenceControllerProtocol
     
-    typealias value = Mapped<LocalleRaw>
+    typealias MappedValue = Mapped<LocalleRaw>
     typealias raw = Data
     
     required init(storeManager: PersistenceControllerProtocol, decoder: JSONDecodingProtocol=JSONDecoder()) {

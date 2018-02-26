@@ -11,10 +11,10 @@ import Foundation
 class LocationMapper: JSONMapper {
     
     internal var decoder: JSONDecodingProtocol
-    internal var mappedValue: value?
+    internal var mappedValue: MappedValue?
     internal var persistanceManager: PersistenceControllerProtocol
     
-    typealias value = Mapped<[LocationRaw]>
+    typealias MappedValue = Mapped<[LocationRaw]>
     typealias raw = Data
     
     required init(storeManager: PersistenceControllerProtocol, decoder: JSONDecodingProtocol=JSONDecoder()) {
@@ -39,7 +39,7 @@ class LocationMapper: JSONMapper {
         }
     }
     
-    internal func persist(rawJson: value) {
+    internal func persist(rawJson: MappedValue) {
         if let obj = rawJson.associatedValue() as? [LocationRaw] {
             persistanceManager.updateContext(block: {
                 _ = obj.map({ [weak self] location in
