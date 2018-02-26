@@ -114,6 +114,40 @@ private final class _AnyMapperBox<ConcreteMapper: JSONMappingProtocol>: _AnyMapp
     }
 }
 
+final class AnyMapper<MappedValue>: JSONMappingProtocol {
+    // Store the box specialised by content.
+    private let box: _AnyMapperBase<MappedValue>
+    
+    // All properties for the protocol JSONMapperProtocol call the equivalent Box property
+    var mappedValue: MappedValue? {
+        get {
+            return box.mappedValue
+        }
+    }
+    
+    var decoder: JSONDecodingProtocol {
+        get {
+            return box.decoder
+        }
+        set {
+            box.decoder = decoder
+        }
+    }
+    
+    // Initialise the class with a concrete type of JSONMappingProtocol where the content is restricted to be the same as the generic paramenter
+    init<Concrete: JSONMappingProtocol>(_ concrete: Concrete) where Concrete.MappedValue == MappedValue {
+        box = _AnyMapperBox(concrete)
+    }
+    
+    // All methods for the protocol Cup just call the equivalent box method
+    func map(rawValue: Data) {
+        box.map(rawValue: rawValue)
+    }
+    func persist(rawJson: MappedValue) {
+        box.persist(rawJson: rawJson)
+    }
+}
+
 
 
 

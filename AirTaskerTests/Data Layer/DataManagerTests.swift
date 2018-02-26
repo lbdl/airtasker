@@ -57,7 +57,7 @@ class DataManagerTests: QuickSpec {
                 }
             }
             describe("WHEN we fetch a location object successfully") {
-                it("has the expeted data") {
+                it("has the expected data") {
                     let expected = "{\"foo\": \"bar\"}".data(using: .utf8)
                     mockSession?.testData = expected
                     sut?.fetchLocations()

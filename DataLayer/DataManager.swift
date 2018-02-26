@@ -9,16 +9,12 @@
 import UIKit
 import Foundation
 
-protocol LocationDataPrototcol {
+protocol DataControllerPrototcol {
     func fetchLocations()
     func fetchLocationData(for locationId: Int64)
     func fetchAvatarData(for profileId: String) -> UIImage?
 }
 
-
-
-// we are only going to use shared sessions
-// in this impelmetation
 enum SessionType {
     case backgroundSession
     case sharedSession
@@ -31,7 +27,7 @@ enum HttpMethods: String {
 
 /// The data manager is intended to be passed between view controllers as a data handler
 /// for remote data access and local data persistence.
-/// It is only implemented for default sessions athough it is intended to be extended
+/// It is only implemented for default sessions although it is intended to be extended
 /// for background tasks.
 ///
 /// This implementation also makes no considerations of authentication etc although
@@ -42,31 +38,26 @@ enum HttpMethods: String {
 /// than to call the methods it needs as defined in the DataController protocol.
 ///
 /// Data fetched is stored in CoreData. The views should be updated via a fetched results controller.
-///
-/// - Returns:
-///     - An instance of DataManager
-///
-/// - parameters:
-///     - storeManager: an object conforming to the PerssistenceController protocol that handles persisting data
-///     - networkManager: an object conforming to the URLSessionProtocol that fetches data
-///     - configuration: a enumeration defining the tyle of sessiopersistenceManagern, in this case default
-class DataManager: NSObject, LocationDataPrototcol {
+
+class DataManager: NSObject, DataControllerPrototcol {
     
     let persistenceManager: PersistenceControllerProtocol
     let dataSession: URLSessionProtocol
-    let locationsHandler: LocationMapper
-    let localleHandler: LocalleMapper
+    let locationsHandler: AnyMapper<Mapped<[LocationRaw]>>
+    let localleHandler: AnyMapper<Mapped<LocalleRaw>>
     
     private let scheme: String = "https"
     private let host: String = "s3-ap-southeast-2.amazonaws.com/ios-code-test/v2"
     
-    /*
-     *  This is a faulty implementation as I would ideally like to pass in the JSONMappers as protocols to make mocking for tests
-     *  celaner, however the protocol uses associated types and as such cannot now be passed. Ideally therefore I would
-     *  refactor the protocol to be generic rather than have associated types. My bad. We caould inject the parsers as poroerties but
-     *  I have used constructor injection, it seems a bit clunky. Anyway...
-     */
-    required init(storeManager: PersistenceControllerProtocol, urlSession: URLSessionProtocol, configuration: SessionType = .sharedSession, locationParser: LocationMapper, localleParser: LocalleMapper) {
+    /// - Returns: an instance of DataManager
+    ///
+    /// - parameters:
+    ///     - storeManager: an object conforming to the PerssistenceController protocol that handles persisting data
+    ///     - networkManager: an object conforming to the URLSessionProtocol that fetches data
+    ///     - configuration: a enumeration defining the tyle of sessiopersistenceManagern, in this case default
+    ///     - locationParser: a type implementing the JSONMapper protocol passed as Type Erased object as we use associated types in the protocol
+    ///     - localleParser: a type implementing the JSONMapper protocol passed as Type Erased object as we use associated types in the protocol
+    required init(storeManager: PersistenceControllerProtocol, urlSession: URLSessionProtocol, configuration: SessionType = .sharedSession, locationParser: AnyMapper<Mapped<[LocationRaw]>>, localleParser: AnyMapper<Mapped<LocalleRaw>>) {
         persistenceManager = storeManager
         dataSession = urlSession
         locationsHandler = locationParser
@@ -81,7 +72,7 @@ class DataManager: NSObject, LocationDataPrototcol {
         let task =  dataSession.dataTask(with: request) { [weak self] (data, response, error) in
             guard let strongSelf = self else { return }
             if error == nil {
-                //strongSelf.locationsHandler.map(rawValue: data!)
+                strongSelf.locationsHandler.map(rawValue: data!)
             }
         }
         task.resume()
