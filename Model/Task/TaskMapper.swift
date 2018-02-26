@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TaskMapper: JSONMapper {
+class TaskMapper: JSONMappingProtocol {
     
     internal var decoder: JSONDecodingProtocol
     internal var mappedValue: MappedValue?

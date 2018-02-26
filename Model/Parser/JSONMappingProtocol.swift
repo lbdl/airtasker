@@ -17,7 +17,7 @@ extension JSONDecoder: JSONDecodingProtocol {
 }
 
 // MARK: JSON parsing
-protocol JSONMapper: class {
+protocol JSONMappingProtocol {
     associatedtype MappedValue 
     
     var mappedValue: MappedValue? {get}
@@ -40,15 +40,15 @@ protocol JSONMapper: class {
     /// - parameters:
     ///     - storeManager: responsible for wrapping a coredata context and
     ///                    handling persistance
-    init(storeManager: PersistenceControllerProtocol, decoder: JSONDecodingProtocol)
+    //init(storeManager: PersistenceControllerProtocol, decoder: JSONDecodingProtocol)
 }
 
 //MARK: - Protocol type erasure code
-// "protocol ‘JSONMapper’ can only be used as a generic constraint because it has Self or associated type requirements"
-private class _AnyMapperBase<Value>: JSONMapper {
+// fixes the error "protocol ‘JSONMappingProtocol’ can only be used as a generic constraint because it has Self or associated type requirements"
+private class _AnyMapperBase<MappedValue>: JSONMappingProtocol {
     
     // JSONMapper protocol properties.
-    var mappedValue: Value? {
+    var mappedValue: MappedValue? {
         get {
             fatalError("Must override")
         }
@@ -63,8 +63,8 @@ private class _AnyMapperBase<Value>: JSONMapper {
         }
     }
 
-    // Ensure that init() must be overriden.
-    required init(storeManager: PersistenceControllerProtocol, decoder: JSONDecodingProtocol) {
+    // Ensure that init() cannot be called and must be overridden in the implementer.
+    init() {
         guard type(of: self) != _AnyMapperBase.self else {
             fatalError("Cannot initialise, must subclass")
         }
@@ -78,7 +78,40 @@ private class _AnyMapperBase<Value>: JSONMapper {
     func persist(rawJson: MappedValue) {
         fatalError("Must override")
     }
+}
+
+private final class _AnyMapperBox<ConcreteMapper: JSONMappingProtocol>: _AnyMapperBase<ConcreteMapper.MappedValue> {
+    // Store the concrete type
+    var concrete: ConcreteMapper
+
+    // Override all properties
+    override var mappedValue: MappedValue? {
+        get {
+            return concrete.mappedValue
+        }
+    }
     
+    override var decoder: JSONDecodingProtocol {
+        get {
+            return concrete.decoder
+        }
+        set {
+            concrete.decoder = decoder
+        }
+    }
+
+    // Define init()
+    init(_ concrete: ConcreteMapper) {
+        self.concrete = concrete
+    }
+
+    // Override all methods
+    override func map(rawValue: Data) {
+        concrete.map(rawValue: rawValue)
+    }
+    override func persist(rawJson: MappedValue) {
+        concrete.persist(rawJson: rawJson)
+    }
 }
 
 

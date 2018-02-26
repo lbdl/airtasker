@@ -8,7 +8,7 @@
 
 import Foundation
 
-class LocationMapper: JSONMapper {
+class LocationMapper: JSONMappingProtocol {
     
     internal var decoder: JSONDecodingProtocol
     internal var mappedValue: MappedValue?

@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class LocalleMapper: JSONMapper {
+class LocalleMapper: JSONMappingProtocol {
     
     internal var decoder: JSONDecodingProtocol
     internal var mappedValue: MappedValue?

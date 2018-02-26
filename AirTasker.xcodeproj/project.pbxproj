@@ -38,7 +38,7 @@
 		2BBF412A20170D36003A636C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BBF412820170D36003A636C /* LaunchScreen.storyboard */; };
 		2BF1161D20172B2000D8A02B /* Mapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1161C20172B2000D8A02B /* Mapped.swift */; };
 		2BF116232018440A00D8A02B /* AirTasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116212018440A00D8A02B /* AirTasks.xcdatamodeld */; };
-		2BF116252019805500D8A02B /* JSONMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116242019805500D8A02B /* JSONMapper.swift */; };
+		2BF116252019805500D8A02B /* JSONMappingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116242019805500D8A02B /* JSONMappingProtocol.swift */; };
 		2BF1162A2019923700D8A02B /* LocationMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116292019923700D8A02B /* LocationMapper.swift */; };
 		2BF1162F20199FA300D8A02B /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1162D20199FA300D8A02B /* Location.swift */; };
 		2BF116392019BC7D00D8A02B /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116382019BC7D00D8A02B /* PersistenceManager.swift */; };
@@ -122,7 +122,7 @@
 		2BBF413620170D37003A636C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BF1161C20172B2000D8A02B /* Mapped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mapped.swift; sourceTree = "<group>"; };
 		2BF116222018440A00D8A02B /* AirTasks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AirTasks.xcdatamodel; sourceTree = "<group>"; };
-		2BF116242019805500D8A02B /* JSONMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONMapper.swift; sourceTree = "<group>"; };
+		2BF116242019805500D8A02B /* JSONMappingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONMappingProtocol.swift; sourceTree = "<group>"; };
 		2BF116292019923700D8A02B /* LocationMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMapper.swift; sourceTree = "<group>"; };
 		2BF1162D20199FA300D8A02B /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		2BF116382019BC7D00D8A02B /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
@@ -288,7 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				2BF1161C20172B2000D8A02B /* Mapped.swift */,
-				2BF116242019805500D8A02B /* JSONMapper.swift */,
+				2BF116242019805500D8A02B /* JSONMappingProtocol.swift */,
 			);
 			path = Parser;
 			sourceTree = "<group>";
@@ -540,7 +540,7 @@
 				2B27C0F62031E0050054A5D0 /* Localle.swift in Sources */,
 				2BF1163C2019C0EA00D8A02B /* Profile.swift in Sources */,
 				2BF1162A2019923700D8A02B /* LocationMapper.swift in Sources */,
-				2BF116252019805500D8A02B /* JSONMapper.swift in Sources */,
+				2BF116252019805500D8A02B /* JSONMappingProtocol.swift in Sources */,
 				2B0193D72031DBBC00960FCC /* Managed.swift in Sources */,
 				2BF116392019BC7D00D8A02B /* PersistenceManager.swift in Sources */,
 				2B7C837D203F081600FBD2D7 /* SessionProtocols.swift in Sources */,

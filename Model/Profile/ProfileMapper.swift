@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ProfileMapper: JSONMapper {
+class ProfileMapper: JSONMappingProtocol {
     
     internal var decoder: JSONDecodingProtocol
     internal var mappedValue: MappedValue?

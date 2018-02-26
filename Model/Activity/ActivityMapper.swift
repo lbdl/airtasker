@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ActivityMapper: JSONMapper {
+class ActivityMapper: JSONMappingProtocol {
 
     internal var decoder: JSONDecodingProtocol
     internal var mappedValue: MappedValue?
