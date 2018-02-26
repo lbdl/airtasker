@@ -208,8 +208,9 @@
 		2B7C8379203EF17F00FBD2D7 /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
-				2B7C837C203F081600FBD2D7 /* SessionProtocols.swift */,
-				2B7C837A203EF1B500FBD2D7 /* DataManager.swift */,
+				2BF1161920171E2000D8A02B /* Parsing_common */,
+				2B7C838B2044106100FBD2D7 /* Persistence_common */,
+				2B7C838C204410D100FBD2D7 /* Network_common */,
 				2BF116352019BAAB00D8A02B /* Model */,
 			);
 			path = DataLayer;
@@ -229,7 +230,8 @@
 			children = (
 				2B7C838A2043D8D800FBD2D7 /* Location */,
 			);
-			path = Modules;
+			name = Modules;
+			path = ../Modules;
 			sourceTree = "<group>";
 		};
 		2B7C838A2043D8D800FBD2D7 /* Location */ = {
@@ -238,6 +240,25 @@
 				2B7C83872043D8AB00FBD2D7 /* LocationsViewController.swift */,
 			);
 			path = Location;
+			sourceTree = "<group>";
+		};
+		2B7C838B2044106100FBD2D7 /* Persistence_common */ = {
+			isa = PBXGroup;
+			children = (
+				2BF11676201C5C8500D8A02B /* Managed.swift */,
+				2BF116382019BC7D00D8A02B /* PersistenceManager.swift */,
+				2BF11674201C504A00D8A02B /* PersistenceHelper.swift */,
+			);
+			path = Persistence_common;
+			sourceTree = "<group>";
+		};
+		2B7C838C204410D100FBD2D7 /* Network_common */ = {
+			isa = PBXGroup;
+			children = (
+				2B7C837C203F081600FBD2D7 /* SessionProtocols.swift */,
+				2B7C837A203EF1B500FBD2D7 /* DataManager.swift */,
+			);
+			path = Network_common;
 			sourceTree = "<group>";
 		};
 		2BBDA5522036BDC60093ACE6 /* Localle */ = {
@@ -261,8 +282,6 @@
 		2BBF411320170D36003A636C = {
 			isa = PBXGroup;
 			children = (
-				2B7C83892043D8D000FBD2D7 /* Modules */,
-				2B7C8379203EF17F00FBD2D7 /* DataLayer */,
 				2BBF411E20170D36003A636C /* AirTasker */,
 				2BBF413320170D37003A636C /* AirTaskerTests */,
 				2BBF411D20170D36003A636C /* Products */,
@@ -282,6 +301,8 @@
 		2BBF411E20170D36003A636C /* AirTasker */ = {
 			isa = PBXGroup;
 			children = (
+				2B7C8379203EF17F00FBD2D7 /* DataLayer */,
+				2B7C83892043D8D000FBD2D7 /* Modules */,
 				2BBF411F20170D36003A636C /* AppDelegate.swift */,
 				2BBF412120170D36003A636C /* ViewController.swift */,
 				2BBF412320170D36003A636C /* Main.storyboard */,
@@ -303,13 +324,13 @@
 			path = AirTaskerTests;
 			sourceTree = "<group>";
 		};
-		2BF1161920171E2000D8A02B /* Parser */ = {
+		2BF1161920171E2000D8A02B /* Parsing_common */ = {
 			isa = PBXGroup;
 			children = (
-				2BF1161C20172B2000D8A02B /* Mapped.swift */,
 				2BF116242019805500D8A02B /* JSONMappingProtocol.swift */,
+				2BF1161C20172B2000D8A02B /* Mapped.swift */,
 			);
-			path = Parser;
+			path = Parsing_common;
 			sourceTree = "<group>";
 		};
 		2BF1161E201835E700D8A02B /* Location */ = {
@@ -368,12 +389,8 @@
 		2BF116352019BAAB00D8A02B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2BF11676201C5C8500D8A02B /* Managed.swift */,
-				2BF116382019BC7D00D8A02B /* PersistenceManager.swift */,
-				2BF11674201C504A00D8A02B /* PersistenceHelper.swift */,
 				2BF1162720198E5800D8A02B /* Localle */,
-				2BF1164A2019C21600D8A02B /* DB */,
-				2BF1161920171E2000D8A02B /* Parser */,
+				2BF1164A2019C21600D8A02B /* Datamodel */,
 				2BF1161E201835E700D8A02B /* Location */,
 				2BF1161F2018366400D8A02B /* Task */,
 				2BF11620201836B000D8A02B /* Profile */,
@@ -383,12 +400,12 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		2BF1164A2019C21600D8A02B /* DB */ = {
+		2BF1164A2019C21600D8A02B /* Datamodel */ = {
 			isa = PBXGroup;
 			children = (
 				2BF116212018440A00D8A02B /* AirTasks.xcdatamodeld */,
 			);
-			path = DB;
+			path = Datamodel;
 			sourceTree = "<group>";
 		};
 		2BF1164B2019E24400D8A02B /* Frameworks */ = {

@@ -64,7 +64,7 @@ class DataManager: NSObject, DataControllerPrototcol {
         localleHandler = localleParser
     }
     
-    /// Fetches all location stored in the remote DB
+    /// Fetches all locations stored in the remote DB
     /// - Returns: void
     func fetchLocations() {
         guard let url = makeLocationsURL() else {return}

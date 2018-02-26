@@ -68,6 +68,7 @@ class DataManagerTests: QuickSpec {
                     expect(mockTask?.resumeWasCalled).to(beTrue())
                 }
             }
+            
             describe("WHEN we fetch a location object successfully") {
                 it("calls its location parser's map method") {
                     waitUntil { done in
@@ -79,13 +80,23 @@ class DataManagerTests: QuickSpec {
                         done()
                     }
                 }
-                it("calls its decoders decode method") {
+                it("calls its location parsers decoders decode method") {
                     waitUntil { done in
                         let expected = "{\"foo\": \"bar\"}".data(using: .utf8)
                         mockSession?.testData = expected
                         sut?.fetchLocations()
                         let decoder = mockLocationParser?.decoder as! MockLocationJSONDecoder
                         expect(decoder.didCallDecode).to(beTrue())
+                        done()
+                    }
+                }
+                it("calls its location parsers decoders decode and sets the parsers MappedValue to <[LocationRaw]>") {
+                    waitUntil { done in
+//                        let expected = "{\"foo\": \"bar\"}".data(using: .utf8)
+//                        mockSession?.testData = expected
+//                        sut?.fetchLocations()
+//                        let decoder = mockLocationParser?.decoder as! MockLocationJSONDecoder
+//                        expect(decoder.didCallDecode).to(beTrue())
                         done()
                     }
                 }
