@@ -15,7 +15,7 @@ protocol JSONDecodingProtocol {
 extension JSONDecoder: JSONDecodingProtocol {
 }
 
-protocol JSONMapper {
+protocol JSONMapper: class {
     associatedtype value 
     associatedtype raw
     
