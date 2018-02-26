@@ -12,6 +12,10 @@ import CoreData
 
 @testable import AirTasker
 
+struct Foo: Decodable {
+    let foo: String
+}
+
 class DataManagerTests: QuickSpec {
     override func spec() {
         var sut: DataManager?
@@ -19,8 +23,10 @@ class DataManagerTests: QuickSpec {
         var mockSession: MockURLSession?
         var mockContext: ManagedContextProtocol?
         var mockTask: MockURLSessionDataTask?
-        var mockLocationParser: LocationMapper?
-        var mockLocalleParser: LocalleMapper?
+        var mockLocationParser: MockLocationsParser?
+        var mockLocalleParser: MockLocalleParser?
+        var mockLocationMapper: AnyMapper<Mapped<[LocationRaw]>>?
+        var mockLocalleMapper: AnyMapper<Mapped<LocalleRaw>>?
         
         context("GIVEN a data manager") {
             
@@ -29,9 +35,11 @@ class DataManagerTests: QuickSpec {
                 mockManager = MockPersistenceManager(managedContext: mockContext!)
                 mockSession = MockURLSession()
                 mockTask = MockURLSessionDataTask()
-                mockLocationParser = LocationMapper(storeManager: mockManager!)
-                mockLocalleParser = LocalleMapper(storeManager: mockManager!)
-                sut = DataManager(storeManager: mockManager!, urlSession: mockSession!, locationParser: mockLocationParser!, localleParser: mockLocalleParser!)
+                mockLocationParser = MockLocationsParser()
+                mockLocalleParser = MockLocalleParser()
+                mockLocationMapper = AnyMapper(mockLocationParser!)
+                mockLocalleMapper = AnyMapper(mockLocalleParser!)
+                sut = DataManager(storeManager: mockManager!, urlSession: mockSession!, locationParser: mockLocationMapper!, localleParser: mockLocalleMapper!)
             }
             describe("WHEN we initisalise the manager") {
                 it("creates a concrete instance") {
@@ -40,6 +48,8 @@ class DataManagerTests: QuickSpec {
             }
             describe("WHEN we fetch location objects") {
                 it("calls the corect endpoint") {
+                    let expected = "{\"foo\": \"bar\"}".data(using: .utf8)
+                    mockSession?.testData = expected
                     sut?.fetchLocations()
                     let actual = mockSession?.lastURL
                     expect(actual?.scheme).to(equal("https"))
@@ -51,16 +61,33 @@ class DataManagerTests: QuickSpec {
             }
             describe("WHEN we call get location objects") {
                 it("calls resume() on its data task") {
+                    let expected = "{\"foo\": \"bar\"}".data(using: .utf8)
+                    mockSession?.testData = expected
                     mockSession?.nextDataTask = mockTask!
                     sut?.fetchLocations()
                     expect(mockTask?.resumeWasCalled).to(beTrue())
                 }
             }
             describe("WHEN we fetch a location object successfully") {
-                it("has the expected data") {
-                    let expected = "{\"foo\": \"bar\"}".data(using: .utf8)
-                    mockSession?.testData = expected
-                    sut?.fetchLocations()
+                it("calls its location parser's map method") {
+                    waitUntil { done in
+                        let expected = "{\"foo\": \"bar\"}".data(using: .utf8)
+                        mockSession?.testData = expected
+                        sut?.fetchLocations()
+                        expect(mockLocationParser?.receivedData).to(equal(expected))
+                        expect(mockLocationParser?.didCallMap).to(beTrue())
+                        done()
+                    }
+                }
+                it("calls its decoders decode method") {
+                    waitUntil { done in
+                        let expected = "{\"foo\": \"bar\"}".data(using: .utf8)
+                        mockSession?.testData = expected
+                        sut?.fetchLocations()
+                        let decoder = mockLocationParser?.decoder as! MockLocationJSONDecoder
+                        expect(decoder.didCallDecode).to(beTrue())
+                        done()
+                    }
                 }
             }
         }

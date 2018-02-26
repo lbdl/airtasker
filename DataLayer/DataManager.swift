@@ -55,8 +55,8 @@ class DataManager: NSObject, DataControllerPrototcol {
     ///     - storeManager: an object conforming to the PerssistenceController protocol that handles persisting data
     ///     - networkManager: an object conforming to the URLSessionProtocol that fetches data
     ///     - configuration: a enumeration defining the tyle of sessiopersistenceManagern, in this case default
-    ///     - locationParser: a type implementing the JSONMapper protocol passed as Type Erased object as we use associated types in the protocol
-    ///     - localleParser: a type implementing the JSONMapper protocol passed as Type Erased object as we use associated types in the protocol
+    ///     - locationParser: a object conforming to the JSONMapper protocol passed as Type Erased object as we use associated types in the protocol
+    ///     - localleParser: a object conforming to the JSONMapper protocol passed as Type Erased object as we use associated types in the protocol
     required init(storeManager: PersistenceControllerProtocol, urlSession: URLSessionProtocol, configuration: SessionType = .sharedSession, locationParser: AnyMapper<Mapped<[LocationRaw]>>, localleParser: AnyMapper<Mapped<LocalleRaw>>) {
         persistenceManager = storeManager
         dataSession = urlSession

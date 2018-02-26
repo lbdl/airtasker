@@ -32,72 +32,70 @@ class MockURLSessionDataTask: URLSessionDataTaskProtocol {
     }
 }
 
-//class MockLocationParser: JSONMapper {
-//    func persist(rawJson: Bool) {
-//        //
-//    }
-//    
-//    
-//    typealias value = Bool
-//    typealias raw = Data
-//    
-//    var mappedValue: value?
-//    var didCallSet: Bool = false
-//    var didCallMap: Bool = false
-//    var didCallPersist: Bool = false
-//    var didCallManager: Bool = false
-//    
-//    
-//    func map(rawValue: Data) {
-//        
-//    }
-//    
-//    
-//    var decoder: JSONDecoder
-//    var manager: PersistenceControllerProtocol?
-//    
-//    required init(storeManager: PersistenceControllerProtocol) {
-//        manager = storeManager
-//        decoder = JSONDecoder()
-//    }
-//    
-//    var rawValue: raw? {
-//        didSet {
-//            map(rawValue: rawValue!)
-//        }
-//    }
-//}
+class MockLocationsParser: JSONMappingProtocol {
+    
+    typealias MappedValue = Mapped<[LocationRaw]>
+    var decoder: JSONDecodingProtocol
+    var data: Data?
+    var mappedValue: MappedValue?
+    var receivedData: Data?
+    var didCallMap: Bool?
+    
+    func map(rawValue: Data) {
+        receivedData = rawValue
+        didCallMap = true
+        let tmp = try! decoder.decode(Foo.self, from: rawValue)
+    }
+    
+    func persist(rawJson: Mapped<[LocationRaw]>) {
+    }
+    
+    init() {
+        decoder = MockLocationJSONDecoder()
+    }
+}
 
-//class MockLocalleParser: JSONMapper {
-//    func persist(rawJson: Bool) {
-//        //
-//    }
-//
-//    typealias value = Bool
-//    typealias raw = Data
-//
-//    var mappedValue: value?
-//    var didCallSet: Bool = false
-//    var didCallMap: Bool = false
-//    var didCallPersist: Bool = false
-//    var didCallManager: Bool = false
-//
-//    func map(rawValue: Data) {
-//
-//    }
-//
-//    var decoder: JSONDecoder
-//    var manager: PersistenceControllerProtocol?
-//
-//    required init(storeManager: PersistenceControllerProtocol) {
-//        manager = storeManager
-//        decoder = JSONDecoder()
-//    }
-//
-//    var rawValue: raw? {
-//        didSet {
-//            map(rawValue: rawValue!)
-//        }
-//    }
-//}
+class MockLocalleParser: JSONMappingProtocol {
+    
+    typealias MappedValue = Mapped<LocalleRaw>
+    var decoder: JSONDecodingProtocol
+    var data: Data?
+    var mappedValue: MappedValue?
+    var receivedData: Data?
+    
+    func map(rawValue: Data) {
+        receivedData = rawValue
+    }
+    
+    func persist(rawJson: Mapped<LocalleRaw>) {
+    }
+    
+    init() {
+        decoder = MockLocalleJSONDecoder()
+    }
+}
+
+class MockLocationJSONDecoder: JSONDecodingProtocol {
+    
+    var didCallDecode: Bool?
+    
+    func decode<T>(_ type: T.Type, from data: Data) throws -> T where T : Decodable {
+        didCallDecode = true
+        let tmpFoo = Foo(foo: "bar")
+        return tmpFoo as! T
+    }
+}
+
+class MockLocalleJSONDecoder: JSONDecodingProtocol {
+    
+    var didCallDecode: Bool?
+    
+    func decode<T>(_ type: T.Type, from data: Data) throws -> T where T : Decodable {
+        didCallDecode = true
+        return "Localle" as! T
+    }
+}
+
+
+
 

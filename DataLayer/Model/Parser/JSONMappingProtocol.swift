@@ -21,7 +21,7 @@ protocol JSONMappingProtocol {
     associatedtype MappedValue 
     
     var mappedValue: MappedValue? {get}
-    var decoder: JSONDecodingProtocol {get set}
+    var decoder: JSONDecodingProtocol {get}
     
     /// Takes a Data object and then uses a JSONDecoder to
     /// de-serialise the object to a JSON object
@@ -58,9 +58,9 @@ private class _AnyMapperBase<MappedValue>: JSONMappingProtocol {
         get {
             fatalError("Must override")
         }
-        set {
-            fatalError("Must override")
-        }
+//        set {
+//            fatalError("Must override")
+//        }
     }
 
     // Ensure that init() cannot be called and must be overridden in the implementer.
@@ -95,9 +95,9 @@ private final class _AnyMapperBox<ConcreteMapper: JSONMappingProtocol>: _AnyMapp
         get {
             return concrete.decoder
         }
-        set {
-            concrete.decoder = decoder
-        }
+//        set {
+//            concrete.decoder = decoder
+//        }
     }
 
     // Define init()
@@ -129,9 +129,9 @@ final class AnyMapper<MappedValue>: JSONMappingProtocol {
         get {
             return box.decoder
         }
-        set {
-            box.decoder = decoder
-        }
+//        set {
+//            box.decoder = decoder
+//        }
     }
     
     // Initialise the class with a concrete type of JSONMappingProtocol where the content is restricted to be the same as the generic paramenter
