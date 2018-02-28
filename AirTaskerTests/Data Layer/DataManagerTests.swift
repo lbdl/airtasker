@@ -70,9 +70,8 @@ class DataManagerTests: QuickSpec {
                 }
             }
             describe("WHEN we fetch location objects") {
-                it("calls the corect endpoint") {
+                it("calls the correct endpoint") {
                     mockSession?.testData = testLocationJsonData
-                    //mockLocationParser?.mappedValue = .Value([LocationRaw(), LocationRaw()])
                     sut?.fetchLocations()
                     let actual = mockSession?.lastURL
                     expect(actual?.scheme).to(equal("https"))
@@ -80,50 +79,47 @@ class DataManagerTests: QuickSpec {
                     expect(actual?.path).to(equal("/locations.json"))
                     expect(actual?.lastPathComponent).to(equal("locations.json"))
                 }
-                
-            }
-            describe("WHEN we call get location objects") {
                 it("calls resume() on its data task") {
                     mockSession?.testData = testLocationJsonData
-                    //mockLocationParser?.mappedValue = .Value([LocationRaw(), LocationRaw()])
                     mockSession?.nextDataTask = mockTask!
                     sut?.fetchLocations()
                     expect(mockTask?.resumeWasCalled).to(beTrue())
                 }
+                
             }
             
-            describe("WHEN we fetch a location object successfully") {
-                it("calls its location parser's parse method") {
-                    waitUntil { done in
-                        mockSession?.testData = testLocationJsonData
-                        //mockLocationParser?.mappedValue = .Value([LocationRaw(), LocationRaw()])
-                        sut?.fetchLocations()
-                        expect(mockLocationParser?.receivedData).to(equal(testLocationJsonData))
-                        expect(mockLocationParser?.didCallMap).to(beTrue())
-                        done()
+            describe("AND a succesful return from the fetch locations call") {
+                    it("calls its location parser's parse method") {
+                        waitUntil { done in
+                            mockSession?.testData = testLocationJsonData
+                            sut?.fetchLocations()
+                            expect(mockLocationParser?.receivedData).to(equal(testLocationJsonData))
+                            expect(mockLocationParser?.didCallMap).to(beTrue())
+                            done()
+                        }
                     }
-                }
-                it("calls its location parsers decoders decode method") {
-                    waitUntil { done in
-                        mockSession?.testData = testLocationJsonData
-                        //mockLocationParser?.mappedValue = .Value([LocationRaw(), LocationRaw()])
-                        sut?.fetchLocations()
-                        let decoder = mockLocationParser?.decoder as! MockLocationJSONDecoder
-                        expect(decoder.didCallDecode).to(beTrue())
-                        done()
+                    it("calls its location parsers decoders decode method") {
+                        waitUntil { done in
+                            mockSession?.testData = testLocationJsonData
+                            sut?.fetchLocations()
+                            let decoder = mockLocationParser?.decoder as! MockLocationJSONDecoder
+                            expect(decoder.didCallDecode).to(beTrue())
+                            done()
+                        }
                     }
-                }
-                it("calls its location parsers persist method") {
-                    waitUntil { done in
-                        mockSession?.testData = testLocationJsonData
-                        //mockLocationParser?.mappedValue = .Value([LocationRaw(), LocationRaw()])
-                        mockLocationParser?.persistanceManager = mockManager!
-                        sut?.fetchLocations()
-                        //let mapper = mockLocationMapper as! MockLocationsParser
-                        done()
+                    it("calls its location parsers persist method") {
+                        waitUntil { done in
+                            mockSession?.testData = testLocationJsonData
+                            sut?.fetchLocations()
+                            expect(mockLocationParser?.didCallPersist).to(beTrue())
+                            done()
+                        }
                     }
-                }
             }
+            describe(""){
+                
+            }
+
         }
         
     }

@@ -64,31 +64,35 @@ class DataManager: NSObject, DataControllerPrototcol {
         localleHandler = localleParser
     }
     
-    /// Fetches all locations stored in the remote DB
+    /// Fetches all locations stored in the remote DB really this method should throw
+    /// and pass the error up the chain for both data fetch errors and parse/persist errors.
+    /// Furthermore it should handle server codes other than straight success, 300, 400, 500 and the like
+    /// however it doesn't, its naive and trusting **AKA** "I'm running out of time for this exercise"
     /// - Returns: void
-    func fetchLocations() {
+    func fetchLocations()  {
         guard let url = makeLocationsURL() else {return}
         guard let request = makeRequest(fromUrl: url) else {return}
         let task =  dataSession.dataTask(with: request) { [weak self] (data, response, error) in
             guard let strongSelf = self else { return }
-            if error == nil {
-                strongSelf.locationsHandler.parse(rawValue: data!)
-                let val = strongSelf.locationsHandler.mappedValue!
-                switch val {
-                case .MappingError:
-                    //handle error
-                    print ("mapping error \(val.associatedValue())")
-                case .Value:
-                    strongSelf.locationsHandler.persist(rawJson: val)
+            if error == nil  {
+                guard let urlResponse = response as? HTTPURLResponse else {return}
+                if  200...299 ~= urlResponse.statusCode {
+                    strongSelf.locationsHandler.parse(rawValue: data!)
+                    let val = strongSelf.locationsHandler.mappedValue!
+                    switch val {
+                    case .MappingError:
+                        //handle error
+                        print ("mapping error \(val.associatedValue())")
+                    case .Value:
+                        strongSelf.locationsHandler.persist(rawJson: val)
+                    }
                 }
-                strongSelf.locationsHandler.persist(rawJson: strongSelf.locationsHandler.mappedValue!)
+                
+            } else {
+                //handle the network error
             }
         }
         task.resume()
-    }
-    
-    private func parseLocation(Data rawData: Data) {
-        // pass data to persistence manager
     }
     
     /// Fetches specific localle data stored in the remote DB

@@ -20,6 +20,7 @@ class MockURLSession: URLSessionProtocol {
     
     func dataTask(with request: NSURLRequest, completionHandler: @escaping DataTaskHandler) -> URLSessionDataTaskProtocol {
         lastURL = request.url
+        testResponse = HTTPURLResponse(url: request.url!, statusCode: 200, httpVersion: nil, headerFields: nil)
         completionHandler(testData, testResponse, testError)
         return nextDataTask
     }
