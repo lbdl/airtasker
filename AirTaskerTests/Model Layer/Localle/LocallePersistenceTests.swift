@@ -74,9 +74,9 @@ class LocallePersistenceTests: QuickSpec {
             describe("WHEN we persist the localle object") {
                 it("creates a localle object in the store") {
                     waitUntil { done in
-                        locationMapper?.map(rawValue: locationData!)
+                        locationMapper?.parse(rawValue: locationData!)
                         locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
-                        localleMapper?.map(rawValue: localleData!)
+                        localleMapper?.parse(rawValue: localleData!)
                         localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
                         let localles = try! persistentContainer?.fetch(localleRequest!)
                         let actual = localles?.first
@@ -86,9 +86,9 @@ class LocallePersistenceTests: QuickSpec {
                 }
                 it("the localle has a set of profiles") {
                     waitUntil { done in
-                        locationMapper?.map(rawValue: locationData!)
+                        locationMapper?.parse(rawValue: locationData!)
                         locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
-                        localleMapper?.map(rawValue: localleData!)
+                        localleMapper?.parse(rawValue: localleData!)
                         localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
                         let localles = try! persistentContainer?.fetch(localleRequest!)
                         let actual = localles?.first
@@ -99,9 +99,9 @@ class LocallePersistenceTests: QuickSpec {
                 }
                 it("the profile with id: 4 has name: Joey") {
                     waitUntil { done in
-                        locationMapper?.map(rawValue: locationData!)
+                        locationMapper?.parse(rawValue: locationData!)
                         locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
-                        localleMapper?.map(rawValue: localleData!)
+                        localleMapper?.parse(rawValue: localleData!)
                         localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
                         let localles = try! persistentContainer?.fetch(localleRequest!)
                         let localle = localles?.first
@@ -114,9 +114,9 @@ class LocallePersistenceTests: QuickSpec {
                 }
                 it("the profile with id: 4 has a single activity associated with it") {
                     waitUntil { done in
-                        locationMapper?.map(rawValue: locationData!)
+                        locationMapper?.parse(rawValue: locationData!)
                         locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
-                        localleMapper?.map(rawValue: localleData!)
+                        localleMapper?.parse(rawValue: localleData!)
                         localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
                         let localles = try! persistentContainer?.fetch(localleRequest!)
                         let localle = localles?.first
@@ -129,9 +129,9 @@ class LocallePersistenceTests: QuickSpec {
                 }
                 it("the profile with id: 3 has 4 activities associated with it") {
                     waitUntil { done in
-                        locationMapper?.map(rawValue: locationData!)
+                        locationMapper?.parse(rawValue: locationData!)
                         locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
-                        localleMapper?.map(rawValue: localleData!)
+                        localleMapper?.parse(rawValue: localleData!)
                         localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
                         let localles = try! persistentContainer?.fetch(localleRequest!)
                         let localle = localles?.first
@@ -144,9 +144,9 @@ class LocallePersistenceTests: QuickSpec {
                 }
                 it("the profile with id: 4 activtity has an associated task") {
                     waitUntil { done in
-                        locationMapper?.map(rawValue: locationData!)
+                        locationMapper?.parse(rawValue: locationData!)
                         locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
-                        localleMapper?.map(rawValue: localleData!)
+                        localleMapper?.parse(rawValue: localleData!)
                         localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
                         let localles = try! persistentContainer?.fetch(localleRequest!)
                         let localle = localles?.first
@@ -160,9 +160,9 @@ class LocallePersistenceTests: QuickSpec {
                 }
                 it("the activity associatied with profile id:4 has an associated task with correct properties") {
                     waitUntil { done in
-                        locationMapper?.map(rawValue: locationData!)
+                        locationMapper?.parse(rawValue: locationData!)
                         locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
-                        localleMapper?.map(rawValue: localleData!)
+                        localleMapper?.parse(rawValue: localleData!)
                         localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
                         let localles = try! persistentContainer?.fetch(localleRequest!)
                         let localle = localles?.first
@@ -182,9 +182,9 @@ class LocallePersistenceTests: QuickSpec {
                 }
                 it("activity id: 3 associatied with profile id:3 has an associated with worker associated profile") {
                     waitUntil { done in
-                        locationMapper?.map(rawValue: locationData!)
+                        locationMapper?.parse(rawValue: locationData!)
                         locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
-                        localleMapper?.map(rawValue: localleData!)
+                        localleMapper?.parse(rawValue: localleData!)
                         localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
                         let localles = try! persistentContainer?.fetch(localleRequest!)
                         let localle = localles?.first
@@ -205,14 +205,14 @@ class LocallePersistenceTests: QuickSpec {
                 describe("WHEN we parse another localle") {
                     it("persists 2 localles") {
                         waitUntil {done in
-                            locationMapper?.map(rawValue: locationData!)
-                            localleMapper?.map(rawValue: localleData!)
+                            locationMapper?.parse(rawValue: locationData!)
+                            localleMapper?.parse(rawValue: localleData!)
                             locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
                             localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
                             
                             // map a second localle
                             localleData = TestSuiteHelpers.readLocalData(testCase: .localle2)
-                            localleMapper?.map(rawValue: localleData!)
+                            localleMapper?.parse(rawValue: localleData!)
                             localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
                             let locallesReq = NSFetchRequest<Localle>(entityName: Localle.entityName)
                             let localles = try! persistentContainer?.fetch(locallesReq)
@@ -222,14 +222,14 @@ class LocallePersistenceTests: QuickSpec {
                     }
                     it("localle:5 contains profile:5 with location:2") {
                         waitUntil {done in
-                            locationMapper?.map(rawValue: locationData!)
-                            localleMapper?.map(rawValue: localleData!)
+                            locationMapper?.parse(rawValue: locationData!)
+                            localleMapper?.parse(rawValue: localleData!)
                             locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
                             localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
                             
                             // map a second localle
                             localleData = TestSuiteHelpers.readLocalData(testCase: .localle2)
-                            localleMapper?.map(rawValue: localleData!)
+                            localleMapper?.parse(rawValue: localleData!)
                             localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
                             let locallesReq = NSFetchRequest<Localle>(entityName: Localle.entityName)
                             locallesReq.predicate = NSPredicate(format: "id == %d", 5)
@@ -244,14 +244,14 @@ class LocallePersistenceTests: QuickSpec {
                     it("persists a total of 8 activities") {
                         waitUntil {done in
                             //persist first localle
-                            locationMapper?.map(rawValue: locationData!)
-                            localleMapper?.map(rawValue: localleData!)
+                            locationMapper?.parse(rawValue: locationData!)
+                            localleMapper?.parse(rawValue: localleData!)
                             locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)
                             localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
                             
                             // persist a second localle
                             localleData = TestSuiteHelpers.readLocalData(testCase: .localle2)
-                            localleMapper?.map(rawValue: localleData!)
+                            localleMapper?.parse(rawValue: localleData!)
                             localleMapper?.persist(rawJson: (localleMapper?.mappedValue)!)
                             let activitiesReq = NSFetchRequest<Activity>(entityName: Activity.entityName)
                             let activities = try! persistentContainer?.fetch(activitiesReq)

@@ -22,12 +22,13 @@ protocol JSONMappingProtocol {
     
     var mappedValue: MappedValue? {get}
     var decoder: JSONDecodingProtocol {get}
+    var persistanceManager: PersistenceControllerProtocol {get}
     
     /// Takes a Data object and then uses a JSONDecoder to
     /// de-serialise the object to a JSON object
     /// - parameters:
     ///     - rawValue: a Data object that will be decoded
-    func map(rawValue: Data)
+    func parse(rawValue: Data)
     
     /// Persist the object to CoreData backing storage
     /// via a persistance controller. Intended to be used by a
@@ -58,9 +59,12 @@ private class _AnyMapperBase<MappedValue>: JSONMappingProtocol {
         get {
             fatalError("Must override")
         }
-//        set {
-//            fatalError("Must override")
-//        }
+    }
+    
+    var persistanceManager: PersistenceControllerProtocol {
+        get {
+            fatalError("Must override")
+        }
     }
 
     // Ensure that init() cannot be called and must be overridden in the implementer.
@@ -71,7 +75,7 @@ private class _AnyMapperBase<MappedValue>: JSONMappingProtocol {
     }
 
     // JSONMapper protocol methods
-    func map(rawValue: Data) {
+    func parse(rawValue: Data) {
         fatalError("Must override")
     }
     
@@ -95,9 +99,12 @@ private final class _AnyMapperBox<ConcreteMapper: JSONMappingProtocol>: _AnyMapp
         get {
             return concrete.decoder
         }
-//        set {
-//            concrete.decoder = decoder
-//        }
+    }
+    
+    override var persistanceManager: PersistenceControllerProtocol {
+        get {
+            return concrete.persistanceManager
+        }
     }
 
     // Define init()
@@ -106,8 +113,8 @@ private final class _AnyMapperBox<ConcreteMapper: JSONMappingProtocol>: _AnyMapp
     }
 
     // Override all methods
-    override func map(rawValue: Data) {
-        concrete.map(rawValue: rawValue)
+    override func parse(rawValue: Data) {
+        concrete.parse(rawValue: rawValue)
     }
     override func persist(rawJson: MappedValue) {
         concrete.persist(rawJson: rawJson)
@@ -129,9 +136,12 @@ final class AnyMapper<MappedValue>: JSONMappingProtocol {
         get {
             return box.decoder
         }
-//        set {
-//            box.decoder = decoder
-//        }
+    }
+    
+    var persistanceManager: PersistenceControllerProtocol {
+        get {
+            return box.persistanceManager
+        }
     }
     
     // Initialise the class with a concrete type of JSONMappingProtocol where the content is restricted to be the same as the generic paramenter
@@ -140,8 +150,8 @@ final class AnyMapper<MappedValue>: JSONMappingProtocol {
     }
     
     // All methods for the protocol Cup just call the equivalent box method
-    func map(rawValue: Data) {
-        box.map(rawValue: rawValue)
+    func parse(rawValue: Data) {
+        box.parse(rawValue: rawValue)
     }
     func persist(rawJson: MappedValue) {
         box.persist(rawJson: rawJson)

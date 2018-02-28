@@ -58,7 +58,7 @@ class TaskPersistenceTests: QuickSpec {
             describe("Tasks are persisted to storage") {
                 it ("persists tasks") {
                     waitUntil { done in
-                        sut?.map(rawValue: rawData!)
+                        sut?.parse(rawValue: rawData!)
                         sut?.persist(rawJson: (sut?.mappedValue)!)
                         let request = NSFetchRequest<Task>(entityName: Task.entityName)
                         let results = try! persistentContainer?.fetch(request)
@@ -68,7 +68,7 @@ class TaskPersistenceTests: QuickSpec {
                 }
                 it ("persists 2 tasks only") {
                     waitUntil { done in
-                        sut?.map(rawValue: rawData!)
+                        sut?.parse(rawValue: rawData!)
                         sut?.persist(rawJson: (sut?.mappedValue)!)
                         let request = NSFetchRequest<Task>(entityName: Task.entityName)
                         let results = try! persistentContainer?.fetch(request)
@@ -78,7 +78,7 @@ class TaskPersistenceTests: QuickSpec {
                 }
                 it ("persists a task for id: 5 with correct details") {
                     waitUntil { done in
-                        sut?.map(rawValue: rawData!)
+                        sut?.parse(rawValue: rawData!)
                         sut?.persist(rawJson: (sut?.mappedValue)!)
                         let request = NSFetchRequest<Task>(entityName: Task.entityName)
                         request.predicate = NSPredicate(format: "id == %d", 5)

@@ -51,7 +51,7 @@ class ProfilePersistenceTests: QuickSpec {
             describe("Profiles are persisted to storage") {
                 it ("persists locations") {
                     waitUntil { done in
-                        sut?.map(rawValue: rawData!)
+                        sut?.parse(rawValue: rawData!)
                         sut?.persist(rawJson: (sut?.mappedValue)!)
                         let request = NSFetchRequest<Profile>(entityName: Profile.entityName)
                         let results = try! persistentContainer?.fetch(request)
@@ -61,7 +61,7 @@ class ProfilePersistenceTests: QuickSpec {
                 }
                 it ("persists 5 profiles only") {
                     waitUntil { done in
-                        sut?.map(rawValue: rawData!)
+                        sut?.parse(rawValue: rawData!)
                         sut?.persist(rawJson: (sut?.mappedValue)!)
                         let request = NSFetchRequest<Profile>(entityName: Profile.entityName)
                         let results = try! persistentContainer?.fetch(request)
@@ -71,7 +71,7 @@ class ProfilePersistenceTests: QuickSpec {
                 }
                 it ("persists a profile for id: 3 with correct details") {
                     waitUntil { done in
-                        sut?.map(rawValue: rawData!)
+                        sut?.parse(rawValue: rawData!)
                         sut?.persist(rawJson: (sut?.mappedValue)!)
                         let request = NSFetchRequest<Profile>(entityName: Profile.entityName)
                         request.predicate = NSPredicate(format: "id == %d", 3)

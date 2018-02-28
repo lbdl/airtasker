@@ -65,7 +65,7 @@ class LocalleParsingTests: QuickSpec {
                 it("IT Creates a LocalleRaw object") {
                     waitUntil { done in
                         
-                        sut?.map(rawValue: rawData!)
+                        sut?.parse(rawValue: rawData!)
                         expect(sut?.mappedValue).to(beLocalle { localle in
                             expect(localle).to(beAKindOf(LocalleRaw.self))
                         })
@@ -74,7 +74,7 @@ class LocalleParsingTests: QuickSpec {
                 }
                 it("IT has the expected attributes") {
                     waitUntil { done in
-                        sut?.map(rawValue: rawData!)
+                        sut?.parse(rawValue: rawData!)
                         expect(sut?.mappedValue).to(beLocalle { localle in
                             expect(localle.id).to(equal(3))
                             expect(localle.displayName).to(equal("Chatswood NSW 2067, Australia"))
@@ -87,7 +87,7 @@ class LocalleParsingTests: QuickSpec {
                 }
                 it("IT maps its nested structs correctly") {
                     waitUntil { done in
-                        sut?.map(rawValue: rawData!)
+                        sut?.parse(rawValue: rawData!)
                         expect(sut?.mappedValue).to(beLocalle { localle in
                             expect(localle.id).to(equal(3))
                             expect(localle.displayName).to(equal("Chatswood NSW 2067, Australia"))

@@ -51,7 +51,7 @@ class ActivityPersistanceTests: QuickSpec {
             describe("WHEN we parse and persist the data") {
                 it ("persists activity objects") {
                     waitUntil { done in
-                        sut?.map(rawValue: rawData!)
+                        sut?.parse(rawValue: rawData!)
                         sut?.persist(rawJson: (sut?.mappedValue)!)
                         let request = NSFetchRequest<Activity>(entityName: Activity.entityName)
                         let results = try! persistentContainer?.fetch(request)
@@ -61,7 +61,7 @@ class ActivityPersistanceTests: QuickSpec {
                 }
                 it ("persists 3 activities only") {
                     waitUntil { done in
-                        sut?.map(rawValue: rawData!)
+                        sut?.parse(rawValue: rawData!)
                         sut?.persist(rawJson: (sut?.mappedValue)!)
                         let request = NSFetchRequest<Activity>(entityName: Activity.entityName)
                         let results = try! persistentContainer?.fetch(request)
@@ -71,7 +71,7 @@ class ActivityPersistanceTests: QuickSpec {
                 }
                 it ("persists an activity for id: 4 with correct details") {
                     waitUntil { done in
-                        sut?.map(rawValue: rawData!)
+                        sut?.parse(rawValue: rawData!)
                         sut?.persist(rawJson: (sut?.mappedValue)!)
                         let request = NSFetchRequest<Activity>(entityName: Activity.entityName)
                         request.predicate = NSPredicate(format: "id == %d", 4)

@@ -16,6 +16,11 @@ struct Foo: Decodable {
     let foo: String
 }
 
+let locationsRaw = [
+    LocationRaw(),
+    LocationRaw()
+]
+
 class DataManagerTests: QuickSpec {
     override func spec() {
         var sut: DataManager?
@@ -28,9 +33,26 @@ class DataManagerTests: QuickSpec {
         var mockLocationMapper: AnyMapper<Mapped<[LocationRaw]>>?
         var mockLocalleMapper: AnyMapper<Mapped<LocalleRaw>>?
         
+        var testLocationJsonData: Data?
+        
         context("GIVEN a data manager") {
             
             beforeEach {
+                testLocationJsonData = """
+                [
+                {
+                "id": 1,
+                "display_name": "Foo",
+                "latitude": 10.5,
+                "longitude": 10.6
+                },
+                {
+                "id": 2,
+                "display_name": "Bar",
+                "latitude": 10.7,
+                "longitude": 10.8
+                }
+                """.data(using: .utf8)
                 mockContext = MockManagedContext()
                 mockManager = MockPersistenceManager(managedContext: mockContext!)
                 mockSession = MockURLSession()
@@ -39,6 +61,7 @@ class DataManagerTests: QuickSpec {
                 mockLocalleParser = MockLocalleParser()
                 mockLocationMapper = AnyMapper(mockLocationParser!)
                 mockLocalleMapper = AnyMapper(mockLocalleParser!)
+                
                 sut = DataManager(storeManager: mockManager!, urlSession: mockSession!, locationParser: mockLocationMapper!, localleParser: mockLocalleMapper!)
             }
             describe("WHEN we initisalise the manager") {
@@ -48,8 +71,8 @@ class DataManagerTests: QuickSpec {
             }
             describe("WHEN we fetch location objects") {
                 it("calls the corect endpoint") {
-                    let expected = "{\"foo\": \"bar\"}".data(using: .utf8)
-                    mockSession?.testData = expected
+                    mockSession?.testData = testLocationJsonData
+                    //mockLocationParser?.mappedValue = .Value([LocationRaw(), LocationRaw()])
                     sut?.fetchLocations()
                     let actual = mockSession?.lastURL
                     expect(actual?.scheme).to(equal("https"))
@@ -61,8 +84,8 @@ class DataManagerTests: QuickSpec {
             }
             describe("WHEN we call get location objects") {
                 it("calls resume() on its data task") {
-                    let expected = "{\"foo\": \"bar\"}".data(using: .utf8)
-                    mockSession?.testData = expected
+                    mockSession?.testData = testLocationJsonData
+                    //mockLocationParser?.mappedValue = .Value([LocationRaw(), LocationRaw()])
                     mockSession?.nextDataTask = mockTask!
                     sut?.fetchLocations()
                     expect(mockTask?.resumeWasCalled).to(beTrue())
@@ -70,33 +93,33 @@ class DataManagerTests: QuickSpec {
             }
             
             describe("WHEN we fetch a location object successfully") {
-                it("calls its location parser's map method") {
+                it("calls its location parser's parse method") {
                     waitUntil { done in
-                        let expected = "{\"foo\": \"bar\"}".data(using: .utf8)
-                        mockSession?.testData = expected
+                        mockSession?.testData = testLocationJsonData
+                        //mockLocationParser?.mappedValue = .Value([LocationRaw(), LocationRaw()])
                         sut?.fetchLocations()
-                        expect(mockLocationParser?.receivedData).to(equal(expected))
+                        expect(mockLocationParser?.receivedData).to(equal(testLocationJsonData))
                         expect(mockLocationParser?.didCallMap).to(beTrue())
                         done()
                     }
                 }
                 it("calls its location parsers decoders decode method") {
                     waitUntil { done in
-                        let expected = "{\"foo\": \"bar\"}".data(using: .utf8)
-                        mockSession?.testData = expected
+                        mockSession?.testData = testLocationJsonData
+                        //mockLocationParser?.mappedValue = .Value([LocationRaw(), LocationRaw()])
                         sut?.fetchLocations()
                         let decoder = mockLocationParser?.decoder as! MockLocationJSONDecoder
                         expect(decoder.didCallDecode).to(beTrue())
                         done()
                     }
                 }
-                it("calls its location parsers decoders decode and sets the parsers MappedValue to <[LocationRaw]>") {
+                it("calls its location parsers persist method") {
                     waitUntil { done in
-//                        let expected = "{\"foo\": \"bar\"}".data(using: .utf8)
-//                        mockSession?.testData = expected
-//                        sut?.fetchLocations()
-//                        let decoder = mockLocationParser?.decoder as! MockLocationJSONDecoder
-//                        expect(decoder.didCallDecode).to(beTrue())
+                        mockSession?.testData = testLocationJsonData
+                        //mockLocationParser?.mappedValue = .Value([LocationRaw(), LocationRaw()])
+                        mockLocationParser?.persistanceManager = mockManager!
+                        sut?.fetchLocations()
+                        //let mapper = mockLocationMapper as! MockLocationsParser
                         done()
                     }
                 }

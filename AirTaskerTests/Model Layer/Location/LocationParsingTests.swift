@@ -65,7 +65,7 @@ class LocationParsingTests: QuickSpec {
                             persistentContainer = container
                             manager = MockPersistenceManager(managedContext: persistentContainer!)
                             sut = LocationMapper(storeManager: manager!)
-                            sut?.map(rawValue: rawData!)
+                            sut?.parse(rawValue: rawData!)
                             expect(sut?.mappedValue).to(self.beLocation { locations in
                                 expect(locations).to(beAKindOf(Array<LocationRaw>.self))
                             })
@@ -79,7 +79,7 @@ class LocationParsingTests: QuickSpec {
                             persistentContainer = container
                             manager = MockPersistenceManager(managedContext: persistentContainer!)
                             sut = LocationMapper(storeManager: manager!)
-                            sut?.map(rawValue: rawData!)
+                            sut?.parse(rawValue: rawData!)
                             expect(sut?.mappedValue).to(self.beLocation { locations in
                                 expect(locations.count).to(equal(5))
                             })
@@ -93,7 +93,7 @@ class LocationParsingTests: QuickSpec {
                             persistentContainer = container
                             manager = MockPersistenceManager(managedContext: persistentContainer!)
                             sut = LocationMapper(storeManager: manager!)
-                            sut?.map(rawValue: rawData!)
+                            sut?.parse(rawValue: rawData!)
                             expect(sut?.mappedValue).to(self.beLocation { locations in
                                 expect(locations[0].lat).to(equal(-33.95082))
                                 expect(locations[0].long).to(equal(151.1388))
@@ -108,7 +108,7 @@ class LocationParsingTests: QuickSpec {
                             persistentContainer = container
                             manager = MockPersistenceManager(managedContext: persistentContainer!)
                             sut = LocationMapper(storeManager: manager!)
-                            sut?.map(rawValue: rawData!)
+                            sut?.parse(rawValue: rawData!)
                             expect(sut?.mappedValue).to(self.beLocation { locations in
                                 expect(locations[0].name).to(equal("Rockdale NSW 2216, Australia"))
                             })
@@ -122,7 +122,7 @@ class LocationParsingTests: QuickSpec {
                             persistentContainer = container
                             manager = MockPersistenceManager(managedContext: persistentContainer!)
                             sut = LocationMapper(storeManager: manager!)
-                            sut?.map(rawValue: rawData!)
+                            sut?.parse(rawValue: rawData!)
                             expect(sut?.mappedValue).to(self.beLocation { locations in
                                 expect(locations[0].id).to(equal(5))
                             })
@@ -151,7 +151,7 @@ class LocationParsingTests: QuickSpec {
                             persistentContainer = container
                             manager = MockPersistenceManager(managedContext: persistentContainer!)
                             sut = LocationMapper(storeManager: manager!)
-                            sut?.map(rawValue: badData!)
+                            sut?.parse(rawValue: badData!)
                             expect(sut?.mappedValue).to(self.beDecodingError())
                             done()
                         })

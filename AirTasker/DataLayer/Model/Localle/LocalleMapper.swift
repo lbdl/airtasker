@@ -25,11 +25,11 @@ class LocalleMapper: JSONMappingProtocol {
     
     var rawValue: raw? {
         didSet {
-            map(rawValue: rawValue!)
+            parse(rawValue: rawValue!)
         }
     }
     
-    internal func map(rawValue: Data) {
+    internal func parse(rawValue: Data) {
         do {
             let tmp = try decoder.decode(LocalleRaw.self, from: rawValue)
             mappedValue = .Value(tmp)

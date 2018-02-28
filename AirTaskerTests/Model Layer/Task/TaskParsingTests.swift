@@ -62,7 +62,7 @@ class TaskParsingTests: QuickSpec {
                             self.persistentContainer = container
                             self.manager = MockPersistenceManager(managedContext: self.persistentContainer!)
                             self.sut = TaskMapper(storeManager: self.manager!)
-                            self.sut?.map(rawValue: self.rawData!)
+                            self.sut?.parse(rawValue: self.rawData!)
                             expect(self.sut?.mappedValue).to(beTask { tasks in
                                 expect(tasks).to(beAKindOf(Array<TaskRaw>.self))
                             })
@@ -76,7 +76,7 @@ class TaskParsingTests: QuickSpec {
                             self.persistentContainer = container
                             self.manager = MockPersistenceManager(managedContext: self.persistentContainer!)
                             self.sut = TaskMapper(storeManager: self.manager!)
-                            self.sut?.map(rawValue: self.rawData!)
+                            self.sut?.parse(rawValue: self.rawData!)
                             expect(self.sut?.mappedValue).to(beTask { tasks in
                                 expect(tasks.count).to(equal(2))
                             })
@@ -90,7 +90,7 @@ class TaskParsingTests: QuickSpec {
                             self.persistentContainer = container
                             self.manager = MockPersistenceManager(managedContext: self.persistentContainer!)
                             self.sut = TaskMapper(storeManager: self.manager!)
-                            self.sut?.map(rawValue: self.rawData!)
+                            self.sut?.parse(rawValue: self.rawData!)
                             expect(self.sut?.mappedValue).to(beTask { tasks in
                                 let actual = tasks.first
                                 expect(actual?.desc).to(equal("1. Visit a shop anonymously as an \"undercover customer.\" \n2. Make two short enquiries in the same shop. \n3. Fill in a questionnaire. \n4. Report by phone."))
@@ -123,7 +123,7 @@ class TaskParsingTests: QuickSpec {
                             self.persistentContainer = container
                             self.manager = MockPersistenceManager(managedContext: self.persistentContainer!)
                             self.sut = TaskMapper(storeManager: self.manager!)
-                            self.sut?.map(rawValue: self.rawData!)
+                            self.sut?.parse(rawValue: self.rawData!)
                             expect(self.sut?.mappedValue).to(beDecodingError())
                             done()
                         })

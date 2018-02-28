@@ -33,37 +33,41 @@ class MockURLSessionDataTask: URLSessionDataTaskProtocol {
 }
 
 class MockLocationsParser: JSONMappingProtocol {
-    
+    var persistanceManager: PersistenceControllerProtocol
     typealias MappedValue = Mapped<[LocationRaw]>
     var decoder: JSONDecodingProtocol
     var data: Data?
     var mappedValue: MappedValue?
     var receivedData: Data?
     var didCallMap: Bool?
+    var didCallPersist: Bool?
     
-    func map(rawValue: Data) {
+    func parse(rawValue: Data) {
         receivedData = rawValue
         didCallMap = true
-        let tmp = try! decoder.decode(Foo.self, from: rawValue)
+        let tmp = try! decoder.decode([LocationRaw].self, from: rawValue)
+        mappedValue = .Value([LocationRaw(), LocationRaw()])
     }
     
     func persist(rawJson: Mapped<[LocationRaw]>) {
+        didCallPersist = true
     }
     
     init() {
         decoder = MockLocationJSONDecoder()
+        persistanceManager = MockPersistenceManager(managedContext: MockManagedContext())
     }
 }
 
 class MockLocalleParser: JSONMappingProtocol {
-    
+    var persistanceManager: PersistenceControllerProtocol
     typealias MappedValue = Mapped<LocalleRaw>
     var decoder: JSONDecodingProtocol
     var data: Data?
     var mappedValue: MappedValue?
     var receivedData: Data?
     
-    func map(rawValue: Data) {
+    func parse(rawValue: Data) {
         receivedData = rawValue
     }
     
@@ -72,6 +76,7 @@ class MockLocalleParser: JSONMappingProtocol {
     
     init() {
         decoder = MockLocalleJSONDecoder()
+        persistanceManager = MockPersistenceManager(managedContext: MockManagedContext())
     }
 }
 
@@ -81,8 +86,8 @@ class MockLocationJSONDecoder: JSONDecodingProtocol {
     
     func decode<T>(_ type: T.Type, from data: Data) throws -> T where T : Decodable {
         didCallDecode = true
-        let tmpFoo = Foo(foo: "bar")
-        return tmpFoo as! T
+        let tmp = [LocationRaw(), LocationRaw()]
+        return tmp as! T
     }
 }
 

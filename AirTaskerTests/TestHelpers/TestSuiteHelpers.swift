@@ -16,12 +16,14 @@ class MockManagedObject: NSManagedObject {
 
 class MockPersistenceManager: PersistenceControllerProtocol {
     let context: ManagedContextProtocol
+    var didCallInsert: Bool?
     
     func updateContext(block: @escaping () -> ()) {
         print("MockPersistenceManager: called update context")
     }
     
     func insertObject<A>() -> A where A : Managed {
+        didCallInsert = true
         return MockManagedObject() as! A
     }
     

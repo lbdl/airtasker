@@ -60,7 +60,7 @@ class ActivityParsingTests: QuickSpec {
                             persistentContainer = container
                             manager = MockPersistenceManager(managedContext: persistentContainer!)
                             sut = ActivityMapper(storeManager: manager!)
-                            sut?.map(rawValue: rawData!)
+                            sut?.parse(rawValue: rawData!)
                             expect(sut?.mappedValue).to(beActivity { activities in
                                 expect(activities).to(beAKindOf(Array<ActivityRaw>.self))
                             })
@@ -74,7 +74,7 @@ class ActivityParsingTests: QuickSpec {
                             persistentContainer = container
                             manager = MockPersistenceManager(managedContext: persistentContainer!)
                             sut = ActivityMapper(storeManager: manager!)
-                            sut?.map(rawValue: rawData!)
+                            sut?.parse(rawValue: rawData!)
                             expect(sut?.mappedValue).to(beActivity { activities in
                                 expect(activities.count).to(equal(3))
                             })
@@ -88,7 +88,7 @@ class ActivityParsingTests: QuickSpec {
                             persistentContainer = container
                             manager = MockPersistenceManager(managedContext: persistentContainer!)
                             sut = ActivityMapper(storeManager: manager!)
-                            sut?.map(rawValue: rawData!)
+                            sut?.parse(rawValue: rawData!)
                             expect(sut?.mappedValue).to(beActivity { activities in
                                 let actual = activities.first
                                 expect(actual?.profileID).to(equal(1))
@@ -121,7 +121,7 @@ class ActivityParsingTests: QuickSpec {
                             persistentContainer = container
                             manager = MockPersistenceManager(managedContext: persistentContainer!)
                             sut = ActivityMapper(storeManager: manager!)
-                            sut?.map(rawValue: rawData!)
+                            sut?.parse(rawValue: rawData!)
                             expect(sut?.mappedValue).to(beDecodingError())
                             done()
                         })

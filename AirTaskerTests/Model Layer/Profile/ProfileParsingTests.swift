@@ -61,7 +61,7 @@ class ProfileParsingTests: QuickSpec {
                             self.persistentContainer = container
                             self.manager = PersistenceManager(store: self.persistentContainer!)
                             self.sut = ProfileMapper(storeManager: self.manager!)
-                            self.sut?.map(rawValue: self.rawData!)
+                            self.sut?.parse(rawValue: self.rawData!)
                             expect(self.sut?.mappedValue).to(beProfile { profiles in
                                 expect(profiles).to(beAKindOf(Array<ProfileRaw>.self))
                             })
@@ -75,7 +75,7 @@ class ProfileParsingTests: QuickSpec {
                             self.persistentContainer = container
                             self.manager = PersistenceManager(store: self.persistentContainer!)
                             self.sut = ProfileMapper(storeManager: self.manager!)
-                            self.sut?.map(rawValue: self.rawData!)
+                            self.sut?.parse(rawValue: self.rawData!)
                             expect(self.sut?.mappedValue).to(beProfile { profiles in
                                 expect(profiles.count).to(equal(5))
                             })
@@ -89,7 +89,7 @@ class ProfileParsingTests: QuickSpec {
                             self.persistentContainer = container
                             self.manager = PersistenceManager(store: self.persistentContainer!)
                             self.sut = ProfileMapper(storeManager: self.manager!)
-                            self.sut?.map(rawValue: self.rawData!)
+                            self.sut?.parse(rawValue: self.rawData!)
                             expect(self.sut?.mappedValue).to(beProfile { profiles in
                                 let actual = profiles.first
                                 expect(actual?.avatarURL).to(equal("/img/1.jpg"))
@@ -122,7 +122,7 @@ class ProfileParsingTests: QuickSpec {
                             self.persistentContainer = container
                             self.manager = PersistenceManager(store: self.persistentContainer!)
                             self.sut = ProfileMapper(storeManager: self.manager!)
-                            self.sut?.map(rawValue: self.rawData!)
+                            self.sut?.parse(rawValue: self.rawData!)
                             expect(self.sut?.mappedValue).to(beDecodingError())
                             done()
                         })

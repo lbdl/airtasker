@@ -72,7 +72,16 @@ class DataManager: NSObject, DataControllerPrototcol {
         let task =  dataSession.dataTask(with: request) { [weak self] (data, response, error) in
             guard let strongSelf = self else { return }
             if error == nil {
-                strongSelf.locationsHandler.map(rawValue: data!)
+                strongSelf.locationsHandler.parse(rawValue: data!)
+                let val = strongSelf.locationsHandler.mappedValue!
+                switch val {
+                case .MappingError:
+                    //handle error
+                    print ("mapping error \(val.associatedValue())")
+                case .Value:
+                    strongSelf.locationsHandler.persist(rawJson: val)
+                }
+                strongSelf.locationsHandler.persist(rawJson: strongSelf.locationsHandler.mappedValue!)
             }
         }
         task.resume()
