@@ -18,21 +18,23 @@ extension JSONDecoder: JSONDecodingProtocol {
 
 // MARK: JSON parsing
 protocol JSONMappingProtocol {
-    associatedtype MappedValue 
+    associatedtype MappedValue
     
     var mappedValue: MappedValue? {get}
     var decoder: JSONDecodingProtocol {get}
     var persistanceManager: PersistenceControllerProtocol {get}
     
     /// Takes a Data object and then uses a JSONDecoder to
-    /// de-serialise the object to a JSON object
+    /// de-serialise the object to a JSON object. Sets the
+    /// implementers mappedValue property to a Mapped type.
     /// - parameters:
     ///     - rawValue: a Data object that will be decoded
     func parse(rawValue: Data)
     
     /// Persist the object to CoreData backing storage
-    /// via a persistance controller. Intended to be used by a
-    /// managing class rather than internally
+    /// via a persistance controller. This is intened to be used
+    /// inside of the updateContext block of the PersistenceControllerProtocol
+    /// which handles persistence errors.
     /// - parameters:
     ///     - rawJson: a decoded (from Data) JSON object of value type
     func persist(rawJson: MappedValue)

@@ -75,7 +75,7 @@ struct LocationRaw: Decodable {
     }
    
     // conveniance init for the persistance manager tests
-    init() {
+    internal init() {
         id = 0
         lat = 10
         long = -10

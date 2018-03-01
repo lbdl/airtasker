@@ -46,7 +46,7 @@ class MockLocationsParser: JSONMappingProtocol {
     func parse(rawValue: Data) {
         receivedData = rawValue
         didCallMap = true
-        let tmp = try! decoder.decode([LocationRaw].self, from: rawValue)
+        _ = try! decoder.decode([LocationRaw].self, from: rawValue)
         mappedValue = .Value([LocationRaw(), LocationRaw()])
     }
     
@@ -67,12 +67,18 @@ class MockLocalleParser: JSONMappingProtocol {
     var data: Data?
     var mappedValue: MappedValue?
     var receivedData: Data?
+    var didCallMap: Bool?
+    var didCallPersist: Bool?
     
     func parse(rawValue: Data) {
         receivedData = rawValue
+        didCallMap = true
+        _ = try! decoder.decode(LocalleRaw.self, from: rawValue)
+        mappedValue = .Value(LocalleRaw())
     }
     
     func persist(rawJson: Mapped<LocalleRaw>) {
+        didCallPersist = true
     }
     
     init() {
@@ -98,7 +104,7 @@ class MockLocalleJSONDecoder: JSONDecodingProtocol {
     
     func decode<T>(_ type: T.Type, from data: Data) throws -> T where T : Decodable {
         didCallDecode = true
-        return "Localle" as! T
+        return LocalleRaw() as! T
     }
 }
 

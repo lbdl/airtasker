@@ -79,4 +79,15 @@ struct LocalleRaw: Decodable {
         profiles = try! container.decode([ProfileRaw].self, forKey: .profiles)
         tasks = try! container.decode([TaskRaw].self, forKey: .tasks)
     }
+    
+    // internal init for tests
+    internal init() {
+        id = 0
+        displayName = "Test"
+        workerCount = 0
+        workerIDs = [0]
+        activities = []
+        profiles = []
+        tasks = []
+    }
 }

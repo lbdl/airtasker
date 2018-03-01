@@ -7,12 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B0193D1202D740A00960FCC /* profiles.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B0193D0202D740A00960FCC /* profiles.json */; };
 		2B0193D4202D746700960FCC /* ProfileParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0193D3202D746700960FCC /* ProfileParsingTests.swift */; };
-		2B0193D62030A5D900960FCC /* badProfiles.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B0193D52030A5D800960FCC /* badProfiles.json */; };
 		2B0193D72031DBBC00960FCC /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF11676201C5C8500D8A02B /* Managed.swift */; };
 		2B0435DA2021A0E20029653E /* PersistenceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0435D92021A0E20029653E /* PersistenceManagerTests.swift */; };
-		2B270454203E4F4E00860E75 /* localle5.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B270453203E4F4E00860E75 /* localle5.json */; };
 		2B27C0F62031E0050054A5D0 /* Localle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B27C0F52031E0050054A5D0 /* Localle.swift */; };
 		2B27C0F9203289670054A5D0 /* ProfilePersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B27C0F8203289670054A5D0 /* ProfilePersistenceTests.swift */; };
 		2B7C837B203EF1B500FBD2D7 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C837A203EF1B500FBD2D7 /* DataManager.swift */; };
@@ -20,18 +17,24 @@
 		2B7C837F203FD16E00FBD2D7 /* DataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C837E203FD16E00FBD2D7 /* DataManagerTests.swift */; };
 		2B7C8385204105E700FBD2D7 /* DataManagerTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C8384204105E700FBD2D7 /* DataManagerTestHelpers.swift */; };
 		2B7C83882043D8AB00FBD2D7 /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C83872043D8AB00FBD2D7 /* LocationsViewController.swift */; };
+		2B8BE0AD20484B07004EB5FF /* locations.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B8BE0A320484B07004EB5FF /* locations.json */; };
+		2B8BE0AE20484B07004EB5FF /* localle5.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B8BE0A420484B07004EB5FF /* localle5.json */; };
+		2B8BE0AF20484B07004EB5FF /* activities.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B8BE0A520484B07004EB5FF /* activities.json */; };
+		2B8BE0B020484B07004EB5FF /* tasks.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B8BE0A620484B07004EB5FF /* tasks.json */; };
+		2B8BE0B120484B07004EB5FF /* badActivities.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B8BE0A720484B07004EB5FF /* badActivities.json */; };
+		2B8BE0B220484B07004EB5FF /* profiles.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B8BE0A820484B07004EB5FF /* profiles.json */; };
+		2B8BE0B320484B07004EB5FF /* badLocations.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B8BE0A920484B07004EB5FF /* badLocations.json */; };
+		2B8BE0B420484B07004EB5FF /* badProfiles.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B8BE0AA20484B07004EB5FF /* badProfiles.json */; };
+		2B8BE0B520484B07004EB5FF /* badTasks.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B8BE0AB20484B07004EB5FF /* badTasks.json */; };
+		2B8BE0B620484B07004EB5FF /* localle3.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B8BE0AC20484B07004EB5FF /* localle3.json */; };
+		2B8BE0B820484B33004EB5FF /* zomb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B8BE0B720484B33004EB5FF /* zomb.jpg */; };
 		2BA95626203AD7FD006AD39E /* LocallePersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA95625203AD7FD006AD39E /* LocallePersistenceTests.swift */; };
-		2BB38F53203456BF0061530E /* tasks.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BB38F52203456BF0061530E /* tasks.json */; };
 		2BB38F5520345FBE0061530E /* ActivityMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB38F5420345FBE0061530E /* ActivityMapper.swift */; };
 		2BBDA54F203499670093ACE6 /* LocalleMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBDA54E203499670093ACE6 /* LocalleMapper.swift */; };
 		2BBDA5512036BDBE0093ACE6 /* LocalleParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBDA5502036BDBE0093ACE6 /* LocalleParsingTests.swift */; };
-		2BBDA5542036BE680093ACE6 /* localle3.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BBDA5532036BE680093ACE6 /* localle3.json */; };
-		2BBDA5562036EFE20093ACE6 /* badTasks.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BBDA5552036EFE20093ACE6 /* badTasks.json */; };
 		2BBDA5582036F35B0093ACE6 /* TaskPersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBDA5572036F35B0093ACE6 /* TaskPersistenceTests.swift */; };
 		2BBDA55B2036F8B40093ACE6 /* ActivityParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBDA55A2036F8B40093ACE6 /* ActivityParsingTests.swift */; };
 		2BBDA55D2036F8C90093ACE6 /* ActivityPersistanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBDA55C2036F8C90093ACE6 /* ActivityPersistanceTests.swift */; };
-		2BBDA55F20386ED90093ACE6 /* activities.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BBDA55E20386ED90093ACE6 /* activities.json */; };
-		2BBDA561203872650093ACE6 /* badActivities.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BBDA560203872650093ACE6 /* badActivities.json */; };
 		2BBF412020170D36003A636C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF411F20170D36003A636C /* AppDelegate.swift */; };
 		2BBF412220170D36003A636C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF412120170D36003A636C /* ViewController.swift */; };
 		2BBF412520170D36003A636C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BBF412320170D36003A636C /* Main.storyboard */; };
@@ -52,11 +55,9 @@
 		2BF11667201B0F6600D8A02B /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF11666201B0F6600D8A02B /* Quick.framework */; };
 		2BF11668201B0F7E00D8A02B /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BF11666201B0F6600D8A02B /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2BF11669201B0F8500D8A02B /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BF11664201B0F5B00D8A02B /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		2BF1166D201B153F00D8A02B /* locations.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BF1166B201B153E00D8A02B /* locations.json */; };
 		2BF11671201B203000D8A02B /* TestSuiteHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF11670201B203000D8A02B /* TestSuiteHelpers.swift */; };
 		2BF11672201B35E100D8A02B /* AirTasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116212018440A00D8A02B /* AirTasks.xcdatamodeld */; };
 		2BF11673201B38E300D8A02B /* AirTasks.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 2BF116212018440A00D8A02B /* AirTasks.xcdatamodeld */; };
-		2BF11679202060D000D8A02B /* badLocations.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BF11678202060CF00D8A02B /* badLocations.json */; };
 		2BF1167B202163E000D8A02B /* LocationPersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1167A202163E000D8A02B /* LocationPersistenceTests.swift */; };
 		2BF1F8972022FF08005ECE8F /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF11674201C504A00D8A02B /* PersistenceHelper.swift */; };
 		2BF1F899202326B1005ECE8F /* ProfileMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1F898202326B1005ECE8F /* ProfileMapper.swift */; };
@@ -89,11 +90,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2B0193D0202D740A00960FCC /* profiles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = profiles.json; sourceTree = "<group>"; };
 		2B0193D3202D746700960FCC /* ProfileParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileParsingTests.swift; sourceTree = "<group>"; };
-		2B0193D52030A5D800960FCC /* badProfiles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = badProfiles.json; sourceTree = "<group>"; };
 		2B0435D92021A0E20029653E /* PersistenceManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManagerTests.swift; sourceTree = "<group>"; };
-		2B270453203E4F4E00860E75 /* localle5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = localle5.json; sourceTree = "<group>"; };
 		2B27C0F52031E0050054A5D0 /* Localle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localle.swift; sourceTree = "<group>"; };
 		2B27C0F8203289670054A5D0 /* ProfilePersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePersistenceTests.swift; sourceTree = "<group>"; };
 		2B7C837A203EF1B500FBD2D7 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -101,18 +99,24 @@
 		2B7C837E203FD16E00FBD2D7 /* DataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerTests.swift; sourceTree = "<group>"; };
 		2B7C8384204105E700FBD2D7 /* DataManagerTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerTestHelpers.swift; sourceTree = "<group>"; };
 		2B7C83872043D8AB00FBD2D7 /* LocationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationsViewController.swift; path = Modules/Location/LocationsViewController.swift; sourceTree = SOURCE_ROOT; };
+		2B8BE0A320484B07004EB5FF /* locations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = locations.json; sourceTree = "<group>"; };
+		2B8BE0A420484B07004EB5FF /* localle5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = localle5.json; sourceTree = "<group>"; };
+		2B8BE0A520484B07004EB5FF /* activities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = activities.json; sourceTree = "<group>"; };
+		2B8BE0A620484B07004EB5FF /* tasks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tasks.json; sourceTree = "<group>"; };
+		2B8BE0A720484B07004EB5FF /* badActivities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = badActivities.json; sourceTree = "<group>"; };
+		2B8BE0A820484B07004EB5FF /* profiles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = profiles.json; sourceTree = "<group>"; };
+		2B8BE0A920484B07004EB5FF /* badLocations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = badLocations.json; sourceTree = "<group>"; };
+		2B8BE0AA20484B07004EB5FF /* badProfiles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = badProfiles.json; sourceTree = "<group>"; };
+		2B8BE0AB20484B07004EB5FF /* badTasks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = badTasks.json; sourceTree = "<group>"; };
+		2B8BE0AC20484B07004EB5FF /* localle3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = localle3.json; sourceTree = "<group>"; };
+		2B8BE0B720484B33004EB5FF /* zomb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = zomb.jpg; sourceTree = "<group>"; };
 		2BA95625203AD7FD006AD39E /* LocallePersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocallePersistenceTests.swift; sourceTree = "<group>"; };
-		2BB38F52203456BF0061530E /* tasks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tasks.json; sourceTree = "<group>"; };
 		2BB38F5420345FBE0061530E /* ActivityMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityMapper.swift; sourceTree = "<group>"; };
 		2BBDA54E203499670093ACE6 /* LocalleMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalleMapper.swift; sourceTree = "<group>"; };
 		2BBDA5502036BDBE0093ACE6 /* LocalleParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalleParsingTests.swift; sourceTree = "<group>"; };
-		2BBDA5532036BE680093ACE6 /* localle3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = localle3.json; sourceTree = "<group>"; };
-		2BBDA5552036EFE20093ACE6 /* badTasks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = badTasks.json; sourceTree = "<group>"; };
 		2BBDA5572036F35B0093ACE6 /* TaskPersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPersistenceTests.swift; sourceTree = "<group>"; };
 		2BBDA55A2036F8B40093ACE6 /* ActivityParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityParsingTests.swift; sourceTree = "<group>"; };
 		2BBDA55C2036F8C90093ACE6 /* ActivityPersistanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityPersistanceTests.swift; sourceTree = "<group>"; };
-		2BBDA55E20386ED90093ACE6 /* activities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = activities.json; sourceTree = "<group>"; };
-		2BBDA560203872650093ACE6 /* badActivities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = badActivities.json; sourceTree = "<group>"; };
 		2BBF411C20170D36003A636C /* AirTasker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirTasker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BBF411F20170D36003A636C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2BBF412120170D36003A636C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -135,11 +139,9 @@
 		2BF116602019F0E300D8A02B /* LocationParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationParsingTests.swift; sourceTree = "<group>"; };
 		2BF11664201B0F5B00D8A02B /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		2BF11666201B0F6600D8A02B /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
-		2BF1166B201B153E00D8A02B /* locations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = locations.json; sourceTree = "<group>"; };
 		2BF11670201B203000D8A02B /* TestSuiteHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSuiteHelpers.swift; sourceTree = "<group>"; };
 		2BF11674201C504A00D8A02B /* PersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
 		2BF11676201C5C8500D8A02B /* Managed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
-		2BF11678202060CF00D8A02B /* badLocations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = badLocations.json; sourceTree = "<group>"; };
 		2BF1167A202163E000D8A02B /* LocationPersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPersistenceTests.swift; sourceTree = "<group>"; };
 		2BF1F898202326B1005ECE8F /* ProfileMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMapper.swift; sourceTree = "<group>"; };
 		2BF9D0532033D95700B761A7 /* TaskMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskMapper.swift; sourceTree = "<group>"; };
@@ -429,16 +431,17 @@
 		2BF1166A201B151B00D8A02B /* TestAssets */ = {
 			isa = PBXGroup;
 			children = (
-				2B270453203E4F4E00860E75 /* localle5.json */,
-				2BBDA560203872650093ACE6 /* badActivities.json */,
-				2BBDA55E20386ED90093ACE6 /* activities.json */,
-				2BBDA5552036EFE20093ACE6 /* badTasks.json */,
-				2BBDA5532036BE680093ACE6 /* localle3.json */,
-				2BB38F52203456BF0061530E /* tasks.json */,
-				2B0193D52030A5D800960FCC /* badProfiles.json */,
-				2B0193D0202D740A00960FCC /* profiles.json */,
-				2BF11678202060CF00D8A02B /* badLocations.json */,
-				2BF1166B201B153E00D8A02B /* locations.json */,
+				2B8BE0B720484B33004EB5FF /* zomb.jpg */,
+				2B8BE0A520484B07004EB5FF /* activities.json */,
+				2B8BE0A720484B07004EB5FF /* badActivities.json */,
+				2B8BE0A920484B07004EB5FF /* badLocations.json */,
+				2B8BE0AA20484B07004EB5FF /* badProfiles.json */,
+				2B8BE0AB20484B07004EB5FF /* badTasks.json */,
+				2B8BE0AC20484B07004EB5FF /* localle3.json */,
+				2B8BE0A420484B07004EB5FF /* localle5.json */,
+				2B8BE0A320484B07004EB5FF /* locations.json */,
+				2B8BE0A820484B07004EB5FF /* profiles.json */,
+				2B8BE0A620484B07004EB5FF /* tasks.json */,
 			);
 			path = TestAssets;
 			sourceTree = "<group>";
@@ -547,17 +550,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2BBDA55F20386ED90093ACE6 /* activities.json in Resources */,
-				2B0193D1202D740A00960FCC /* profiles.json in Resources */,
-				2BF11679202060D000D8A02B /* badLocations.json in Resources */,
+				2B8BE0B520484B07004EB5FF /* badTasks.json in Resources */,
+				2B8BE0B120484B07004EB5FF /* badActivities.json in Resources */,
+				2B8BE0B220484B07004EB5FF /* profiles.json in Resources */,
+				2B8BE0AF20484B07004EB5FF /* activities.json in Resources */,
+				2B8BE0AD20484B07004EB5FF /* locations.json in Resources */,
+				2B8BE0B320484B07004EB5FF /* badLocations.json in Resources */,
 				2BF11673201B38E300D8A02B /* AirTasks.xcdatamodeld in Resources */,
-				2BB38F53203456BF0061530E /* tasks.json in Resources */,
-				2BBDA561203872650093ACE6 /* badActivities.json in Resources */,
-				2B0193D62030A5D900960FCC /* badProfiles.json in Resources */,
-				2BBDA5542036BE680093ACE6 /* localle3.json in Resources */,
-				2BBDA5562036EFE20093ACE6 /* badTasks.json in Resources */,
-				2BF1166D201B153F00D8A02B /* locations.json in Resources */,
-				2B270454203E4F4E00860E75 /* localle5.json in Resources */,
+				2B8BE0B820484B33004EB5FF /* zomb.jpg in Resources */,
+				2B8BE0B620484B07004EB5FF /* localle3.json in Resources */,
+				2B8BE0B420484B07004EB5FF /* badProfiles.json in Resources */,
+				2B8BE0AE20484B07004EB5FF /* localle5.json in Resources */,
+				2B8BE0B020484B07004EB5FF /* tasks.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

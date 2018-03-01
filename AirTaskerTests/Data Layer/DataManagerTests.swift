@@ -21,6 +21,8 @@ let locationsRaw = [
     LocationRaw()
 ]
 
+let locallesRaw = LocalleRaw()
+
 class DataManagerTests: QuickSpec {
     override func spec() {
         var sut: DataManager?
@@ -34,25 +36,38 @@ class DataManagerTests: QuickSpec {
         var mockLocalleMapper: AnyMapper<Mapped<LocalleRaw>>?
         
         var testLocationJsonData: Data?
+        var testLocalleData: Data?
+        var testAvatarData: Data?
         
         context("GIVEN a data manager") {
             
             beforeEach {
                 testLocationJsonData = """
-                [
-                {
-                "id": 1,
-                "display_name": "Foo",
-                "latitude": 10.5,
-                "longitude": 10.6
-                },
-                {
-                "id": 2,
-                "display_name": "Bar",
-                "latitude": 10.7,
-                "longitude": 10.8
-                }
-                """.data(using: .utf8)
+                                            [
+                                            {
+                                            "id": 1,
+                                            "display_name": "Foo",
+                                            "latitude": 10.5,
+                                            "longitude": 10.6
+                                            },
+                                            {
+                                            "id": 2,
+                                            "display_name": "Bar",
+                                            "latitude": 10.7,
+                                            "longitude": 10.8
+                                            }
+                                            ]
+                                            """.data(using: .utf8)
+                
+                testLocalleData = """
+                                    {
+                                    "name": "TestLocalle",
+                                    "id": 0,
+                                    "foo": "bar",
+                                    "situation": "snafu"
+                                    }
+                                    """.data(using: .utf8)
+                
                 mockContext = MockManagedContext()
                 mockManager = MockPersistenceManager(managedContext: mockContext!)
                 mockSession = MockURLSession()
@@ -64,32 +79,35 @@ class DataManagerTests: QuickSpec {
                 
                 sut = DataManager(storeManager: mockManager!, urlSession: mockSession!, locationParser: mockLocationMapper!, localleParser: mockLocalleMapper!)
             }
-            describe("WHEN we initisalise the manager") {
-                it("creates a concrete instance") {
-                    expect(sut).toNot(beNil())
-                }
+            afterEach {
+                mockTask = nil
+                mockSession = nil
+                mockLocalleParser = nil
+                mockLocationParser = nil
+                mockManager = nil
+                mockLocationMapper = nil
+                mockLocalleMapper = nil
             }
+            
             describe("WHEN we fetch location objects") {
-                it("calls the correct endpoint") {
+                it("call the correct endpoint") {
                     mockSession?.testData = testLocationJsonData
                     sut?.fetchLocations()
                     let actual = mockSession?.lastURL
                     expect(actual?.scheme).to(equal("https"))
-                    expect(actual?.host).to(equal("s3-ap-southeast-2.amazonaws.com/ios-code-test/v2"))
-                    expect(actual?.path).to(equal("/locations.json"))
+                    expect(actual?.host).to(equal("s3-ap-southeast-2.amazonaws.com"))
+                    expect(actual?.path).to(equal("/ios-code-test/v2/locations.json"))
                     expect(actual?.lastPathComponent).to(equal("locations.json"))
                 }
-                it("calls resume() on its data task") {
+                it("call resume() on its data task") {
                     mockSession?.testData = testLocationJsonData
                     mockSession?.nextDataTask = mockTask!
                     sut?.fetchLocations()
                     expect(mockTask?.resumeWasCalled).to(beTrue())
                 }
                 
-            }
-            
-            describe("AND a succesful return from the fetch locations call") {
-                    it("calls its location parser's parse method") {
+                describe("AND the call succeeds") {
+                    it("call its location parser's parse method") {
                         waitUntil { done in
                             mockSession?.testData = testLocationJsonData
                             sut?.fetchLocations()
@@ -98,7 +116,7 @@ class DataManagerTests: QuickSpec {
                             done()
                         }
                     }
-                    it("calls its location parsers decoders decode method") {
+                    it("call its location parsers decoders decode method") {
                         waitUntil { done in
                             mockSession?.testData = testLocationJsonData
                             sut?.fetchLocations()
@@ -107,7 +125,7 @@ class DataManagerTests: QuickSpec {
                             done()
                         }
                     }
-                    it("calls its location parsers persist method") {
+                    it("call its location parsers persist method") {
                         waitUntil { done in
                             mockSession?.testData = testLocationJsonData
                             sut?.fetchLocations()
@@ -115,11 +133,85 @@ class DataManagerTests: QuickSpec {
                             done()
                         }
                     }
+                }
             }
-            describe(""){
-                
+            describe("WHEN we fetch localle 2") {
+                it("uses the correct endpoint") {
+                    mockSession?.testData = testLocalleData
+                    sut?.fetchLocationData(for: 2)
+                    let actual = mockSession?.lastURL
+                    expect(actual?.scheme).to(equal("https"))
+                    expect(actual?.host).to(equal("s3-ap-southeast-2.amazonaws.com"))
+                    expect(actual?.path).to(equal("/ios-code-test/v2/location/2.json"))
+                    expect(actual?.lastPathComponent).to(equal("2.json"))
+                }
+                it("calls resume on the data task") {
+                    mockSession?.testData = testLocalleData
+                    mockSession?.nextDataTask = mockTask!
+                    sut?.fetchLocationData(for: 2)
+                    expect(mockTask?.resumeWasCalled).to(beTrue())
+                }
+                describe("AND the call succeeds") {
+                    it("calls its parsers parse method") {
+                        waitUntil { done in
+                            mockSession?.testData = testLocalleData
+                            sut?.fetchLocationData(for: 2)
+                            expect(mockLocalleParser?.receivedData).to(equal(testLocalleData))
+                            expect(mockLocalleParser?.didCallMap).to(beTrue())
+                            done()
+                        }
+                    }
+                    it("call its location parsers decoders decode method") {
+                        waitUntil { done in
+                            mockSession?.testData = testLocalleData
+                            sut?.fetchLocationData(for: 2)
+                            let decoder = mockLocalleParser?.decoder as! MockLocalleJSONDecoder
+                            expect(decoder.didCallDecode).to(beTrue())
+                            done()
+                        }
+                    }
+                    it("call its location parsers persist method") {
+                        waitUntil { done in
+                            mockSession?.testData = testLocalleData
+                            sut?.fetchLocationData(for: 2)
+                            expect(mockLocalleParser?.didCallPersist).to(beTrue())
+                            done()
+                        }
+                    }
+                }
             }
-
+            
+            describe("WHEN we fetch avatar 3") {
+                it("uses the correct endpoint") {
+                    mockSession?.testData = TestSuiteHelpers.readLocalData(testCase: .avatar)
+                    _ = sut?.fetchAvatarData(for: 3)
+                    let actual = mockSession?.lastURL
+                    expect(actual?.scheme).to(equal("https"))
+                    expect(actual?.host).to(equal("s3-ap-southeast-2.amazonaws.com"))
+                    expect(actual?.path).to(equal("/ios-code-test/v2/img/3.json"))
+                    expect(actual?.lastPathComponent).to(equal("3.json"))
+                    
+                }
+                it("calls resume on the data task") {
+                    mockSession?.testData = TestSuiteHelpers.readLocalData(testCase: .avatar)
+                    mockSession?.nextDataTask = mockTask!
+                    _ = sut?.fetchAvatarData(for: 3)
+                    expect(mockTask?.resumeWasCalled).to(beTrue())
+                    
+                }
+                describe("AND the call succeeds") {
+                    it("returns an image") {
+                        waitUntil { done in
+                            mockSession?.testData = TestSuiteHelpers.readLocalData(testCase: .avatar)
+                            let actual = sut?.fetchAvatarData(for: 3)
+                            expect(actual).toNot(beNil())
+                            done()
+                        }
+                    }
+                }
+            }
+            
+            
         }
         
     }

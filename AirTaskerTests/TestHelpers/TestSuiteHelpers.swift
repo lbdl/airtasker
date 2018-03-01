@@ -71,6 +71,7 @@ class TestSuiteHelpers: NSObject {
         case badTask
         case badActivity
         case badLocalle
+        case avatar
     }
     
     static func readLocalData(testCase: TestType) -> Data? {
@@ -98,6 +99,9 @@ class TestSuiteHelpers: NSObject {
             url = testBundle.url(forResource: "activities", withExtension: "json")
         case .badActivity:
             url = testBundle.url(forResource: "badActivities", withExtension: "json")
+        case .avatar:
+            url = testBundle.url(forResource: "zomb", withExtension: "jpg")
+            
         default:
             break
         }
