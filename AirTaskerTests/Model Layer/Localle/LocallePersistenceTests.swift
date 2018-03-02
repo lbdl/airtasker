@@ -142,7 +142,7 @@ class LocallePersistenceTests: QuickSpec {
                         done()
                     }
                 }
-                it("the profile with id: 4 activtity has an associated task") {
+                it("the activtity asociated with profile id: 4  has an associated task") {
                     waitUntil { done in
                         locationMapper?.parse(rawValue: locationData!)
                         locationMapper?.persist(rawJson: (locationMapper?.mappedValue)!)

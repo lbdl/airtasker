@@ -87,7 +87,76 @@ class ActivityPersistanceTests: QuickSpec {
         }
         
         context("GIVEN valid JSON and a populated DB") {
+            var manager: PersistenceControllerProtocol?
+            var persistentContainer: ManagedContextProtocol?
+            let locationData = TestSuiteHelpers.readLocalData(testCase: .locations)!
+            let localleData = TestSuiteHelpers.readLocalData(testCase: .localle)!
+            var localleMapper: LocalleMapper?
+            var locationMapper: LocationMapper?
             
+            describe("WHEN we persist an activity") {
+                
+                beforeEach {
+                    TestSuiteHelpers.createInMemoryContainer(completion: { (container) in
+                        persistentContainer = container
+                        manager = PersistenceManager(store: persistentContainer!)
+                        localleMapper = LocalleMapper(storeManager: manager!)
+                        locationMapper = LocationMapper(storeManager: manager!)
+                        
+                        locationMapper?.parse(rawValue: locationData)
+                        localleMapper?.parse(rawValue: localleData)
+                        locationMapper?.persist(rawJson: (locationMapper?.mappedValue!)!)
+                        localleMapper?.persist(rawJson: (localleMapper?.mappedValue!)!)
+                        
+                    })
+                }
+                
+                afterEach {
+                    let fetchRequest = NSFetchRequest<Location>(entityName: Location.entityName)
+                    let localleReq = NSFetchRequest<Localle>(entityName: Localle.entityName)
+                    let profileReq = NSFetchRequest<Profile>(entityName: Profile.entityName)
+                    let activitiesReq = NSFetchRequest<Activity>(entityName: Activity.entityName)
+                    let taskReq = NSFetchRequest<Task>(entityName: Task.entityName)
+                    
+                    let objs = try! persistentContainer!.fetch(fetchRequest)
+                    for case let obj as NSManagedObject in objs {
+                        persistentContainer!.delete(obj)
+                        try! persistentContainer!.save()
+                    }
+                    let localles = try! persistentContainer!.fetch(localleReq)
+                    for case let obj as NSManagedObject in localles {
+                        persistentContainer!.delete(obj)
+                        try! persistentContainer!.save()
+                    }
+                    let profiles = try! persistentContainer!.fetch(profileReq)
+                    for case let obj as NSManagedObject in profiles {
+                        persistentContainer!.delete(obj)
+                        try! persistentContainer!.save()
+                    }
+                    let activities = try! persistentContainer!.fetch(activitiesReq)
+                    for case let obj as NSManagedObject in activities {
+                        persistentContainer!.delete(obj)
+                        try! persistentContainer!.save()
+                    }
+                    let tasks = try! persistentContainer!.fetch(taskReq)
+                    for case let obj as NSManagedObject in tasks {
+                        persistentContainer!.delete(obj)
+                        try! persistentContainer!.save()
+                    }
+                }
+                
+                it("has a completed message property for activity 3"){
+                    waitUntil{ done in
+                        let request = NSFetchRequest<Activity>(entityName: Activity.entityName)
+                        request.predicate = NSPredicate(format: "id == %d && event == %@", 3, "assigned")
+                        let results = try! persistentContainer?.fetch(request)
+                        let actual = results?.first
+                        expect(actual?.message()).toNot(beNil())
+                        expect(actual?.message()).to(equal("Phoebe was assigned 2 x Baskets of Ironing"))
+                        done()
+                    }
+                }
+            }
         }
 
     }

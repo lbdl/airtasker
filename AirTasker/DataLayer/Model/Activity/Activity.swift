@@ -18,6 +18,9 @@ public class Activity: NSManagedObject {
     @NSManaged var profile: Profile?
     @NSManaged var task: Task?
     
+    static let pName = "{profileName}"
+    static let tName = "{taskName}"
+    
     static func insert(into manager: PersistenceControllerProtocol, raw: ActivityRaw) -> Activity {
         let activity: Activity = manager.insertObject()
         activity.id = raw.id
@@ -36,6 +39,17 @@ public class Activity: NSManagedObject {
             $0.event = raw.event
         }
         return activity
+    }
+    
+    func message() -> String? {
+        return self.parseMessageString(messageString: self.internalMessage!)
+    }
+    
+    func parseMessageString(messageString: String) -> String? {
+        guard let profileName = self.profile?.name else { return nil }
+        guard let taskName = self.task?.name else { return nil }
+        let tmp = messageString.replacingOccurrences(of: Activity.pName, with: profileName)
+        return tmp.replacingOccurrences(of: Activity.tName, with: taskName)
     }
 }
 
