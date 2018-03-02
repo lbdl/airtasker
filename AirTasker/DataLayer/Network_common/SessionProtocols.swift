@@ -10,12 +10,12 @@ import Foundation
 
 protocol URLSessionProtocol {
     typealias DataTaskHandler = (Data?, URLResponse?, Error?) -> Void
-    func dataTask(with request: NSURLRequest, completionHandler: @escaping DataTaskHandler) -> URLSessionDataTaskProtocol
+    func dataTask(with request: URLRequest, completionHandler: @escaping DataTaskHandler) -> URLSessionDataTaskProtocol
 }
 
 extension URLSession: URLSessionProtocol {
-    func dataTask(with request: NSURLRequest, completionHandler: @escaping DataTaskHandler) -> URLSessionDataTaskProtocol {
-        return dataTask(with: request, completionHandler: completionHandler) as URLSessionDataTaskProtocol
+    func dataTask(with request: URLRequest, completionHandler: @escaping DataTaskHandler) -> URLSessionDataTaskProtocol {
+        return (dataTask(with: request, completionHandler: completionHandler) as URLSessionDataTask) as URLSessionDataTaskProtocol
     }
 }
 

@@ -12,10 +12,31 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var dataManager: DataControllerPrototcol!
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+//        var persistenceManager: PersistenceControllerProtocol!
+//        var sessionManager: URLSessionProtocol!
+//        var locationManager: AnyMapper<Mapped<[LocationRaw]>>!
+//        var localleManager: AnyMapper<Mapped<LocalleRaw>>!
+//        var locationsViewController: LocationsViewController!
+        
+        
+        PersistenceHelper.createProductionContainer{ container in
+            let storyboard = (self.window?.rootViewController?.storyboard)!
+            guard let vc = storyboard.instantiateViewController(withIdentifier: "LocationsViewController") as? LocationsViewController else {
+                fatalError("Could not instantiate locations view controller")
+            }
+            let persistenceManager = PersistenceManager(store: container)
+            let sessionManager = URLSession(configuration: URLSessionConfiguration.default)
+            let locationManager = AnyMapper(LocationMapper(storeManager: persistenceManager))
+            let localleManager = AnyMapper(LocalleMapper(storeManager: persistenceManager))
+            self.dataManager = DataManager(storeManager: persistenceManager, urlSession: sessionManager, locationParser: locationManager, localleParser: localleManager)
+            vc.dataManager = self.dataManager
+            self.window?.rootViewController = vc
+        }
         return true
     }
 

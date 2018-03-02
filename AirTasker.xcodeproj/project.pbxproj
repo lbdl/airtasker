@@ -40,6 +40,8 @@
 		2BBF412520170D36003A636C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BBF412320170D36003A636C /* Main.storyboard */; };
 		2BBF412720170D36003A636C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BBF412620170D36003A636C /* Assets.xcassets */; };
 		2BBF412A20170D36003A636C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BBF412820170D36003A636C /* LaunchScreen.storyboard */; };
+		2BCA787620498F17004A80CF /* LocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCA787420498F17004A80CF /* LocationCollectionViewCell.swift */; };
+		2BCA787720498F17004A80CF /* LocationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BCA787520498F17004A80CF /* LocationCollectionViewCell.xib */; };
 		2BF1161D20172B2000D8A02B /* Mapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1161C20172B2000D8A02B /* Mapped.swift */; };
 		2BF116232018440A00D8A02B /* AirTasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116212018440A00D8A02B /* AirTasks.xcdatamodeld */; };
 		2BF116252019805500D8A02B /* JSONMappingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116242019805500D8A02B /* JSONMappingProtocol.swift */; };
@@ -98,7 +100,7 @@
 		2B7C837C203F081600FBD2D7 /* SessionProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionProtocols.swift; sourceTree = "<group>"; };
 		2B7C837E203FD16E00FBD2D7 /* DataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerTests.swift; sourceTree = "<group>"; };
 		2B7C8384204105E700FBD2D7 /* DataManagerTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerTestHelpers.swift; sourceTree = "<group>"; };
-		2B7C83872043D8AB00FBD2D7 /* LocationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationsViewController.swift; path = Modules/Location/LocationsViewController.swift; sourceTree = SOURCE_ROOT; };
+		2B7C83872043D8AB00FBD2D7 /* LocationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
 		2B8BE0A320484B07004EB5FF /* locations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = locations.json; sourceTree = "<group>"; };
 		2B8BE0A420484B07004EB5FF /* localle5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = localle5.json; sourceTree = "<group>"; };
 		2B8BE0A520484B07004EB5FF /* activities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = activities.json; sourceTree = "<group>"; };
@@ -126,6 +128,8 @@
 		2BBF412B20170D36003A636C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BBF413020170D37003A636C /* AirTaskerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirTaskerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BBF413620170D37003A636C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2BCA787420498F17004A80CF /* LocationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCollectionViewCell.swift; sourceTree = "<group>"; };
+		2BCA787520498F17004A80CF /* LocationCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationCollectionViewCell.xib; sourceTree = "<group>"; };
 		2BF1161C20172B2000D8A02B /* Mapped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mapped.swift; sourceTree = "<group>"; };
 		2BF116222018440A00D8A02B /* AirTasks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AirTasks.xcdatamodel; sourceTree = "<group>"; };
 		2BF116242019805500D8A02B /* JSONMappingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONMappingProtocol.swift; sourceTree = "<group>"; };
@@ -240,6 +244,8 @@
 			isa = PBXGroup;
 			children = (
 				2B7C83872043D8AB00FBD2D7 /* LocationsViewController.swift */,
+				2BCA787420498F17004A80CF /* LocationCollectionViewCell.swift */,
+				2BCA787520498F17004A80CF /* LocationCollectionViewCell.xib */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -543,6 +549,7 @@
 				2BBF412A20170D36003A636C /* LaunchScreen.storyboard in Resources */,
 				2BBF412720170D36003A636C /* Assets.xcassets in Resources */,
 				2BBF412520170D36003A636C /* Main.storyboard in Resources */,
+				2BCA787720498F17004A80CF /* LocationCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,6 +581,7 @@
 			files = (
 				2BBDA54F203499670093ACE6 /* LocalleMapper.swift in Sources */,
 				2B7C837B203EF1B500FBD2D7 /* DataManager.swift in Sources */,
+				2BCA787620498F17004A80CF /* LocationCollectionViewCell.swift in Sources */,
 				2BBF412220170D36003A636C /* ViewController.swift in Sources */,
 				2BF1F899202326B1005ECE8F /* ProfileMapper.swift in Sources */,
 				2BF116402019C10200D8A02B /* Task.swift in Sources */,

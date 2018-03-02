@@ -78,7 +78,7 @@ class DataManager: NSObject, DataControllerPrototcol {
     func fetchLocations()  {
         guard let url = buildURL(forEndPoint: .locations, forResourceID: nil) else { return }
         guard let request = makeRequest(fromUrl: url) else { return }
-        let task =  dataSession.dataTask(with: request) { [weak self] (data, response, error) in
+        let task = dataSession.dataTask(with: request) { [weak self] (data, response, error) in
             guard let strongSelf = self else { return }
             if error == nil  {
                 guard let urlResponse = response as? HTTPURLResponse else { return }
@@ -178,10 +178,10 @@ class DataManager: NSObject, DataControllerPrototcol {
         return urlComponents.url
     }
     
-    private func makeRequest(fromUrl url: URL, forMethod method: HttpMethods = HttpMethods.get) -> NSURLRequest? {
+    private func makeRequest(fromUrl url: URL, forMethod method: HttpMethods = HttpMethods.get) -> URLRequest? {
         let request = NSMutableURLRequest(url: url)
         request.httpMethod = method.rawValue
-        return request as NSURLRequest
+        return request as URLRequest
     }
     
     private func makeLocationURL(forId id: Int64) -> URL? {

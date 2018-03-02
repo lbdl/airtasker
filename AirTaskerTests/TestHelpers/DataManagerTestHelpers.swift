@@ -18,7 +18,7 @@ class MockURLSession: URLSessionProtocol {
     var testResponse: URLResponse?
     private (set) var lastURL: URL?
     
-    func dataTask(with request: NSURLRequest, completionHandler: @escaping DataTaskHandler) -> URLSessionDataTaskProtocol {
+    func dataTask(with request: URLRequest, completionHandler: @escaping DataTaskHandler) -> URLSessionDataTaskProtocol {
         lastURL = request.url
         testResponse = HTTPURLResponse(url: request.url!, statusCode: 200, httpVersion: nil, headerFields: nil)
         completionHandler(testData, testResponse, testError)
