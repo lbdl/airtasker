@@ -35,7 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let localleManager = AnyMapper(LocalleMapper(storeManager: persistenceManager))
             self.dataManager = DataManager(storeManager: persistenceManager, urlSession: sessionManager, locationParser: locationManager, localleParser: localleManager)
             vc.dataManager = self.dataManager
-            self.window?.rootViewController = vc
+            let nv = UINavigationController(rootViewController: vc)
+            self.window?.rootViewController = nv
         }
         return true
     }

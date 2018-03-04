@@ -8,8 +8,19 @@
 
 import UIKit
 import CoreData
+import MapKit
 
-class LocationDetailViewController: UIViewController, NSFetchedResultsControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+class ProfileView: UICollectionView {}
+class ActivityView: UICollectionView {}
+
+class LocationDetailViewController: UIViewController {
+    
+    var locationID: Int64!
+    var dataManager: DataControllerPrototcol!
+    
+    @IBOutlet weak var activitiesView: ActivityView!
+    @IBOutlet weak var profilesView: ProfileView!
+    @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,20 +33,10 @@ class LocationDetailViewController: UIViewController, NSFetchedResultsController
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     //MARK: Collection view data and delegate
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

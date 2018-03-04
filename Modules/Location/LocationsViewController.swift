@@ -65,20 +65,10 @@ class LocationsViewController: UIViewController, NSFetchedResultsControllerDeleg
     func setupCollectionView(ForView view: UICollectionView) {
         view.delegate = self
         view.dataSource = self
-        
         let screenSize = self.locationCollectionView.bounds
         view.collectionViewLayout = self.setupLayout(forScreen: screenSize)
     }
     
-
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
- 
     //MARK: - Data source and delegate methods
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let count = locationResultsController.fetchedObjects?.count else {return 0}
@@ -100,8 +90,12 @@ class LocationsViewController: UIViewController, NSFetchedResultsControllerDeleg
         return true
     }
     
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "detailViewController") as! LocationDetailViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    
+    
 
 }
