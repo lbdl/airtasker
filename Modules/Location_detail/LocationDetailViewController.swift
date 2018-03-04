@@ -26,6 +26,7 @@ class LocationDetailViewController: UIViewController {
         super.viewDidLoad()
         dataManager.fetchLocationData(for: location.id)
         setupViews()
+        setupMap()
     }
     
     lazy var localleResultsController: NSFetchedResultsController<Localle> = {
@@ -52,11 +53,20 @@ class LocationDetailViewController: UIViewController {
         profilesView.delegate = self
     }
     
+    private func setupMap() {
+        let location = localleResultsController.fetchedObjects?.first?.location
+        let initialLocation = CLLocation(latitude: (location?.lat)!, longitude: (location?.long)!)
+        let regionRadius: CLLocationDistance = 1000
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(initialLocation.coordinate,
+                                                                  regionRadius, regionRadius)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
     private func setupLayout(forScreen screenSize: CGRect) -> UICollectionViewFlowLayout {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         let screenWidth = screenSize.width
         layout.sectionInset = UIEdgeInsets(top: 20, left: 8, bottom: 10, right: 8)
-        layout.itemSize = CGSize(width: screenWidth, height: 120)
+        layout.itemSize = CGSize(width: screenWidth, height: 110)
         layout.minimumLineSpacing = 6
         return layout
     }
@@ -92,13 +102,13 @@ extension LocationDetailViewController: UICollectionViewDelegate, UICollectionVi
         var cell: ProfileCollectionViewCell
         if collectionView.isKind(of: ProfileView.self) {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "profileCell", for: indexPath) as! ProfileCollectionViewCell
-            if let localle: Localle = (localleResultsController.fetchedObjects?.first)! {
+            if let localle: Localle = localleResultsController.fetchedObjects?.first {
                 let users = localle.orderedUsers()
                 let user = users[indexPath.row]
                 cell.nameLabel.text = user.name
                 cell.ratingLabel.text = String(user.rating)
                 cell.descriptionLabel.text = user.desc
-                dataManager.fetchAvatarData(for: user.id, forImageView: cell.avatarView)
+                _ = dataManager.fetchAvatarData(for: user.id, forImageView: cell.avatarView)
             }
             return cell
         } else {
