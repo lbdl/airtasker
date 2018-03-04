@@ -184,18 +184,18 @@ class DataManagerTests: QuickSpec {
             describe("WHEN we fetch avatar 3") {
                 it("uses the correct endpoint") {
                     mockSession?.testData = TestSuiteHelpers.readLocalData(testCase: .avatar)
-                    _ = sut?.fetchAvatarData(for: 3)
+                    _ = sut?.fetchAvatarData(for: 3, forImageView: UIImageView())
                     let actual = mockSession?.lastURL
                     expect(actual?.scheme).to(equal("https"))
                     expect(actual?.host).to(equal("s3-ap-southeast-2.amazonaws.com"))
-                    expect(actual?.path).to(equal("/ios-code-test/v2/img/3.json"))
-                    expect(actual?.lastPathComponent).to(equal("3.json"))
+                    expect(actual?.path).to(equal("/ios-code-test/v2/img/3.jpg"))
+                    expect(actual?.lastPathComponent).to(equal("3.jpg"))
                     
                 }
                 it("calls resume on the data task") {
                     mockSession?.testData = TestSuiteHelpers.readLocalData(testCase: .avatar)
                     mockSession?.nextDataTask = mockTask!
-                    _ = sut?.fetchAvatarData(for: 3)
+                    _ = sut?.fetchAvatarData(for: 3, forImageView: UIImageView())
                     expect(mockTask?.resumeWasCalled).to(beTrue())
                     
                 }
@@ -203,7 +203,7 @@ class DataManagerTests: QuickSpec {
                     it("returns an image") {
                         waitUntil { done in
                             mockSession?.testData = TestSuiteHelpers.readLocalData(testCase: .avatar)
-                            let actual = sut?.fetchAvatarData(for: 3)
+                            let actual = sut?.fetchAvatarData(for: 3, forImageView: UIImageView())
                             expect(actual).toNot(beNil())
                             done()
                         }

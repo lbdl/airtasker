@@ -31,17 +31,15 @@ class LocationsViewController: UIViewController, NSFetchedResultsControllerDeleg
             cacheName: nil)
         
         fetchController.delegate = self
+        _ = try! fetchController.performFetch()
         return fetchController
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         dataManager?.fetchLocations()
-        
-        self.registerCustomCells(With: self.locationCollectionView)
-        self.setupCollectionView(ForView: self.locationCollectionView)
-        
-        _ = try! self.locationResultsController.performFetch()
+        registerCustomCells(With: locationCollectionView)
+        setupCollectionView(ForView: locationCollectionView)        
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,14 +50,14 @@ class LocationsViewController: UIViewController, NSFetchedResultsControllerDeleg
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         let screenWidth = screenSize.width
         layout.sectionInset = UIEdgeInsets(top: 20, left: 8, bottom: 10, right: 8)
-        layout.itemSize = CGSize(width: screenWidth, height: 70)
+        layout.itemSize = CGSize(width: screenWidth - 20, height: 70)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 20
         return layout
     }
     
     func registerCustomCells(With collectionView: UICollectionView) {
-        self.locationCollectionView.register(UINib(nibName: "LocationCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "locationCell")
+        collectionView.register(UINib(nibName: "LocationCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "locationCell")
     }
     
     func setupCollectionView(ForView view: UICollectionView) {
@@ -76,13 +74,12 @@ class LocationsViewController: UIViewController, NSFetchedResultsControllerDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = self.locationCollectionView.dequeueReusableCell(withReuseIdentifier: "locationCell", for: indexPath) as? LocationCollectionViewCell {
-            let location = self.locationResultsController.fetchedObjects![indexPath.row] as Location
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "locationCell", for: indexPath) as? LocationCollectionViewCell {
+            let location = locationResultsController.fetchedObjects![indexPath.row]
             cell.locationLabel.text = location.name
-            cell.location = location
             return cell
         } else {
-            return self.locationCollectionView.dequeueReusableCell(withReuseIdentifier: "locationCell", for: indexPath)
+            return collectionView.dequeueReusableCell(withReuseIdentifier: "locationCell", for: indexPath)
         }
     }
     
@@ -92,6 +89,8 @@ class LocationsViewController: UIViewController, NSFetchedResultsControllerDeleg
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "detailViewController") as! LocationDetailViewController
+        vc.location = locationResultsController.fetchedObjects?[indexPath.row]
+        vc.dataManager = dataManager
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

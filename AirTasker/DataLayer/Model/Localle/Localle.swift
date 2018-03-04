@@ -93,3 +93,9 @@ extension Localle: Managed {
     // sigh...
     static var entityName = "Localle"
 }
+
+extension Localle {
+    func orderedUsers() -> [Profile] {
+        return users.sorted(by: {$0.rating > $1.rating})
+    }
+}

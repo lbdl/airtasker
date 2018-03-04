@@ -11,6 +11,11 @@
 		2B0193D72031DBBC00960FCC /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF11676201C5C8500D8A02B /* Managed.swift */; };
 		2B0435DA2021A0E20029653E /* PersistenceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0435D92021A0E20029653E /* PersistenceManagerTests.swift */; };
 		2B10E407204A76530061C03D /* LocationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B10E406204A76530061C03D /* LocationDetailViewController.swift */; };
+		2B10E40A204BC1AE0061C03D /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B10E408204BC1AE0061C03D /* ProfileCollectionViewCell.swift */; };
+		2B10E40B204BC1AE0061C03D /* ProfileCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B10E409204BC1AE0061C03D /* ProfileCollectionViewCell.xib */; };
+		2B10E40E204BC1C10061C03D /* ActivityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B10E40C204BC1C10061C03D /* ActivityCollectionViewCell.swift */; };
+		2B10E40F204BC1C10061C03D /* ActivityCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B10E40D204BC1C10061C03D /* ActivityCollectionViewCell.xib */; };
+		2B10E412204BC3F20061C03D /* AirtaskCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B10E411204BC3F20061C03D /* AirtaskCollectionViewCell.swift */; };
 		2B27C0F62031E0050054A5D0 /* Localle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B27C0F52031E0050054A5D0 /* Localle.swift */; };
 		2B27C0F9203289670054A5D0 /* ProfilePersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B27C0F8203289670054A5D0 /* ProfilePersistenceTests.swift */; };
 		2B7C837B203EF1B500FBD2D7 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C837A203EF1B500FBD2D7 /* DataManager.swift */; };
@@ -96,6 +101,11 @@
 		2B0193D3202D746700960FCC /* ProfileParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileParsingTests.swift; sourceTree = "<group>"; };
 		2B0435D92021A0E20029653E /* PersistenceManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManagerTests.swift; sourceTree = "<group>"; };
 		2B10E406204A76530061C03D /* LocationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailViewController.swift; sourceTree = "<group>"; };
+		2B10E408204BC1AE0061C03D /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
+		2B10E409204BC1AE0061C03D /* ProfileCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCollectionViewCell.xib; sourceTree = "<group>"; };
+		2B10E40C204BC1C10061C03D /* ActivityCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCollectionViewCell.swift; sourceTree = "<group>"; };
+		2B10E40D204BC1C10061C03D /* ActivityCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityCollectionViewCell.xib; sourceTree = "<group>"; };
+		2B10E411204BC3F20061C03D /* AirtaskCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirtaskCollectionViewCell.swift; sourceTree = "<group>"; };
 		2B27C0F52031E0050054A5D0 /* Localle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localle.swift; sourceTree = "<group>"; };
 		2B27C0F8203289670054A5D0 /* ProfilePersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePersistenceTests.swift; sourceTree = "<group>"; };
 		2B7C837A203EF1B500FBD2D7 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -195,8 +205,20 @@
 			isa = PBXGroup;
 			children = (
 				2B10E406204A76530061C03D /* LocationDetailViewController.swift */,
+				2B10E408204BC1AE0061C03D /* ProfileCollectionViewCell.swift */,
+				2B10E409204BC1AE0061C03D /* ProfileCollectionViewCell.xib */,
+				2B10E40C204BC1C10061C03D /* ActivityCollectionViewCell.swift */,
+				2B10E40D204BC1C10061C03D /* ActivityCollectionViewCell.xib */,
 			);
 			path = Location_detail;
+			sourceTree = "<group>";
+		};
+		2B10E410204BC3D60061C03D /* shared */ = {
+			isa = PBXGroup;
+			children = (
+				2B10E411204BC3F20061C03D /* AirtaskCollectionViewCell.swift */,
+			);
+			path = shared;
 			sourceTree = "<group>";
 		};
 		2B7C8377203EF0AE00FBD2D7 /* Model Layer */ = {
@@ -244,6 +266,7 @@
 		2B7C83892043D8D000FBD2D7 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				2B10E410204BC3D60061C03D /* shared */,
 				2B10E405204A75EA0061C03D /* Location_detail */,
 				2B7C838A2043D8D800FBD2D7 /* Location */,
 			);
@@ -561,6 +584,8 @@
 				2BBF412720170D36003A636C /* Assets.xcassets in Resources */,
 				2BBF412520170D36003A636C /* Main.storyboard in Resources */,
 				2BCA787720498F17004A80CF /* LocationCollectionViewCell.xib in Resources */,
+				2B10E40B204BC1AE0061C03D /* ProfileCollectionViewCell.xib in Resources */,
+				2B10E40F204BC1C10061C03D /* ActivityCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -602,13 +627,16 @@
 				2BF116252019805500D8A02B /* JSONMappingProtocol.swift in Sources */,
 				2B0193D72031DBBC00960FCC /* Managed.swift in Sources */,
 				2BF116392019BC7D00D8A02B /* PersistenceManager.swift in Sources */,
+				2B10E40E204BC1C10061C03D /* ActivityCollectionViewCell.swift in Sources */,
 				2B7C837D203F081600FBD2D7 /* SessionProtocols.swift in Sources */,
 				2BF1F8972022FF08005ECE8F /* PersistenceHelper.swift in Sources */,
 				2BF116452019C11D00D8A02B /* Worker.swift in Sources */,
 				2BF9D0542033D95700B761A7 /* TaskMapper.swift in Sources */,
 				2B10E407204A76530061C03D /* LocationDetailViewController.swift in Sources */,
+				2B10E412204BC3F20061C03D /* AirtaskCollectionViewCell.swift in Sources */,
 				2B7C83882043D8AB00FBD2D7 /* LocationsViewController.swift in Sources */,
 				2BF1162F20199FA300D8A02B /* Location.swift in Sources */,
+				2B10E40A204BC1AE0061C03D /* ProfileCollectionViewCell.swift in Sources */,
 				2BBF412020170D36003A636C /* AppDelegate.swift in Sources */,
 				2BF1161D20172B2000D8A02B /* Mapped.swift in Sources */,
 				2BB38F5520345FBE0061530E /* ActivityMapper.swift in Sources */,

@@ -12,7 +12,7 @@ import Foundation
 protocol DataControllerPrototcol {
     func fetchLocations()
     func fetchLocationData(for locationId: Int64)
-    func fetchAvatarData(for profileId: Int64) -> UIImage?
+    func fetchAvatarData(for profileId: Int64, forImageView imgView: UIImageView) -> UIImage?
 }
 
 enum SessionType {
@@ -46,7 +46,6 @@ enum EndPoint: String {
 /// Data fetched is stored in CoreData. The views should be updated via a fetched results controller.
 
 class DataManager: NSObject, DataControllerPrototcol {
-    
     let persistenceManager: PersistenceControllerProtocol
     let dataSession: URLSessionProtocol
     let locationsHandler: AnyMapper<Mapped<[LocationRaw]>>
@@ -108,7 +107,7 @@ class DataManager: NSObject, DataControllerPrototcol {
     /// - parameters:
     ///     - locationID: the id of the required localle obtained from the location object
     func fetchLocationData(for locationId: Int64) {
-        guard let url = buildURL(forEndPoint: .location, forResourceID: 2) else { return }
+        guard let url = buildURL(forEndPoint: .location, forResourceID: locationId) else { return }
         guard let request = makeRequest(fromUrl: url) else { return }
         let task = dataSession.dataTask(with: request) { [weak self] (data, response, error) in
             guard let strongSelf = self else { return }
@@ -133,9 +132,9 @@ class DataManager: NSObject, DataControllerPrototcol {
         task.resume()
     }
     
-    func fetchAvatarData(for profileId: Int64) -> UIImage? {
+    func fetchAvatarData(for profileId: Int64, forImageView imgView: UIImageView) -> UIImage? {
         var image: UIImage?
-        guard let url = buildURL(forEndPoint: .avatar, forResourceID: profileId) else { return nil }
+        guard let url = buildURL(forEndPoint: .avatar, withType: ".jpg", forResourceID: profileId) else { return nil }
         guard let request = makeRequest(fromUrl: url) else { return nil }
         let task = dataSession.dataTask(with: request) { (data, response, error) in
             if error == nil {
@@ -144,6 +143,9 @@ class DataManager: NSObject, DataControllerPrototcol {
                     guard let rawdata = data else { return }
                     guard let tmp = UIImage(data: rawdata) else { return }
                     image = tmp
+                    DispatchQueue.main.async(execute: { () -> Void in
+                        imgView.image = tmp
+                    })
                 }
             }
         }
