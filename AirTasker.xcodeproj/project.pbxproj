@@ -16,6 +16,8 @@
 		2B10E40E204BC1C10061C03D /* ActivityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B10E40C204BC1C10061C03D /* ActivityCollectionViewCell.swift */; };
 		2B10E40F204BC1C10061C03D /* ActivityCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B10E40D204BC1C10061C03D /* ActivityCollectionViewCell.xib */; };
 		2B10E412204BC3F20061C03D /* AirtaskCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B10E411204BC3F20061C03D /* AirtaskCollectionViewCell.swift */; };
+		2B10E417204C59060061C03D /* AirTaskCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B10E415204C59060061C03D /* AirTaskCollectionReusableView.swift */; };
+		2B10E418204C59060061C03D /* AirTaskCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B10E416204C59060061C03D /* AirTaskCollectionReusableView.xib */; };
 		2B27C0F62031E0050054A5D0 /* Localle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B27C0F52031E0050054A5D0 /* Localle.swift */; };
 		2B27C0F9203289670054A5D0 /* ProfilePersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B27C0F8203289670054A5D0 /* ProfilePersistenceTests.swift */; };
 		2B7C837B203EF1B500FBD2D7 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C837A203EF1B500FBD2D7 /* DataManager.swift */; };
@@ -106,6 +108,8 @@
 		2B10E40C204BC1C10061C03D /* ActivityCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCollectionViewCell.swift; sourceTree = "<group>"; };
 		2B10E40D204BC1C10061C03D /* ActivityCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityCollectionViewCell.xib; sourceTree = "<group>"; };
 		2B10E411204BC3F20061C03D /* AirtaskCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirtaskCollectionViewCell.swift; sourceTree = "<group>"; };
+		2B10E415204C59060061C03D /* AirTaskCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirTaskCollectionReusableView.swift; sourceTree = "<group>"; };
+		2B10E416204C59060061C03D /* AirTaskCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AirTaskCollectionReusableView.xib; sourceTree = "<group>"; };
 		2B27C0F52031E0050054A5D0 /* Localle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localle.swift; sourceTree = "<group>"; };
 		2B27C0F8203289670054A5D0 /* ProfilePersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePersistenceTests.swift; sourceTree = "<group>"; };
 		2B7C837A203EF1B500FBD2D7 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -217,6 +221,8 @@
 			isa = PBXGroup;
 			children = (
 				2B10E411204BC3F20061C03D /* AirtaskCollectionViewCell.swift */,
+				2B10E415204C59060061C03D /* AirTaskCollectionReusableView.swift */,
+				2B10E416204C59060061C03D /* AirTaskCollectionReusableView.xib */,
 			);
 			path = shared;
 			sourceTree = "<group>";
@@ -229,7 +235,6 @@
 				2BF9D0552034546400B761A7 /* Task */,
 				2B0193D2202D744700960FCC /* Profile */,
 				2B0435D820219FE50029653E /* PesistenceManager */,
-				2BF1166A201B151B00D8A02B /* TestAssets */,
 				2BF1165B2019ECD400D8A02B /* Location */,
 			);
 			path = "Model Layer";
@@ -358,6 +363,7 @@
 		2BBF413320170D37003A636C /* AirTaskerTests */ = {
 			isa = PBXGroup;
 			children = (
+				2BF1166A201B151B00D8A02B /* TestAssets */,
 				2B7C83862041064600FBD2D7 /* TestHelpers */,
 				2B7C8378203EF0C900FBD2D7 /* Data Layer */,
 				2B7C8377203EF0AE00FBD2D7 /* Model Layer */,
@@ -585,6 +591,7 @@
 				2BBF412520170D36003A636C /* Main.storyboard in Resources */,
 				2BCA787720498F17004A80CF /* LocationCollectionViewCell.xib in Resources */,
 				2B10E40B204BC1AE0061C03D /* ProfileCollectionViewCell.xib in Resources */,
+				2B10E418204C59060061C03D /* AirTaskCollectionReusableView.xib in Resources */,
 				2B10E40F204BC1C10061C03D /* ActivityCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -634,6 +641,7 @@
 				2BF9D0542033D95700B761A7 /* TaskMapper.swift in Sources */,
 				2B10E407204A76530061C03D /* LocationDetailViewController.swift in Sources */,
 				2B10E412204BC3F20061C03D /* AirtaskCollectionViewCell.swift in Sources */,
+				2B10E417204C59060061C03D /* AirTaskCollectionReusableView.swift in Sources */,
 				2B7C83882043D8AB00FBD2D7 /* LocationsViewController.swift in Sources */,
 				2BF1162F20199FA300D8A02B /* Location.swift in Sources */,
 				2B10E40A204BC1AE0061C03D /* ProfileCollectionViewCell.swift in Sources */,

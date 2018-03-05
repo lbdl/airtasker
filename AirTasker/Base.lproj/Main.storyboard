@@ -84,10 +84,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="FSe-xo-HQp">
-                                <rect key="frame" x="36" y="31" width="303" height="128"/>
+                                <rect key="frame" x="12" y="31" width="351" height="128"/>
                             </mapView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pxr-Ch-Z6i" userLabel="activities" customClass="ActivityView" customModule="AirTasker" customModuleProvider="target">
-                                <rect key="frame" x="36" y="469" width="303" height="178"/>
+                                <rect key="frame" x="6" y="469" width="363" height="178"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3Rv-y6-BD3">
                                     <size key="itemSize" width="50" height="50"/>
@@ -97,8 +97,20 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top Runners" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FdF-im-3n7">
+                                <rect key="frame" x="6" y="179" width="114" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recent Activity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ttA-LX-8ev">
+                                <rect key="frame" x="6" y="440" width="139" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FBE-Wv-sz0" userLabel="profiles" customClass="ProfileView" customModule="AirTasker" customModuleProvider="target">
-                                <rect key="frame" x="36" y="208" width="303" height="217"/>
+                                <rect key="frame" x="6" y="208" width="363" height="217"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2KE-95-iqj">
                                     <size key="itemSize" width="50" height="50"/>
@@ -112,17 +124,23 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Mj9-Et-V95" firstAttribute="top" secondItem="FSe-xo-HQp" secondAttribute="bottom" constant="-139" id="0Qh-Qr-HS6"/>
-                            <constraint firstItem="FBE-Wv-sz0" firstAttribute="leading" secondItem="Mj9-Et-V95" secondAttribute="leading" constant="36" id="0ng-hg-iDV"/>
+                            <constraint firstItem="FBE-Wv-sz0" firstAttribute="leading" secondItem="Mj9-Et-V95" secondAttribute="leading" constant="6" id="0ng-hg-iDV"/>
+                            <constraint firstItem="FBE-Wv-sz0" firstAttribute="top" secondItem="FdF-im-3n7" secondAttribute="bottom" constant="5" id="1dA-U8-spn"/>
                             <constraint firstItem="FSe-xo-HQp" firstAttribute="top" secondItem="Mj9-Et-V95" secondAttribute="top" constant="11" id="3VP-lP-wsz"/>
-                            <constraint firstItem="Mj9-Et-V95" firstAttribute="trailing" secondItem="pxr-Ch-Z6i" secondAttribute="trailing" constant="36" id="9wR-NI-vqA"/>
-                            <constraint firstItem="pxr-Ch-Z6i" firstAttribute="leading" secondItem="Mj9-Et-V95" secondAttribute="leading" constant="36" id="AnF-c3-hkp"/>
-                            <constraint firstItem="Mj9-Et-V95" firstAttribute="trailing" secondItem="FSe-xo-HQp" secondAttribute="trailing" constant="36" id="CzV-pT-cD1"/>
-                            <constraint firstItem="Mj9-Et-V95" firstAttribute="trailing" secondItem="FBE-Wv-sz0" secondAttribute="trailing" constant="36" id="DpB-HY-a7v"/>
+                            <constraint firstItem="Mj9-Et-V95" firstAttribute="trailing" secondItem="pxr-Ch-Z6i" secondAttribute="trailing" constant="6" id="9wR-NI-vqA"/>
+                            <constraint firstItem="pxr-Ch-Z6i" firstAttribute="leading" secondItem="Mj9-Et-V95" secondAttribute="leading" constant="6" id="AnF-c3-hkp"/>
+                            <constraint firstItem="Mj9-Et-V95" firstAttribute="trailing" secondItem="FSe-xo-HQp" secondAttribute="trailing" constant="12" id="CzV-pT-cD1"/>
+                            <constraint firstItem="Mj9-Et-V95" firstAttribute="trailing" secondItem="FBE-Wv-sz0" secondAttribute="trailing" constant="6" id="DpB-HY-a7v"/>
                             <constraint firstItem="Mj9-Et-V95" firstAttribute="bottom" secondItem="FBE-Wv-sz0" secondAttribute="bottom" constant="242" id="ELl-oO-yDK"/>
                             <constraint firstItem="pxr-Ch-Z6i" firstAttribute="top" secondItem="FBE-Wv-sz0" secondAttribute="bottom" constant="44" id="U3c-se-NGH"/>
-                            <constraint firstItem="FSe-xo-HQp" firstAttribute="leading" secondItem="Mj9-Et-V95" secondAttribute="leading" constant="36" id="XZv-oO-3re"/>
+                            <constraint firstItem="FSe-xo-HQp" firstAttribute="leading" secondItem="Mj9-Et-V95" secondAttribute="leading" constant="12" id="XZv-oO-3re"/>
+                            <constraint firstItem="pxr-Ch-Z6i" firstAttribute="top" secondItem="ttA-LX-8ev" secondAttribute="bottom" constant="5" id="aAZ-FW-3Zf"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ttA-LX-8ev" secondAttribute="trailing" constant="20" symbolic="YES" id="bA0-jW-qew"/>
                             <constraint firstItem="Mj9-Et-V95" firstAttribute="bottom" secondItem="pxr-Ch-Z6i" secondAttribute="bottom" constant="20" id="gg4-Wp-Ibd"/>
+                            <constraint firstItem="FdF-im-3n7" firstAttribute="leading" secondItem="Mj9-Et-V95" secondAttribute="leading" constant="6" id="iiT-dr-rCp"/>
                             <constraint firstItem="FBE-Wv-sz0" firstAttribute="top" secondItem="FSe-xo-HQp" secondAttribute="bottom" constant="49" id="mtY-ww-XeM"/>
+                            <constraint firstItem="ttA-LX-8ev" firstAttribute="leading" secondItem="Mj9-Et-V95" secondAttribute="leading" constant="6" id="pHT-Cb-Mfl"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="FdF-im-3n7" secondAttribute="trailing" constant="20" symbolic="YES" id="u5t-Qh-E2f"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Mj9-Et-V95"/>
                     </view>

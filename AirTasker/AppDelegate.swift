@@ -17,13 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-//        var persistenceManager: PersistenceControllerProtocol!
-//        var sessionManager: URLSessionProtocol!
-//        var locationManager: AnyMapper<Mapped<[LocationRaw]>>!
-//        var localleManager: AnyMapper<Mapped<LocalleRaw>>!
-//        var locationsViewController: LocationsViewController!
-        
-        
         PersistenceHelper.createProductionContainer{ container in
             let storyboard = (self.window?.rootViewController?.storyboard)!
             guard let vc = storyboard.instantiateViewController(withIdentifier: "LocationsViewController") as? LocationsViewController else {

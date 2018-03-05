@@ -48,14 +48,17 @@ class LocationDetailViewController: UIViewController {
     
     private func setupViews() {
         profilesView.register(UINib(nibName: "ProfileCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "profileCell")
+        profilesView.register(UINib(nibName: "AirTaskCollectionReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerCell")
         profilesView.collectionViewLayout = setupLayout(forScreen: profilesView.bounds)
         profilesView.dataSource = self
         profilesView.delegate = self
+        
+        //add activities view
     }
     
     private func setupMap() {
-        let location = localleResultsController.fetchedObjects?.first?.location
-        let initialLocation = CLLocation(latitude: (location?.lat)!, longitude: (location?.long)!)
+        guard let location = localleResultsController.fetchedObjects?.first?.location else { return }
+        let initialLocation = CLLocation(latitude: location.lat, longitude: location.long)
         let regionRadius: CLLocationDistance = 1000
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(initialLocation.coordinate,
                                                                   regionRadius, regionRadius)
@@ -65,9 +68,11 @@ class LocationDetailViewController: UIViewController {
     private func setupLayout(forScreen screenSize: CGRect) -> UICollectionViewFlowLayout {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         let screenWidth = screenSize.width
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 8, bottom: 10, right: 8)
-        layout.itemSize = CGSize(width: screenWidth, height: 110)
+        //layout.headerReferenceSize = CGSize(width: screenWidth - 30, height: 40)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 8, bottom: 10, right: 8)
+        layout.itemSize = CGSize(width: screenWidth - 30, height: 110)
         layout.minimumLineSpacing = 6
+        //layout.sectionFootersPinToVisibleBounds = true
         return layout
     }
 
@@ -81,8 +86,9 @@ class LocationDetailViewController: UIViewController {
 extension LocationDetailViewController: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.activitiesView.reloadData()
-        self.profilesView.reloadData()
+        activitiesView.reloadData()
+        profilesView.reloadData()
+        setupMap()
     }
     
 }
@@ -113,6 +119,17 @@ extension LocationDetailViewController: UICollectionViewDelegate, UICollectionVi
             return cell
         } else {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "profileCell", for: indexPath) as! ProfileCollectionViewCell
+        }
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerCell", for: indexPath) as! AirTaskCollectionReusableView
+        
+        if collectionView.isKind(of: ProfileView.self) {
+            cell.headerLabel.text = "Top Runners"
+        } else {
+            cell.headerLabel.text = "Recent Activity"
         }
         return cell
     }
