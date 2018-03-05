@@ -98,4 +98,13 @@ extension Localle {
     func orderedUsers() -> [Profile] {
         return users.sorted(by: {$0.rating > $1.rating})
     }
+    
+    func activitiesArray() -> [Activity]? {
+        let act = users.reduce(into: [], {(res, user) in
+            res.append(Array(user.activities!))
+        }).flatMap({$0})
+        
+        return act
+    }
+        
 }

@@ -18,6 +18,7 @@
 		2B10E412204BC3F20061C03D /* AirtaskCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B10E411204BC3F20061C03D /* AirtaskCollectionViewCell.swift */; };
 		2B10E417204C59060061C03D /* AirTaskCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B10E415204C59060061C03D /* AirTaskCollectionReusableView.swift */; };
 		2B10E418204C59060061C03D /* AirTaskCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B10E416204C59060061C03D /* AirTaskCollectionReusableView.xib */; };
+		2B10E41A204CEBCB0061C03D /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 2B10E419204CEBCB0061C03D /* readme.md */; };
 		2B27C0F62031E0050054A5D0 /* Localle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B27C0F52031E0050054A5D0 /* Localle.swift */; };
 		2B27C0F9203289670054A5D0 /* ProfilePersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B27C0F8203289670054A5D0 /* ProfilePersistenceTests.swift */; };
 		2B7C837B203EF1B500FBD2D7 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C837A203EF1B500FBD2D7 /* DataManager.swift */; };
@@ -110,6 +111,7 @@
 		2B10E411204BC3F20061C03D /* AirtaskCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirtaskCollectionViewCell.swift; sourceTree = "<group>"; };
 		2B10E415204C59060061C03D /* AirTaskCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirTaskCollectionReusableView.swift; sourceTree = "<group>"; };
 		2B10E416204C59060061C03D /* AirTaskCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AirTaskCollectionReusableView.xib; sourceTree = "<group>"; };
+		2B10E419204CEBCB0061C03D /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
 		2B27C0F52031E0050054A5D0 /* Localle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localle.swift; sourceTree = "<group>"; };
 		2B27C0F8203289670054A5D0 /* ProfilePersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePersistenceTests.swift; sourceTree = "<group>"; };
 		2B7C837A203EF1B500FBD2D7 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 		2BBF411320170D36003A636C = {
 			isa = PBXGroup;
 			children = (
+				2B10E419204CEBCB0061C03D /* readme.md */,
 				2BBF411E20170D36003A636C /* AirTasker */,
 				2BBF413320170D37003A636C /* AirTaskerTests */,
 				2BBF411D20170D36003A636C /* Products */,
@@ -592,6 +595,7 @@
 				2BCA787720498F17004A80CF /* LocationCollectionViewCell.xib in Resources */,
 				2B10E40B204BC1AE0061C03D /* ProfileCollectionViewCell.xib in Resources */,
 				2B10E418204C59060061C03D /* AirTaskCollectionReusableView.xib in Resources */,
+				2B10E41A204CEBCB0061C03D /* readme.md in Resources */,
 				2B10E40F204BC1C10061C03D /* ActivityCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

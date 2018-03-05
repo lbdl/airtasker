@@ -48,12 +48,15 @@ class LocationDetailViewController: UIViewController {
     
     private func setupViews() {
         profilesView.register(UINib(nibName: "ProfileCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "profileCell")
-        profilesView.register(UINib(nibName: "AirTaskCollectionReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerCell")
         profilesView.collectionViewLayout = setupLayout(forScreen: profilesView.bounds)
         profilesView.dataSource = self
         profilesView.delegate = self
         
         //add activities view
+        activitiesView.register(UINib(nibName: "ProfileCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "profileCell")
+        activitiesView.collectionViewLayout = setupLayout(forScreen: profilesView.bounds)
+        activitiesView.dataSource = self
+        activitiesView.delegate = self
     }
     
     private func setupMap() {
@@ -68,17 +71,14 @@ class LocationDetailViewController: UIViewController {
     private func setupLayout(forScreen screenSize: CGRect) -> UICollectionViewFlowLayout {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         let screenWidth = screenSize.width
-        //layout.headerReferenceSize = CGSize(width: screenWidth - 30, height: 40)
         layout.sectionInset = UIEdgeInsets(top: 0, left: 8, bottom: 10, right: 8)
         layout.itemSize = CGSize(width: screenWidth - 30, height: 110)
         layout.minimumLineSpacing = 6
-        //layout.sectionFootersPinToVisibleBounds = true
         return layout
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 }
@@ -119,19 +119,16 @@ extension LocationDetailViewController: UICollectionViewDelegate, UICollectionVi
             return cell
         } else {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "profileCell", for: indexPath) as! ProfileCollectionViewCell
+            if let localle: Localle = localleResultsController.fetchedObjects?.first {
+                guard let tmpActivities = localle.activitiesArray() else { return cell}
+                let activity = tmpActivities[indexPath.row]
+                cell.descriptionLabel.text = ""
+                cell.nameLabel.text = activity.message()
+                cell.ratingLabel.text = activity.event
+                _ = dataManager.fetchAvatarData(for: activity.id, forImageView: cell.avatarView)
+            }
+            return cell
         }
-        return cell
+        //return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerCell", for: indexPath) as! AirTaskCollectionReusableView
-        
-        if collectionView.isKind(of: ProfileView.self) {
-            cell.headerLabel.text = "Top Runners"
-        } else {
-            cell.headerLabel.text = "Recent Activity"
-        }
-        return cell
-    }
-    
 }

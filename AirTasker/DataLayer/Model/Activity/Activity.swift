@@ -45,7 +45,7 @@ public class Activity: NSManagedObject {
         return self.parseMessageString(messageString: self.internalMessage!)
     }
     
-    func parseMessageString(messageString: String) -> String? {
+    private func parseMessageString(messageString: String) -> String? {
         guard let profileName = self.profile?.name else { return nil }
         guard let taskName = self.task?.name else { return nil }
         let tmp = messageString.replacingOccurrences(of: Activity.pName, with: profileName)
