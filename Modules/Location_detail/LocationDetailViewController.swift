@@ -52,7 +52,6 @@ class LocationDetailViewController: UIViewController {
         profilesView.dataSource = self
         profilesView.delegate = self
         
-        //add activities view
         activitiesView.register(UINib(nibName: "ProfileCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "profileCell")
         activitiesView.collectionViewLayout = setupLayout(forScreen: profilesView.bounds)
         activitiesView.dataSource = self
@@ -129,6 +128,5 @@ extension LocationDetailViewController: UICollectionViewDelegate, UICollectionVi
             }
             return cell
         }
-        //return cell
     }
 }

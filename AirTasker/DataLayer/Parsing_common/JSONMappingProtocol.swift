@@ -151,7 +151,7 @@ final class AnyMapper<MappedValue>: JSONMappingProtocol {
         box = _AnyMapperBox(concrete)
     }
     
-    // All methods for the protocol Cup just call the equivalent box method
+    // All methods for the protocol just call the equivalent box method
     func parse(rawValue: Data) {
         box.parse(rawValue: rawValue)
     }

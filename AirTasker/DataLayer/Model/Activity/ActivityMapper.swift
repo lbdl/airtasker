@@ -47,9 +47,6 @@ class ActivityMapper: JSONMappingProtocol {
                     _ = Activity.insert(into: strongSelf.persistanceManager, raw: activity)
                 })
             })
-//            _ = obj.map({ [weak self] activity in
-//                _ = Activity.insert(into: (self?.persistanceManager)!, raw: activity)
-//            })
         }
     }
 

@@ -16,7 +16,6 @@ class ProfileCollectionViewCell: AirtaskCollectionViewCell {
     @IBOutlet weak var avatarView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
 }

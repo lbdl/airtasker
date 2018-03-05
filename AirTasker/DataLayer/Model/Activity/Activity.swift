@@ -26,7 +26,6 @@ public class Activity: NSManagedObject {
         activity.id = raw.id
         activity.internalMessage = raw.internalMessage
         activity.event = raw.event
-        //activity.task = Task.fetchTask(forID: raw.id, fromManager: manager)
         return activity
     }
     

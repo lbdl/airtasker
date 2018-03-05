@@ -12,11 +12,9 @@ import UIKit
 class LocationCollectionViewCell: AirtaskCollectionViewCell {
 
     @IBOutlet weak var locationLabel: UILabel!
-    //var location: Location?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
 }

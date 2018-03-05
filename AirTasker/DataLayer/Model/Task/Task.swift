@@ -20,7 +20,6 @@ public class Task: NSManagedObject {
     
     static func insert(into manager: PersistenceControllerProtocol, raw: TaskRaw) -> Task {
         let task: Task = fetchTask(forID: raw.id, fromManager: manager, withJSON: raw)
-//        task.id = raw.id
         task.name = raw.name
         task.desc = raw.desc
         task.state = raw.eventState

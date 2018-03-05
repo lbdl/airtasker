@@ -19,7 +19,7 @@ final class Location: NSManagedObject {
     @NSManaged fileprivate(set) var profiles: Set<Profile>?
     
     static func insert(into manager: PersistenceControllerProtocol, raw: LocationRaw) -> Location {
-        let location: Location = Location.fetchLocation(forID: raw.id, fromManager: manager)//manager.insertObject()
+        let location: Location = Location.fetchLocation(forID: raw.id, fromManager: manager)
         location.id = raw.id
         location.lat = raw.lat
         location.long = raw.long

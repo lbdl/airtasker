@@ -9,10 +9,6 @@
 import UIKit
 import CoreData
 
-
-/// Ideally the data source and delegate methods should be factored into another class but for brevity here I have added them to the VC
-/// there's not much going on so its not really an issue I would say although as complexity increases the VC's should really become abstract and
-/// only deal with displaying views, data and processing should not be encapsulated here.
 class LocationsViewController: UIViewController {
     
     
