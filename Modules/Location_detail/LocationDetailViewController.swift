@@ -122,8 +122,8 @@ extension LocationDetailViewController: UICollectionViewDelegate, UICollectionVi
             if let localle: Localle = localleResultsController.fetchedObjects?.first {
                 guard let tmpActivities = localle.activitiesArray() else { return cell}
                 let activity = tmpActivities[indexPath.row]
-                cell.descriptionLabel.text = ""
-                cell.nameLabel.text = activity.message()
+                cell.descriptionLabel.text = activity.message()
+                cell.nameLabel.text = activity.profile?.name
                 cell.ratingLabel.text = activity.event
                 _ = dataManager.fetchAvatarData(for: activity.id, forImageView: cell.avatarView)
             }

@@ -26,9 +26,11 @@ done it, there isnt too much logic going on anyway so we end up in the easy to r
 (until the day we get good mocks (please swift team...))
 
 * There is a bug (ish) in display of acticities. We map them to users(profiles) in the data model which makes sense to my
-understanding of the data model, however as they have no unique id's and as such we need a mechanism to tie them to the localle which is really
-a convenneince model to toe all the relationships in place and ease the parsing of the JSON we receive from the remote store.
-I would argue that this is perhaps a API bug/feature.
+understanding of the data model, however as they have no date stamps we canopt really order them by  time, we could
+add this fields but for these screens we are assuming that the remote store is the source of final truth.
+Also there is no unique id provided from the remote DB so there is tendancy to double up, we do want this as we can have
+multiple posts of the same type from the same user on the same task but I would argue that that the remote DB should
+provide a unique id for each post as we don't have enough information ot create a unique ID locally.
 
 * Immutability is to be encouraged. Structs and composition are preferred over classes and inheritance.
 
@@ -36,9 +38,11 @@ I would argue that this is perhaps a API bug/feature.
 
 * Try to test first i.e. write a failing test and go from there.
 
+* Activity avatars, this is a bit buggy as we load the avatar from the network and the cells being re-used have a tendency to cache the last image used.
 
-This in not fully tested but it is fairly well covered. The UI is not under test but really it should be modelled in such a way that its logic
-and data is restable. This is partially in placed in the sense that the data layer and model layer is under test.
+
+The UI is not under test but really it should be modelled in such a way that its logic
+and data is testable. This is partially in placed in the sense that the data layer and model layer is under test.
 
 Thanks for the time in reading the code and looking at the project, I hope it makes sense.
 

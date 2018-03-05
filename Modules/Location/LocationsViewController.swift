@@ -13,7 +13,7 @@ import CoreData
 /// Ideally the data source and delegate methods should be factored into another class but for brevity here I have added them to the VC
 /// there's not much going on so its not really an issue I would say although as complexity increases the VC's should really become abstract and
 /// only deal with displaying views, data and processing should not be encapsulated here.
-class LocationsViewController: UIViewController, NSFetchedResultsControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+class LocationsViewController: UIViewController {
     
     
     @IBOutlet weak var locationCollectionView: UICollectionView!
@@ -67,6 +67,18 @@ class LocationsViewController: UIViewController, NSFetchedResultsControllerDeleg
         view.collectionViewLayout = self.setupLayout(forScreen: screenSize)
     }
     
+
+}
+
+extension LocationsViewController: NSFetchedResultsControllerDelegate {
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        locationCollectionView.reloadData()
+    }
+    
+}
+
+extension LocationsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     //MARK: - Data source and delegate methods
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let count = locationResultsController.fetchedObjects?.count else {return 0}
@@ -93,8 +105,4 @@ class LocationsViewController: UIViewController, NSFetchedResultsControllerDeleg
         vc.dataManager = dataManager
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    
-    
-
 }
