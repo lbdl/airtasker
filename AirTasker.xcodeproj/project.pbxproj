@@ -41,7 +41,6 @@
 		2BBDA55B2036F8B40093ACE6 /* ActivityParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBDA55A2036F8B40093ACE6 /* ActivityParsingTests.swift */; };
 		2BBDA55D2036F8C90093ACE6 /* ActivityPersistanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBDA55C2036F8C90093ACE6 /* ActivityPersistanceTests.swift */; };
 		2BBF412020170D36003A636C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF411F20170D36003A636C /* AppDelegate.swift */; };
-		2BBF412220170D36003A636C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF412120170D36003A636C /* ViewController.swift */; };
 		2BBF412520170D36003A636C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BBF412320170D36003A636C /* Main.storyboard */; };
 		2BBF412720170D36003A636C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BBF412620170D36003A636C /* Assets.xcassets */; };
 		2BBF412A20170D36003A636C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BBF412820170D36003A636C /* LaunchScreen.storyboard */; };
@@ -131,7 +130,6 @@
 		2BBDA55C2036F8C90093ACE6 /* ActivityPersistanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityPersistanceTests.swift; sourceTree = "<group>"; };
 		2BBF411C20170D36003A636C /* AirTasker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirTasker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BBF411F20170D36003A636C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2BBF412120170D36003A636C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2BBF412420170D36003A636C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2BBF412620170D36003A636C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2BBF412920170D36003A636C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -342,7 +340,6 @@
 				2B7C8379203EF17F00FBD2D7 /* DataLayer */,
 				2B7C83892043D8D000FBD2D7 /* Modules */,
 				2BBF411F20170D36003A636C /* AppDelegate.swift */,
-				2BBF412120170D36003A636C /* ViewController.swift */,
 				2BBF412320170D36003A636C /* Main.storyboard */,
 				2BBF412620170D36003A636C /* Assets.xcassets */,
 				2BBF412820170D36003A636C /* LaunchScreen.storyboard */,
@@ -615,7 +612,6 @@
 				2BBDA54F203499670093ACE6 /* LocalleMapper.swift in Sources */,
 				2B7C837B203EF1B500FBD2D7 /* DataManager.swift in Sources */,
 				2BCA787620498F17004A80CF /* LocationCollectionViewCell.swift in Sources */,
-				2BBF412220170D36003A636C /* ViewController.swift in Sources */,
 				2BF1F899202326B1005ECE8F /* ProfileMapper.swift in Sources */,
 				2BF116402019C10200D8A02B /* Task.swift in Sources */,
 				2B27C0F62031E0050054A5D0 /* Localle.swift in Sources */,
