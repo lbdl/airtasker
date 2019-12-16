@@ -1,0 +1,42 @@
+[
+		{
+		    "id": 1,
+		    "avatar_mini_url": "/img/1.jpg",
+		    "first_name": 5,
+		    "description":"gal pal rachel green",
+		    "rating": "4",
+		    "location_id":5 
+		},
+		{
+		    "id": 2,
+		    "avatar_mini_url": "/img/2.jpg",
+		    "first_name": "Monica",
+		    "description" : "monica fellula gellar",
+		    "rating": 4.5,
+		    "location_id":5 
+		},
+		{
+		    "id": 3,
+		    "avatar_mini_url": "/img/3.jpg",
+		    "first_name": "Phoebe",
+		    "description" : "smelly cat, smelly cat what are they feeding you",
+		    "rating": 3,
+		    "location_id":5 
+		},
+		{
+		    "id": 4,
+		    "avatar_mini_url": "/img/4.jpg",
+		    "first_name": "Joey",
+		    "description" :"how you doin?",
+		    "rating": 3.5,
+		    "location_id":5 
+		},
+		{
+		    "id": 5,
+		    "avatar_mini_url": "/img/5.jpg",
+		    "first_name": "Chandler",
+		    "description" : "i'm not great at advice, can I interest you in a sarcastic comment?",
+		    "rating": 4.5,
+		    "location_id":2 
+		}
+	]

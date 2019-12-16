@@ -7,14 +7,68 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B0193D4202D746700960FCC /* ProfileParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0193D3202D746700960FCC /* ProfileParsingTests.swift */; };
+		2B0193D72031DBBC00960FCC /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF11676201C5C8500D8A02B /* Managed.swift */; };
+		2B0435DA2021A0E20029653E /* PersistenceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0435D92021A0E20029653E /* PersistenceManagerTests.swift */; };
+		2B10E407204A76530061C03D /* LocationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B10E406204A76530061C03D /* LocationDetailViewController.swift */; };
+		2B10E40A204BC1AE0061C03D /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B10E408204BC1AE0061C03D /* ProfileCollectionViewCell.swift */; };
+		2B10E40B204BC1AE0061C03D /* ProfileCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B10E409204BC1AE0061C03D /* ProfileCollectionViewCell.xib */; };
+		2B10E412204BC3F20061C03D /* AirtaskCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B10E411204BC3F20061C03D /* AirtaskCollectionViewCell.swift */; };
+		2B10E41A204CEBCB0061C03D /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 2B10E419204CEBCB0061C03D /* readme.md */; };
+		2B27C0F62031E0050054A5D0 /* Localle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B27C0F52031E0050054A5D0 /* Localle.swift */; };
+		2B27C0F9203289670054A5D0 /* ProfilePersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B27C0F8203289670054A5D0 /* ProfilePersistenceTests.swift */; };
+		2B7C837B203EF1B500FBD2D7 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C837A203EF1B500FBD2D7 /* DataManager.swift */; };
+		2B7C837D203F081600FBD2D7 /* SessionProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C837C203F081600FBD2D7 /* SessionProtocols.swift */; };
+		2B7C837F203FD16E00FBD2D7 /* DataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C837E203FD16E00FBD2D7 /* DataManagerTests.swift */; };
+		2B7C8385204105E700FBD2D7 /* DataManagerTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C8384204105E700FBD2D7 /* DataManagerTestHelpers.swift */; };
+		2B7C83882043D8AB00FBD2D7 /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7C83872043D8AB00FBD2D7 /* LocationsViewController.swift */; };
+		2B8BE0AD20484B07004EB5FF /* locations.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B8BE0A320484B07004EB5FF /* locations.json */; };
+		2B8BE0AE20484B07004EB5FF /* localle5.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B8BE0A420484B07004EB5FF /* localle5.json */; };
+		2B8BE0AF20484B07004EB5FF /* activities.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B8BE0A520484B07004EB5FF /* activities.json */; };
+		2B8BE0B020484B07004EB5FF /* tasks.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B8BE0A620484B07004EB5FF /* tasks.json */; };
+		2B8BE0B120484B07004EB5FF /* badActivities.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B8BE0A720484B07004EB5FF /* badActivities.json */; };
+		2B8BE0B220484B07004EB5FF /* profiles.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B8BE0A820484B07004EB5FF /* profiles.json */; };
+		2B8BE0B320484B07004EB5FF /* badLocations.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B8BE0A920484B07004EB5FF /* badLocations.json */; };
+		2B8BE0B420484B07004EB5FF /* badProfiles.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B8BE0AA20484B07004EB5FF /* badProfiles.json */; };
+		2B8BE0B520484B07004EB5FF /* badTasks.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B8BE0AB20484B07004EB5FF /* badTasks.json */; };
+		2B8BE0B620484B07004EB5FF /* localle3.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B8BE0AC20484B07004EB5FF /* localle3.json */; };
+		2B8BE0B820484B33004EB5FF /* zomb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2B8BE0B720484B33004EB5FF /* zomb.jpg */; };
+		2BA95626203AD7FD006AD39E /* LocallePersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA95625203AD7FD006AD39E /* LocallePersistenceTests.swift */; };
+		2BB38F5520345FBE0061530E /* ActivityMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB38F5420345FBE0061530E /* ActivityMapper.swift */; };
+		2BBDA54F203499670093ACE6 /* LocalleMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBDA54E203499670093ACE6 /* LocalleMapper.swift */; };
+		2BBDA5512036BDBE0093ACE6 /* LocalleParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBDA5502036BDBE0093ACE6 /* LocalleParsingTests.swift */; };
+		2BBDA5582036F35B0093ACE6 /* TaskPersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBDA5572036F35B0093ACE6 /* TaskPersistenceTests.swift */; };
+		2BBDA55B2036F8B40093ACE6 /* ActivityParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBDA55A2036F8B40093ACE6 /* ActivityParsingTests.swift */; };
+		2BBDA55D2036F8C90093ACE6 /* ActivityPersistanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBDA55C2036F8C90093ACE6 /* ActivityPersistanceTests.swift */; };
 		2BBF412020170D36003A636C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF411F20170D36003A636C /* AppDelegate.swift */; };
-		2BBF412220170D36003A636C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF412120170D36003A636C /* ViewController.swift */; };
 		2BBF412520170D36003A636C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BBF412320170D36003A636C /* Main.storyboard */; };
 		2BBF412720170D36003A636C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BBF412620170D36003A636C /* Assets.xcassets */; };
 		2BBF412A20170D36003A636C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BBF412820170D36003A636C /* LaunchScreen.storyboard */; };
-		2BBF413520170D37003A636C /* AirTaskerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF413420170D37003A636C /* AirTaskerTests.swift */; };
-		2BBF414020170D37003A636C /* AirTaskerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBF413F20170D37003A636C /* AirTaskerUITests.swift */; };
+		2BCA787620498F17004A80CF /* LocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCA787420498F17004A80CF /* LocationCollectionViewCell.swift */; };
+		2BCA787720498F17004A80CF /* LocationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BCA787520498F17004A80CF /* LocationCollectionViewCell.xib */; };
 		2BF1161D20172B2000D8A02B /* Mapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1161C20172B2000D8A02B /* Mapped.swift */; };
+		2BF116232018440A00D8A02B /* AirTasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116212018440A00D8A02B /* AirTasks.xcdatamodeld */; };
+		2BF116252019805500D8A02B /* JSONMappingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116242019805500D8A02B /* JSONMappingProtocol.swift */; };
+		2BF1162A2019923700D8A02B /* LocationMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116292019923700D8A02B /* LocationMapper.swift */; };
+		2BF1162F20199FA300D8A02B /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1162D20199FA300D8A02B /* Location.swift */; };
+		2BF116392019BC7D00D8A02B /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116382019BC7D00D8A02B /* PersistenceManager.swift */; };
+		2BF1163C2019C0EA00D8A02B /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1163A2019C0EA00D8A02B /* Profile.swift */; };
+		2BF116402019C10200D8A02B /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1163E2019C10200D8A02B /* Task.swift */; };
+		2BF116452019C11D00D8A02B /* Worker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116432019C11D00D8A02B /* Worker.swift */; };
+		2BF116482019C1F100D8A02B /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116462019C1F100D8A02B /* Activity.swift */; };
+		2BF116612019F0E300D8A02B /* LocationParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116602019F0E300D8A02B /* LocationParsingTests.swift */; };
+		2BF11665201B0F5B00D8A02B /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF11664201B0F5B00D8A02B /* Nimble.framework */; };
+		2BF11667201B0F6600D8A02B /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF11666201B0F6600D8A02B /* Quick.framework */; };
+		2BF11668201B0F7E00D8A02B /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BF11666201B0F6600D8A02B /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2BF11669201B0F8500D8A02B /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2BF11664201B0F5B00D8A02B /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2BF11671201B203000D8A02B /* TestSuiteHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF11670201B203000D8A02B /* TestSuiteHelpers.swift */; };
+		2BF11672201B35E100D8A02B /* AirTasks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2BF116212018440A00D8A02B /* AirTasks.xcdatamodeld */; };
+		2BF11673201B38E300D8A02B /* AirTasks.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 2BF116212018440A00D8A02B /* AirTasks.xcdatamodeld */; };
+		2BF1167B202163E000D8A02B /* LocationPersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1167A202163E000D8A02B /* LocationPersistenceTests.swift */; };
+		2BF1F8972022FF08005ECE8F /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF11674201C504A00D8A02B /* PersistenceHelper.swift */; };
+		2BF1F899202326B1005ECE8F /* ProfileMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF1F898202326B1005ECE8F /* ProfileMapper.swift */; };
+		2BF9D0542033D95700B761A7 /* TaskMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF9D0532033D95700B761A7 /* TaskMapper.swift */; };
+		2BF9D0572034547E00B761A7 /* TaskParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF9D0562034547E00B761A7 /* TaskParsingTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,30 +79,85 @@
 			remoteGlobalIDString = 2BBF411B20170D36003A636C;
 			remoteInfo = AirTasker;
 		};
-		2BBF413C20170D37003A636C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2BBF411420170D36003A636C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2BBF411B20170D36003A636C;
-			remoteInfo = AirTasker;
-		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		2BF116502019E2B000D8A02B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2BF11669201B0F8500D8A02B /* Nimble.framework in CopyFiles */,
+				2BF11668201B0F7E00D8A02B /* Quick.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		2B0193D3202D746700960FCC /* ProfileParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileParsingTests.swift; sourceTree = "<group>"; };
+		2B0435D92021A0E20029653E /* PersistenceManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManagerTests.swift; sourceTree = "<group>"; };
+		2B10E406204A76530061C03D /* LocationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailViewController.swift; sourceTree = "<group>"; };
+		2B10E408204BC1AE0061C03D /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
+		2B10E409204BC1AE0061C03D /* ProfileCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCollectionViewCell.xib; sourceTree = "<group>"; };
+		2B10E411204BC3F20061C03D /* AirtaskCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirtaskCollectionViewCell.swift; sourceTree = "<group>"; };
+		2B10E419204CEBCB0061C03D /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
+		2B27C0F52031E0050054A5D0 /* Localle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localle.swift; sourceTree = "<group>"; };
+		2B27C0F8203289670054A5D0 /* ProfilePersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePersistenceTests.swift; sourceTree = "<group>"; };
+		2B7C837A203EF1B500FBD2D7 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		2B7C837C203F081600FBD2D7 /* SessionProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionProtocols.swift; sourceTree = "<group>"; };
+		2B7C837E203FD16E00FBD2D7 /* DataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerTests.swift; sourceTree = "<group>"; };
+		2B7C8384204105E700FBD2D7 /* DataManagerTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerTestHelpers.swift; sourceTree = "<group>"; };
+		2B7C83872043D8AB00FBD2D7 /* LocationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
+		2B8BE0A320484B07004EB5FF /* locations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = locations.json; sourceTree = "<group>"; };
+		2B8BE0A420484B07004EB5FF /* localle5.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = localle5.json; sourceTree = "<group>"; };
+		2B8BE0A520484B07004EB5FF /* activities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = activities.json; sourceTree = "<group>"; };
+		2B8BE0A620484B07004EB5FF /* tasks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tasks.json; sourceTree = "<group>"; };
+		2B8BE0A720484B07004EB5FF /* badActivities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = badActivities.json; sourceTree = "<group>"; };
+		2B8BE0A820484B07004EB5FF /* profiles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = profiles.json; sourceTree = "<group>"; };
+		2B8BE0A920484B07004EB5FF /* badLocations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = badLocations.json; sourceTree = "<group>"; };
+		2B8BE0AA20484B07004EB5FF /* badProfiles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = badProfiles.json; sourceTree = "<group>"; };
+		2B8BE0AB20484B07004EB5FF /* badTasks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = badTasks.json; sourceTree = "<group>"; };
+		2B8BE0AC20484B07004EB5FF /* localle3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = localle3.json; sourceTree = "<group>"; };
+		2B8BE0B720484B33004EB5FF /* zomb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = zomb.jpg; sourceTree = "<group>"; };
+		2BA95625203AD7FD006AD39E /* LocallePersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocallePersistenceTests.swift; sourceTree = "<group>"; };
+		2BB38F5420345FBE0061530E /* ActivityMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityMapper.swift; sourceTree = "<group>"; };
+		2BBDA54E203499670093ACE6 /* LocalleMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalleMapper.swift; sourceTree = "<group>"; };
+		2BBDA5502036BDBE0093ACE6 /* LocalleParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalleParsingTests.swift; sourceTree = "<group>"; };
+		2BBDA5572036F35B0093ACE6 /* TaskPersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPersistenceTests.swift; sourceTree = "<group>"; };
+		2BBDA55A2036F8B40093ACE6 /* ActivityParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityParsingTests.swift; sourceTree = "<group>"; };
+		2BBDA55C2036F8C90093ACE6 /* ActivityPersistanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityPersistanceTests.swift; sourceTree = "<group>"; };
 		2BBF411C20170D36003A636C /* AirTasker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirTasker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BBF411F20170D36003A636C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2BBF412120170D36003A636C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2BBF412420170D36003A636C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2BBF412620170D36003A636C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2BBF412920170D36003A636C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2BBF412B20170D36003A636C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BBF413020170D37003A636C /* AirTaskerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirTaskerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2BBF413420170D37003A636C /* AirTaskerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirTaskerTests.swift; sourceTree = "<group>"; };
 		2BBF413620170D37003A636C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2BBF413B20170D37003A636C /* AirTaskerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirTaskerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2BBF413F20170D37003A636C /* AirTaskerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirTaskerUITests.swift; sourceTree = "<group>"; };
-		2BBF414120170D37003A636C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2BCA787420498F17004A80CF /* LocationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCollectionViewCell.swift; sourceTree = "<group>"; };
+		2BCA787520498F17004A80CF /* LocationCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationCollectionViewCell.xib; sourceTree = "<group>"; };
 		2BF1161C20172B2000D8A02B /* Mapped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mapped.swift; sourceTree = "<group>"; };
+		2BF116222018440A00D8A02B /* AirTasks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AirTasks.xcdatamodel; sourceTree = "<group>"; };
+		2BF116242019805500D8A02B /* JSONMappingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONMappingProtocol.swift; sourceTree = "<group>"; };
+		2BF116292019923700D8A02B /* LocationMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMapper.swift; sourceTree = "<group>"; };
+		2BF1162D20199FA300D8A02B /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		2BF116382019BC7D00D8A02B /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		2BF1163A2019C0EA00D8A02B /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		2BF1163E2019C10200D8A02B /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		2BF116432019C11D00D8A02B /* Worker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Worker.swift; sourceTree = "<group>"; };
+		2BF116462019C1F100D8A02B /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		2BF116602019F0E300D8A02B /* LocationParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationParsingTests.swift; sourceTree = "<group>"; };
+		2BF11664201B0F5B00D8A02B /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		2BF11666201B0F6600D8A02B /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
+		2BF11670201B203000D8A02B /* TestSuiteHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSuiteHelpers.swift; sourceTree = "<group>"; };
+		2BF11674201C504A00D8A02B /* PersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
+		2BF11676201C5C8500D8A02B /* Managed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
+		2BF1167A202163E000D8A02B /* LocationPersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPersistenceTests.swift; sourceTree = "<group>"; };
+		2BF1F898202326B1005ECE8F /* ProfileMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMapper.swift; sourceTree = "<group>"; };
+		2BF9D0532033D95700B761A7 /* TaskMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskMapper.swift; sourceTree = "<group>"; };
+		2BF9D0562034547E00B761A7 /* TaskParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskParsingTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,30 +172,156 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2BBF413820170D37003A636C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				2BF11667201B0F6600D8A02B /* Quick.framework in Frameworks */,
+				2BF11665201B0F5B00D8A02B /* Nimble.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B0193D2202D744700960FCC /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				2B0193D3202D746700960FCC /* ProfileParsingTests.swift */,
+				2B27C0F8203289670054A5D0 /* ProfilePersistenceTests.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		2B0435D820219FE50029653E /* PesistenceManager */ = {
+			isa = PBXGroup;
+			children = (
+				2B0435D92021A0E20029653E /* PersistenceManagerTests.swift */,
+			);
+			path = PesistenceManager;
+			sourceTree = "<group>";
+		};
+		2B10E405204A75EA0061C03D /* Location_detail */ = {
+			isa = PBXGroup;
+			children = (
+				2B10E406204A76530061C03D /* LocationDetailViewController.swift */,
+				2B10E408204BC1AE0061C03D /* ProfileCollectionViewCell.swift */,
+				2B10E409204BC1AE0061C03D /* ProfileCollectionViewCell.xib */,
+			);
+			path = Location_detail;
+			sourceTree = "<group>";
+		};
+		2B10E410204BC3D60061C03D /* shared */ = {
+			isa = PBXGroup;
+			children = (
+				2B10E411204BC3F20061C03D /* AirtaskCollectionViewCell.swift */,
+			);
+			path = shared;
+			sourceTree = "<group>";
+		};
+		2B7C8377203EF0AE00FBD2D7 /* Model Layer */ = {
+			isa = PBXGroup;
+			children = (
+				2BBDA5522036BDC60093ACE6 /* Localle */,
+				2BBDA5592036F8930093ACE6 /* Activity */,
+				2BF9D0552034546400B761A7 /* Task */,
+				2B0193D2202D744700960FCC /* Profile */,
+				2B0435D820219FE50029653E /* PesistenceManager */,
+				2BF1165B2019ECD400D8A02B /* Location */,
+			);
+			path = "Model Layer";
+			sourceTree = "<group>";
+		};
+		2B7C8378203EF0C900FBD2D7 /* Data Layer */ = {
+			isa = PBXGroup;
+			children = (
+				2B7C837E203FD16E00FBD2D7 /* DataManagerTests.swift */,
+			);
+			path = "Data Layer";
+			sourceTree = "<group>";
+		};
+		2B7C8379203EF17F00FBD2D7 /* DataLayer */ = {
+			isa = PBXGroup;
+			children = (
+				2BF1161920171E2000D8A02B /* Parsing_common */,
+				2B7C838B2044106100FBD2D7 /* Persistence_common */,
+				2B7C838C204410D100FBD2D7 /* Network_common */,
+				2BF116352019BAAB00D8A02B /* Model */,
+			);
+			path = DataLayer;
+			sourceTree = "<group>";
+		};
+		2B7C83862041064600FBD2D7 /* TestHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				2B7C8384204105E700FBD2D7 /* DataManagerTestHelpers.swift */,
+				2BF11670201B203000D8A02B /* TestSuiteHelpers.swift */,
+			);
+			path = TestHelpers;
+			sourceTree = "<group>";
+		};
+		2B7C83892043D8D000FBD2D7 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				2B10E410204BC3D60061C03D /* shared */,
+				2B10E405204A75EA0061C03D /* Location_detail */,
+				2B7C838A2043D8D800FBD2D7 /* Location */,
+			);
+			name = Modules;
+			path = ../Modules;
+			sourceTree = "<group>";
+		};
+		2B7C838A2043D8D800FBD2D7 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				2B7C83872043D8AB00FBD2D7 /* LocationsViewController.swift */,
+				2BCA787420498F17004A80CF /* LocationCollectionViewCell.swift */,
+				2BCA787520498F17004A80CF /* LocationCollectionViewCell.xib */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		2B7C838B2044106100FBD2D7 /* Persistence_common */ = {
+			isa = PBXGroup;
+			children = (
+				2BF11676201C5C8500D8A02B /* Managed.swift */,
+				2BF116382019BC7D00D8A02B /* PersistenceManager.swift */,
+				2BF11674201C504A00D8A02B /* PersistenceHelper.swift */,
+			);
+			path = Persistence_common;
+			sourceTree = "<group>";
+		};
+		2B7C838C204410D100FBD2D7 /* Network_common */ = {
+			isa = PBXGroup;
+			children = (
+				2B7C837C203F081600FBD2D7 /* SessionProtocols.swift */,
+				2B7C837A203EF1B500FBD2D7 /* DataManager.swift */,
+			);
+			path = Network_common;
+			sourceTree = "<group>";
+		};
+		2BBDA5522036BDC60093ACE6 /* Localle */ = {
+			isa = PBXGroup;
+			children = (
+				2BBDA5502036BDBE0093ACE6 /* LocalleParsingTests.swift */,
+				2BA95625203AD7FD006AD39E /* LocallePersistenceTests.swift */,
+			);
+			path = Localle;
+			sourceTree = "<group>";
+		};
+		2BBDA5592036F8930093ACE6 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				2BBDA55A2036F8B40093ACE6 /* ActivityParsingTests.swift */,
+				2BBDA55C2036F8C90093ACE6 /* ActivityPersistanceTests.swift */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
 		2BBF411320170D36003A636C = {
 			isa = PBXGroup;
 			children = (
-				2BF11620201836B000D8A02B /* Profile */,
-				2BF1161F2018366400D8A02B /* Task */,
-				2BF1161E201835E700D8A02B /* Location */,
-				2BF1161920171E2000D8A02B /* Parser */,
+				2B10E419204CEBCB0061C03D /* readme.md */,
 				2BBF411E20170D36003A636C /* AirTasker */,
 				2BBF413320170D37003A636C /* AirTaskerTests */,
-				2BBF413E20170D37003A636C /* AirTaskerUITests */,
 				2BBF411D20170D36003A636C /* Products */,
+				2BF1164B2019E24400D8A02B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,7 +330,6 @@
 			children = (
 				2BBF411C20170D36003A636C /* AirTasker.app */,
 				2BBF413020170D37003A636C /* AirTaskerTests.xctest */,
-				2BBF413B20170D37003A636C /* AirTaskerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -103,8 +337,9 @@
 		2BBF411E20170D36003A636C /* AirTasker */ = {
 			isa = PBXGroup;
 			children = (
+				2B7C8379203EF17F00FBD2D7 /* DataLayer */,
+				2B7C83892043D8D000FBD2D7 /* Modules */,
 				2BBF411F20170D36003A636C /* AppDelegate.swift */,
-				2BBF412120170D36003A636C /* ViewController.swift */,
 				2BBF412320170D36003A636C /* Main.storyboard */,
 				2BBF412620170D36003A636C /* Assets.xcassets */,
 				2BBF412820170D36003A636C /* LaunchScreen.storyboard */,
@@ -116,32 +351,29 @@
 		2BBF413320170D37003A636C /* AirTaskerTests */ = {
 			isa = PBXGroup;
 			children = (
-				2BBF413420170D37003A636C /* AirTaskerTests.swift */,
+				2BF1166A201B151B00D8A02B /* TestAssets */,
+				2B7C83862041064600FBD2D7 /* TestHelpers */,
+				2B7C8378203EF0C900FBD2D7 /* Data Layer */,
+				2B7C8377203EF0AE00FBD2D7 /* Model Layer */,
 				2BBF413620170D37003A636C /* Info.plist */,
 			);
 			path = AirTaskerTests;
 			sourceTree = "<group>";
 		};
-		2BBF413E20170D37003A636C /* AirTaskerUITests */ = {
+		2BF1161920171E2000D8A02B /* Parsing_common */ = {
 			isa = PBXGroup;
 			children = (
-				2BBF413F20170D37003A636C /* AirTaskerUITests.swift */,
-				2BBF414120170D37003A636C /* Info.plist */,
-			);
-			path = AirTaskerUITests;
-			sourceTree = "<group>";
-		};
-		2BF1161920171E2000D8A02B /* Parser */ = {
-			isa = PBXGroup;
-			children = (
+				2BF116242019805500D8A02B /* JSONMappingProtocol.swift */,
 				2BF1161C20172B2000D8A02B /* Mapped.swift */,
 			);
-			path = Parser;
+			path = Parsing_common;
 			sourceTree = "<group>";
 		};
 		2BF1161E201835E700D8A02B /* Location */ = {
 			isa = PBXGroup;
 			children = (
+				2BF1162D20199FA300D8A02B /* Location.swift */,
+				2BF116292019923700D8A02B /* LocationMapper.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -149,6 +381,8 @@
 		2BF1161F2018366400D8A02B /* Task */ = {
 			isa = PBXGroup;
 			children = (
+				2BF1163E2019C10200D8A02B /* Task.swift */,
+				2BF9D0532033D95700B761A7 /* TaskMapper.swift */,
 			);
 			path = Task;
 			sourceTree = "<group>";
@@ -156,8 +390,103 @@
 		2BF11620201836B000D8A02B /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				2BF1163A2019C0EA00D8A02B /* Profile.swift */,
+				2BF1F898202326B1005ECE8F /* ProfileMapper.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		2BF1162620198E4200D8A02B /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				2BF116462019C1F100D8A02B /* Activity.swift */,
+				2BB38F5420345FBE0061530E /* ActivityMapper.swift */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
+		2BF1162720198E5800D8A02B /* Localle */ = {
+			isa = PBXGroup;
+			children = (
+				2B27C0F52031E0050054A5D0 /* Localle.swift */,
+				2BBDA54E203499670093ACE6 /* LocalleMapper.swift */,
+			);
+			path = Localle;
+			sourceTree = "<group>";
+		};
+		2BF1162820198E6D00D8A02B /* Worker */ = {
+			isa = PBXGroup;
+			children = (
+				2BF116432019C11D00D8A02B /* Worker.swift */,
+			);
+			path = Worker;
+			sourceTree = "<group>";
+		};
+		2BF116352019BAAB00D8A02B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2BF1162720198E5800D8A02B /* Localle */,
+				2BF1164A2019C21600D8A02B /* Datamodel */,
+				2BF1161E201835E700D8A02B /* Location */,
+				2BF1161F2018366400D8A02B /* Task */,
+				2BF11620201836B000D8A02B /* Profile */,
+				2BF1162620198E4200D8A02B /* Activity */,
+				2BF1162820198E6D00D8A02B /* Worker */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2BF1164A2019C21600D8A02B /* Datamodel */ = {
+			isa = PBXGroup;
+			children = (
+				2BF116212018440A00D8A02B /* AirTasks.xcdatamodeld */,
+			);
+			path = Datamodel;
+			sourceTree = "<group>";
+		};
+		2BF1164B2019E24400D8A02B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2BF11666201B0F6600D8A02B /* Quick.framework */,
+				2BF11664201B0F5B00D8A02B /* Nimble.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2BF1165B2019ECD400D8A02B /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				2BF116602019F0E300D8A02B /* LocationParsingTests.swift */,
+				2BF1167A202163E000D8A02B /* LocationPersistenceTests.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		2BF1166A201B151B00D8A02B /* TestAssets */ = {
+			isa = PBXGroup;
+			children = (
+				2B8BE0B720484B33004EB5FF /* zomb.jpg */,
+				2B8BE0A520484B07004EB5FF /* activities.json */,
+				2B8BE0A720484B07004EB5FF /* badActivities.json */,
+				2B8BE0A920484B07004EB5FF /* badLocations.json */,
+				2B8BE0AA20484B07004EB5FF /* badProfiles.json */,
+				2B8BE0AB20484B07004EB5FF /* badTasks.json */,
+				2B8BE0AC20484B07004EB5FF /* localle3.json */,
+				2B8BE0A420484B07004EB5FF /* localle5.json */,
+				2B8BE0A320484B07004EB5FF /* locations.json */,
+				2B8BE0A820484B07004EB5FF /* profiles.json */,
+				2B8BE0A620484B07004EB5FF /* tasks.json */,
+			);
+			path = TestAssets;
+			sourceTree = "<group>";
+		};
+		2BF9D0552034546400B761A7 /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				2BF9D0562034547E00B761A7 /* TaskParsingTests.swift */,
+				2BBDA5572036F35B0093ACE6 /* TaskPersistenceTests.swift */,
+			);
+			path = Task;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,6 +516,7 @@
 				2BBF412C20170D36003A636C /* Sources */,
 				2BBF412D20170D36003A636C /* Frameworks */,
 				2BBF412E20170D36003A636C /* Resources */,
+				2BF116502019E2B000D8A02B /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -197,24 +527,6 @@
 			productName = AirTaskerTests;
 			productReference = 2BBF413020170D37003A636C /* AirTaskerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		2BBF413A20170D37003A636C /* AirTaskerUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2BBF414A20170D37003A636C /* Build configuration list for PBXNativeTarget "AirTaskerUITests" */;
-			buildPhases = (
-				2BBF413720170D37003A636C /* Sources */,
-				2BBF413820170D37003A636C /* Frameworks */,
-				2BBF413920170D37003A636C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2BBF413D20170D37003A636C /* PBXTargetDependency */,
-			);
-			name = AirTaskerUITests;
-			productName = AirTaskerUITests;
-			productReference = 2BBF413B20170D37003A636C /* AirTaskerUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -232,11 +544,7 @@
 					};
 					2BBF412F20170D36003A636C = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 2BBF411B20170D36003A636C;
-					};
-					2BBF413A20170D37003A636C = {
-						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2BBF411B20170D36003A636C;
 					};
@@ -257,7 +565,6 @@
 			targets = (
 				2BBF411B20170D36003A636C /* AirTasker */,
 				2BBF412F20170D36003A636C /* AirTaskerTests */,
-				2BBF413A20170D37003A636C /* AirTaskerUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -270,6 +577,9 @@
 				2BBF412A20170D36003A636C /* LaunchScreen.storyboard in Resources */,
 				2BBF412720170D36003A636C /* Assets.xcassets in Resources */,
 				2BBF412520170D36003A636C /* Main.storyboard in Resources */,
+				2BCA787720498F17004A80CF /* LocationCollectionViewCell.xib in Resources */,
+				2B10E40B204BC1AE0061C03D /* ProfileCollectionViewCell.xib in Resources */,
+				2B10E41A204CEBCB0061C03D /* readme.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,13 +587,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2BBF413920170D37003A636C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				2B8BE0B520484B07004EB5FF /* badTasks.json in Resources */,
+				2B8BE0B120484B07004EB5FF /* badActivities.json in Resources */,
+				2B8BE0B220484B07004EB5FF /* profiles.json in Resources */,
+				2B8BE0AF20484B07004EB5FF /* activities.json in Resources */,
+				2B8BE0AD20484B07004EB5FF /* locations.json in Resources */,
+				2B8BE0B320484B07004EB5FF /* badLocations.json in Resources */,
+				2BF11673201B38E300D8A02B /* AirTasks.xcdatamodeld in Resources */,
+				2B8BE0B820484B33004EB5FF /* zomb.jpg in Resources */,
+				2B8BE0B620484B07004EB5FF /* localle3.json in Resources */,
+				2B8BE0B420484B07004EB5FF /* badProfiles.json in Resources */,
+				2B8BE0AE20484B07004EB5FF /* localle5.json in Resources */,
+				2B8BE0B020484B07004EB5FF /* tasks.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,9 +609,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2BBF412220170D36003A636C /* ViewController.swift in Sources */,
+				2BBDA54F203499670093ACE6 /* LocalleMapper.swift in Sources */,
+				2B7C837B203EF1B500FBD2D7 /* DataManager.swift in Sources */,
+				2BCA787620498F17004A80CF /* LocationCollectionViewCell.swift in Sources */,
+				2BF1F899202326B1005ECE8F /* ProfileMapper.swift in Sources */,
+				2BF116402019C10200D8A02B /* Task.swift in Sources */,
+				2B27C0F62031E0050054A5D0 /* Localle.swift in Sources */,
+				2BF1163C2019C0EA00D8A02B /* Profile.swift in Sources */,
+				2BF1162A2019923700D8A02B /* LocationMapper.swift in Sources */,
+				2BF116252019805500D8A02B /* JSONMappingProtocol.swift in Sources */,
+				2B0193D72031DBBC00960FCC /* Managed.swift in Sources */,
+				2BF116392019BC7D00D8A02B /* PersistenceManager.swift in Sources */,
+				2B7C837D203F081600FBD2D7 /* SessionProtocols.swift in Sources */,
+				2BF1F8972022FF08005ECE8F /* PersistenceHelper.swift in Sources */,
+				2BF116452019C11D00D8A02B /* Worker.swift in Sources */,
+				2BF9D0542033D95700B761A7 /* TaskMapper.swift in Sources */,
+				2B10E407204A76530061C03D /* LocationDetailViewController.swift in Sources */,
+				2B10E412204BC3F20061C03D /* AirtaskCollectionViewCell.swift in Sources */,
+				2B7C83882043D8AB00FBD2D7 /* LocationsViewController.swift in Sources */,
+				2BF1162F20199FA300D8A02B /* Location.swift in Sources */,
+				2B10E40A204BC1AE0061C03D /* ProfileCollectionViewCell.swift in Sources */,
 				2BBF412020170D36003A636C /* AppDelegate.swift in Sources */,
 				2BF1161D20172B2000D8A02B /* Mapped.swift in Sources */,
+				2BB38F5520345FBE0061530E /* ActivityMapper.swift in Sources */,
+				2BF116232018440A00D8A02B /* AirTasks.xcdatamodeld in Sources */,
+				2BF116482019C1F100D8A02B /* Activity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,15 +641,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2BBF413520170D37003A636C /* AirTaskerTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2BBF413720170D37003A636C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2BBF414020170D37003A636C /* AirTaskerUITests.swift in Sources */,
+				2BF9D0572034547E00B761A7 /* TaskParsingTests.swift in Sources */,
+				2BF11671201B203000D8A02B /* TestSuiteHelpers.swift in Sources */,
+				2BF116612019F0E300D8A02B /* LocationParsingTests.swift in Sources */,
+				2B0435DA2021A0E20029653E /* PersistenceManagerTests.swift in Sources */,
+				2BBDA55B2036F8B40093ACE6 /* ActivityParsingTests.swift in Sources */,
+				2B27C0F9203289670054A5D0 /* ProfilePersistenceTests.swift in Sources */,
+				2BA95626203AD7FD006AD39E /* LocallePersistenceTests.swift in Sources */,
+				2BBDA55D2036F8C90093ACE6 /* ActivityPersistanceTests.swift in Sources */,
+				2B7C8385204105E700FBD2D7 /* DataManagerTestHelpers.swift in Sources */,
+				2B0193D4202D746700960FCC /* ProfileParsingTests.swift in Sources */,
+				2BF1167B202163E000D8A02B /* LocationPersistenceTests.swift in Sources */,
+				2BBDA5512036BDBE0093ACE6 /* LocalleParsingTests.swift in Sources */,
+				2BBDA5582036F35B0093ACE6 /* TaskPersistenceTests.swift in Sources */,
+				2BF11672201B35E100D8A02B /* AirTasks.xcdatamodeld in Sources */,
+				2B7C837F203FD16E00FBD2D7 /* DataManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,11 +666,6 @@
 			isa = PBXTargetDependency;
 			target = 2BBF411B20170D36003A636C /* AirTasker */;
 			targetProxy = 2BBF413120170D37003A636C /* PBXContainerItemProxy */;
-		};
-		2BBF413D20170D37003A636C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2BBF411B20170D36003A636C /* AirTasker */;
-			targetProxy = 2BBF413C20170D37003A636C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -399,10 +737,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos11.2;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -450,9 +788,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos11.2;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -493,12 +831,18 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QBJML82M5H;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = AirTaskerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bite-software.AirTaskerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AirTasker.app/AirTasker";
@@ -510,8 +854,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QBJML82M5H;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = AirTaskerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bite-software.AirTaskerTests";
@@ -519,38 +868,6 @@
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AirTasker.app/AirTasker";
-			};
-			name = Release;
-		};
-		2BBF414B20170D37003A636C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QBJML82M5H;
-				INFOPLIST_FILE = AirTaskerUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bite-software.AirTaskerUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = AirTasker;
-			};
-			name = Debug;
-		};
-		2BBF414C20170D37003A636C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QBJML82M5H;
-				INFOPLIST_FILE = AirTaskerUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bite-software.AirTaskerUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = AirTasker;
 			};
 			name = Release;
 		};
@@ -584,16 +901,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2BBF414A20170D37003A636C /* Build configuration list for PBXNativeTarget "AirTaskerUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2BBF414B20170D37003A636C /* Debug */,
-				2BBF414C20170D37003A636C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2BF116212018440A00D8A02B /* AirTasks.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2BF116222018440A00D8A02B /* AirTasks.xcdatamodel */,
+			);
+			currentVersion = 2BF116222018440A00D8A02B /* AirTasks.xcdatamodel */;
+			path = AirTasks.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2BBF411420170D36003A636C /* Project object */;
 }

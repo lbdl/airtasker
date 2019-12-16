@@ -1,0 +1,19 @@
+
+[
+		{
+		    "id": 4,
+		    "name": "Mystery Shopper Rockdale NSW",
+		    "description": "1. Visit a shop anonymously as an \"undercover customer.\" \n2. Make two short enquiries in the same shop. \n3. Fill in a questionnaire. \n4. Report by phone.",
+		    "state": "posted",
+		    "poster_id": 5,
+		    "worker_id": null
+		},
+		{
+		    "id": 5,
+		    "name": "Hang mirror",
+		    "description": "Looking for someone to hang a mirror on brick wall above a fire place.",
+		    "state": "posted",
+		    "poster_id": 2,
+		    "worker_id": null
+		}
+	]
